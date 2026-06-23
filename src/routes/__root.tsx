@@ -84,9 +84,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "DFRENZY VISUALS is an AI cinematic film studio crafting trailers, music visuals, and brand promos inside a digital dimension." },
       { name: "author", content: "DFRENZY VISUALS" },
       { property: "og:title", content: "DFRENZY VISUALS — AI Cinematic Film Studio" },
-      { property: "og:description", content: "Enter the AI cinematic film studio." },
+      { property: "og:description", content: "DFRENZY VISUALS is an AI cinematic film studio crafting trailers, music visuals, and brand promos inside a digital dimension." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "DFRENZY VISUALS — AI Cinematic Film Studio" },
+      { name: "twitter:description", content: "DFRENZY VISUALS is an AI cinematic film studio crafting trailers, music visuals, and brand promos inside a digital dimension." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2a4573b0-d1be-4209-beb2-0def19134513" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/2a4573b0-d1be-4209-beb2-0def19134513" },
     ],
     links: [
       {
