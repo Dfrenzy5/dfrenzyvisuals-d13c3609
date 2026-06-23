@@ -7,7 +7,7 @@ import film3 from "@/assets/film-3.jpg";
 import film4 from "@/assets/film-4.jpg";
 import film5 from "@/assets/film-5.jpg";
 import film6 from "@/assets/film-6.jpg";
-import unbliss from "@/assets/unbliss.png.asset.json";
+import unbliss from "@/assets/unbliss.jpg";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -33,7 +33,7 @@ type Film = {
 const FILTERS = ["ALL", "AI FILMS", "TRAILERS", "MUSIC VISUALS", "PROMOS", "EVENTS"] as const;
 
 const FILMS: Film[] = [
-  { id: "unbliss", title: "UNBLISS", subtitle: "SOME LOVE STORIES HAVE WITNESSES", category: "TRAILERS", image: unbliss.url },
+  { id: "unbliss", title: "UNBLISS", subtitle: "SOME LOVE STORIES HAVE WITNESSES", category: "TRAILERS", image: unbliss },
   { id: "1", title: "BEYOND HORIZON", subtitle: "AI TRAILER", category: "TRAILERS", image: film1 },
   { id: "2", title: "UNBREAKABLE", subtitle: "MUSIC VISUAL", category: "MUSIC VISUALS", image: film2 },
   { id: "3", title: "THE LAST SIGNAL", subtitle: "SHORT FILM", category: "AI FILMS", image: film3 },
@@ -63,7 +63,7 @@ function PortfolioPage() {
       {/* Featured */}
       <div className="relative mt-10 overflow-hidden rounded-2xl border border-neon/30 glass-panel">
         <div className="relative aspect-[21/9] w-full overflow-hidden">
-          <img src={unbliss.url} alt="UNBLISS" className="h-full w-full object-cover" />
+          <img src={unbliss} alt="UNBLISS" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <button
             onClick={() => setOpen(FILMS[0])}

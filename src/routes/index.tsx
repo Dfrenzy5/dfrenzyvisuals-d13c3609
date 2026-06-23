@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Film, DollarSign, Send, ChevronDown } from "lucide-react";
-import dfLogo from "@/assets/df-logo.png.asset.json";
+import dfLogo from "@/assets/df-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,7 +27,7 @@ function Index() {
       <div className="animate-warp-in relative">
         <div className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-neon/20 blur-3xl" />
         <img
-          src={dfLogo.url}
+          src={dfLogo}
           alt="DFRENZY VISUALS"
           width={420}
           height={420}

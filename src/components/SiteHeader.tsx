@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Film, DollarSign, Send, Youtube, Instagram, Mail } from "lucide-react";
-import dfLogo from "@/assets/df-logo.png.asset.json";
+import dfLogo from "@/assets/df-logo.png";
 
 const nav = [
   { to: "/portfolio", label: "PORTFOLIO", Icon: Film },
@@ -15,7 +15,7 @@ export function SiteHeader() {
       <div className="mx-auto flex items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="group flex items-center gap-3">
           <div className="relative h-10 w-10 overflow-hidden rounded-lg ring-1 ring-neon/40 transition-all group-hover:ring-neon group-hover:neon-glow">
-            <img src={dfLogo.url} alt="DFRENZY VISUALS" className="h-full w-full object-cover" />
+            <img src={dfLogo} alt="DFRENZY VISUALS" className="h-full w-full object-cover" />
           </div>
           <span className="hidden font-display text-sm font-bold tracking-[0.3em] text-foreground sm:inline">
             DFRENZY <span className="text-neon-bright">VISUALS</span>
