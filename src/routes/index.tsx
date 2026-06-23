@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { Film, DollarSign, Send, ChevronDown } from "lucide-react";
-import dfLogo from "@/assets/df-logo.png";
+import dfLogoAsset from "@/assets/df-logo.png.asset.json";
+const dfLogo = dfLogoAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
