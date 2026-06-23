@@ -19,11 +19,11 @@ export function SiteFooter() {
             <span className="text-muted-foreground">DFRENZYVISUALS</span>
           </a>
           <a
-            href="mailto:business@dfrenzyvisuals.com"
+            href="mailto:dfrenzyvisuals@gmail.com"
             className="flex items-center gap-2 rounded-full border border-neon/30 px-4 py-2 text-sm text-foreground transition-all hover:border-neon hover:neon-glow"
           >
             <Mail className="h-4 w-4 text-neon-bright" />
-            <span className="text-muted-foreground">business@dfrenzyvisuals.com</span>
+            <span className="text-muted-foreground">dfrenzyvisuals@gmail.com</span>
           </a>
         </div>
         <div className="font-display text-[10px] tracking-[0.4em] text-muted-foreground">
