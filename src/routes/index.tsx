@@ -28,20 +28,20 @@ export const Route = createFileRoute("/")({
 });
 
 // Cinematic phase timeline (ms relative to mount). Mirrors the 9-stage script.
-// 01 cosmic fade   0.0–2.0s
-// 02 energy form   2.0–5.0s
-// 03 logo assembly 5.0–7.0s
-// 04 identity      7.0–9.0s
-// 05 tagline       9.0–11.0s
-// 06 cta emerge    11.0–14.0s
-// 07 hover idle    14.0s+
+// 01 cosmic fade    0.0–2.0s
+// 02 energy form    2.0–5.0s
+// 03 logo assembly  5.0–7.0s
+// 04 identity       7.0–9.0s
+// 05 tagline        9.0–11.0s
+// 06 cta emerges    11.0–14.0s
+// 07 hover/idle     14.0s+
 const PHASE_TIMINGS = {
-  energy: 1800,
-  logo: 4200,
-  identity: 6000,
-  tagline: 7600,
-  cta: 9200,
-  idle: 10800,
+  energy: 2000,
+  logo: 5000,
+  identity: 7000,
+  tagline: 9000,
+  cta: 11000,
+  idle: 14000,
 } as const;
 
 type Phase =
@@ -58,6 +58,8 @@ function Index() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const intensityRef = useRef(0); // 0..1 drives particle gather
   const [phase, setPhase] = useState<Phase>("cosmic");
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  const [countdown, setCountdown] = useState<number | null>(3);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
@@ -74,7 +76,23 @@ function Index() {
     queue.forEach(([ms, p]) => {
       timeouts.push(setTimeout(() => setPhase(p), ms));
     });
+    // Countdown 3·2·1 between 2.0s and 5.0s (energy → logo reveal)
+    timeouts.push(setTimeout(() => setCountdown(3), 2000));
+    timeouts.push(setTimeout(() => setCountdown(2), 3000));
+    timeouts.push(setTimeout(() => setCountdown(1), 4000));
+    timeouts.push(setTimeout(() => setCountdown(null), 5000));
     return () => timeouts.forEach(clearTimeout);
+  }, []);
+
+  // Mouse parallax (subtle camera drift)
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setParallax({ x, y });
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
   }, []);
 
   // intensity ramps as phases progress (drives canvas attraction)
@@ -203,6 +221,7 @@ function Index() {
 
   const skipIntro = useCallback(() => {
     setPhase("idle");
+    setCountdown(null);
   }, []);
 
   // ----- Phase helpers -----
@@ -240,6 +259,34 @@ function Index() {
       {/* Subtle UI scanlines overlay */}
       <div className="pointer-events-none absolute inset-0 cinematic-scanlines opacity-40" />
 
+      {/* Floating debris / asteroids */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {Array.from({ length: 14 }).map((_, i) => {
+          const size = 2 + (i % 4);
+          const left = (i * 71) % 100;
+          const top = (i * 47) % 100;
+          const delay = (i * 0.7) % 6;
+          const duration = 12 + (i % 5) * 2;
+          return (
+            <span
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: size,
+                height: size,
+                left: `${left}%`,
+                top: `${top}%`,
+                background: i % 3 === 0 ? "#3ABDFF" : "#00D4FF",
+                boxShadow: "0 0 6px rgba(0,213,255,0.7)",
+                opacity: 0.4,
+                animation: `debris-drift ${duration}s ${delay}s ease-in-out infinite`,
+                transform: `translate3d(${parallax.x * (i % 5) * 2}px, ${parallax.y * (i % 5) * 2}px, 0)`,
+              }}
+            />
+          );
+        })}
+      </div>
+
       {/* Vignette */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -275,8 +322,46 @@ function Index() {
         style={{
           animation: phase === "warp" ? "warp-zoom 1.1s ease-in forwards" : undefined,
           transformOrigin: "center",
+          transform: phase === "warp"
+            ? undefined
+            : `translate3d(${parallax.x * -8}px, ${parallax.y * -8}px, 0)`,
+          transition: "transform 400ms ease-out",
         }}
       >
+        {/* Volumetric light rays from logo */}
+        {show.logo && (
+          <div
+            className="pointer-events-none absolute left-1/2 top-[110px] -translate-x-1/2 sm:top-[110px]"
+            style={{
+              width: 600,
+              height: 600,
+              background:
+                "conic-gradient(from 0deg, transparent 0deg, rgba(0,213,255,0.18) 8deg, transparent 16deg, transparent 90deg, rgba(0,213,255,0.12) 100deg, transparent 110deg, transparent 180deg, rgba(58,189,255,0.15) 192deg, transparent 204deg, transparent 270deg, rgba(0,213,255,0.1) 282deg, transparent 294deg)",
+              mixBlendMode: "screen",
+              filter: "blur(6px)",
+              opacity: 0.7,
+              transform: "translate(-50%, -50%)",
+              animation: "spin 24s linear infinite",
+            }}
+          />
+        )}
+
+        {/* Countdown 3·2·1 between energy and logo phases */}
+        {countdown !== null && (phase === "energy" || phase === "cosmic") && (
+          <div
+            key={countdown}
+            className="pointer-events-none absolute z-20 font-display text-[120px] sm:text-[180px]"
+            style={{
+              color: "#00D4FF",
+              textShadow: "0 0 40px #00D4FF, 0 0 80px #3ABDFF",
+              animation: "warp-in 0.9s ease-out both",
+              opacity: 0.85,
+            }}
+          >
+            {countdown}
+          </div>
+        )}
+
         {/* LOGO */}
         <div
           className="relative h-[180px] w-[180px] sm:h-[220px] sm:w-[220px]"
