@@ -294,8 +294,46 @@ function Index() {
         style={{
           animation: phase === "warp" ? "warp-zoom 1.1s ease-in forwards" : undefined,
           transformOrigin: "center",
+          transform: phase === "warp"
+            ? undefined
+            : `translate3d(${parallax.x * -8}px, ${parallax.y * -8}px, 0)`,
+          transition: "transform 400ms ease-out",
         }}
       >
+        {/* Volumetric light rays from logo */}
+        {show.logo && (
+          <div
+            className="pointer-events-none absolute left-1/2 top-[110px] -translate-x-1/2 sm:top-[110px]"
+            style={{
+              width: 600,
+              height: 600,
+              background:
+                "conic-gradient(from 0deg, transparent 0deg, rgba(0,213,255,0.18) 8deg, transparent 16deg, transparent 90deg, rgba(0,213,255,0.12) 100deg, transparent 110deg, transparent 180deg, rgba(58,189,255,0.15) 192deg, transparent 204deg, transparent 270deg, rgba(0,213,255,0.1) 282deg, transparent 294deg)",
+              mixBlendMode: "screen",
+              filter: "blur(6px)",
+              opacity: 0.7,
+              transform: "translate(-50%, -50%)",
+              animation: "spin 24s linear infinite",
+            }}
+          />
+        )}
+
+        {/* Countdown 3·2·1 between energy and logo phases */}
+        {countdown !== null && (phase === "energy" || phase === "cosmic") && (
+          <div
+            key={countdown}
+            className="pointer-events-none absolute z-20 font-display text-[120px] sm:text-[180px]"
+            style={{
+              color: "#00D4FF",
+              textShadow: "0 0 40px #00D4FF, 0 0 80px #3ABDFF",
+              animation: "warp-in 0.9s ease-out both",
+              opacity: 0.85,
+            }}
+          >
+            {countdown}
+          </div>
+        )}
+
         {/* LOGO */}
         <div
           className="relative h-[180px] w-[180px] sm:h-[220px] sm:w-[220px]"
