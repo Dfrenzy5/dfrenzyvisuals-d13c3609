@@ -58,6 +58,8 @@ function Index() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const intensityRef = useRef(0); // 0..1 drives particle gather
   const [phase, setPhase] = useState<Phase>("cosmic");
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  const [countdown, setCountdown] = useState<number | null>(3);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
@@ -74,7 +76,23 @@ function Index() {
     queue.forEach(([ms, p]) => {
       timeouts.push(setTimeout(() => setPhase(p), ms));
     });
+    // Countdown 3·2·1 between 2.0s and 5.0s (energy → logo reveal)
+    timeouts.push(setTimeout(() => setCountdown(3), 2000));
+    timeouts.push(setTimeout(() => setCountdown(2), 3000));
+    timeouts.push(setTimeout(() => setCountdown(1), 4000));
+    timeouts.push(setTimeout(() => setCountdown(null), 5000));
     return () => timeouts.forEach(clearTimeout);
+  }, []);
+
+  // Mouse parallax (subtle camera drift)
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setParallax({ x, y });
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
   }, []);
 
   // intensity ramps as phases progress (drives canvas attraction)
@@ -203,6 +221,7 @@ function Index() {
 
   const skipIntro = useCallback(() => {
     setPhase("idle");
+    setCountdown(null);
   }, []);
 
   // ----- Phase helpers -----
