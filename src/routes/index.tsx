@@ -28,20 +28,20 @@ export const Route = createFileRoute("/")({
 });
 
 // Cinematic phase timeline (ms relative to mount). Mirrors the 9-stage script.
-// 01 cosmic fade   0.0–2.0s
-// 02 energy form   2.0–5.0s
-// 03 logo assembly 5.0–7.0s
-// 04 identity      7.0–9.0s
-// 05 tagline       9.0–11.0s
-// 06 cta emerge    11.0–14.0s
-// 07 hover idle    14.0s+
+// 01 cosmic fade    0.0–2.0s
+// 02 energy form    2.0–5.0s
+// 03 logo assembly  5.0–7.0s
+// 04 identity       7.0–9.0s
+// 05 tagline        9.0–11.0s
+// 06 cta emerges    11.0–14.0s
+// 07 hover/idle     14.0s+
 const PHASE_TIMINGS = {
-  energy: 1800,
-  logo: 4200,
-  identity: 6000,
-  tagline: 7600,
-  cta: 9200,
-  idle: 10800,
+  energy: 2000,
+  logo: 5000,
+  identity: 7000,
+  tagline: 9000,
+  cta: 11000,
+  idle: 14000,
 } as const;
 
 type Phase =
