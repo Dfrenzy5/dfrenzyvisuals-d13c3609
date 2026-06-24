@@ -259,6 +259,34 @@ function Index() {
       {/* Subtle UI scanlines overlay */}
       <div className="pointer-events-none absolute inset-0 cinematic-scanlines opacity-40" />
 
+      {/* Floating debris / asteroids */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {Array.from({ length: 14 }).map((_, i) => {
+          const size = 2 + (i % 4);
+          const left = (i * 71) % 100;
+          const top = (i * 47) % 100;
+          const delay = (i * 0.7) % 6;
+          const duration = 12 + (i % 5) * 2;
+          return (
+            <span
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: size,
+                height: size,
+                left: `${left}%`,
+                top: `${top}%`,
+                background: i % 3 === 0 ? "#3ABDFF" : "#00D4FF",
+                boxShadow: "0 0 6px rgba(0,213,255,0.7)",
+                opacity: 0.4,
+                animation: `debris-drift ${duration}s ${delay}s ease-in-out infinite`,
+                transform: `translate3d(${parallax.x * (i % 5) * 2}px, ${parallax.y * (i % 5) * 2}px, 0)`,
+              }}
+            />
+          );
+        })}
+      </div>
+
       {/* Vignette */}
       <div
         className="pointer-events-none absolute inset-0"
