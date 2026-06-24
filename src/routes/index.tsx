@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { Film, DollarSign, Send, ChevronDown } from "lucide-react";
+import { useEffect, useRef } from "react";
 import dfLogoAsset from "@/assets/df-logo.png.asset.json";
 const dfLogo = dfLogoAsset.url;
 
@@ -17,73 +17,131 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const nav = [
-    { to: "/portfolio" as const, label: "PORTFOLIO", sub: "CINEMATIC WORKS", Icon: Film },
-    { to: "/pricing" as const, label: "PRICING", sub: "PACKAGES", Icon: DollarSign },
-    { to: "/contact" as const, label: "CONTACT", sub: "COLLABORATE", Icon: Send },
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let w = (canvas.width = canvas.offsetWidth);
+    let h = (canvas.height = canvas.offsetHeight);
+    const particles = Array.from({ length: 120 }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.6 + 0.4,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.6 + 0.2,
+    }));
+
+    const onResize = () => {
+      w = canvas.width = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    };
+    window.addEventListener("resize", onResize);
+
+    let raf = 0;
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 229, 255, ${p.a})`;
+        ctx.shadowColor = "#00E5FF";
+        ctx.shadowBlur = 8;
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  const icons = [
+    { to: "/portfolio" as const, emoji: "🎬", tip: "CINEMATIC WORKS" },
+    { to: "/pricing" as const, emoji: "💰", tip: "PACKAGES" },
+    { to: "/contact" as const, emoji: "📡", tip: "COLLABORATE" },
   ];
+
   return (
-    <div className="relative flex flex-col items-center px-6 pb-20 pt-8 text-center">
-      {/* Hero logo */}
-      <div className="animate-warp-in relative">
-        <div className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-neon/20 blur-3xl" />
-        <img
-          src={dfLogo}
-          alt="DFRENZY VISUALS"
-          width={420}
-          height={420}
-          className="mx-auto h-48 w-48 object-contain drop-shadow-[0_0_40px_oklch(0.78_0.18_230/0.6)] sm:h-64 sm:w-64 md:h-80 md:w-80"
-        />
-      </div>
+    <div
+      id="hero"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(circle at center, #05070D 0%, #000000 100%)",
+        color: "#00E5FF",
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        id="particle-bg"
+        className="pointer-events-none absolute inset-0 h-full w-full"
+      />
 
-      <h1 className="animate-warp-in mt-4 font-display text-3xl font-black tracking-[0.15em] text-foreground sm:text-5xl md:text-6xl">
-        DFRENZY <span className="neon-text">VISUALS</span>
+      <div
+        id="logo"
+        className="animate-warp-in relative h-[200px] w-[200px] bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('${dfLogo}')`,
+          backgroundSize: "contain",
+          filter: "drop-shadow(0 0 20px #00E5FF)",
+        }}
+      />
+
+      <h1
+        id="tagline"
+        className="animate-fade-in mt-5 text-center font-display text-2xl tracking-[0.3em] sm:text-3xl"
+        style={{ animationDelay: "0.4s", animationFillMode: "both" }}
+      >
+        AI CINEMATIC FILM STUDIO
       </h1>
-      <p className="animate-warp-in mt-3 font-display text-[11px] tracking-[0.5em] text-neon-bright sm:text-sm">
-        AI · CINEMATIC · FILM · STUDIO
-      </p>
 
-      {/* CTA */}
       <Link
         to="/portfolio"
-        className="group animate-warp-in relative mt-10 inline-flex items-center justify-center overflow-hidden rounded-full border border-neon/60 bg-neon/5 px-10 py-4 font-display text-xs font-semibold tracking-[0.4em] text-foreground transition-all hover:neon-glow hover:text-neon-bright"
+        id="cta"
+        className="animate-fade-in mt-10 cursor-pointer border-2 px-10 py-4 font-display text-sm tracking-[0.4em] transition-all hover:bg-[#00E5FF]/10 hover:shadow-[0_0_30px_#00E5FF]"
+        style={{
+          borderColor: "#00E5FF",
+          color: "#00E5FF",
+          background: "transparent",
+          animationDelay: "0.8s",
+          animationFillMode: "both",
+        }}
       >
-        <span className="sweep-line relative">ENTER EXPERIENCE</span>
+        ENTER EXPERIENCE
       </Link>
-      <ChevronDown className="mt-6 h-6 w-6 animate-float text-neon-bright/60" />
 
-      {/* Holographic stage */}
-      <div className="relative mt-12 w-full max-w-5xl">
-        {/* Stage rings */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
-          <div className="h-[420px] w-[420px] rounded-full border border-neon/20 sm:h-[560px] sm:w-[560px]" />
-          <div className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon/15 sm:h-[440px] sm:w-[440px]" />
-          <div className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon/10 sm:h-[320px] sm:w-[320px]" />
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 sm:gap-12 md:gap-20">
-          {nav.map(({ to, label, sub, Icon }, i) => (
-            <Link
-              key={to}
-              to={to}
-              className="group flex flex-col items-center gap-3"
-              style={{ animationDelay: `${0.2 + i * 0.15}s` }}
+      <div className="icon-nav absolute bottom-12 flex gap-12 sm:gap-[60px]">
+        {icons.map((it, i) => (
+          <Link
+            key={it.to}
+            to={it.to}
+            className="icon group animate-fade-in flex cursor-pointer flex-col items-center text-center text-3xl transition-transform hover:scale-110"
+            style={{
+              animationDelay: `${1 + i * 0.2}s`,
+              animationFillMode: "both",
+            }}
+          >
+            <span className="drop-shadow-[0_0_10px_#00E5FF]">{it.emoji}</span>
+            <span
+              className="tooltip mt-1 block text-[0.7rem] tracking-[0.25em] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{ color: "#00E5FF" }}
             >
-              <div className="relative">
-                <div className="absolute inset-0 -z-10 rounded-full bg-neon/20 blur-2xl transition-all group-hover:bg-neon/40 group-hover:blur-3xl" />
-                <div className="animate-float flex h-20 w-20 items-center justify-center rounded-full border-2 border-neon/60 bg-background/40 backdrop-blur-md transition-all group-hover:scale-110 group-hover:border-neon group-hover:neon-glow sm:h-28 sm:w-28">
-                  <Icon className="h-7 w-7 text-neon-bright sm:h-10 sm:w-10" strokeWidth={1.5} />
-                </div>
-              </div>
-              <div className="font-display text-xs font-bold tracking-[0.3em] text-foreground sm:text-sm">
-                {label}
-              </div>
-              <div className="font-display text-[9px] tracking-[0.35em] text-neon-bright/70 sm:text-[10px]">
-                {sub}
-              </div>
-            </Link>
-          ))}
-        </div>
+              {it.tip}
+            </span>
+          </Link>
+        ))}
       </div>
     </div>
   );
