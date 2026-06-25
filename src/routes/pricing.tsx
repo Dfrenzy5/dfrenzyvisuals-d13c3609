@@ -17,21 +17,21 @@ const tiers = [
   {
     name: "BASIC",
     Icon: Box,
-    price: 199,
+    price: 50,
     features: ["AI Shorts (15–30 sec)", "Cinematic Poster", "2 Revisions", "AI Visuals", "Background Music"],
     highlight: false,
   },
   {
     name: "PRO",
     Icon: Gem,
-    price: 499,
+    price: 200,
     features: ["AI Trailer (60–90 sec)", "Script + Voiceover", "Motion Design", "Sound Design", "3 Revisions"],
     highlight: true,
   },
   {
     name: "STUDIO+",
     Icon: Crown,
-    price: 999,
+    price: 1000,
     features: ["Full AI Film Production", "Brand Storytelling", "Advanced VFX", "Unlimited Revisions", "Priority Support"],
     highlight: false,
   },
@@ -73,7 +73,7 @@ function PricingPage() {
               </div>
               <h3 className="mt-4 font-display text-xl font-bold tracking-[0.3em] text-foreground">{t.name}</h3>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="font-display text-5xl font-black text-foreground">${t.price}</span>
+                <span className="font-display text-5xl font-black text-foreground">${t.price.toLocaleString("en-US")}</span>
               </div>
               <span className="font-display text-[10px] tracking-[0.3em] text-muted-foreground">/PROJECT</span>
             </div>
