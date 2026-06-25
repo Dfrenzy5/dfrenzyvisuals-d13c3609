@@ -8,14 +8,16 @@ import film4 from "@/assets/film-4.jpg";
 import film5 from "@/assets/film-5.jpg";
 import film6 from "@/assets/film-6.jpg";
 import unbliss from "@/assets/unbliss.jpg";
+import legacyAsset from "@/assets/legacy-business-summit-2026.png.asset.json";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — DFRENZY VISUALS" },
-      { name: "description", content: "AI cinematic works: trailers, music visuals, brand promos, and experimental shorts." },
-      { property: "og:title", content: "Portfolio — DFRENZY VISUALS" },
-      { property: "og:description", content: "AI cinematic film gallery." },
+      { title: "Legacy Business Summit 2026 | Africa's Biggest Business Summit" },
+      { name: "description", content: "Join over 5,000 entrepreneurs at Legacy Business Summit 2026 in Lagos. Learn, network, grow, and succeed with Africa's leading business minds." },
+      { property: "og:title", content: "Legacy Business Summit 2026 | Africa's Biggest Business Summit" },
+      { property: "og:description", content: "Join over 5,000 entrepreneurs at Legacy Business Summit 2026 in Lagos. Learn, network, grow, and succeed with Africa's leading business minds." },
+      { property: "og:image", content: legacyAsset.url },
     ],
   }),
   component: PortfolioPage,
@@ -33,7 +35,7 @@ type Film = {
 const FILTERS = ["ALL", "AI FILMS", "TRAILERS", "MUSIC VISUALS", "PROMOS", "EVENTS"] as const;
 
 const FILMS: Film[] = [
-  { id: "unbliss", title: "UNBLISS", subtitle: "SOME LOVE STORIES HAVE WITNESSES", category: "TRAILERS", image: unbliss },
+  { id: "unbliss", title: "UNBLISS", subtitle: "SOME LOVE STORIES HAVE WITNESSES", category: "TRAILERS", image: unbliss, youtube: "https://youtu.be/aoc6ZZt9DN0" },
   { id: "1", title: "BEYOND HORIZON", subtitle: "AI TRAILER", category: "TRAILERS", image: film1 },
   { id: "2", title: "UNBREAKABLE", subtitle: "MUSIC VISUAL", category: "MUSIC VISUALS", image: film2 },
   { id: "3", title: "THE LAST SIGNAL", subtitle: "SHORT FILM", category: "AI FILMS", image: film3 },
@@ -148,20 +150,32 @@ function PortfolioPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative aspect-video bg-deep">
-              <img src={open.image} alt={open.title} className="h-full w-full object-cover" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/40 backdrop-blur-sm">
-                <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">CINEMA MODE</div>
-                <div className="mt-2 font-display text-3xl font-black tracking-widest text-foreground md:text-5xl">{open.title}</div>
-                <p className="mt-2 text-sm tracking-widest text-muted-foreground">{open.subtitle}</p>
-                <a
-                  href="https://www.youtube.com/@DFRENZYVISUALS"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 flex items-center gap-2 rounded-full border border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright hover:neon-glow"
-                >
-                  <Play className="h-4 w-4 fill-current" /> WATCH ON YOUTUBE
-                </a>
-              </div>
+              {open.youtube ? (
+                <iframe
+                  className="h-full w-full"
+                  src={`https://www.youtube.com/embed/${ytId(open.youtube)}?autoplay=1`}
+                  title={open.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  <img src={open.image} alt={open.title} className="h-full w-full object-cover" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/40 backdrop-blur-sm">
+                    <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">CINEMA MODE</div>
+                    <div className="mt-2 font-display text-3xl font-black tracking-widest text-foreground md:text-5xl">{open.title}</div>
+                    <p className="mt-2 text-sm tracking-widest text-muted-foreground">{open.subtitle}</p>
+                    <a
+                      href="https://www.youtube.com/@DFRENZYVISUALS"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-6 flex items-center gap-2 rounded-full border border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright hover:neon-glow"
+                    >
+                      <Play className="h-4 w-4 fill-current" /> WATCH ON YOUTUBE
+                    </a>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
