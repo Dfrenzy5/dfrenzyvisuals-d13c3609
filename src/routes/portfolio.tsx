@@ -34,6 +34,13 @@ type Film = {
 
 const FILTERS = ["ALL", "AI FILMS", "TRAILERS", "MUSIC VISUALS", "PROMOS", "EVENTS"] as const;
 
+function ytId(url: string): string {
+  const m = url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{6,})/);
+  return m ? m[1] : url;
+}
+
+const LEGACY_VIDEO = "https://youtu.be/pdDdO2WOlR4";
+
 const FILMS: Film[] = [
   { id: "unbliss", title: "UNBLISS", subtitle: "SOME LOVE STORIES HAVE WITNESSES", category: "TRAILERS", image: unbliss, youtube: "https://youtu.be/aoc6ZZt9DN0" },
   { id: "1", title: "BEYOND HORIZON", subtitle: "AI TRAILER", category: "TRAILERS", image: film1 },
@@ -61,6 +68,71 @@ function PortfolioPage() {
           AI · CINEMATIC · WORKS
         </p>
       </div>
+
+      {/* Legacy Business Summit 2026 Event Section */}
+      <section id="event" className="mt-20">
+        <div className="text-center">
+          <div className="font-display text-[11px] tracking-[0.5em] text-neon-bright">FEATURED EVENT</div>
+          <h2 className="mt-2 font-display text-3xl font-black tracking-[0.2em] text-foreground sm:text-5xl">
+            LEGACY BUSINESS SUMMIT 2026
+          </h2>
+          <p className="mt-3 text-sm tracking-[0.25em] text-muted-foreground">
+            AFRICA'S BIGGEST BUSINESS SUMMIT · LAGOS · JUNE 28, 2026
+          </p>
+        </div>
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-2xl border border-neon/30 glass-panel">
+            <img
+              src={legacyAsset.url}
+              alt="Legacy Business Summit 2026 — Africa's Biggest Business Summit featuring Joshua Eze"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-neon/30 neon-glow">
+            <div className="relative aspect-video w-full bg-deep">
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube.com/embed/${ytId(LEGACY_VIDEO)}`}
+                title="Legacy Business Summit 2026"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 flex justify-center">
+          <a
+            href="#register"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
+          >
+            REGISTER FOR LEGACY BUSINESS SUMMIT 2026
+          </a>
+        </div>
+      </section>
+
+      {/* Registration Section */}
+      <section id="register" className="mt-20 rounded-2xl border border-neon/30 glass-panel p-8 md:p-12">
+        <div className="text-center">
+          <div className="font-display text-[11px] tracking-[0.5em] text-neon-bright">REGISTRATION</div>
+          <h3 className="mt-2 font-display text-2xl font-black tracking-[0.2em] text-foreground sm:text-4xl">
+            SECURE YOUR SEAT
+          </h3>
+          <p className="mt-3 text-sm tracking-[0.2em] text-muted-foreground">
+            5,000+ ENTREPRENEURS · EKO CONVENTION CENTRE, LAGOS · SEATS ARE LIMITED
+          </p>
+          <a
+            href="mailto:dfrenzyvisuals@gmail.com?subject=Legacy%20Business%20Summit%202026%20Registration"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
+          >
+            REGISTER NOW
+          </a>
+        </div>
+      </section>
 
       {/* Featured */}
       <div className="relative mt-10 overflow-hidden rounded-2xl border border-neon/30 glass-panel">
