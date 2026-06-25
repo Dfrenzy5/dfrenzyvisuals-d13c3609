@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogoAsset from "@/assets/df-logo.png.asset.json";
+import { WelcomeMessage } from "@/components/WelcomeMessage";
 const dfLogo = dfLogoAsset.url;
 
 export const Route = createFileRoute("/")({
@@ -240,6 +241,7 @@ function Index() {
   ];
 
   return (
+    <>
     <div
       id="hero"
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
@@ -544,5 +546,7 @@ function Index() {
         </div>
       )}
     </div>
+    <WelcomeMessage />
+    </>
   );
 }
