@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, X, Filter } from "lucide-react";
-import film1 from "@/assets/film-1.jpg";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
-import film4 from "@/assets/film-4.jpg";
 import film5 from "@/assets/film-5.jpg";
 import unbliss from "@/assets/unbliss.jpg";
 
@@ -39,10 +37,10 @@ function ytId(url: string): string {
 
 const FILMS: Film[] = [
   { id: "unbliss", title: "UNBLISS", subtitle: "SOME LOVE STORIES HAVE WITNESSES", category: "TRAILERS", image: unbliss, youtube: "https://youtu.be/aoc6ZZt9DN0" },
-  { id: "1", title: "BEYOND HORIZON", subtitle: "AI TRAILER", category: "TRAILERS", image: film1 },
+  { id: "1", title: "BEYOND HORIZON", subtitle: "AI TRAILER", category: "TRAILERS", image: "https://img.youtube.com/vi/79u3BUYXS9E/maxresdefault.jpg", youtube: "https://youtu.be/79u3BUYXS9E" },
   { id: "2", title: "UNBREAKABLE", subtitle: "MUSIC VISUAL", category: "MUSIC VISUALS", image: film2 },
   { id: "3", title: "THE LAST SIGNAL", subtitle: "SHORT FILM", category: "AI FILMS", image: film3 },
-  { id: "4", title: "FUTURE UNLEASHED", subtitle: "BRAND PROMO", category: "PROMOS", image: film4 },
+  { id: "4", title: "FUTURE UNLEASHED", subtitle: "BRAND PROMO", category: "PROMOS", image: "https://img.youtube.com/vi/woZwTipsk9o/maxresdefault.jpg", youtube: "https://youtu.be/woZwTipsk9o" },
   { id: "5", title: "ECHOES OF TOMORROW", subtitle: "AI FILM", category: "AI FILMS", image: film5 },
   {
     id: "6",
