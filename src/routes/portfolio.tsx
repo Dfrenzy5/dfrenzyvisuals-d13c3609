@@ -6,7 +6,6 @@ import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film4 from "@/assets/film-4.jpg";
 import film5 from "@/assets/film-5.jpg";
-import film6 from "@/assets/film-6.jpg";
 import unbliss from "@/assets/unbliss.jpg";
 
 export const Route = createFileRoute("/portfolio")({
@@ -28,6 +27,7 @@ type Film = {
   category: string;
   image: string;
   youtube?: string;
+  description?: string;
 };
 
 const FILTERS = ["ALL", "AI FILMS", "TRAILERS", "MUSIC VISUALS", "PROMOS", "EVENTS"] as const;
@@ -44,7 +44,16 @@ const FILMS: Film[] = [
   { id: "3", title: "THE LAST SIGNAL", subtitle: "SHORT FILM", category: "AI FILMS", image: film3 },
   { id: "4", title: "FUTURE UNLEASHED", subtitle: "BRAND PROMO", category: "PROMOS", image: film4 },
   { id: "5", title: "ECHOES OF TOMORROW", subtitle: "AI FILM", category: "AI FILMS", image: film5 },
-  { id: "6", title: "GALACTIC SUMMIT", subtitle: "EVENT VISUAL", category: "EVENTS", image: film6, youtube: "https://youtu.be/pdDdO2WOlR4" },
+  {
+    id: "6",
+    title: "LEGACY BUSINESS SUMMIT 2026",
+    subtitle: "EVENT HIGHLIGHT",
+    category: "EVENTS",
+    image: "https://img.youtube.com/vi/pdDdO2WOlR4/maxresdefault.jpg",
+    youtube: "https://youtu.be/pdDdO2WOlR4",
+    description:
+      "A cinematic highlight showcasing the energy, excellence, and world-class production of Legacy Business Summit 2026. Capturing keynote moments, audience engagement, networking, and the premium atmosphere of one of Africa's leading business events.",
+  },
 ];
 
 function PortfolioPage() {
