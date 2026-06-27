@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Film, DollarSign, Send, Youtube, Instagram, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
 import dfLogoAsset from "@/assets/df-logo.png.asset.json";
 const dfLogo = dfLogoAsset.url;
 
@@ -11,12 +12,36 @@ const nav = [
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto flex items-center justify-between px-6 py-4 md:px-10">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-neon/15 bg-background/70 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.25)]"
+          : "bg-transparent"
+      }`}
+    >
+      <div
+        className={`mx-auto flex items-center justify-between px-6 transition-all duration-300 md:px-10 ${
+          scrolled ? "py-2.5" : "py-4"
+        }`}
+      >
         <Link to="/" className="group flex items-center gap-3">
-          <div className="relative h-10 w-10 overflow-hidden rounded-lg ring-1 ring-neon/40 transition-all group-hover:ring-neon group-hover:neon-glow">
-            <img src={dfLogo} alt="DFRENZY VISUALS" className="h-full w-full object-cover" />
+          <div className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-neon/40 transition-all group-hover:ring-neon group-hover:neon-glow">
+            <img
+              src={dfLogo}
+              alt="DFRENZY VISUALS logo"
+              width={36}
+              height={36}
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
           </div>
           <span className="hidden font-display text-sm font-bold tracking-[0.3em] text-foreground sm:inline">
             DFRENZY <span className="text-neon-bright">VISUALS</span>
