@@ -2,11 +2,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogoAsset from "@/assets/df-logo.png.asset.json";
-import dfHologramAsset from "@/assets/df-hologram.png.asset.json";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
-import { HomeSections } from "@/components/HomeSections";
 const dfLogo = dfLogoAsset.url;
-const dfHologram = dfHologramAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -321,33 +318,6 @@ function Index() {
         ))}
       </div>
 
-      {/* DF HOLOGRAM — floating cinematic centerpiece behind the hero text */}
-      <div
-        aria-hidden
-        className="hero-hologram pointer-events-none absolute left-1/2 top-1/2 z-[1]"
-        style={{
-          ["--holo-opacity" as never]: "0.16",
-          opacity: 0,
-          animation:
-            "hologram-fade-in 1.5s ease-out 0.4s forwards, hologram-float 7s ease-in-out 1.9s infinite",
-          willChange: "transform, opacity",
-          transform: "translate(-50%, -50%)",
-          mixBlendMode: "screen",
-        }}
-      >
-        <img
-          src={dfHologram}
-          alt=""
-          decoding="async"
-          className="block w-[260px] sm:w-[380px] md:w-[460px] lg:w-[500px]"
-          style={{
-            animation: "hologram-breathe 6.5s ease-in-out infinite",
-            filter:
-              "drop-shadow(0 0 30px rgba(0,213,255,0.35)) drop-shadow(0 0 80px rgba(58,168,255,0.25))",
-          }}
-        />
-      </div>
-
       {/* Center stack */}
       <div
         className="relative z-10 flex flex-col items-center"
@@ -577,7 +547,6 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
-    <HomeSections />
     </>
   );
 }
