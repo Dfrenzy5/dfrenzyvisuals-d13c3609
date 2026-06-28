@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Film, DollarSign, Send, Youtube, Instagram, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
-import dfLogoAsset from "@/assets/df-nav-logo.png.asset.json";
+import dfLogoAsset from "@/assets/df-logo.png.asset.json";
 const dfLogo = dfLogoAsset.url;
 
 const nav = [
@@ -32,14 +32,20 @@ export function SiteHeader() {
           scrolled ? "py-2.5" : "py-4"
         }`}
       >
-        <Link to="/" aria-label="DFRENZY VISUALS home" className="group flex items-center">
-          <img
-            src={dfLogo}
-            alt="DFRENZY VISUALS"
-            decoding="async"
-            className="h-11 w-auto object-contain transition-all duration-300 sm:h-12 group-hover:drop-shadow-[0_0_14px_rgba(0,213,255,0.7)]"
-            style={{ maxHeight: 48 }}
-          />
+        <Link to="/" className="group flex items-center gap-3">
+          <div className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-neon/40 transition-all group-hover:ring-neon group-hover:neon-glow">
+            <img
+              src={dfLogo}
+              alt="DFRENZY VISUALS logo"
+              width={36}
+              height={36}
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <span className="hidden font-display text-sm font-bold tracking-[0.3em] text-foreground sm:inline">
+            DFRENZY <span className="text-neon-bright">VISUALS</span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
