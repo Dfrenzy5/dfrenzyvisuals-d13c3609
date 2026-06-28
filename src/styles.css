@@ -256,3 +256,16 @@
   animation: sweep 3s ease-in-out infinite;
   pointer-events: none;
 }
+
+@keyframes hologram-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-14px); }
+}
+@keyframes hologram-breathe {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px rgba(0,213,255,0.35)) drop-shadow(0 0 80px rgba(58,168,255,0.25)); }
+  50% { transform: scale(1.03); filter: drop-shadow(0 0 50px rgba(0,213,255,0.55)) drop-shadow(0 0 120px rgba(58,168,255,0.4)); }
+}
+@keyframes hologram-fade-in {
+  from { opacity: 0; }
+  to { opacity: var(--holo-opacity, 0.15); }
+}
