@@ -2,9 +2,11 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogoAsset from "@/assets/df-logo.png.asset.json";
+import dfHologramAsset from "@/assets/df-hologram.png.asset.json";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { HomeSections } from "@/components/HomeSections";
 const dfLogo = dfLogoAsset.url;
+const dfHologram = dfHologramAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
