@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogoAsset from "@/assets/df-logo.png.asset.json";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
+import { HomeSections } from "@/components/HomeSections";
 const dfLogo = dfLogoAsset.url;
 
 export const Route = createFileRoute("/")({
@@ -547,6 +548,7 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
+    <HomeSections />
     </>
   );
 }

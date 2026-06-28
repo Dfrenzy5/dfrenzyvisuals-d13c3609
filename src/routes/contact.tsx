@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, MessageCircle, Mail, MapPin, Youtube, Instagram } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -28,8 +28,70 @@ function ContactPage() {
         </p>
       </div>
 
+      {/* Direct channels */}
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <a
+          href="https://wa.me/2347044775158"
+          target="_blank"
+          rel="noreferrer"
+          className="group flex items-center gap-4 rounded-2xl border border-neon/20 glass-panel p-5 transition-all hover:-translate-y-0.5 hover:border-neon hover:neon-glow"
+        >
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-neon/40 bg-neon/5">
+            <MessageCircle className="h-5 w-5 text-neon-bright" />
+          </div>
+          <div className="min-w-0">
+            <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">WHATSAPP</div>
+            <div className="truncate text-sm text-foreground">+234 704 477 5158</div>
+          </div>
+        </a>
+        <a
+          href="mailto:dfrenzyvisuals@gmail.com"
+          className="group flex items-center gap-4 rounded-2xl border border-neon/20 glass-panel p-5 transition-all hover:-translate-y-0.5 hover:border-neon hover:neon-glow"
+        >
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-neon/40 bg-neon/5">
+            <Mail className="h-5 w-5 text-neon-bright" />
+          </div>
+          <div className="min-w-0">
+            <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">EMAIL</div>
+            <div className="truncate text-sm text-foreground">dfrenzyvisuals@gmail.com</div>
+          </div>
+        </a>
+        <div className="flex items-center gap-4 rounded-2xl border border-neon/20 glass-panel p-5">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-neon/40 bg-neon/5">
+            <MapPin className="h-5 w-5 text-neon-bright" />
+          </div>
+          <div className="min-w-0">
+            <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">STUDIO</div>
+            <div className="text-sm text-foreground">Remote · Worldwide Production</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 rounded-2xl border border-neon/20 glass-panel p-5">
+          <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">SOCIAL</div>
+          <div className="ml-auto flex items-center gap-2">
+            <a
+              href="https://www.youtube.com/@DFRENZYVISUALS"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-neon/30 text-muted-foreground transition-all hover:border-neon hover:text-neon-bright"
+            >
+              <Youtube className="h-4 w-4" />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-neon/30 text-muted-foreground transition-all hover:border-neon hover:text-neon-bright"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Terminal frame */}
-      <div className="relative mt-10 overflow-hidden rounded-2xl border border-neon/40 glass-panel neon-glow">
+      <div className="relative mt-8 overflow-hidden rounded-2xl border border-neon/40 glass-panel neon-glow">
         {/* Corner brackets */}
         {[
           "left-3 top-3 border-l-2 border-t-2",
