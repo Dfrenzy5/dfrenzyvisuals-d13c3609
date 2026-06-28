@@ -150,9 +150,9 @@ export function WelcomeMessage() {
           experiences.
         </p>
 
-        {/* Video frame — 16:9 cinematic embed */}
+        {/* Video frame */}
         <div
-          className="group relative mt-14 w-full max-w-5xl"
+          className="relative mt-14 w-full max-w-[380px]"
           style={{
             transform: visible
               ? `translate3d(${parallax.x * 6}px, ${parallax.y * 6}px, 0) scale(1)`
@@ -171,7 +171,7 @@ export function WelcomeMessage() {
 
           {/* Gradient gold border */}
           <div
-            className="relative rounded-[24px] p-[1.5px] transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+            className="relative rounded-[24px] p-[1.5px]"
             style={{
               background: `linear-gradient(140deg, ${GOLD_BRIGHT} 0%, ${GOLD} 30%, rgba(212,175,55,0.15) 55%, ${GOLD} 80%, ${GOLD_BRIGHT} 100%)`,
               boxShadow:
@@ -181,7 +181,7 @@ export function WelcomeMessage() {
             <div
               className="relative overflow-hidden rounded-[22px]"
               style={{
-                aspectRatio: "16 / 9",
+                aspectRatio: "9 / 16",
                 background:
                   "linear-gradient(160deg, rgba(20,16,8,0.85), rgba(0,0,0,0.9))",
                 backdropFilter: "blur(20px)",
@@ -190,30 +190,80 @@ export function WelcomeMessage() {
               {/* Inner glass sheen */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 z-10"
+                className="pointer-events-none absolute inset-0"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 30%, transparent 70%, rgba(212,175,55,0.12) 100%)",
                 }}
               />
 
-              {/* YouTube embed */}
-              <iframe
-                src="https://www.youtube.com/embed/MfaQvFxn6pg?rel=0&modestbranding=1&playsinline=1"
-                title="DFrenzy Visuals — Welcome Message"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="absolute inset-0 h-full w-full"
-                style={{ border: 0 }}
-              />
+              {/* === VIDEO PLACEHOLDER ===
+                 Replace this block with one of the following later:
+                 1) <iframe src="https://www.youtube.com/embed/VIDEO_ID" className="absolute inset-0 h-full w-full" allowFullScreen />
+                 2) <iframe src="https://player.vimeo.com/video/VIDEO_ID"  className="absolute inset-0 h-full w-full" allowFullScreen />
+                 3) <video src="/welcome.mp4" className="absolute inset-0 h-full w-full object-cover" controls playsInline />
+              */}
+              <button
+                type="button"
+                className="group absolute inset-0 flex flex-col items-center justify-center gap-5 text-center"
+                aria-label="Watch welcome message"
+              >
+                {/* Pulsing rings */}
+                <span className="relative flex h-20 w-20 items-center justify-center">
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      border: `1px solid ${GOLD}66`,
+                      animation: "ring-pulse 2.4s ease-out infinite",
+                    }}
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      border: `1px solid ${GOLD}66`,
+                      animation: "ring-pulse 2.4s 0.8s ease-out infinite",
+                    }}
+                  />
+                  <span
+                    className="relative flex h-20 w-20 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      background: `radial-gradient(circle at 30% 30%, ${GOLD_BRIGHT}, ${GOLD} 60%, #6b4f12 100%)`,
+                      boxShadow:
+                        "0 10px 30px rgba(212,175,55,0.45), inset 0 0 16px rgba(255,255,255,0.25)",
+                    }}
+                  >
+                    <svg
+                      width="22"
+                      height="24"
+                      viewBox="0 0 22 24"
+                      fill="#0a0805"
+                      className="ml-1"
+                      aria-hidden
+                    >
+                      <path d="M2 1.5v21l18-10.5z" />
+                    </svg>
+                  </span>
+                </span>
+
+                <span
+                  className="font-display text-[0.7rem] tracking-[0.45em] sm:text-xs"
+                  style={{ color: GOLD_BRIGHT }}
+                >
+                  WATCH WELCOME MESSAGE
+                </span>
+                <span className="text-[0.6rem] uppercase tracking-[0.35em] text-white/40">
+                  Coming soon
+                </span>
+              </button>
 
               {/* Corner accents */}
               {(["tl", "tr", "bl", "br"] as const).map((c) => (
                 <span
                   key={c}
                   aria-hidden
-                  className="pointer-events-none absolute z-20 h-5 w-5"
+                  className="pointer-events-none absolute h-5 w-5"
                   style={{
                     top: c.startsWith("t") ? 10 : "auto",
                     bottom: c.startsWith("b") ? 10 : "auto",
