@@ -4,6 +4,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { HomeSections } from "@/components/HomeSections";
+import {
+  FeaturedShowreel,
+  TrustedBy,
+  FeaturedProjects,
+  CreativeProcess,
+  Awards,
+  FAQ,
+  ContactCTA,
+} from "@/components/HomeExtras";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -441,22 +450,40 @@ function Index() {
           )}
         </div>
 
-        {/* CTA */}
-        <button
-          onClick={handleEnter}
-          className="group relative mt-10 cursor-pointer px-10 py-4 font-display text-sm tracking-[0.4em] transition-all"
+        {/* Dual CTA */}
+        <div
+          className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
           style={{
             opacity: show.cta ? 1 : 0,
             transform: show.cta ? "translateY(0)" : "translateY(12px)",
             transition: "opacity 700ms ease-out, transform 700ms ease-out",
-            color: "#E6FBFF",
-            background: "transparent",
-            border: "1px solid rgba(0,229,255,0.6)",
-            boxShadow:
-              "0 0 24px rgba(0,229,255,0.35), inset 0 0 24px rgba(0,229,255,0.08)",
           }}
         >
-          <span className="relative z-10">ENTER EXPERIENCE</span>
+        <Link
+          to="/contact"
+          className="group relative cursor-pointer px-9 py-4 font-display text-sm font-bold tracking-[0.35em] transition-all"
+          style={{
+            color: "#02121a",
+            background: "linear-gradient(135deg,#3ABDFF 0%,#00E5FF 55%,#3ABDFF 100%)",
+            border: "1px solid rgba(0,229,255,0.9)",
+            boxShadow:
+              "0 8px 24px rgba(0,229,255,0.35), inset 0 1px 0 rgba(255,255,255,0.5)",
+          }}
+        >
+          <span className="relative z-10">BOOK A DISCOVERY CALL</span>
+        </Link>
+        <button
+          onClick={handleEnter}
+          className="group relative cursor-pointer px-9 py-4 font-display text-sm tracking-[0.35em] transition-all"
+          style={{
+            color: "#E6FBFF",
+            background: "transparent",
+            border: "1px solid rgba(0,229,255,0.5)",
+            boxShadow:
+              "0 0 24px rgba(0,229,255,0.2), inset 0 0 24px rgba(0,229,255,0.06)",
+          }}
+        >
+          <span className="relative z-10">WATCH SHOWREEL</span>
           {/* idle pulse rings around button */}
           {show.idleNav &&
             [0, 0.6, 1.2].map((d, i) => (
@@ -480,6 +507,7 @@ function Index() {
             />
           </span>
         </button>
+        </div>
       </div>
 
       {/* Icon nav — appears with cta */}
@@ -547,7 +575,14 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
+    <FeaturedShowreel />
+    <TrustedBy />
+    <FeaturedProjects />
     <HomeSections />
+    <CreativeProcess />
+    <Awards />
+    <FAQ />
+    <ContactCTA />
     </>
   );
 }

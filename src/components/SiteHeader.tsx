@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Film, DollarSign, Send, Youtube, Instagram, Mail } from "lucide-react";
+import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 
@@ -71,6 +71,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            to="/contact"
+            className="hidden items-center gap-2 rounded-full border border-neon bg-neon/10 px-4 py-2 font-display text-[10px] font-semibold tracking-[0.3em] text-neon-bright transition-all hover:neon-glow lg:inline-flex"
+          >
+            <Sparkles className="h-3 w-3" />
+            BOOK A DISCOVERY CALL
+          </Link>
           {[
             { Icon: Youtube, href: "https://www.youtube.com/@DFRENZYVISUALS", label: "YouTube" },
             { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
