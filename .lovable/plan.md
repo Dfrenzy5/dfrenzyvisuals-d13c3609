@@ -1,45 +1,67 @@
-## DFrenzy Visuals — Premium UX & Performance Overhaul
+# DFRENZY VISUALS V2.0 — Upgrade Plan
 
-This is a large, multi-area overhaul. I'll execute it in focused phases so each ships as a coherent improvement rather than a sprawling rewrite. Confirm the scope below (or trim it) and I'll start with Phase 1.
+This is a large scope. I'll ship it in **4 focused phases** so you can review after each and redirect if anything drifts. Each phase is a shippable milestone, not a half-built prototype.
 
-### Phase 1 — Foundations (performance + global polish)
-- Lazy-load heavy media: convert hero particle canvas, welcome video poster, and portfolio thumbnails to IntersectionObserver-gated mounts; add `loading="lazy"` + `decoding="async"` everywhere; add explicit `width/height` (or `aspect-*`) to kill CLS.
-- Memoize hot components (`SiteHeader`, `WhatsAppButton`, portfolio cards) and split the index route's intro state machine out of the render path with `useReducer` + refs to stop per-frame re-renders.
-- Header: shrink to ~64px, add `backdrop-blur-xl` + translucent bg only when `scrollY > 8`, active nav underline via `useRouterState`, animated mobile drawer (Sheet).
-- Global motion tokens (fade / scale / slide / blur) wired through Tailwind v4 `@theme` + `@utility`; remove ad-hoc keyframes that aren't reused.
-- Smooth scroll + `prefers-reduced-motion` guard.
+Before I start, three quick decisions I need from you (below the plan).
 
-### Phase 2 — Hero + Welcome refinement
-- Hero: tighten type scale (display 5xl→8xl fluid), add a clear sub-tagline naming the 5 pillars (AI Films, Commercials, Corporate, Events, Creative), increase CTA breathing room, add a soft gold light-sweep behind the logo, reduce particle count on mobile.
-- Welcome: large cinematic play button opens a fullscreen YouTube modal with dark overlay + elegant scale-in. Poster stays as 9:16 placeholder until a video URL is provided — I'll add a `WELCOME_VIDEO_ID` const at the top of the component so you can drop in the YouTube ID later.
+---
 
-### Phase 3 — Portfolio as case studies
-- New `Documentaries` + `Commercials` categories added to filters.
-- Card redesign: large thumbnail, gold category badge, title, 1-line pro description, hover zoom + gold ring + glass overlay, play glyph.
-- Modal upgrade: embedded player + structured meta panel (Overview, Production Type, Creative Direction, Client, Tools) + "Start Your Project" CTA → `/contact`.
-- Grid uses `auto-fill` with min track so filtered views stay aligned without gaps.
+## Phase 1 — Foundation & Brand Positioning
+Sets the tone everything else builds on.
 
-### Phase 4 — New sections (Services, About, Testimonials)
-- Add `ServicesGrid` section to home: 6 cards (AI Film Production, Commercials, Corporate Storytelling, Event Coverage, Music Visuals, Brand Promos) — icon, title, value line, hover elevation.
-- Add `AboutStudio` section: Mission / Vision / Creative Philosophy / AI-Powered Filmmaking — 2x2 luxury glass grid.
-- Add `Testimonials` carousel (embla) with large gold quote marks + optional avatar slot.
-- **Stats counter rewrite**: `requestAnimationFrame` with `easeOutCubic`, runs once via IntersectionObserver, ~1500ms, snapshot the start timestamp so no skipped frames or stutter.
+- **Design tokens**: extend `src/styles.css` with premium blacks, soft silver, gold accents, layered gradients, film-grain utility, lens-bloom glow, cinematic easing.
+- **Typography**: larger hero scale, tighter letter-spacing on display, refined body rhythm, clearer H1→H6 hierarchy.
+- **Navigation upgrade**: glassmorphism + scroll-aware shrink, animated underline links, persistent "Book a Discovery Call" CTA, improved mobile drawer.
+- **Hero rebuild**: new headline "Where AI Meets Cinematic Storytelling", outcome-focused subcopy, volumetric light + film grain + lens bloom over existing particle canvas, dual CTAs (Book a Discovery Call / Watch Showreel), showreel modal.
+- **Floating "Start Your Project"** button (keeps WhatsApp button).
 
-### Phase 5 — Pricing, Contact, Footer, SEO/a11y
-- Pricing: elevate the PRO card (scale 1.05, gold ring, "RECOMMENDED" ribbon), comparison-style feature rows, clearer CTA.
-- Contact: prominent WhatsApp / Email / Location / Socials block above the form; better field spacing; success state with checkmark scale-in.
-- Footer: 4-column (Quick Links, Services, Connect, Brand) + back-to-top FAB.
-- Per-route `head()` polish: unique titles/descriptions, og:image per leaf, Organization + WebSite JSON-LD on root, BreadcrumbList on portfolio.
-- Accessibility pass: aria-labels on every icon button, visible focus rings, contrast audit on muted text over glass, keyboard-trap check on modals.
+## Phase 2 — Homepage Storytelling
+Reorders home into the narrative you specified.
 
-### Out of scope (ask if you want these)
-- Real CMS/database for case studies (I'll keep them in a typed `FILMS` array).
-- Multi-language / i18n.
-- Replacing the existing cosmic/neon visual identity with a different palette — I'll keep neon-cyan-on-black-with-gold-accents (current direction), not pivot to pure black/gold.
+Order: Hero → Featured Showreel → Trusted By → Featured Projects → Services → Creative Process → Testimonials → Awards → FAQ → Contact CTA → Footer.
 
-### Notes
-- I won't add fake testimonials or invented client names — placeholders will be clearly marked so you can swap in real ones.
-- Welcome video URL: please send the YouTube link when ready; I'll wire the ID into the constant.
-- This will touch most files under `src/`; expect ~15-20 edits per phase.
+- New sections: **Featured Showreel** (large cinematic player), **Trusted By** (client logo strip), **Creative Process** (5-step visual timeline), **Awards/Recognition**, **FAQ** (accordion), **Contact CTA** band.
+- Reuse/upgrade existing Services, Stats, Testimonials from `HomeSections.tsx`.
+- Expanded 4-column **Footer** with Quick links / Services / Resources / Newsletter + legal row.
 
-Reply with **go** to start Phase 1, or tell me which phases to skip / reorder.
+## Phase 3 — Portfolio & Case Studies
+Turns the portfolio into the strongest section.
+
+- Richer project schema: challenge, solution, tools, AI workflow, software, duration, deliverables, results, gallery, BTS.
+- **Dedicated case-study route** `/portfolio/$slug` for flagship projects (UNBLISS, Legacy Summit, Beyond Horizon) with problem → concept → production → AI pipeline → outcome → credits.
+- Dynamic filtering + hover-lift cards, per-project OG metadata + VideoObject/CreativeWork JSON-LD.
+
+## Phase 4 — Services, Contact, SEO, Perf, A11y
+Polish and credibility.
+
+- **Services page**: 8 premium panels (AI Commercial, Product Viz, Corporate Films, Music Videos, AI Series, ArchViz, Luxury Brand Content, Creative Direction), each with description / deliverables / timeline / ideal clients / CTA.
+- **About page**: vision, mission, philosophy, why AI, how we work.
+- **Contact upgrade**: discovery form with project type, budget, timeline, brief upload field, WhatsApp + email + calendar link.
+- **SEO**: per-route titles/descriptions/OG/Twitter, Organization + WebSite + VideoObject + FAQPage JSON-LD, sitemap route, robots.txt, canonical tags.
+- **Performance**: lazy-load all media, `decoding="async"`, code-split routes, font-display swap.
+- **A11y**: focus rings, aria-labels on icon buttons, semantic landmarks, `prefers-reduced-motion` guards on heavy animations.
+- **Custom 404** page.
+
+## Out of scope (flagging explicitly)
+These are in your list but need product decisions or 3rd-party accounts — I'll stub UI where relevant and note what's needed:
+
+- **Cinematic showreel video loop** in hero background — needs a video file/URL from you. I'll use a high-quality poster + subtle motion until provided.
+- **Calendar integration** (Calendly/Cal.com) — needs your booking link.
+- **Newsletter** — needs Cloud enabled + provider (Resend/Mailchimp). I'll ship as UI only unless you say otherwise.
+- **Insights/blog articles** — I'll scaffold the route + one placeholder post; real content comes from you.
+- **Background ambient audio** — I'll skip unless you explicitly want it; it hurts perceived quality on most visits.
+- **Awards/press mentions/client logos** — I'll use tasteful placeholders you can swap.
+
+## Technical notes
+- All new sections in `src/components/home/*` for clarity.
+- Case-study route uses TanStack file-based routing (`portfolio.$slug.tsx`) with per-route `head()`.
+- JSON-LD added via route `head().scripts`.
+- No backend added; forms remain client-side unless you enable Cloud.
+
+---
+
+## Questions before I start
+
+1. **Showreel video**: do you have a YouTube/Vimeo/MP4 URL for the hero background loop and the Featured Showreel section? (If no, I'll use a poster image + motion for now.)
+2. **Booking link**: Calendly/Cal.com URL for "Book a Discovery Call"? (If no, it opens the contact form.)
+3. **Scope confirmation**: green-light **all 4 phases**, or start with Phase 1 + 2 and review before Phase 3?
