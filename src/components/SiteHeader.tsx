@@ -1,8 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Film, DollarSign, Send, Youtube, Instagram, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
-import dfLogoAsset from "@/assets/df-logo.png.asset.json";
-const dfLogo = dfLogoAsset.url;
+import dfLogo from "@/assets/df-logo.png";
 
 const nav = [
   { to: "/portfolio", label: "PORTFOLIO", Icon: Film },
