@@ -4,6 +4,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { HomeSections } from "@/components/HomeSections";
+import {
+  FeaturedShowreel,
+  TrustedBy,
+  FeaturedProjects,
+  CreativeProcess,
+  Awards,
+  FAQ,
+  ContactCTA,
+} from "@/components/HomeExtras";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -547,7 +556,14 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
+    <FeaturedShowreel />
+    <TrustedBy />
+    <FeaturedProjects />
     <HomeSections />
+    <CreativeProcess />
+    <Awards />
+    <FAQ />
+    <ContactCTA />
     </>
   );
 }
