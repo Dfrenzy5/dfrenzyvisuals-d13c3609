@@ -309,13 +309,25 @@ function PortfolioPage() {
                     {open.description}
                   </p>
                 )}
-                <Link
-                  to="/contact"
-                  onClick={() => setOpen(null)}
-                  className="mt-7 inline-flex items-center gap-2 rounded-full border border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
-                >
-                  START YOUR PROJECT <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {open.slug && (
+                    <Link
+                      to="/portfolio/$slug"
+                      params={{ slug: open.slug }}
+                      onClick={() => setOpen(null)}
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
+                    >
+                      VIEW FULL CASE STUDY <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
+                  <Link
+                    to="/contact"
+                    onClick={() => setOpen(null)}
+                    className="inline-flex items-center gap-2 rounded-full border border-neon/40 px-6 py-3 font-display text-xs tracking-[0.3em] text-foreground transition-all hover:border-neon hover:text-neon-bright"
+                  >
+                    START YOUR PROJECT
+                  </Link>
+                </div>
               </div>
               <dl className="space-y-4 rounded-xl border border-neon/15 bg-deep/40 p-5">
                 {[
