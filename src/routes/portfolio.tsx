@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Play, X, Filter, ArrowRight } from "lucide-react";
+import { Play, Filter, ArrowRight } from "lucide-react";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
@@ -20,6 +20,7 @@ export const Route = createFileRoute("/portfolio")({
 
 type Film = {
   id: string;
+  slug?: string;
   title: string;
   subtitle: string;
   category: string;
@@ -51,6 +52,7 @@ function ytId(url: string): string {
 const FILMS: Film[] = [
   {
     id: "unbliss",
+    slug: "unbliss",
     title: "UNBLISS",
     subtitle: "SOME LOVE STORIES HAVE WITNESSES",
     category: "TRAILERS",
@@ -64,6 +66,7 @@ const FILMS: Film[] = [
   },
   {
     id: "1",
+    slug: "beyond-horizon",
     title: "BEYOND HORIZON",
     subtitle: "AI TRAILER",
     category: "TRAILERS",
@@ -77,6 +80,7 @@ const FILMS: Film[] = [
   },
   {
     id: "2",
+    slug: "unbreakable",
     title: "UNBREAKABLE",
     subtitle: "MUSIC VISUAL",
     category: "MUSIC VISUALS",
@@ -87,6 +91,7 @@ const FILMS: Film[] = [
   },
   {
     id: "3",
+    slug: "the-last-signal",
     title: "THE LAST SIGNAL",
     subtitle: "SHORT FILM",
     category: "AI FILMS",
@@ -97,6 +102,7 @@ const FILMS: Film[] = [
   },
   {
     id: "4",
+    slug: "future-unleashed",
     title: "FUTURE UNLEASHED",
     subtitle: "BRAND PROMO",
     category: "PROMOS",
@@ -108,6 +114,7 @@ const FILMS: Film[] = [
   },
   {
     id: "5",
+    slug: "echoes-of-tomorrow",
     title: "ECHOES OF TOMORROW",
     subtitle: "AI FILM",
     category: "AI FILMS",
@@ -118,6 +125,7 @@ const FILMS: Film[] = [
   },
   {
     id: "6",
+    slug: "legacy-business-summit-2026",
     title: "LEGACY BUSINESS SUMMIT 2026",
     subtitle: "EVENT HIGHLIGHT",
     category: "EVENTS",
