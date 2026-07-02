@@ -20,6 +20,7 @@ export const Route = createFileRoute("/portfolio")({
 
 type Film = {
   id: string;
+  slug?: string;
   title: string;
   subtitle: string;
   category: string;
@@ -51,6 +52,7 @@ function ytId(url: string): string {
 const FILMS: Film[] = [
   {
     id: "unbliss",
+    slug: "unbliss",
     title: "UNBLISS",
     subtitle: "SOME LOVE STORIES HAVE WITNESSES",
     category: "TRAILERS",
@@ -64,6 +66,7 @@ const FILMS: Film[] = [
   },
   {
     id: "1",
+    slug: "beyond-horizon",
     title: "BEYOND HORIZON",
     subtitle: "AI TRAILER",
     category: "TRAILERS",
@@ -77,6 +80,7 @@ const FILMS: Film[] = [
   },
   {
     id: "2",
+    slug: "unbreakable",
     title: "UNBREAKABLE",
     subtitle: "MUSIC VISUAL",
     category: "MUSIC VISUALS",
@@ -87,6 +91,7 @@ const FILMS: Film[] = [
   },
   {
     id: "3",
+    slug: "the-last-signal",
     title: "THE LAST SIGNAL",
     subtitle: "SHORT FILM",
     category: "AI FILMS",
@@ -97,6 +102,7 @@ const FILMS: Film[] = [
   },
   {
     id: "4",
+    slug: "future-unleashed",
     title: "FUTURE UNLEASHED",
     subtitle: "BRAND PROMO",
     category: "PROMOS",
@@ -108,6 +114,7 @@ const FILMS: Film[] = [
   },
   {
     id: "5",
+    slug: "echoes-of-tomorrow",
     title: "ECHOES OF TOMORROW",
     subtitle: "AI FILM",
     category: "AI FILMS",
@@ -118,6 +125,7 @@ const FILMS: Film[] = [
   },
   {
     id: "6",
+    slug: "legacy-business-summit-2026",
     title: "LEGACY BUSINESS SUMMIT 2026",
     subtitle: "EVENT HIGHLIGHT",
     category: "EVENTS",
@@ -301,13 +309,25 @@ function PortfolioPage() {
                     {open.description}
                   </p>
                 )}
-                <Link
-                  to="/contact"
-                  onClick={() => setOpen(null)}
-                  className="mt-7 inline-flex items-center gap-2 rounded-full border border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
-                >
-                  START YOUR PROJECT <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {open.slug && (
+                    <Link
+                      to="/portfolio/$slug"
+                      params={{ slug: open.slug }}
+                      onClick={() => setOpen(null)}
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
+                    >
+                      VIEW FULL CASE STUDY <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  )}
+                  <Link
+                    to="/contact"
+                    onClick={() => setOpen(null)}
+                    className="inline-flex items-center gap-2 rounded-full border border-neon/40 px-6 py-3 font-display text-xs tracking-[0.3em] text-foreground transition-all hover:border-neon hover:text-neon-bright"
+                  >
+                    START YOUR PROJECT
+                  </Link>
+                </div>
               </div>
               <dl className="space-y-4 rounded-xl border border-neon/15 bg-deep/40 p-5">
                 {[
