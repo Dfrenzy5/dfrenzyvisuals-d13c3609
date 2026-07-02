@@ -140,21 +140,25 @@ export function TrustedBy() {
 
 const FEATURED_PROJECTS = [
   {
+    slug: "unbliss",
     title: "UNBLISS",
     tag: "CINEMATIC TRAILER",
     image: "https://img.youtube.com/vi/aoc6ZZt9DN0/maxresdefault.jpg",
   },
   {
+    slug: "beyond-horizon",
     title: "BEYOND HORIZON",
     tag: "AI TRAILER",
     image: "https://img.youtube.com/vi/79u3BUYXS9E/maxresdefault.jpg",
   },
   {
+    slug: "legacy-business-summit-2026",
     title: "LEGACY SUMMIT 2026",
     tag: "EVENT FILM",
     image: "https://img.youtube.com/vi/pdDdO2WOlR4/maxresdefault.jpg",
   },
   {
+    slug: "future-unleashed",
     title: "FUTURE UNLEASHED",
     tag: "BRAND PROMO",
     image: "https://img.youtube.com/vi/woZwTipsk9o/maxresdefault.jpg",
@@ -193,7 +197,8 @@ export function FeaturedProjects() {
           {FEATURED_PROJECTS.map((p) => (
             <Link
               key={p.title}
-              to="/portfolio"
+              to="/portfolio/$slug"
+              params={{ slug: p.slug }}
               className="group relative aspect-video overflow-hidden rounded-2xl border border-neon/20 glass-panel"
             >
               <img
