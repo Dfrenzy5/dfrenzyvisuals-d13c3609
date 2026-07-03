@@ -455,7 +455,7 @@ export function ContactCTA() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-xs tracking-[0.35em] text-neon-bright transition-all hover:neon-glow"
           >
-            BOOK A DISCOVERY CALL <ArrowRight className="h-4 w-4" />
+            START YOUR PROJECT <ArrowRight className="h-4 w-4" />
           </Link>
           <a
             href="https://wa.me/2347044775158"
