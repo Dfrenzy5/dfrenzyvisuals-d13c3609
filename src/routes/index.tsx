@@ -13,6 +13,7 @@ import {
   FAQ,
   ContactCTA,
 } from "@/components/HomeExtras";
+import { Services } from "@/components/ui-studio/Services";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -470,7 +471,7 @@ function Index() {
               "0 8px 24px rgba(0,229,255,0.35), inset 0 1px 0 rgba(255,255,255,0.5)",
           }}
         >
-          <span className="relative z-10">BOOK A DISCOVERY CALL</span>
+          <span className="relative z-10">START YOUR PROJECT</span>
         </Link>
         <button
           onClick={handleEnter}
@@ -577,6 +578,7 @@ function Index() {
     <WelcomeMessage />
     <FeaturedShowreel />
     <TrustedBy />
+    <Services />
     <FeaturedProjects />
     <HomeSections />
     <CreativeProcess />
