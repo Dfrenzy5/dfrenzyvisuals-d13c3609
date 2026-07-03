@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
 import { cn } from "@/lib/utils";
 
 export function Reveal({
@@ -9,7 +9,7 @@ export function Reveal({
   variant = "fade-up",
 }: {
   children: ReactNode;
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: ElementType;
   delay?: number;
   className?: string;
   variant?: "fade-up" | "fade" | "blur";
@@ -53,8 +53,7 @@ export function Reveal({
 
   return (
     <Tag
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(base, shown ? visible : hidden, className)}
     >
