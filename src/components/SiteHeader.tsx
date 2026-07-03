@@ -76,7 +76,7 @@ export function SiteHeader() {
             className="hidden items-center gap-2 rounded-full border border-neon bg-neon/10 px-4 py-2 font-display text-[10px] font-semibold tracking-[0.3em] text-neon-bright transition-all hover:neon-glow lg:inline-flex"
           >
             <Sparkles className="h-3 w-3" />
-            BOOK A DISCOVERY CALL
+            START YOUR PROJECT
           </Link>
           {[
             { Icon: Youtube, href: "https://www.youtube.com/@DFRENZYVISUALS", label: "YouTube" },

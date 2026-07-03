@@ -54,6 +54,27 @@
 
 :root {
   --radius: 0.75rem;
+  /* Studio layout tokens */
+  --container-max: 1440px;
+  --container-std: 1280px;
+  --reading-max: 760px;
+  /* Spacing scale */
+  --s-4: 4px;  --s-8: 8px;   --s-12: 12px; --s-16: 16px;
+  --s-24: 24px; --s-32: 32px; --s-48: 48px; --s-64: 64px;
+  --s-80: 80px; --s-96: 96px; --s-128: 128px; --s-160: 160px;
+  --s-192: 192px; --s-256: 256px;
+  /* Motion */
+  --ease-cine: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 200ms;
+  --dur-mid: 400ms;
+  --dur-slow: 700ms;
+  /* Elevation */
+  --shadow-1: 0 1px 2px oklch(0 0 0 / 0.4);
+  --shadow-2: 0 8px 24px oklch(0 0 0 / 0.35);
+  --shadow-3: 0 24px 60px oklch(0 0 0 / 0.5);
+  --line: oklch(0.78 0.18 230 / 0.14);
+  --bg-1: oklch(0.11 0.035 260);
+  --bg-2: oklch(0.14 0.045 260);
   /* Deep space cinematic palette */
   --background: oklch(0.08 0.03 260);
   --foreground: oklch(0.96 0.02 240);
@@ -144,9 +165,77 @@
     font-family: var(--font-display);
     letter-spacing: 0.05em;
   }
+
+  /* Global focus ring */
+  :focus-visible {
+    outline: 2px solid oklch(0.88 0.2 220);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 /* Cinematic utilities */
+@utility container-std {
+  width: 100%;
+  max-width: var(--container-std);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@utility container-max {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@utility container-reading {
+  width: 100%;
+  max-width: var(--reading-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@utility section-pad {
+  padding-block: clamp(64px, 10vw, 128px);
+}
+@utility text-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+}
+@utility text-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: 0.06em;
+}
+@utility text-eyebrow {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  color: var(--neon-bright);
+  text-transform: uppercase;
+}
+@utility hairline {
+  border: 1px solid var(--line);
+}
+@utility surface-1 {
+  background: var(--bg-1);
+}
+@utility surface-2 {
+  background: var(--bg-2);
+}
+
 @utility glass-panel {
   background: linear-gradient(135deg, oklch(0.18 0.06 260 / 0.5), oklch(0.1 0.04 260 / 0.3));
   backdrop-filter: blur(20px) saturate(140%);
