@@ -35,8 +35,8 @@ export function FeaturedShowreel() {
           FEATURED SHOWREEL
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          A cinematic cut of recent work — commercials, trailers, event films, and
-          AI-powered visual experiences.
+          Selected work from the studio — commercials, brand films, product launches,
+          and cinematic storytelling built on an AI-native production pipeline.
         </p>
 
         <button
