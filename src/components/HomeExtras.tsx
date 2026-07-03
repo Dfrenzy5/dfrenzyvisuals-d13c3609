@@ -229,11 +229,11 @@ export function FeaturedProjects() {
 /* ---------------- Creative Process ---------------- */
 
 const PROCESS = [
-  { Icon: Lightbulb, title: "Discovery", body: "We align on story, audience, brand, and outcome." },
-  { Icon: Compass, title: "Concept", body: "Moodboards, references, script, and visual direction." },
-  { Icon: Sparkles, title: "AI Pipeline", body: "Generative visuals paired with editorial craft." },
-  { Icon: Clapperboard, title: "Production", body: "Editing, color, sound design, motion, and finishing." },
-  { Icon: Rocket, title: "Launch", body: "Delivery in every format your rollout needs." },
+  { Icon: Lightbulb, title: "Discovery", body: "Story, audience, brand, and outcome — aligned before a single frame." },
+  { Icon: Compass, title: "Direction", body: "Moodboards, script, and visual language that set the film's DNA." },
+  { Icon: Sparkles, title: "AI Pipeline", body: "Generative production paired with human editorial craft." },
+  { Icon: Clapperboard, title: "Post & Finishing", body: "Editing, color, sound design, motion, and delivery-grade finishing." },
+  { Icon: Rocket, title: "Launch", body: "Master files and every cutdown your rollout needs." },
 ];
 
 export function CreativeProcess() {
