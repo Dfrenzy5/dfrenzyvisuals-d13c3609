@@ -7,13 +7,13 @@ import { HomeSections } from "@/components/HomeSections";
 import {
   FeaturedShowreel,
   TrustedBy,
-  FeaturedProjects,
   CreativeProcess,
   Awards,
   FAQ,
   ContactCTA,
 } from "@/components/HomeExtras";
 import { Services } from "@/components/ui-studio/Services";
+import { FeaturedShowcase } from "@/components/ui-studio/FeaturedShowcase";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -579,7 +579,7 @@ function Index() {
     <FeaturedShowreel />
     <TrustedBy />
     <Services />
-    <FeaturedProjects />
+    <FeaturedShowcase />
     <HomeSections />
     <CreativeProcess />
     <Awards />
