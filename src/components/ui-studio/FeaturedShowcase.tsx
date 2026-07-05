@@ -111,6 +111,7 @@ export function FeaturedShowcase() {
   const [filter, setFilter] = useState("all");
   const [active, setActive] = useState(0);
   const [reduced, setReduced] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const visible = useMemo(
     () => (filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.categoryKey === filter)),
@@ -199,6 +200,16 @@ export function FeaturedShowcase() {
 
   const prev = () => scrollToIdx(Math.max(0, active - 1));
   const next = () => scrollToIdx(Math.min(visible.length - 1, active + 1));
+
+  // Auto-advance slider (pauses on hover / focus / reduced motion).
+  useEffect(() => {
+    if (reduced || paused || visible.length <= 1) return;
+    const id = setInterval(() => {
+      const nextIdx = (active + 1) % visible.length;
+      scrollToIdx(nextIdx);
+    }, 7000);
+    return () => clearInterval(id);
+  }, [active, paused, reduced, visible.length, scrollToIdx]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") {
@@ -292,6 +303,10 @@ export function FeaturedShowcase() {
       <div
         className="group/showcase relative mt-12"
         onKeyDown={onKeyDown}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
       >
         {/* Arrows */}
         <button
