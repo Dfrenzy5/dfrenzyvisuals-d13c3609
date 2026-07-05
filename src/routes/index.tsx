@@ -3,9 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
-import { HomeSections } from "@/components/HomeSections";
 import {
-  FeaturedShowreel,
   TrustedBy,
   CreativeProcess,
   Awards,
