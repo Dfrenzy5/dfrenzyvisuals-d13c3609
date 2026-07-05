@@ -213,8 +213,8 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "future-unleashed",
     title: "FUTURE UNLEASHED",
-    subtitle: "Kinetic brand launch promo",
-    category: "Brand Promo",
+    subtitle: "Kinetic brand launch commercial",
+    category: "Commercial",
     year: "2025",
     duration: "3 weeks",
     role: "Creative Direction · Edit · Motion",

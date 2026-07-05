@@ -164,7 +164,7 @@ const FEATURED_PROJECTS = [
   {
     slug: "future-unleashed",
     title: "FUTURE UNLEASHED",
-    tag: "BRAND PROMO",
+    tag: "COMMERCIAL",
     image: "https://img.youtube.com/vi/woZwTipsk9o/maxresdefault.jpg",
   },
 ];
