@@ -11,9 +11,12 @@ import {
   Awards,
   FAQ,
   ContactCTA,
+  DirectorsChoice,
+  CreativeLab,
 } from "@/components/HomeExtras";
 import { Services } from "@/components/ui-studio/Services";
 import { FeaturedShowcase } from "@/components/ui-studio/FeaturedShowcase";
+import { Testimonials } from "@/components/HomeSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -576,12 +579,13 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
-    <FeaturedShowreel />
+    <FeaturedShowcase />
     <TrustedBy />
     <Services />
-    <FeaturedShowcase />
-    <HomeSections />
+    <DirectorsChoice />
     <CreativeProcess />
+    <CreativeLab />
+    <Testimonials />
     <Awards />
     <FAQ />
     <ContactCTA />
