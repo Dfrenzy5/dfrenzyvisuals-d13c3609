@@ -42,6 +42,17 @@ const PROJECTS: Project[] = [
     services: "Direction · World Design · Edit",
   },
   {
+    slug: "future-unleashed",
+    title: "FUTURE UNLEASHED",
+    category: "Commercial",
+    categoryKey: "commercials",
+    summary:
+      "A kinetic brand launch built to position a category-defining company — confident, future-facing, and typographic.",
+    poster: "https://img.youtube.com/vi/woZwTipsk9o/maxresdefault.jpg",
+    youtube: "woZwTipsk9o",
+    services: "Creative Direction · Motion · Edit",
+  },
+  {
     slug: "legacy-business-summit-2026",
     title: "LEGACY SUMMIT 2026",
     category: "Event Film",
@@ -52,17 +63,6 @@ const PROJECTS: Project[] = [
     youtube: "pdDdO2WOlR4",
     services: "Direction · Edit · Color · Sound",
     client: "Legacy Business Summit",
-  },
-  {
-    slug: "future-unleashed",
-    title: "FUTURE UNLEASHED",
-    category: "Brand Promo",
-    categoryKey: "commercials",
-    summary:
-      "A kinetic brand launch built to position a category-defining company — confident, future-facing, and typographic.",
-    poster: "https://img.youtube.com/vi/woZwTipsk9o/maxresdefault.jpg",
-    youtube: "woZwTipsk9o",
-    services: "Creative Direction · Motion · Edit",
   },
   {
     slug: "unbreakable",
