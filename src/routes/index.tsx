@@ -3,17 +3,18 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
-import { HomeSections } from "@/components/HomeSections";
 import {
-  FeaturedShowreel,
   TrustedBy,
   CreativeProcess,
   Awards,
   FAQ,
   ContactCTA,
+  DirectorsChoice,
+  CreativeLab,
 } from "@/components/HomeExtras";
 import { Services } from "@/components/ui-studio/Services";
 import { FeaturedShowcase } from "@/components/ui-studio/FeaturedShowcase";
+import { Testimonials } from "@/components/HomeSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -576,12 +577,13 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
-    <FeaturedShowreel />
+    <FeaturedShowcase />
     <TrustedBy />
     <Services />
-    <FeaturedShowcase />
-    <HomeSections />
+    <DirectorsChoice />
     <CreativeProcess />
+    <CreativeLab />
+    <Testimonials />
     <Awards />
     <FAQ />
     <ContactCTA />

@@ -283,7 +283,7 @@ const TESTIMONIALS = [
   },
 ];
 
-function Testimonials() {
+export function Testimonials() {
   const [i, setI] = useState(0);
   const total = TESTIMONIALS.length;
   const go = (d: number) => setI((p) => (p + d + total) % total);

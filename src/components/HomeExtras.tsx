@@ -13,6 +13,10 @@ import {
   Play,
   ArrowRight,
 } from "lucide-react";
+import film2 from "@/assets/film-2.jpg";
+import film3 from "@/assets/film-3.jpg";
+import film5 from "@/assets/film-5.jpg";
+import unbliss from "@/assets/unbliss.jpg";
 
 /* ---------------- Featured Showreel ---------------- */
 
@@ -421,6 +425,237 @@ export function FAQ() {
 }
 
 /* ---------------- Contact CTA ---------------- */
+
+/* ---------------- Director's Choice ---------------- */
+
+export function DirectorsChoice() {
+  const [open, setOpen] = useState(false);
+  return (
+    <section
+      id="directors-choice"
+      aria-labelledby="directors-choice-heading"
+      className="relative px-6 py-24 sm:py-28 md:px-10"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center">
+          <p className="font-display text-[10px] tracking-[0.5em] text-neon-bright">
+            DIRECTOR&apos;S CHOICE
+          </p>
+          <h2
+            id="directors-choice-heading"
+            className="mt-3 font-display text-3xl font-black tracking-[0.18em] text-foreground sm:text-5xl"
+          >
+            ONE FILM WE&apos;RE PROUD OF
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
+            A single project hand-picked by the director — the piece that best
+            captures where craft, story, and our AI pipeline meet.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label="Play Unbliss cinematic trailer"
+            className="group relative block overflow-hidden rounded-3xl border border-neon/30 glass-panel"
+          >
+            <div className="relative aspect-video">
+              <img
+                src={unbliss}
+                alt="UNBLISS — cinematic trailer poster"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-neon bg-neon/10 backdrop-blur-md transition-transform group-hover:scale-110 sm:h-24 sm:w-24">
+                  <Play className="h-8 w-8 fill-neon-bright text-neon-bright" />
+                </span>
+              </div>
+              <div className="absolute bottom-0 left-0 p-6 text-left md:p-8">
+                <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">
+                  CINEMATIC TRAILER
+                </div>
+                <div className="mt-2 font-display text-2xl font-black tracking-[0.15em] text-foreground md:text-3xl">
+                  UNBLISS
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <div>
+            <p className="font-display text-[10px] tracking-[0.5em] text-neon-bright">
+              WHY THIS FILM
+            </p>
+            <h3 className="mt-3 font-display text-2xl font-black tracking-[0.14em] text-foreground sm:text-3xl">
+              A LOVE STORY TOLD BY UNSEEN WITNESSES.
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Moody, atmospheric, emotionally precise — Unbliss is the clearest
+              expression of the studio&apos;s voice: cinematic direction,
+              patient camera, and an AI pipeline used to serve the story, never
+              to replace it.
+            </p>
+            <dl className="mt-6 grid grid-cols-2 gap-4 rounded-2xl border border-white/10 bg-deep/40 p-5">
+              <div>
+                <dt className="font-display text-[9px] tracking-[0.4em] text-neon-bright">
+                  FORMAT
+                </dt>
+                <dd className="mt-1 text-sm text-foreground/90">Short Film Trailer</dd>
+              </div>
+              <div>
+                <dt className="font-display text-[9px] tracking-[0.4em] text-neon-bright">
+                  RUNTIME
+                </dt>
+                <dd className="mt-1 text-sm text-foreground/90">01:42</dd>
+              </div>
+              <div>
+                <dt className="font-display text-[9px] tracking-[0.4em] text-neon-bright">
+                  DIRECTION
+                </dt>
+                <dd className="mt-1 text-sm text-foreground/90">DFrenzy Visuals</dd>
+              </div>
+              <div>
+                <dt className="font-display text-[9px] tracking-[0.4em] text-neon-bright">
+                  PIPELINE
+                </dt>
+                <dd className="mt-1 text-sm text-foreground/90">AI-Native</dd>
+              </div>
+            </dl>
+            <Link
+              to="/portfolio/$slug"
+              params={{ slug: "unbliss" }}
+              className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-neon bg-neon/10 px-6 py-3 font-display text-[11px] tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
+            >
+              VIEW FULL CASE STUDY
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 p-4 backdrop-blur-xl"
+          onClick={() => setOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Unbliss trailer player"
+        >
+          <div
+            className="relative w-full max-w-5xl overflow-hidden rounded-2xl border border-neon/40 neon-glow"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="aspect-video bg-deep">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/aoc6ZZt9DN0?autoplay=1"
+                title="UNBLISS trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ---------------- Creative Lab ---------------- */
+
+const LAB_ITEMS = [
+  {
+    tag: "EXPERIMENT · 001",
+    title: "Volumetric Portraits",
+    body: "Studies in light, motion, and grain — testing how AI-generated portraiture holds up on a cinema screen.",
+    image: film2,
+  },
+  {
+    tag: "EXPERIMENT · 002",
+    title: "AI-Directed World Design",
+    body: "Building sci-fi environments from a written treatment — from moodboard to moving frame in a single afternoon.",
+    image: film3,
+  },
+  {
+    tag: "EXPERIMENT · 003",
+    title: "Sound-Led Editing",
+    body: "Cutting picture to sound design first, then reshaping generated coverage to match rhythm and breath.",
+    image: film5,
+  },
+];
+
+export function CreativeLab() {
+  return (
+    <section
+      id="creative-lab"
+      aria-labelledby="creative-lab-heading"
+      className="relative px-6 py-24 sm:py-28 md:px-10"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="max-w-2xl">
+            <p className="font-display text-[10px] tracking-[0.5em] text-neon-bright">
+              R&amp;D · CREATIVE LAB
+            </p>
+            <h2
+              id="creative-lab-heading"
+              className="mt-3 font-display text-3xl font-black tracking-[0.14em] text-foreground sm:text-5xl"
+            >
+              INSIDE THE LAB
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Not every frame becomes a film. The Creative Lab is where we
+              stress-test new tools, build custom pipelines, and translate raw
+              experiments into cinematic language.
+            </p>
+          </div>
+          <Link
+            to="/portfolio"
+            className="inline-flex items-center gap-2 rounded-full border border-neon/40 px-5 py-2.5 font-display text-[10px] tracking-[0.3em] text-foreground transition-all hover:border-neon hover:text-neon-bright hover:neon-glow"
+          >
+            EXPLORE WORK <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {LAB_ITEMS.map((item) => (
+            <article
+              key={item.title}
+              className="group relative overflow-hidden rounded-2xl border border-neon/20 glass-panel transition-all hover:-translate-y-1 hover:border-neon hover:neon-glow"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">
+                    {item.tag}
+                  </div>
+                  <h3 className="mt-2 font-display text-lg font-black tracking-[0.14em] text-foreground">
+                    {item.title.toUpperCase()}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Contact CTA (below) ---------------- */
 
 export function ContactCTA() {
   return (
