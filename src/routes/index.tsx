@@ -71,7 +71,7 @@ function Index() {
   const intensityRef = useRef(0); // 0..1 drives particle gather
   const [phase, setPhase] = useState<Phase>("cosmic");
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
-  const [countdown, setCountdown] = useState<number | null>(3);
+  const [countdown, setCountdown] = useState<number | null>(null);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
