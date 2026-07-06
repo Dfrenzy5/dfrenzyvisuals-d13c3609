@@ -152,7 +152,11 @@ function Index() {
     resize();
     window.addEventListener("resize", resize);
 
-    const N = 180;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const N = reduced ? 40 : isMobile ? 80 : 180;
     const particles = Array.from({ length: N }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
