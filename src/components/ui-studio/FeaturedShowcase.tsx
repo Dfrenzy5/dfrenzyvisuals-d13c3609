@@ -237,13 +237,13 @@ export function FeaturedShowcase() {
 
   // Auto-advance slider (pauses on hover / focus / reduced motion).
   useEffect(() => {
-    if (reduced || paused || visible.length <= 1) return;
+    if (reduced || paused || !inView || visible.length <= 1) return;
     const id = setInterval(() => {
       const nextIdx = (active + 1) % visible.length;
       scrollToIdx(nextIdx);
     }, 7000);
     return () => clearInterval(id);
-  }, [active, paused, reduced, visible.length, scrollToIdx]);
+  }, [active, paused, reduced, inView, visible.length, scrollToIdx]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") {
