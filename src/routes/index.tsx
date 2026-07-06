@@ -1,20 +1,41 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
-import {
-  TrustedBy,
-  CreativeProcess,
-  Awards,
-  FAQ,
-  ContactCTA,
-  DirectorsChoice,
-  CreativeLab,
-} from "@/components/HomeExtras";
-import { Services } from "@/components/ui-studio/Services";
-import { FeaturedShowcase } from "@/components/ui-studio/FeaturedShowcase";
-import { Testimonials } from "@/components/HomeSections";
+import { LazyMount } from "@/components/ui-studio/LazyMount";
+
+// Below-the-fold: split into their own chunks and mount as they approach viewport.
+const FeaturedShowcase = lazy(() =>
+  import("@/components/ui-studio/FeaturedShowcase").then((m) => ({ default: m.FeaturedShowcase })),
+);
+const Services = lazy(() =>
+  import("@/components/ui-studio/Services").then((m) => ({ default: m.Services })),
+);
+const TrustedBy = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.TrustedBy })),
+);
+const DirectorsChoice = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.DirectorsChoice })),
+);
+const CreativeProcess = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.CreativeProcess })),
+);
+const CreativeLab = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.CreativeLab })),
+);
+const Testimonials = lazy(() =>
+  import("@/components/HomeSections").then((m) => ({ default: m.Testimonials })),
+);
+const Awards = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.Awards })),
+);
+const FAQ = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.FAQ })),
+);
+const ContactCTA = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.ContactCTA })),
+);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,21 +60,15 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Cinematic phase timeline (ms relative to mount). Mirrors the 9-stage script.
-// 01 cosmic fade    0.0–2.0s
-// 02 energy form    2.0–5.0s
-// 03 logo assembly  5.0–7.0s
-// 04 identity       7.0–9.0s
-// 05 tagline        9.0–11.0s
-// 06 cta emerges    11.0–14.0s
-// 07 hover/idle     14.0s+
+// Compressed cinematic timeline: total ~1.2s so hero becomes interactive
+// almost instantly while beats still land in sequence.
 const PHASE_TIMINGS = {
-  energy: 2000,
-  logo: 5000,
-  identity: 7000,
-  tagline: 9000,
-  cta: 11000,
-  idle: 14000,
+  energy: 120,
+  logo: 260,
+  identity: 480,
+  tagline: 680,
+  cta: 880,
+  idle: 1200,
 } as const;
 
 type Phase =
@@ -71,7 +86,7 @@ function Index() {
   const intensityRef = useRef(0); // 0..1 drives particle gather
   const [phase, setPhase] = useState<Phase>("cosmic");
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
-  const [countdown, setCountdown] = useState<number | null>(3);
+  const [countdown, setCountdown] = useState<number | null>(null);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
@@ -88,11 +103,6 @@ function Index() {
     queue.forEach(([ms, p]) => {
       timeouts.push(setTimeout(() => setPhase(p), ms));
     });
-    // Countdown 3·2·1 between 2.0s and 5.0s (energy → logo reveal)
-    timeouts.push(setTimeout(() => setCountdown(3), 2000));
-    timeouts.push(setTimeout(() => setCountdown(2), 3000));
-    timeouts.push(setTimeout(() => setCountdown(1), 4000));
-    timeouts.push(setTimeout(() => setCountdown(null), 5000));
     return () => timeouts.forEach(clearTimeout);
   }, []);
 
@@ -142,7 +152,11 @@ function Index() {
     resize();
     window.addEventListener("resize", resize);
 
-    const N = 180;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const N = reduced ? 40 : isMobile ? 80 : 180;
     const particles = Array.from({ length: N }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -577,16 +591,20 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
-    <FeaturedShowcase />
-    <TrustedBy />
-    <Services />
-    <DirectorsChoice />
-    <CreativeProcess />
-    <CreativeLab />
-    <Testimonials />
-    <Awards />
-    <FAQ />
-    <ContactCTA />
+    <Suspense fallback={<div style={{ minHeight: 600 }} />}>
+      <LazyMount minHeight={640}><FeaturedShowcase /></LazyMount>
+    </Suspense>
+    <Suspense fallback={null}>
+      <LazyMount minHeight={220}><TrustedBy /></LazyMount>
+      <LazyMount minHeight={520}><Services /></LazyMount>
+      <LazyMount minHeight={520}><DirectorsChoice /></LazyMount>
+      <LazyMount minHeight={480}><CreativeProcess /></LazyMount>
+      <LazyMount minHeight={480}><CreativeLab /></LazyMount>
+      <LazyMount minHeight={480}><Testimonials /></LazyMount>
+      <LazyMount minHeight={360}><Awards /></LazyMount>
+      <LazyMount minHeight={480}><FAQ /></LazyMount>
+      <LazyMount minHeight={400}><ContactCTA /></LazyMount>
+    </Suspense>
     </>
   );
 }
