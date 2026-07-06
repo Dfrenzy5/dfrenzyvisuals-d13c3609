@@ -112,6 +112,8 @@ export function FeaturedShowcase() {
   const [active, setActive] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
 
   const visible = useMemo(
     () => (filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.categoryKey === filter)),
@@ -125,6 +127,38 @@ export function FeaturedShowcase() {
     const on = () => setReduced(m.matches);
     m.addEventListener?.("change", on);
     return () => m.removeEventListener?.("change", on);
+  }, []);
+
+  // Defer non-critical work (video iframes, autoplay) until section is near viewport
+  // AND the page has become interactive. Keeps LCP/TTI free of YouTube network cost.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const idle = (cb: () => void) => {
+      const w = window as typeof window & {
+        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      };
+      if (w.requestIdleCallback) w.requestIdleCallback(cb, { timeout: 1500 });
+      else setTimeout(cb, 800);
+    };
+    idle(() => setHydrated(true));
   }, []);
 
   // Track active card by proximity to scroller center.
@@ -203,13 +237,13 @@ export function FeaturedShowcase() {
 
   // Auto-advance slider (pauses on hover / focus / reduced motion).
   useEffect(() => {
-    if (reduced || paused || visible.length <= 1) return;
+    if (reduced || paused || !inView || visible.length <= 1) return;
     const id = setInterval(() => {
       const nextIdx = (active + 1) % visible.length;
       scrollToIdx(nextIdx);
     }, 7000);
     return () => clearInterval(id);
-  }, [active, paused, reduced, visible.length, scrollToIdx]);
+  }, [active, paused, reduced, inView, visible.length, scrollToIdx]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") {
@@ -364,8 +398,8 @@ export function FeaturedShowcase() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
 
-                  {/* Active video preview */}
-                  {isActive && p.youtube && !reduced && (
+                  {/* Active video preview — only when section is in view and page is idle */}
+                  {isActive && inView && hydrated && p.youtube && !reduced && (
                     <iframe
                       key={p.youtube}
                       className="absolute inset-0 h-full w-full"
