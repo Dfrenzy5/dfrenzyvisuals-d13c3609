@@ -82,7 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "DFRENZY VISUALS — AI Cinematic Film Studio" },
+      { title: "DFRENZY VISUALS | AI Cinematic Film Studio" },
+      { name: "theme-color", content: "#00E5FF" },
       { name: "description", content: "DFRENZY VISUALS is an AI cinematic film studio crafting trailers, music visuals, and brand promos inside a digital dimension." },
       { name: "author", content: "DFRENZY VISUALS" },
       { property: "og:title", content: "DFRENZY VISUALS — AI Cinematic Film Studio" },
@@ -99,6 +100,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "preconnect", href: "https://www.youtube-nocookie.com" },

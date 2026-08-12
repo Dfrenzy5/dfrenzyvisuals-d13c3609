@@ -3,11 +3,11 @@ import { Youtube, Mail, Instagram, ArrowUp, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { Container } from "./ui-studio/Container";
 
-const WORK_LINKS = [
-  { to: "/portfolio" as const, label: "All Work" },
-  { to: "/portfolio/unbliss" as const, label: "UNBLISS" },
-  { to: "/portfolio/beyond-horizon" as const, label: "Beyond Horizon" },
-  { to: "/portfolio/legacy-business-summit-2026" as const, label: "Legacy Summit 2026" },
+const WORK_LINKS: Array<{ slug?: string; label: string }> = [
+  { label: "All Work" },
+  { slug: "unbliss", label: "UNBLISS" },
+  { slug: "beyond-horizon", label: "Beyond Horizon" },
+  { slug: "legacy-business-summit-2026", label: "Legacy Summit 2026" },
 ];
 
 const STUDIO_LINKS = [
@@ -130,10 +130,20 @@ export function SiteFooter() {
             <div className="text-eyebrow">Work</div>
             <ul className="mt-5 space-y-3 text-sm">
               {WORK_LINKS.map((l) => (
-                <li key={l.to}>
-                  <Link to={l.to} className="text-muted-foreground transition-colors hover:text-neon-bright">
-                    {l.label}
-                  </Link>
+                <li key={l.label}>
+                  {l.slug ? (
+                    <Link
+                      to="/portfolio/$slug"
+                      params={{ slug: l.slug }}
+                      className="text-muted-foreground transition-colors hover:text-neon-bright"
+                    >
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <Link to="/portfolio" className="text-muted-foreground transition-colors hover:text-neon-bright">
+                      {l.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
