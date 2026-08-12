@@ -40,7 +40,7 @@ const ContactCTA = lazy(() =>
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DFRENZY VISUALS — AI Cinematic Film Studio" },
+      { title: "DFRENZY VISUALS | AI Cinematic Film Studio" },
       {
         name: "description",
         content:
