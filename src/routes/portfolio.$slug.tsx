@@ -179,6 +179,41 @@ function CaseStudyPage() {
         </div>
       </div>
 
+      {/* Written case study */}
+      {study.writtenCaseStudy && study.writtenCaseStudy.length > 0 && (
+        <div className="mt-10 rounded-3xl border border-neon/15 glass-panel p-8 md:p-12">
+          <div className="font-display text-[10px] tracking-[0.5em] text-neon-bright">
+            CASE STUDY
+          </div>
+          <div className="mt-8 space-y-12">
+            {study.writtenCaseStudy.map((sec) => (
+              <div key={sec.heading}>
+                <h2 className="font-display text-lg font-black tracking-[0.15em] text-foreground sm:text-xl">
+                  {sec.heading}
+                </h2>
+                {sec.body && (
+                  <p className="mt-4 max-w-[760px] text-[15px] leading-relaxed text-foreground/80">
+                    {sec.body}
+                  </p>
+                )}
+                {sec.points && sec.points.length > 0 && (
+                  <ul className="mt-4 max-w-[760px] space-y-3">
+                    {sec.points.map((p) => (
+                      <li key={p} className="flex items-start gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neon-bright" />
+                        <span className="text-[15px] leading-relaxed text-foreground/80">
+                          {p}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Body sections */}
       <div className="mt-6">
         <Section eyebrow="01" title="THE PROBLEM">
