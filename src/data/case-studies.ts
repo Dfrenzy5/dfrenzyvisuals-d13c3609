@@ -23,6 +23,7 @@ export type CaseStudy = {
   outcome: string;
   impact: string[];
   tools: string[];
+  writtenCaseStudy?: { heading: string; body?: string; points?: string[] }[];
   gallery?: string[];
 };
 
@@ -66,6 +67,30 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Used as the studio's flagship reel piece",
     ],
     tools: ["Generative Video Pipeline", "DaVinci Resolve", "Logic Pro", "Pro Tools"],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "UNBLISS is a 90-second Nollywood-style psychological thriller produced entirely through an AI-native cinematic pipeline by DFRENZY VISUALS, a full-service AI filmmaking studio based in Lagos and Uyo, Nigeria. The short film follows a bride whose wedding night is interrupted by an intruder, a compact, tension-driven narrative built to demonstrate that AI-generated film can carry genuine suspense, not just visual spectacle. The project served as a proof of concept for a repeatable AI production workflow, one that could take a short-form thriller concept from script to finished, color-graded film without a traditional camera crew, cast, or set.",
+      },
+      {
+        heading: "Production Pipeline",
+        body: "UNBLISS was built using a 14-shot image-to-video production package generated with Grok AI, following a structured character-consistency methodology developed in-house at DFRENZY VISUALS. Each shot was anchored through reference images to preserve continuity of the lead character's appearance, wardrobe, and performance across every scene, a discipline borrowed from traditional filmmaking's continuity department and adapted for AI generation. The workflow included:",
+        points: [
+          "Character consistency locking through reference image tagging to prevent identity drift across shots",
+          "Start-frame-first generation where each shot's opening frame was generated and approved before being used as the animation anchor",
+          "Structured clause-based prompting for reliable shot-to-shot generation",
+          "A full post-production pass with color grading in DaVinci Resolve following a dedicated color-grade bible built for the project's psychological-thriller tone",
+        ],
+      },
+      {
+        heading: "Why It Matters",
+        body: "UNBLISS demonstrates a production discipline that's still rare in AI filmmaking, treating AI video generation as one stage in a full cinematic pipeline rather than the entire pipeline. The project moved through pre-production, production, and post-production the same way a traditionally shot film would, adapted for an AI-native workflow. The result is a short film built to be judged as a film first, and an AI experiment second.",
+      },
+      {
+        heading: "About DFRENZY VISUALS",
+        body: "DFRENZY VISUALS is a Nigerian AI cinematic production studio producing original short films, drama series, and music videos alongside client commercial work, including event promo campaigns and brand storytelling for businesses across Lagos, Uyo, and Calabar. The studio's production stack spans Grok AI, Seedance, Higgsfield Cinema Studio, Kling, Veo, and DaVinci Resolve, built around a consistent, in-house character and continuity locking methodology used across every original and client project.",
+      },
+    ],
   },
   {
     slug: "beyond-horizon",
