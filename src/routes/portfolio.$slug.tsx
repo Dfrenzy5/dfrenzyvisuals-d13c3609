@@ -55,6 +55,26 @@ export const Route = createFileRoute("/portfolio/$slug")({
                   : {}),
               }),
             },
+            ...(s.youtube
+              ? [
+                  {
+                    type: "application/ld+json",
+                    children: JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "VideoObject",
+                      name: s.title,
+                      description: s.subtitle,
+                      thumbnailUrl: s.poster,
+                      embedUrl: `https://www.youtube.com/embed/${s.youtube}`,
+                      uploadDate: `${s.year}-01-01`,
+                      publisher: {
+                        "@type": "Organization",
+                        name: "DFRENZY VISUALS",
+                      },
+                    }),
+                  },
+                ]
+              : []),
           ]
         : [],
     };
