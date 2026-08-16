@@ -95,7 +95,7 @@ export function SiteFooter() {
             <div className="mt-6 flex items-center gap-2">
               {[
                 { Icon: Youtube, href: "https://www.youtube.com/@DFRENZYVISUALS", label: "YouTube" },
-                { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+                { Icon: Instagram, href: "https://instagram.com/dfrenzyvisuals", label: "Instagram" },
                 { Icon: Mail, href: "mailto:dfrenzyvisuals@gmail.com", label: "Email" },
                 { Icon: MessageCircle, href: "https://wa.me/2347044775158", label: "WhatsApp" },
               ].map(({ Icon, href, label }) => (
