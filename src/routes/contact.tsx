@@ -78,7 +78,7 @@ function ContactPage() {
               <Youtube className="h-4 w-4" />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/dfrenzyvisuals"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"

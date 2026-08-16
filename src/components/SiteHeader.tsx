@@ -80,7 +80,7 @@ export function SiteHeader() {
           </Link>
           {[
             { Icon: Youtube, href: "https://www.youtube.com/@DFRENZYVISUALS", label: "YouTube" },
-            { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+            { Icon: Instagram, href: "https://instagram.com/dfrenzyvisuals", label: "Instagram" },
             { Icon: Mail, href: "mailto:dfrenzyvisuals@gmail.com", label: "Email" },
           ].map(({ Icon, href, label }) => (
             <a

@@ -56,6 +56,41 @@ export const Route = createFileRoute("/")({
           "AI Cinematic Film Studio. Trailers, music visuals, brand promos.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "DFRENZY VISUALS",
+          alternateName: "DfrenzyVisuals",
+          url: "https://dfrenzyvisuals.com",
+          logo: "https://dfrenzyvisuals.com/logo.png",
+          description:
+            "AI cinematic film studio producing commercials, branded storytelling, product films, and virtual production through an AI-native pipeline. Based in Lagos and Uyo, Nigeria.",
+          email: "dfrenzyvisuals@gmail.com",
+          telephone: "+2347044775158",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Lagos",
+            addressCountry: "NG",
+          },
+          sameAs: [
+            "https://www.youtube.com/@DFRENZYVISUALS",
+            "https://instagram.com/dfrenzyvisuals",
+          ],
+          areaServed: "NG",
+          serviceType: [
+            "AI Video Production",
+            "Commercial Advertising",
+            "Branded Storytelling",
+            "Product Films",
+            "Virtual Production",
+            "Music & Culture Videos",
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
