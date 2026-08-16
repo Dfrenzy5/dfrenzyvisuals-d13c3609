@@ -84,6 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "DFRENZY VISUALS | AI Cinematic Film Studio" },
       { name: "theme-color", content: "#00E5FF" },
+      { name: "google-site-verification", content: "llpNM1CBR5T81BTek2rXAuelsdWErUFwe3Z0x0nEFK0" },
       { name: "description", content: "DFRENZY VISUALS is an AI cinematic film studio crafting trailers, music visuals, and brand promos inside a digital dimension." },
       { name: "author", content: "DFRENZY VISUALS" },
       { property: "og:title", content: "DFRENZY VISUALS — AI Cinematic Film Studio" },
