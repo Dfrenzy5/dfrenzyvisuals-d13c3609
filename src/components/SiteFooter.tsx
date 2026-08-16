@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Youtube, Mail, Instagram, ArrowUp, MessageCircle } from "lucide-react";
-import { useState } from "react";
 import { Container } from "./ui-studio/Container";
+
+// TODO: replace YOUR_USERNAME with the real Buttondown username once the account is live.
+const BUTTONDOWN_USERNAME = "YOUR_USERNAME";
 
 const WORK_LINKS: Array<{ slug?: string; label: string }> = [
   { label: "All Work" },
@@ -26,8 +28,6 @@ const SERVICE_LINKS = [
 ];
 
 export function SiteFooter() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "ok">("idle");
   const scrollTop = () => {
     if (typeof window !== "undefined")
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -48,11 +48,13 @@ export function SiteFooter() {
             </p>
           </div>
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email) setStatus("ok");
-            }}
-            className="flex flex-col items-stretch gap-3 self-center"
+            action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
+            method="post"
+            target="popupwindow"
+            onSubmit={() =>
+              window.open(`https://buttondown.com/${BUTTONDOWN_USERNAME}`, "popupwindow")
+            }
+            className="embeddable-buttondown-form flex flex-col items-stretch gap-3 self-center"
           >
             <label htmlFor="newsletter" className="sr-only">
               Email address
@@ -61,23 +63,19 @@ export function SiteFooter() {
               <input
                 id="newsletter"
                 type="email"
+                name="email"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@studio.com"
+                placeholder="Email address"
                 className="flex-1 bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
               />
-              <button
+              <input
                 type="submit"
-                className="border-l border-neon/20 bg-neon/10 px-5 font-display text-[10px] tracking-[0.3em] text-neon-bright transition-colors hover:bg-neon/20"
-              >
-                SUBSCRIBE
-              </button>
+                value="SUBSCRIBE"
+                className="cursor-pointer border-l border-neon/20 bg-neon/10 px-5 font-display text-[10px] tracking-[0.3em] text-neon-bright transition-colors hover:bg-neon/20"
+              />
             </div>
             <p className="text-[11px] text-muted-foreground/70">
-              {status === "ok"
-                ? "Thanks — you're on the list."
-                : "Placeholder — connect to a provider to activate."}
+              No noise. Unsubscribe anytime.
             </p>
           </form>
         </div>
