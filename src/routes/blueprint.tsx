@@ -332,14 +332,7 @@ function BlueprintPage() {
                 DFRENZY VISUALS
               </Link>{" "}
               — the AI cinematic studio behind{" "}
-              <Link
-                to="/portfolio/$slug"
-                params={{ slug: "infidelity-unlimited" }}
-                className="text-foreground underline decoration-neon/40 underline-offset-4 transition-colors hover:text-neon-bright"
-              >
-                Infidelity Unlimited
-              </Link>
-              ,{" "}
+              <span className="text-foreground">Infidelity Unlimited</span>,{" "}
               <Link
                 to="/portfolio/$slug"
                 params={{ slug: "unbliss" }}
