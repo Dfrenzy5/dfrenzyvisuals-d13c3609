@@ -310,12 +310,6 @@ function BlueprintPage() {
             )}
           </Reveal>
 
-          <Reveal delay={200}>
-            <p className="mx-auto mt-8 max-w-2xl text-xs leading-relaxed text-muted-foreground/80">
-              No spam. Just cinematic dispatches from the studio, when there's
-              something worth sharing.
-            </p>
-          </Reveal>
         </Container>
       </Section>
 
