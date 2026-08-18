@@ -133,6 +133,39 @@ export const CASE_STUDIES: CaseStudy[] = [
     tools: ["Generative Video Pipeline", "Cinema 4D", "Premiere Pro", "DaVinci Resolve"],
   },
   {
+    slug: "the-business-launch",
+    title: "THE BUSINESS LAUNCH",
+    subtitle: "An Exclusive One-Day Event to Inspire, Empower & Equip",
+    category: "Event Film",
+    client: "The Business Launch",
+    year: "2026",
+    duration: "1 week (post)",
+    role: "Direction · Edit · Color · Sound",
+    poster: "https://img.youtube.com/vi/r76rRV2-z64/maxresdefault.jpg",
+    youtube: "r76rRV2-z64",
+    problem:
+      "Translate a single-day business event into a cinematic film that carries the energy of the room and drives attendance for the next edition.",
+    concept:
+      "Documentary intimacy with commercial polish — speakers in command, attendees leaning in, the quiet luxury of a well-run stage.",
+    moodboard: [
+      "Keynote stage grammar",
+      "Editorial luxury magazine grade",
+      "Warm skin tones, deep controlled blacks",
+    ],
+    production:
+      "Coverage across keynote, breakout sessions, networking, and hospitality, with on-site direction of hero moments and B-roll priorities.",
+    aiPipeline: [
+      "AI-assisted selects for fast turnaround",
+      "Auto-transcription for pull-quote sourcing",
+    ],
+    editing:
+      "Highlight film cut for momentum, graded in DaVinci Resolve, scored to land on the event's biggest reveals.",
+    outcome:
+      "A premium recap film positioning The Business Launch as a must-attend event for founders and operators.",
+    impact: ["Lead asset across event channels", "Repurposed into vertical short-form cuts"],
+    tools: ["Premiere Pro", "DaVinci Resolve", "Logic Pro"],
+  },
+  {
     slug: "legacy-business-summit-2026",
     title: "LEGACY BUSINESS SUMMIT 2026",
     subtitle: "Premium event coverage & highlight film",
