@@ -139,6 +139,23 @@ const FILMS: Film[] = [
   },
 ];
 
+const _UNUSED: Film[] = [
+  {
+    id: "legacy-old",
+    slug: "legacy-business-summit-2026",
+    title: "LEGACY BUSINESS SUMMIT 2026",
+    subtitle: "EVENT HIGHLIGHT",
+    category: "EVENTS",
+    image: "https://img.youtube.com/vi/pdDdO2WOlR4/maxresdefault.jpg",
+    youtube: "https://youtu.be/pdDdO2WOlR4",
+    description:
+      "A cinematic highlight showcasing the energy, excellence, and world-class production of Legacy Business Summit 2026. Capturing keynote moments, audience engagement, networking, and the premium atmosphere of one of Africa's leading business events.",
+    productionType: "Event Coverage",
+    creativeDirection: "Premium Documentary",
+    client: "Legacy Business Summit",
+  },
+];
+
 function PortfolioPage() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("ALL");
   const [open, setOpen] = useState<Film | null>(null);
