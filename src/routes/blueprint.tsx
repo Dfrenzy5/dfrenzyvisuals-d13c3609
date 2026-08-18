@@ -47,7 +47,10 @@ export const Route = createFileRoute("/blueprint")({
 const DOWNLOAD_PATH =
   "/__l5e/assets-v1/3470b1af-bf16-4758-adf2-4e53852396d3/The_AI_Content_Creator_Blueprint.pdf";
 
-// TODO: replace YOUR_USERNAME with the real Buttondown username once the account is live.
+// TODO(NOT-WIRED): The Buttondown account is not yet live. Replace YOUR_USERNAME below
+// with the real Buttondown username (https://buttondown.info) in BOTH this file and
+// src/components/SiteFooter.tsx. Until then this form posts to a non-existent Buttondown
+// endpoint and subscriptions will NOT be recorded — the email capture is a PLACEHOLDER only.
 const BUTTONDOWN_USERNAME = "YOUR_USERNAME";
 
 const WHATS_INSIDE = [
