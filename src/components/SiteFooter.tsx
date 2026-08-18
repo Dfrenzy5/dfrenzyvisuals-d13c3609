@@ -2,7 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { Youtube, Mail, Instagram, ArrowUp, MessageCircle } from "lucide-react";
 import { Container } from "./ui-studio/Container";
 
-// TODO: replace YOUR_USERNAME with the real Buttondown username once the account is live.
+// TODO(NOT-WIRED): The Buttondown account is not yet live. Replace YOUR_USERNAME below
+// with the real Buttondown username (https://buttondown.info) in BOTH SiteFooter.tsx and
+// src/routes/blueprint.tsx. Until then this form posts to a non-existent Buttondown endpoint
+// and subscriptions will NOT be recorded — the email capture is a PLACEHOLDER only.
 const BUTTONDOWN_USERNAME = "YOUR_USERNAME";
 
 const WORK_LINKS: Array<{ slug?: string; label: string }> = [
