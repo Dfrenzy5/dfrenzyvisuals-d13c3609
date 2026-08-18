@@ -137,6 +137,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "LEGACY BUSINESS SUMMIT 2026",
     subtitle: "Premium event coverage & highlight film",
     category: "Event Film",
+  },
+  {
+    slug: "the-business-launch",
+    title: "THE BUSINESS LAUNCH",
+    subtitle: "An Exclusive One-Day Event to Inspire, Empower & Equip",
+    category: "Event Film",
     client: "Legacy Business Summit",
     year: "2026",
     duration: "2 weeks (post)",
