@@ -2,7 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { Youtube, Mail, Instagram, ArrowUp, MessageCircle } from "lucide-react";
 import { Container } from "./ui-studio/Container";
 
-// TODO: replace YOUR_USERNAME with the real Buttondown username once the account is live.
+// TODO(NOT-WIRED): The Buttondown account is not yet live. Replace YOUR_USERNAME below
+// with the real Buttondown username (https://buttondown.info) in BOTH SiteFooter.tsx and
+// src/routes/blueprint.tsx. Until then this form posts to a non-existent Buttondown endpoint
+// and subscriptions will NOT be recorded — the email capture is a PLACEHOLDER only.
 const BUTTONDOWN_USERNAME = "YOUR_USERNAME";
 
 const WORK_LINKS: Array<{ slug?: string; label: string }> = [
@@ -14,6 +17,7 @@ const WORK_LINKS: Array<{ slug?: string; label: string }> = [
 
 const STUDIO_LINKS = [
   { to: "/" as const, label: "Home" },
+  { to: "/blueprint" as const, label: "AI Blueprint" },
   { to: "/pricing" as const, label: "Pricing" },
   { to: "/contact" as const, label: "Contact" },
 ];
@@ -45,6 +49,16 @@ export function SiteFooter() {
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
               New work, behind the scenes, and notes on where AI production is heading.
               No noise.
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              New here? Start with our free guide —{" "}
+              <Link
+                to="/blueprint"
+                className="font-display tracking-[0.05em] text-neon-bright underline decoration-neon/40 underline-offset-4 transition-colors hover:text-neon"
+              >
+                The AI Content Creator Blueprint
+              </Link>
+              .
             </p>
           </div>
           <form

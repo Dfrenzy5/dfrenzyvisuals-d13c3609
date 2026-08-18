@@ -1,10 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles } from "lucide-react";
+import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles, BookOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 
 const nav = [
   { to: "/portfolio", label: "PORTFOLIO", Icon: Film },
+  { to: "/blueprint", label: "FREE GUIDE", Icon: BookOpen },
   { to: "/pricing", label: "PRICING", Icon: DollarSign },
   { to: "/contact", label: "CONTACT", Icon: Send },
 ] as const;
