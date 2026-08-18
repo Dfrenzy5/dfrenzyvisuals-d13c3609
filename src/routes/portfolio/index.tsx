@@ -125,23 +125,20 @@ const FILMS: Film[] = [
   },
   {
     id: "6",
-    slug: "legacy-business-summit-2026",
-    title: "LEGACY BUSINESS SUMMIT 2026",
-    subtitle: "EVENT HIGHLIGHT",
+    slug: "the-business-launch",
+    title: "THE BUSINESS LAUNCH",
+    subtitle: "AN EXCLUSIVE ONE-DAY EVENT TO INSPIRE, EMPOWER & EQUIP",
     category: "EVENTS",
-    image: "https://img.youtube.com/vi/pdDdO2WOlR4/maxresdefault.jpg",
-    youtube: "https://youtu.be/pdDdO2WOlR4",
+    image: "https://img.youtube.com/vi/r76rRV2-z64/maxresdefault.jpg",
+    youtube: "https://youtu.be/r76rRV2-z64",
     description:
-      "A cinematic highlight showcasing the energy, excellence, and world-class production of Legacy Business Summit 2026. Capturing keynote moments, audience engagement, networking, and the premium atmosphere of one of Africa's leading business events.",
+      "The Business Launch — an exclusive one-day event created and presented as a premium visual experience by DFRENZY VISUALS. Cinematic coverage of keynotes, breakout sessions, and the energy of a room built to inspire, empower and equip.",
     productionType: "Event Coverage",
     creativeDirection: "Premium Documentary",
-    client: "Legacy Business Summit",
+    client: "The Business Launch",
   },
-];
-
-const _UNUSED: Film[] = [
   {
-    id: "legacy-old",
+    id: "7",
     slug: "legacy-business-summit-2026",
     title: "LEGACY BUSINESS SUMMIT 2026",
     subtitle: "EVENT HIGHLIGHT",
