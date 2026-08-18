@@ -50,6 +50,16 @@ export function SiteFooter() {
               New work, behind the scenes, and notes on where AI production is heading.
               No noise.
             </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              New here? Start with our free guide —{" "}
+              <Link
+                to="/blueprint"
+                className="font-display tracking-[0.05em] text-neon-bright underline decoration-neon/40 underline-offset-4 transition-colors hover:text-neon"
+              >
+                The AI Content Creator Blueprint
+              </Link>
+              .
+            </p>
           </div>
           <form
             action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
