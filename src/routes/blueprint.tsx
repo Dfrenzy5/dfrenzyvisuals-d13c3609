@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { SITE_URL } from "@/lib/site";
 import {
   Sparkles,
   GitCompareArrows,
