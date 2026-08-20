@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { CASE_STUDIES, getCaseStudy } from "@/data/case-studies";
 import type { CaseStudy } from "@/data/case-studies";
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolio/$slug")({
   loader: ({ params }) => {
@@ -11,10 +12,11 @@ export const Route = createFileRoute("/portfolio/$slug")({
   },
   head: ({ params, loaderData }) => {
     const s = loaderData?.study;
-    const url = `https://dfrenzyvisuals.lovable.app/portfolio/${params.slug}`;
+    const url = `${SITE_URL}/portfolio/${params.slug}`;
     const title = s ? `${s.title} — Case Study | DFrenzy Visuals` : "Case Study | DFrenzy Visuals";
     const desc = s?.subtitle ?? "Cinematic AI case study by DFrenzy Visuals.";
-    const image = s?.poster ?? "";
+    const rawPoster = s?.poster ?? "";
+    const image = rawPoster.startsWith("/") ? `${SITE_URL}${rawPoster}` : rawPoster;
     return {
       meta: [
         { title },

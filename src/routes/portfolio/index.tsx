@@ -5,6 +5,7 @@ import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
 import unbliss from "@/assets/unbliss.jpg";
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolio/")({
   head: () => ({
@@ -13,7 +14,11 @@ export const Route = createFileRoute("/portfolio/")({
       { name: "description", content: "Explore DFrenzy Visuals' portfolio of AI films, trailers, music visuals, brand promos, and event visuals crafted inside a cinematic AI universe." },
       { property: "og:title", content: "Portfolio | DFrenzy Visuals" },
       { property: "og:description", content: "AI films, trailers, music visuals, and brand promos from DFrenzy Visuals." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/portfolio` },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/portfolio` }],
   }),
   component: PortfolioPage,
 });

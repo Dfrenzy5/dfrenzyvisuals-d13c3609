@@ -4,6 +4,7 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react"
 import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { LazyMount } from "@/components/ui-studio/LazyMount";
+import { SITE_URL } from "@/lib/site";
 
 // Below-the-fold: split into their own chunks and mount as they approach viewport.
 const FeaturedShowcase = lazy(() =>
@@ -55,8 +56,22 @@ export const Route = createFileRoute("/")({
         content:
           "AI Cinematic Film Studio. Trailers, music visuals, brand promos.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
     scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "DFRENZY VISUALS",
+          url: `${SITE_URL}/`,
+          publisher: { "@type": "Organization", name: "DFRENZY VISUALS", url: `${SITE_URL}/` },
+        }),
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -64,8 +79,8 @@ export const Route = createFileRoute("/")({
           "@type": "Organization",
           name: "DFRENZY VISUALS",
           alternateName: "DfrenzyVisuals",
-          url: "https://dfrenzyvisuals.com",
-          logo: "https://dfrenzyvisuals.com/logo.png",
+          url: `${SITE_URL}/`,
+          logo: `${SITE_URL}/favicon.png`,
           description:
             "AI cinematic film studio producing commercials, branded storytelling, product films, and virtual production through an AI-native pipeline. Based in Lagos and Uyo, Nigeria.",
           email: "dfrenzyvisuals@gmail.com",

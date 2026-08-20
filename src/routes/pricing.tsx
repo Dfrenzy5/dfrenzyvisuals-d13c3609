@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Box, Gem, Crown, Check, Cpu, Zap, Infinity as InfinityIcon } from "lucide-react";
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -7,8 +8,12 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — DFRENZY VISUALS" },
       { name: "description", content: "AI film packages: Basic, Pro, and Studio+ tiers for cinematic AI productions." },
       { property: "og:title", content: "Pricing — DFRENZY VISUALS" },
-      { property: "og:description", content: "AI film packages." },
+      { property: "og:description", content: "Transparent AI film production packages — Basic, Pro, and Studio+ tiers from DFRENZY VISUALS." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/pricing` },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/pricing` }],
   }),
   component: PricingPage,
 });
