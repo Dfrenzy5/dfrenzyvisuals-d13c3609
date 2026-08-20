@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Send, CheckCircle2, MessageCircle, Mail, MapPin, Youtube, Instagram } from "lucide-react";
+import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -8,8 +9,12 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — DFRENZY VISUALS" },
       { name: "description", content: "Initiate collaboration with DFRENZY VISUALS. Send a transmission to start your AI film project." },
       { property: "og:title", content: "Contact — DFRENZY VISUALS" },
-      { property: "og:description", content: "Initiate collaboration." },
+      { property: "og:description", content: "Start your project with DFRENZY VISUALS — AI cinematic film studio. WhatsApp, email, or send a brief." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/contact` },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
   }),
   component: ContactPage,
 });
