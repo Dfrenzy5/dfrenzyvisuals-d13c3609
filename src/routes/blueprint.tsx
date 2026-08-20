@@ -34,11 +34,11 @@ export const Route = createFileRoute("/blueprint")({
           "A free visual guide to creating professional AI images, videos, and content — the exact framework DFrenzy Visuals uses in production.",
       },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "https://dfrenzyvisuals.lovable.app/blueprint" },
+      { property: "og:url", content: `${SITE_URL}/blueprint` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "canonical", href: "https://dfrenzyvisuals.lovable.app/blueprint" },
+      { rel: "canonical", href: `${SITE_URL}/blueprint` },
     ],
   }),
   component: BlueprintPage,
