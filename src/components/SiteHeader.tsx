@@ -1,8 +1,4 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles, BookOpen } from "lucide-react";
-import { useEffect, useState } from "react";
-import dfLogo from "@/assets/df-logo.png";
-
 import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles, BookOpen, Newspaper } from "lucide-react";
 import { useEffect, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
