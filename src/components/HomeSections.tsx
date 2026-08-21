@@ -10,7 +10,9 @@ import {
   Quote,
   ChevronLeft,
   ChevronRight,
+  ShieldCheck,
 } from "lucide-react";
+import certAsset from "@/assets/higgsfield-certification.jpg.asset.json";
 
 /* ---------------- Services ---------------- */
 
@@ -173,18 +175,48 @@ function StatsRow() {
     <section className="relative px-6 py-16 md:px-10">
       <div
         ref={ref}
-        className="mx-auto grid max-w-6xl grid-cols-2 gap-4 rounded-2xl border border-neon/20 glass-panel p-8 sm:gap-6 sm:p-10 md:grid-cols-4"
+        className="mx-auto max-w-6xl rounded-2xl border border-neon/20 glass-panel p-8 sm:p-10"
       >
-        {STATS.map((s) => (
-          <div key={s.label} className="text-center">
-            <div className="font-display text-3xl font-black tracking-wider text-neon-bright sm:text-5xl">
-              <Counter to={s.value} suffix={s.suffix} start={seen} />
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
+          {STATS.map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="font-display text-3xl font-black tracking-wider text-neon-bright sm:text-5xl">
+                <Counter to={s.value} suffix={s.suffix} start={seen} />
+              </div>
+              <div className="mt-2 font-display text-[10px] tracking-[0.3em] text-muted-foreground sm:text-xs">
+                {s.label.toUpperCase()}
+              </div>
             </div>
-            <div className="mt-2 font-display text-[10px] tracking-[0.3em] text-muted-foreground sm:text-xs">
-              {s.label.toUpperCase()}
-            </div>
+          ))}
+        </div>
+
+        {/* Certified & Trained Signal */}
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 border-t border-neon/10 pt-8 sm:flex-row sm:gap-8">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="h-5 w-5 text-neon-bright" />
+            <span className="font-display text-[10px] font-bold tracking-[0.2em] text-foreground/80 sm:text-xs">
+              CERTIFIED & TRAINED
+            </span>
           </div>
-        ))}
+          <a
+            href={certAsset.url}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex items-center gap-3 rounded-lg border border-neon/20 bg-background/40 p-2 pr-4 transition-all hover:border-neon/50 hover:bg-neon/5"
+          >
+            <div className="h-10 w-14 overflow-hidden rounded border border-neon/20 bg-deep transition-transform group-hover:scale-105">
+              <img
+                src={certAsset.url}
+                alt="Higgsfield Academy Certification"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <span className="text-left font-display text-[9px] leading-tight tracking-[0.1em] text-muted-foreground transition-colors group-hover:text-foreground">
+              Higgsfield Academy — <br />
+              <span className="text-neon-bright">AI Filmmaking Pipeline Certified</span>
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );
