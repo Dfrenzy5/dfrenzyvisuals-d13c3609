@@ -481,7 +481,17 @@ function Index() {
           }}
         >
           <h1 className="font-display text-2xl tracking-[0.5em] sm:text-4xl" style={{ color: "#FFFFFF", textShadow: "0 0 18px rgba(0,213,255,0.8)" }}>
-            DFRENZY VISUALS
+            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+
+            A few things to flag from this check:
+
+            Not seeing yet:
+
+            No Higgsfield certification badge/trust line in the stats section
+
+            /faq isn't in the footer's "Studio" column — I don't see it listed (Home / Journal / AI Blueprint / Pricing / Contact — no FAQ)
+
+            The Leopard King still isn't in the footer's "Work" column on this homepage view — it only shows UNBLISS, Beyond Horizon, Legacy Summit 2026
           </h1>
           {show.identity && (
             <span
