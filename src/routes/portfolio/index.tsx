@@ -193,12 +193,12 @@ function PortfolioPage() {
       {/* Featured */}
       <div className="relative mt-10 overflow-hidden rounded-2xl border border-neon/30 glass-panel">
         <div className="relative aspect-[21/9] w-full overflow-hidden">
-          <img src={unbliss} alt="UNBLISS" className="h-full w-full object-cover" />
+          <img src="https://img.youtube.com/vi/BB2NxsBS6BA/maxresdefault.jpg" alt="THE LEOPARD KING" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <button
             onClick={() => setOpen(FILMS[0])}
             className="absolute inset-0 flex items-center justify-center"
-            aria-label="Play UNBLISS"
+            aria-label="Play THE LEOPARD KING"
           >
             <span className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-neon bg-neon/10 backdrop-blur-md transition-all hover:scale-110 hover:neon-glow">
               <Play className="h-8 w-8 fill-neon-bright text-neon-bright" />
@@ -206,8 +206,8 @@ function PortfolioPage() {
           </button>
           <div className="absolute bottom-0 left-0 p-6 md:p-10">
             <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">FEATURED CINEMATIC</div>
-            <h2 className="mt-2 font-display text-3xl font-black tracking-widest text-foreground md:text-5xl">UNBLISS</h2>
-            <p className="mt-1 text-sm tracking-widest text-muted-foreground">SOME LOVE STORIES HAVE WITNESSES</p>
+            <h2 className="mt-2 font-display text-3xl font-black tracking-widest text-foreground md:text-5xl">THE LEOPARD KING</h2>
+            <p className="mt-1 text-sm tracking-widest text-muted-foreground">THE RITE · THE BECOMING · THE WAR</p>
           </div>
         </div>
       </div>
