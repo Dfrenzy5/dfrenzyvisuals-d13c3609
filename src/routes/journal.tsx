@@ -55,6 +55,7 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
       "Completed the Cinema Studio Pro Guide certification through Higgsfield Academy, reinforcing DFrenzy Visuals' AI filmmaking pipeline expertise.",
     status: "Completed",
   },
+  {
     id: "the-leopard-king-live",
     date: "August 2026",
     category: "Portfolio",
