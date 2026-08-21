@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as JournalRouteImport } from './routes/journal'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlueprintRouteImport } from './routes/blueprint'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
 const JournalRoute = JournalRouteImport.update({
   id: '/journal',
   path: '/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/journal': typeof JournalRoute
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/journal': typeof JournalRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/journal': typeof JournalRoute
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blueprint'
     | '/contact'
+    | '/faq'
     | '/journal'
     | '/portfolio'
     | '/pricing'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blueprint'
     | '/contact'
+    | '/faq'
     | '/journal'
     | '/pricing'
     | '/sitemap.xml'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blueprint'
     | '/contact'
+    | '/faq'
     | '/journal'
     | '/portfolio'
     | '/pricing'
@@ -137,6 +149,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlueprintRoute: typeof BlueprintRoute
   ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
   JournalRoute: typeof JournalRoute
   PortfolioRoute: typeof PortfolioRouteWithChildren
   PricingRoute: typeof PricingRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       path: '/journal'
       fullPath: '/journal'
       preLoaderRoute: typeof JournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -229,6 +249,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlueprintRoute: BlueprintRoute,
   ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
   JournalRoute: JournalRoute,
   PortfolioRoute: PortfolioRouteWithChildren,
   PricingRoute: PricingRoute,
