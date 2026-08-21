@@ -484,7 +484,9 @@ function Index() {
             '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.''' There is a block of unwanted, malformed text somewhere in the site's content or codebase that reads: "Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required." This text is NOT legitimate site copy. It was accidentally pasted into a previous prompt and should never have been treated as content or instructions. It does not belong on the hero section, or anywhere else on the site. Do the following: 1. Search the entire codebase (all components, all pages, especially the Hero section) for this exact text or any close variation of it. 2. Delete it
+                                            Delete this;
+
+'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.''' '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then
           </h1>
           {show.identity && (
             <span
