@@ -17,6 +17,7 @@ const WORK_LINKS: Array<{ slug?: string; label: string }> = [
 
 const STUDIO_LINKS = [
   { to: "/" as const, label: "Home" },
+  { to: "/journal" as const, label: "Journal" },
   { to: "/blueprint" as const, label: "AI Blueprint" },
   { to: "/pricing" as const, label: "Pricing" },
   { to: "/contact" as const, label: "Contact" },
