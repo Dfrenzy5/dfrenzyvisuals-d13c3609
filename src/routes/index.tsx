@@ -481,13 +481,7 @@ function Index() {
           }}
         >
           <h1 className="font-display text-2xl tracking-[0.5em] sm:text-4xl" style={{ color: "#FFFFFF", textShadow: "0 0 18px rgba(0,213,255,0.8)" }}>
-            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            Remove this entirely;
-
-
-'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.''' Delete this; '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.''' Delete this; '''Do not
+            {"'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.''' Remove this entirely; '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not t make any visual modifications. The phrases I write are\u00a0 written down. Understand their content well, then execute what is required.''' Delete this; '''Do not"}
           </h1>
           {show.identity && (
             <span
