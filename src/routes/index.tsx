@@ -484,9 +484,7 @@ function Index() {
             '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            There is stray, incorrect text visible somewhere on the site that reads approximately: "Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required."
-
-This text should NOT be visible anywhere on the site — it was accidentally included in a previous content update and should never have been rendered as page copy. Search the entire codebase for this text (or close variations of it) and remove it completely from wherever it appears. Do not replace it with anything — just delete it. Confirm which file/component it was found in and that it's been removed.
+                                            it's not fixed
           </h1>
           {show.identity && (
             <span
