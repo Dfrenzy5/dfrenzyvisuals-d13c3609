@@ -56,6 +56,20 @@ function ytId(url: string): string {
 
 const FILMS: Film[] = [
   {
+    id: "the-leopard-king",
+    slug: "the-leopard-king",
+    title: "THE LEOPARD KING",
+    subtitle: "THE RITE · THE BECOMING · THE WAR",
+    category: "TRAILERS",
+    image: "https://img.youtube.com/vi/BB2NxsBS6BA/maxresdefault.jpg",
+    youtube: "https://youtu.be/BB2NxsBS6BA",
+    description:
+      "A cinematic AI-generated trailer built across a three-act structure — The Rite, The Becoming, The War — plus a closing Coda. Produced using Seedance 2.0 animation, with a Suno original score.",
+    productionType: "AI Cinematic Trailer",
+    creativeDirection: "Music & Culture / Cinematic Epic",
+    tools: "Seedance 2.0, Grok, Suno, DaVinci Resolve",
+  },
+  {
     id: "unbliss",
     slug: "unbliss",
     title: "UNBLISS",

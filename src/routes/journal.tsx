@@ -47,6 +47,16 @@ interface JournalEntry {
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
   {
+    id: "the-leopard-king-live",
+    date: "August 2026",
+    category: "Portfolio",
+    title: "The Leopard King — Now Live",
+    description:
+      "A three-act cinematic trailer built entirely with AI — Seedance 2.0 animation, Grok storyboarding, and an original Suno score. Watch the full piece in our portfolio.",
+    status: "Live",
+    to: { label: "Watch Film", route: "/portfolio/$slug", params: { slug: "the-leopard-king" } },
+  },
+  {
     id: "warsaw-glitch-suite-dreams",
     date: "August 2026",
     category: "Event",

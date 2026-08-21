@@ -332,6 +332,44 @@ export const CASE_STUDIES: CaseStudy[] = [
     impact: ["Studio atmospheric range proof piece", "Portfolio contemplative anchor"],
     tools: ["Generative Video Pipeline", "DaVinci Resolve", "Logic Pro"],
   },
+  {
+    slug: "the-leopard-king",
+    title: "The Leopard King",
+    subtitle: "Cinematic Trailer / Music & Culture",
+    category: "Cinematic Trailer",
+    year: "2026",
+    duration: "2 weeks",
+    role: "Direction · AI Pipeline · Score",
+    poster: "https://img.youtube.com/vi/BB2NxsBS6BA/maxresdefault.jpg",
+    youtube: "BB2NxsBS6BA",
+    problem:
+      "Craft a cinematic AI-generated trailer that moves through a distinct three-act structure while maintaining high-tension drama through a minimal, architectural score.",
+    concept:
+      "A journey through three acts — The Rite, The Becoming, The War — plus a closing Coda. The visual language leans into Seedance 2.0's fluid motion, while the score uses deliberate silence for tension.",
+    moodboard: [
+      "African futurism / Tribal sci-fi",
+      "High-contrast golden hour",
+      "Architectural silence",
+      "Fluid, organic motion vs. rigid armor",
+    ],
+    production:
+      "Built across a structured three-act pipeline. Act 1 focuses on ritual (The Rite), Act 2 on transformation (The Becoming), and Act 3 on conflict (The War), ending with an emotional Coda.",
+    aiPipeline: [
+      "Seedance 2.0 for high-fidelity character animation",
+      "Grok for act-based storyboarding and conceptual continuity",
+      "Suno original score built on silence architecture",
+      "Upscale and cinematic grain finishing",
+    ],
+    editing:
+      "Cut to the rhythmic silence of the Suno score. Every frame transition is timed to the 'architectural' breaths in the music.",
+    outcome:
+      "A flagship cinematic trailer demonstrating the studio's ability to handle complex narrative structures and custom scores inside a pure AI pipeline.",
+    impact: [
+      "Showcased at the studio's cinematic reel",
+      "Used as primary reference for music-culture client pitches",
+    ],
+    tools: ["Seedance 2.0", "Grok", "Suno", "DaVinci Resolve"],
+  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
