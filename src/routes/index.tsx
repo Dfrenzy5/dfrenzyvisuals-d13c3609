@@ -28,6 +28,9 @@ const CreativeLab = lazy(() =>
 const Testimonials = lazy(() =>
   import("@/components/HomeSections").then((m) => ({ default: m.Testimonials })),
 );
+const StatsRow = lazy(() =>
+  import("@/components/HomeSections").then((m) => ({ default: m.StatsRow })),
+);
 const Awards = lazy(() =>
   import("@/components/HomeExtras").then((m) => ({ default: m.Awards })),
 );
@@ -646,6 +649,7 @@ function Index() {
     </Suspense>
     <Suspense fallback={null}>
       <LazyMount minHeight={220}><TrustedBy /></LazyMount>
+      <LazyMount minHeight={200}><StatsRow /></LazyMount>
       <LazyMount minHeight={520}><Services /></LazyMount>
       <LazyMount minHeight={520}><DirectorsChoice /></LazyMount>
       <LazyMount minHeight={480}><CreativeProcess /></LazyMount>
