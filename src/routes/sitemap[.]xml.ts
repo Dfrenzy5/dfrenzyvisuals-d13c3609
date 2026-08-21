@@ -3,6 +3,8 @@ import type {} from "@tanstack/react-start";
 import { CASE_STUDIES } from "@/data/case-studies";
 import { SITE_URL } from "@/lib/site";
 
+
+
 interface SitemapEntry {
   path: string;
   changefreq?: "weekly" | "monthly" | "yearly";

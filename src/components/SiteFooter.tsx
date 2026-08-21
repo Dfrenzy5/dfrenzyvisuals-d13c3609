@@ -13,6 +13,7 @@ const WORK_LINKS: Array<{ slug?: string; label: string }> = [
   { slug: "unbliss", label: "UNBLISS" },
   { slug: "beyond-horizon", label: "Beyond Horizon" },
   { slug: "legacy-business-summit-2026", label: "Legacy Summit 2026" },
+  { slug: "the-leopard-king", label: "The Leopard King" },
 ];
 
 const STUDIO_LINKS = [
