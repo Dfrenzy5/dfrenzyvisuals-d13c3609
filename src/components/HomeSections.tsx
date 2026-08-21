@@ -414,3 +414,5 @@ export function HomeSections() {
     </>
   );
 }
+
+export { StatsRow };
