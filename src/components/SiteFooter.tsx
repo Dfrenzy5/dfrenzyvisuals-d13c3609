@@ -22,6 +22,7 @@ const STUDIO_LINKS = [
   { to: "/blueprint" as const, label: "AI Blueprint" },
   { to: "/pricing" as const, label: "Pricing" },
   { to: "/contact" as const, label: "Contact" },
+  { to: "/faq" as const, label: "FAQ" },
 ];
 
 const SERVICE_LINKS = [
