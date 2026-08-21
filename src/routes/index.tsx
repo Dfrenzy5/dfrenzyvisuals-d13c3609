@@ -648,16 +648,16 @@ function Index() {
       <LazyMount minHeight={640}><FeaturedShowcase /></LazyMount>
     </Suspense>
     <Suspense fallback={null}>
-      <LazyMount minHeight={220}><TrustedBy /></LazyMount>
-      <LazyMount minHeight={200}><StatsRow /></LazyMount>
-      <LazyMount minHeight={520}><Services /></LazyMount>
-      <LazyMount minHeight={520}><DirectorsChoice /></LazyMount>
-      <LazyMount minHeight={480}><CreativeProcess /></LazyMount>
-      <LazyMount minHeight={480}><CreativeLab /></LazyMount>
-      <LazyMount minHeight={480}><Testimonials /></LazyMount>
-      <LazyMount minHeight={360}><Awards /></LazyMount>
-      <LazyMount minHeight={480}><FAQ /></LazyMount>
-      <LazyMount minHeight={400}><ContactCTA /></LazyMount>
+      <TrustedBy />
+      <StatsRow />
+      <Services />
+      <DirectorsChoice />
+      <CreativeProcess />
+      <CreativeLab />
+      <Testimonials />
+      <Awards />
+      <FAQ />
+      <ContactCTA />
     </Suspense>
     </>
   );
