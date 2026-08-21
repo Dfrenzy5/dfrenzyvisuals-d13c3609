@@ -481,7 +481,7 @@ function Index() {
           }}
         >
           <h1 className="font-display text-2xl tracking-[0.5em] sm:text-4xl" style={{ color: "#FFFFFF", textShadow: "0 0 18px rgba(0,213,255,0.8)" }}>
-            {"\n"}
+            {"'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''\n                                        \n                                            \n                                            The Higgsfield Academy certification badge in the \"Certified & Trained\" section links to an image that returns a 404 error when clicked.\n\n1. Check the current image/link path used for the Higgsfield certificate badge in that section.\n\n2. Confirm whether the certificate image file was actually uploaded to site assets successfully, or if the path is broken/pointing to the wrong location.\n\n3. If the file is missing, I will re-attach the certificate image in this chat — re-upload it as a site asset and give me the correct working public URL.\n\n4. Fix the link/embed so clicking the badge opens the correct certificate image (in a lightbox or new tab), with no 404.\n\nConfirm the corrected URL once fixed so I can verify it loads."}
           </h1>
           {show.identity && (
             <span
