@@ -3,8 +3,13 @@ import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles, BookOpen } 
 import { useEffect, useState } from "react";
 import dfLogo from "@/assets/df-logo.png";
 
+import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles, BookOpen, Newspaper } from "lucide-react";
+import { useEffect, useState } from "react";
+import dfLogo from "@/assets/df-logo.png";
+
 const nav = [
   { to: "/portfolio", label: "PORTFOLIO", Icon: Film },
+  { to: "/journal", label: "JOURNAL", Icon: Newspaper },
   { to: "/blueprint", label: "FREE GUIDE", Icon: BookOpen },
   { to: "/pricing", label: "PRICING", Icon: DollarSign },
   { to: "/contact", label: "CONTACT", Icon: Send },
