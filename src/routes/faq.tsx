@@ -39,6 +39,10 @@ const FAQ_DATA = [
     a: "Yes. We run AI filmmaking training and workshops in partnership with Johnab Technologies and Tabb Creative.",
   },
   {
+    q: "Is DFrenzy Visuals certified or formally trained in AI filmmaking?",
+    a: "Yes. DFrenzy Visuals is certified in AI Filmmaking through Higgsfield Academy's Cinema Studio Pro Guide, in addition to ongoing training partnerships with Johnab Technologies and Tabb Creative.",
+  },
+  {
     q: "How can I start a project with DFrenzy Visuals?",
     a: "Reach out via the contact page or WhatsApp with your project details, and we'll follow up with a consultation and quote.",
   },

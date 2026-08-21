@@ -32,7 +32,7 @@ export const Route = createFileRoute("/journal")({
 // To add an entry: append an object to JOURNAL_ENTRIES below.
 // ─────────────────────────────────────────────────────────────────────────────
 type JournalCategory = "Portfolio" | "Event";
-type JournalStatus = "In Production" | "Submitted" | "Live" | "Archived";
+type JournalStatus = "In Production" | "Submitted" | "Live" | "Archived" | "Completed";
 
 interface JournalEntry {
   id: string;
@@ -46,6 +46,15 @@ interface JournalEntry {
 }
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
+  {
+    id: "certified-higgsfield-academy",
+    date: "July 2026",
+    category: "Event",
+    title: "Certified — The AI Filmmaking Pipeline (Higgsfield Academy)",
+    description:
+      "Completed the Cinema Studio Pro Guide certification through Higgsfield Academy, reinforcing DFrenzy Visuals' AI filmmaking pipeline expertise.",
+    status: "Completed",
+  },
   {
     id: "the-leopard-king-live",
     date: "August 2026",
@@ -92,6 +101,7 @@ const STATUS_STYLES: Record<JournalStatus, string> = {
   Submitted: "border-accent/50 bg-accent/10 text-accent-foreground",
   Live: "border-emerald-400/40 bg-emerald-400/10 text-emerald-300",
   Archived: "border-neon/20 bg-background/40 text-muted-foreground",
+  Completed: "border-neon-bright/50 bg-neon-bright/10 text-neon-bright",
 };
 
 function JournalCard({ entry }: { entry: JournalEntry }) {
