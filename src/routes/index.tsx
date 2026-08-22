@@ -481,9 +481,7 @@ function Index() {
           }}
         >
           <h1 className="font-display text-2xl tracking-[0.5em] sm:text-4xl" style={{ color: "#FFFFFF", textShadow: "0 0 18px rgba(0,213,255,0.8)" }}>
-            {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-
-Undo the last change. The instruction I pasted was accidentally added as visible website content instead of being used as a development instruction. Remove all text/content that was added from my last prompt and restore the website to its previous state. Do not modify any other existing content or design.`}
+            {"\n"}
           </h1>
           {show.identity && (
             <span
