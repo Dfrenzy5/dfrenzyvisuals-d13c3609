@@ -481,7 +481,85 @@ function Index() {
           }}
         >
           <h1 className="font-display text-2xl tracking-[0.5em] sm:text-4xl" style={{ color: "#FFFFFF", textShadow: "0 0 18px rgba(0,213,255,0.8)" }}>
-            {"\u00a0"}
+            {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+
+Create a new standalone page at /ai-filmmaker.
+
+This is an authority/profile page for DFrenzy Visuals. Do not modify or redesign any existing page.
+
+Page title:
+
+AI Filmmaker & Creative Director | DFrenzy Visuals
+
+Use this factual information:
+
+Name: Daniel Ehi
+
+Role: Founder & Creative Director, DFrenzy Visuals
+
+Bio:
+
+"Daniel Ehi is the founder and creative director of DFrenzy Visuals, a Nigeria-based AI cinematic film studio. His work focuses on AI filmmaking, cinematic visual storytelling, commercial production, promotional content and creative direction, combining emerging AI technologies with traditional filmmaking principles to create compelling visual experiences."
+
+Structure the page professionally:
+
+1. Hero section
+
+- "Daniel Ehi"
+
+- "Founder & Creative Director"
+
+- "AI Filmmaker"
+
+- Premium cinematic visual treatment
+
+2. About
+
+Use the bio above.
+
+3. Creative Philosophy
+
+Explain the relationship between AI technology, human creativity, storytelling and cinematic direction.
+
+4. Areas of Expertise
+
+- AI Filmmaking
+
+- Cinematic Visual Storytelling
+
+- Commercial Production
+
+- Brand Storytelling
+
+- Promotional Content
+
+- Creative Direction
+
+5. Selected Work
+
+Display selected existing projects from the portfolio. Do not create fake projects.
+
+6. Call to Action
+
+"Have a story to tell?"
+
+Button: "Start a Project"
+
+Link the button to the existing contact section/page.
+
+Design requirements:
+
+- Match the existing DFrenzy Visuals black/gold cinematic aesthetic.
+
+- Premium typography and generous spacing.
+
+- Subtle animations only.
+
+- Fully responsive on desktop, tablet and mobile.
+
+- Do not invent awards, certifications, years of experience, clients or achievements.
+
+- Do not modify existing pages, portfolio content, pricing, navigation or branding except where necessary to add the new page to the existing navigation.`}
           </h1>
           {show.identity && (
             <span
