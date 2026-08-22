@@ -14,6 +14,7 @@ const WORK_LINKS: Array<{ slug?: string; label: string }> = [
   { slug: "beyond-horizon", label: "Beyond Horizon" },
   { slug: "legacy-business-summit-2026", label: "Legacy Summit 2026" },
   { slug: "the-leopard-king", label: "The Leopard King" },
+  { slug: "3am-the-hotel-dreams", label: "3AM (The Hotel Dreams)" },
 ];
 
 const STUDIO_LINKS = [

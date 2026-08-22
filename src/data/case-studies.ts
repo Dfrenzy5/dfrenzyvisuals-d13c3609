@@ -370,6 +370,44 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tools: ["Seedance 2.0", "Grok", "Suno", "DaVinci Resolve"],
   },
+  {
+    slug: "3am-the-hotel-dreams",
+    title: "3AM (The Hotel Dreams)",
+    subtitle: "AI Short Film / Festival Entry",
+    category: "AI Short Film",
+    year: "2026",
+    duration: "2 weeks",
+    role: "Direction · AI Pipeline · Edit · Sound",
+    poster: "https://img.youtube.com/vi/zYjSG6ta710/maxresdefault.jpg",
+    youtube: "zYjSG6ta710",
+    problem:
+      "Create an original AI short film for the Suite Dreams GenJam challenge — a late-night, dreamlike hotel narrative built entirely inside an AI production pipeline, delivered on a contest deadline.",
+    concept:
+      "A hotel after midnight, where the building itself seems to dream. Corridor light, half-open doors, and the quiet logic of sleep — the hotel becomes the lead character in a drifting, nocturnal narrative.",
+    moodboard: [
+      "Late-night corridor light & vacancy signs",
+      "Dreamlike slow drift camera language",
+      "Cool cyan exteriors vs. warm lobby glow",
+      "Surreal liminal-space framing",
+    ],
+    production:
+      "Built end-to-end inside the studio's AI-native pipeline for the Suite Dreams GenJam, part of Machine Cinema's Warsaw Glitch festival. Shot selection, generation, and edit were compressed into a contest turnaround without dropping the studio's continuity discipline.",
+    aiPipeline: [
+      "Concept and storyboard pass for the nocturnal hotel narrative",
+      "Environment and character generation with continuity locking",
+      "Motion synthesis with slow, dream-paced camera moves",
+      "Grain, halation, and sound design finishing pass",
+    ],
+    editing:
+      "Cut to breathe like a dream — long holds, soft transitions, and a soundscape that carries the hotel's presence as much as the picture.",
+    outcome:
+      "An original AI short film submitted to the Suite Dreams GenJam challenge, extending the studio's festival portfolio with a purely atmospheric, dream-led piece.",
+    impact: [
+      "Contest entry for Machine Cinema's Warsaw Glitch festival",
+      "Showcases the studio's dreamlike, liminal-space range",
+    ],
+    tools: ["Generative Video Pipeline", "Grok", "Seedance", "DaVinci Resolve"],
+  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
