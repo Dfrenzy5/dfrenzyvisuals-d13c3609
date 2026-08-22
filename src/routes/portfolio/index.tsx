@@ -170,6 +170,20 @@ const FILMS: Film[] = [
     creativeDirection: "Premium Documentary",
     client: "Legacy Business Summit",
   },
+  {
+    id: "8",
+    slug: "3am-the-hotel-dreams",
+    title: "3AM (THE HOTEL DREAMS)",
+    subtitle: "AI SHORT FILM / FESTIVAL ENTRY",
+    category: "AI FILMS",
+    image: "https://img.youtube.com/vi/zYjSG6ta710/maxresdefault.jpg",
+    youtube: "https://youtube.com/shorts/zYjSG6ta710",
+    description:
+      "A contest entry created for the Suite Dreams GenJam challenge, part of Machine Cinema's Warsaw Glitch festival. A late-night, dreamlike hotel narrative built entirely with an AI production pipeline.",
+    productionType: "AI Short Film",
+    creativeDirection: "Dreamlike / Liminal Narrative",
+    tools: "Generative Video Pipeline, Grok, Seedance, DaVinci Resolve",
+  },
 ];
 
 function PortfolioPage() {

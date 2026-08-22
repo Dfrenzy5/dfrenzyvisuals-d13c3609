@@ -47,6 +47,16 @@ interface JournalEntry {
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
   {
+    id: "3am-the-hotel-dreams-submitted",
+    date: "August 2026",
+    category: "Event",
+    title: "Submitted — 3AM (The Hotel Dreams) for Suite Dreams GenJam",
+    description:
+      "Entered the Suite Dreams GenJam challenge for Machine Cinema's Warsaw Glitch festival with an original AI short film.",
+    status: "Submitted",
+    to: { label: "Watch Film", route: "/portfolio/$slug", params: { slug: "3am-the-hotel-dreams" } },
+  },
+  {
     id: "certified-higgsfield-academy",
     date: "July 2026",
     category: "Event",
