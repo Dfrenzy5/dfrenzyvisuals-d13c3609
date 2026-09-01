@@ -289,10 +289,9 @@ export function CreativeProcess() {
 /* ---------------- Awards / Recognition ---------------- */
 
 const AWARDS = [
-  { Icon: Trophy, title: "Featured Studio", note: "AI Filmmaking Showcase 2026" },
-  { Icon: Award, title: "Best Cinematic Trailer", note: "Independent Selection" },
-  { Icon: Star, title: "5.0 Client Rating", note: "Across launched productions" },
-  { Icon: Sparkles, title: "Early AI Pipeline Adopter", note: "Since 2023" },
+  { Icon: Trophy, title: "Certified AI Filmmaking", subtitle: "Higgsfield Academy", note: "AI Filmmaking Pipeline Certified" },
+  { Icon: Award, title: "AI Filmmaking Practitioner", subtitle: "DFrenzy Visuals", note: "AI-native cinematic production & creative direction" },
+  { Icon: Sparkles, title: "Director-Led Production", subtitle: "DFrenzy Visuals", note: "Human direction combined with generative AI workflows" },
 ];
 
 export function Awards() {
@@ -310,10 +309,10 @@ export function Awards() {
             id="awards-heading"
             className="mt-3 font-display text-3xl font-black tracking-[0.18em] text-foreground sm:text-5xl"
           >
-            AWARDS &amp; PRESS
+            CREDENTIALS &amp; RECOGNITION
           </h2>
         </div>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {AWARDS.map((a) => (
             <div
               key={a.title}
@@ -325,7 +324,8 @@ export function Awards() {
               <div className="mt-4 font-display text-sm font-bold tracking-[0.15em] text-foreground">
                 {a.title.toUpperCase()}
               </div>
-              <div className="mt-1 text-xs text-muted-foreground">{a.note}</div>
+              <div className="mt-1 text-xs text-neon-bright">{a.subtitle}</div>
+              <div className="mt-2 text-xs text-muted-foreground">{a.note}</div>
             </div>
           ))}
         </div>
