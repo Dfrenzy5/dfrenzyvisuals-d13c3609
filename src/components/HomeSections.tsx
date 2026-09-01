@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Film,
   Megaphone,
@@ -100,94 +100,19 @@ function ServicesGrid() {
   );
 }
 
-/* ---------------- Stats (smooth counter, runs once) ---------------- */
-
-const STATS = [
-  { value: 120, suffix: "+", label: "Productions Delivered" },
-  { value: 45, suffix: "+", label: "Brands Served" },
-  { value: 9, suffix: "M+", label: "Cumulative Views" },
-  { value: 100, suffix: "%", label: "Client Satisfaction" },
-];
-
-function useInView<T extends HTMLElement>(threshold = 0.3) {
-  const ref = useRef<T>(null);
-  const [seen, setSeen] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || seen) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            setSeen(true);
-            io.disconnect();
-            return;
-          }
-        }
-      },
-      { threshold },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [seen, threshold]);
-  return { ref, seen };
-}
-
-function Counter({ to, suffix, start }: { to: number; suffix: string; start: boolean }) {
-  const [n, setN] = useState(0);
-  const raf = useRef<number | null>(null);
-  const startedAt = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (!start) return;
-    if (typeof window === "undefined") return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setN(to);
-      return;
-    }
-    const DURATION = 1500;
-    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-    const tick = (ts: number) => {
-      if (startedAt.current == null) startedAt.current = ts;
-      const elapsed = ts - startedAt.current;
-      const t = Math.min(elapsed / DURATION, 1);
-      setN(Math.round(easeOutCubic(t) * to));
-      if (t < 1) raf.current = requestAnimationFrame(tick);
-    };
-    raf.current = requestAnimationFrame(tick);
-    return () => {
-      if (raf.current != null) cancelAnimationFrame(raf.current);
-    };
-  }, [start, to]);
-
-  return (
-    <span className="tabular-nums">
-      {n}
-      {suffix}
-    </span>
-  );
-}
-
 function StatsRow() {
-  const { ref, seen } = useInView<HTMLDivElement>(0.4);
   return (
     <section className="relative px-6 py-16 md:px-10">
       <div
-        ref={ref}
         className="mx-auto max-w-6xl rounded-2xl border border-neon/20 glass-panel p-8 sm:p-10"
       >
-        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
-          {STATS.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="font-display text-3xl font-black tracking-wider text-neon-bright sm:text-5xl">
-                <Counter to={s.value} suffix={s.suffix} start={seen} />
-              </div>
-              <div className="mt-2 font-display text-[10px] tracking-[0.3em] text-muted-foreground sm:text-xs">
-                {s.label.toUpperCase()}
-              </div>
-            </div>
-          ))}
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="font-display text-2xl font-black tracking-[0.12em] text-neon-bright sm:text-4xl">
+            AI-POWERED. DIRECTOR-LED. CINEMATIC BY DESIGN.
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            From concept and visual development to AI production, editing, sound and final delivery, DFrenzy Visuals combines emerging AI technology with human-led cinematic direction.
+          </p>
         </div>
 
         {/* Certified & Trained Signal */}
