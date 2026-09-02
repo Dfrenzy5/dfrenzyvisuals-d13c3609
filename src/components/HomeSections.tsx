@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import certAsset from "@/assets/higgsfield-certification.jpg.asset.json";
 
+const CERTIFICATE_URL = `https://dfrenzyvisuals.lovable.app${certAsset.url}`;
+
 /* ---------------- Services ---------------- */
 
 const SERVICES = [
@@ -124,14 +126,14 @@ function StatsRow() {
             </span>
           </div>
           <a
-            href={certAsset.url}
+            href={CERTIFICATE_URL}
             target="_blank"
             rel="noreferrer"
             className="group flex items-center gap-3 rounded-lg border border-neon/20 bg-background/40 p-2 pr-4 transition-all hover:border-neon/50 hover:bg-neon/5"
           >
             <div className="h-10 w-14 overflow-hidden rounded border border-neon/20 bg-deep transition-transform group-hover:scale-105">
               <img
-                src={certAsset.url}
+                src={CERTIFICATE_URL}
                 alt="Higgsfield Academy Certification"
                 className="h-full w-full object-cover"
               />
