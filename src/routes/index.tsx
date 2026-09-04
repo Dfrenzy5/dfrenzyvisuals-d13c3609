@@ -34,6 +34,9 @@ const StatsRow = lazy(() =>
 const Awards = lazy(() =>
   import("@/components/HomeExtras").then((m) => ({ default: m.Awards })),
 );
+const MeetTheDirector = lazy(() =>
+  import("@/components/MeetTheDirector").then((m) => ({ default: m.MeetTheDirector })),
+);
 const FAQ = lazy(() =>
   import("@/components/HomeExtras").then((m) => ({ default: m.FAQ })),
 );
@@ -656,6 +659,7 @@ function Index() {
       <CreativeLab />
       <Testimonials />
       <Awards />
+      <MeetTheDirector />
       <FAQ />
       <ContactCTA />
     </Suspense>

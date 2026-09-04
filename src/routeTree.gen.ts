@@ -16,6 +16,7 @@ import { Route as JournalRouteImport } from './routes/journal'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlueprintRouteImport } from './routes/blueprint'
+import { Route as AiFilmmakerRouteImport } from './routes/ai-filmmaker'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
@@ -55,6 +56,11 @@ const BlueprintRoute = BlueprintRouteImport.update({
   path: '/blueprint',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiFilmmakerRoute = AiFilmmakerRouteImport.update({
+  id: '/ai-filmmaker',
+  path: '/ai-filmmaker',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,6 +79,7 @@ const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-filmmaker': typeof AiFilmmakerRoute
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-filmmaker': typeof AiFilmmakerRoute
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -97,6 +105,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-filmmaker': typeof AiFilmmakerRoute
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ai-filmmaker'
     | '/blueprint'
     | '/contact'
     | '/faq'
@@ -123,6 +133,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ai-filmmaker'
     | '/blueprint'
     | '/contact'
     | '/faq'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/ai-filmmaker'
     | '/blueprint'
     | '/contact'
     | '/faq'
@@ -147,6 +159,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiFilmmakerRoute: typeof AiFilmmakerRoute
   BlueprintRoute: typeof BlueprintRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlueprintRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-filmmaker': {
+      id: '/ai-filmmaker'
+      path: '/ai-filmmaker'
+      fullPath: '/ai-filmmaker'
+      preLoaderRoute: typeof AiFilmmakerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -247,6 +267,7 @@ const PortfolioRouteWithChildren = PortfolioRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiFilmmakerRoute: AiFilmmakerRoute,
   BlueprintRoute: BlueprintRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
