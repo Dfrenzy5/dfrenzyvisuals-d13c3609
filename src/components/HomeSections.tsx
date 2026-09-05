@@ -102,23 +102,58 @@ function ServicesGrid() {
   );
 }
 
+const CREDIBILITY = [
+  {
+    num: "01",
+    title: "AI-NATIVE PRODUCTION",
+    desc: "Built around modern generative filmmaking workflows.",
+  },
+  {
+    num: "02",
+    title: "DIRECTOR-LED",
+    desc: "Human creative direction from concept to final frame.",
+  },
+  {
+    num: "03",
+    title: "CINEMATIC FINISHING",
+    desc: "Editing, sound, colour and visual finishing treated as part of the filmmaking process.",
+  },
+  {
+    num: "04",
+    title: "GLOBAL DELIVERY",
+    desc: "Remote production for brands, creators and producers worldwide.",
+  },
+];
+
 function StatsRow() {
   return (
     <section className="relative px-6 py-16 md:px-10">
-      <div
-        className="mx-auto max-w-6xl rounded-2xl border border-neon/20 glass-panel p-8 sm:p-10"
-      >
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="font-display text-2xl font-black tracking-[0.12em] text-neon-bright sm:text-4xl">
-            AI-POWERED. DIRECTOR-LED. CINEMATIC BY DESIGN.
-          </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            From concept and visual development to AI production, editing, sound and final delivery, DFrenzy Visuals combines emerging AI technology with human-led cinematic direction.
-          </p>
+      <div className="mx-auto max-w-6xl rounded-2xl border border-neon/20 glass-panel p-8 sm:p-10">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {CREDIBILITY.map((p) => (
+            <div
+              key={p.num}
+              className="group relative overflow-hidden rounded-2xl border border-neon/20 bg-background/30 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-neon hover:neon-glow"
+            >
+              <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">
+                {p.num}
+              </div>
+              <h3 className="mt-3 font-display text-sm font-bold tracking-[0.15em] text-foreground">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {p.desc}
+              </p>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+            </div>
+          ))}
         </div>
 
         {/* Certified & Trained Signal */}
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 border-t border-neon/10 pt-8 sm:flex-row sm:gap-8">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 border-t border-neon/10 pt-8 sm:flex-row sm:gap-8">
           <div className="flex items-center gap-3">
             <ShieldCheck className="h-5 w-5 text-neon-bright" />
             <span className="font-display text-[10px] font-bold tracking-[0.2em] text-foreground/80 sm:text-xs">
