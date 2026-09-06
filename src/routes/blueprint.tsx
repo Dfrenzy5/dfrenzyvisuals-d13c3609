@@ -45,14 +45,9 @@ export const Route = createFileRoute("/blueprint")({
   component: BlueprintPage,
 });
 
-const DOWNLOAD_PATH =
-  "/__l5e/assets-v1/3470b1af-bf16-4758-adf2-4e53852396d3/The_AI_Content_Creator_Blueprint.pdf";
+// The Blueprint PDF lives in a PRIVATE storage bucket. Access is granted only
+// through the server-side registration flow (see src/lib/blueprint.functions.ts).
 
-// TODO(NOT-WIRED): The Buttondown account is not yet live. Replace YOUR_USERNAME below
-// with the real Buttondown username (https://buttondown.info) in BOTH this file and
-// src/components/SiteFooter.tsx. Until then this form posts to a non-existent Buttondown
-// endpoint and subscriptions will NOT be recorded — the email capture is a PLACEHOLDER only.
-const BUTTONDOWN_USERNAME = "YOUR_USERNAME";
 
 const WHATS_INSIDE = [
   {
@@ -90,21 +85,10 @@ const STATS = [
 ];
 
 function BlueprintPage() {
-  const [submitted, setSubmitted] = useState(false);
+  useEffect(() => {
+    track("blueprint_page_view");
+  }, []);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    // Fire the subscribe to Buttondown in a popup without navigating away.
-    if (typeof window !== "undefined") {
-      window.open(
-        `https://buttondown.com/${BUTTONDOWN_USERNAME}`,
-        "popupwindow",
-        "scrollbars=yes,width=560,height=620",
-      );
-      (e.currentTarget as HTMLFormElement).submit();
-    }
-  };
 
   return (
     <main className="relative">
