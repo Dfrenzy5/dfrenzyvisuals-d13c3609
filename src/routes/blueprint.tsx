@@ -85,21 +85,10 @@ const STATS = [
 ];
 
 function BlueprintPage() {
-  const [submitted, setSubmitted] = useState(false);
+  useEffect(() => {
+    track("blueprint_page_view");
+  }, []);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    // Fire the subscribe to Buttondown in a popup without navigating away.
-    if (typeof window !== "undefined") {
-      window.open(
-        `https://buttondown.com/${BUTTONDOWN_USERNAME}`,
-        "popupwindow",
-        "scrollbars=yes,width=560,height=620",
-      );
-      (e.currentTarget as HTMLFormElement).submit();
-    }
-  };
 
   return (
     <main className="relative">
