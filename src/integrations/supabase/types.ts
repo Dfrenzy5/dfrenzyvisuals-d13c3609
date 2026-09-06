@@ -14,7 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blueprint_leads: {
+        Row: {
+          consent_timestamp: string | null
+          created_at: string
+          download_count: number
+          download_token: string
+          email: string
+          email_delivery_status: string | null
+          first_name: string | null
+          id: string
+          last_downloaded_at: string | null
+          last_emailed_at: string | null
+          marketing_consent: boolean
+          source: string
+          updated_at: string
+        }
+        Insert: {
+          consent_timestamp?: string | null
+          created_at?: string
+          download_count?: number
+          download_token?: string
+          email: string
+          email_delivery_status?: string | null
+          first_name?: string | null
+          id?: string
+          last_downloaded_at?: string | null
+          last_emailed_at?: string | null
+          marketing_consent?: boolean
+          source?: string
+          updated_at?: string
+        }
+        Update: {
+          consent_timestamp?: string | null
+          created_at?: string
+          download_count?: number
+          download_token?: string
+          email?: string
+          email_delivery_status?: string | null
+          first_name?: string | null
+          id?: string
+          last_downloaded_at?: string | null
+          last_emailed_at?: string | null
+          marketing_consent?: boolean
+          source?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      blueprint_rate_limits: {
+        Row: {
+          attempts: number
+          client_hash: string
+          created_at: string
+          id: string
+          updated_at: string
+          window_start: string
+        }
+        Insert: {
+          attempts?: number
+          client_hash: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          window_start?: string
+        }
+        Update: {
+          attempts?: number
+          client_hash?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
