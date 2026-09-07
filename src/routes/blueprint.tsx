@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect } from "react";
 import { SITE_URL } from "@/lib/site";
 import {
   Sparkles,
@@ -7,13 +7,13 @@ import {
   Workflow,
   Wrench,
   Lightbulb,
-  Download,
   Quote,
-  ShieldCheck,
 } from "lucide-react";
 import { Container, Section } from "@/components/ui-studio/Container";
 import { Reveal } from "@/components/ui-studio/Reveal";
 import { studioLinkClass } from "@/components/ui-studio/StudioButton";
+import { BlueprintForm } from "@/components/BlueprintForm";
+import { track } from "@/lib/analytics";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/blueprint")({
