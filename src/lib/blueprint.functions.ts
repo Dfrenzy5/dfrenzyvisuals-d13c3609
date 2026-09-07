@@ -99,11 +99,15 @@ export const registerBlueprintLead = createServerFn({ method: "POST" })
     if (existing) {
       alreadyRegistered = true;
       token = existing.download_token;
-      const update: Record<string, unknown> = {};
-      if (firstName && !existing.first_name) update["first_name"] = firstName;
+      const update: {
+        first_name?: string;
+        marketing_consent?: boolean;
+        consent_timestamp?: string;
+      } = {};
+      if (firstName && !existing.first_name) update.first_name = firstName;
       if (marketingConsent && !existing.marketing_consent) {
-        update["marketing_consent"] = true;
-        update["consent_timestamp"] = new Date().toISOString();
+        update.marketing_consent = true;
+        update.consent_timestamp = new Date().toISOString();
       }
       if (Object.keys(update).length > 0) {
         await supabaseAdmin.from("blueprint_leads").update(update).eq("id", existing.id);
