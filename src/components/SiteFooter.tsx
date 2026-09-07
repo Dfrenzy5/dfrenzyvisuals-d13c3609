@@ -60,37 +60,17 @@ export function SiteFooter() {
               .
             </p>
           </div>
-          <form
-            action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
-            method="post"
-            target="popupwindow"
-            onSubmit={() =>
-              window.open(`https://buttondown.com/${BUTTONDOWN_USERNAME}`, "popupwindow")
-            }
-            className="embeddable-buttondown-form flex flex-col items-stretch gap-3 self-center"
-          >
-            <label htmlFor="newsletter" className="sr-only">
-              Email address
-            </label>
-            <div className="flex overflow-hidden rounded-full hairline surface-2">
-              <input
-                id="newsletter"
-                type="email"
-                name="email"
-                required
-                placeholder="Email address"
-                className="flex-1 bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
-              />
-              <input
-                type="submit"
-                value="SUBSCRIBE"
-                className="cursor-pointer border-l border-neon/20 bg-neon/10 px-5 font-display text-[10px] tracking-[0.3em] text-neon-bright transition-colors hover:bg-neon/20"
-              />
-            </div>
+          <div className="flex flex-col items-stretch gap-3 self-center">
+            <Link
+              to="/blueprint"
+              className="rounded-full border border-neon/30 bg-neon/10 px-6 py-3 text-center font-display text-[10px] tracking-[0.3em] text-neon-bright transition-colors hover:bg-neon/20"
+            >
+              GET THE FREE BLUEPRINT
+            </Link>
             <p className="text-[11px] text-muted-foreground/70">
               No noise. Unsubscribe anytime.
             </p>
-          </form>
+          </div>
         </div>
 
         {/* Main columns */}
