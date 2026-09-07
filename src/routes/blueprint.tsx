@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect } from "react";
 import { SITE_URL } from "@/lib/site";
 import {
   Sparkles,
@@ -7,13 +7,13 @@ import {
   Workflow,
   Wrench,
   Lightbulb,
-  Download,
   Quote,
-  ShieldCheck,
 } from "lucide-react";
 import { Container, Section } from "@/components/ui-studio/Container";
 import { Reveal } from "@/components/ui-studio/Reveal";
 import { studioLinkClass } from "@/components/ui-studio/StudioButton";
+import { BlueprintForm } from "@/components/BlueprintForm";
+import { track } from "@/lib/analytics";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/blueprint")({
@@ -241,62 +241,9 @@ function BlueprintPage() {
           </Reveal>
 
           <Reveal delay={120}>
-            {!submitted ? (
-              <form
-                action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
-                method="post"
-                target="popupwindow"
-                onSubmit={onSubmit}
-                className="embeddable-buttondown-form mx-auto mt-10 flex w-full max-w-md flex-col items-stretch gap-3"
-              >
-                <label htmlFor="bp-email" className="sr-only">
-                  Email address
-                </label>
-                <div className="flex overflow-hidden rounded-full hairline surface-2">
-                  <input
-                    id="bp-email"
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="Email address"
-                    className="flex-1 bg-transparent px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
-                  />
-                  <input
-                    type="submit"
-                    value="GET ACCESS"
-                    className="cursor-pointer border-l border-neon/20 bg-neon/10 px-5 font-display text-[10px] tracking-[0.3em] text-neon-bright transition-colors hover:bg-neon/20"
-                  />
-                </div>
-                <p className="text-[11px] text-muted-foreground/70">
-                  No spam. Just cinematic dispatches from the studio, when there's
-                  something worth sharing.
-                </p>
-              </form>
-            ) : (
-              <div className="mx-auto mt-10 w-full max-w-md animate-warp-in">
-                <div className="flex items-center justify-center gap-2 text-neon-bright">
-                  <ShieldCheck className="h-5 w-5" />
-                  <span className="font-display text-[11px] tracking-[0.3em]">
-                    ACCESS UNLOCKED
-                  </span>
-                </div>
-                <a
-                  href={DOWNLOAD_PATH}
-                  download
-                  target="_blank"
-                  rel="noreferrer"
-                  className={studioLinkClass("primary", "lg") + " mt-5 w-full"}
-                >
-                  <Download className="h-4 w-4" />
-                  DOWNLOAD NOW
-                </a>
-                <p className="mt-4 text-[11px] text-muted-foreground/70">
-                  The PDF opens in a new tab. Check your inbox to confirm your
-                  subscription.
-                </p>
-              </div>
-            )}
+            <BlueprintForm />
           </Reveal>
+
 
         </Container>
       </Section>
