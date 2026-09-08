@@ -31,7 +31,7 @@ export const Route = createFileRoute("/journal/")({
 // Journal data — add new entries here. Newest first (reverse-chronological).
 // To add an entry: append an object to JOURNAL_ENTRIES below.
 // ─────────────────────────────────────────────────────────────────────────────
-type JournalCategory = "Portfolio" | "Event";
+type JournalCategory = "Portfolio" | "Event" | "Article";
 type JournalStatus = "In Production" | "Submitted" | "Live" | "Archived" | "Completed";
 
 interface JournalEntry {
@@ -46,6 +46,16 @@ interface JournalEntry {
 }
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
+  {
+    id: "grok-imagine-video-1-5-ai-video",
+    date: "September 2026",
+    category: "Article",
+    title: "Grok Imagine Video 1.5: Is AI Video Finally Getting Easier?",
+    description:
+      "Text-to-video, image-to-video, references, editing and audio — what Grok Imagine Video 1.5 actually means for AI filmmakers.",
+    status: "Live",
+    to: { label: "Read Article", route: "/journal/grok-imagine-video-1-5-ai-video" },
+  },
   {
     id: "3am-the-hotel-dreams-submitted",
     date: "August 2026",

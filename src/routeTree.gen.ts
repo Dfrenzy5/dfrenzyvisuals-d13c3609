@@ -21,6 +21,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
 import { Route as JournalIndexRouteImport } from './routes/journal/index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as JournalGrokImagineVideo15AiVideoRouteImport } from './routes/journal/grok-imagine-video-1-5-ai-video'
 import { Route as ApiPublicBlueprintDownloadRouteImport } from './routes/api/public/blueprint/download'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -83,6 +84,12 @@ const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => PortfolioRoute,
 } as any)
+const JournalGrokImagineVideo15AiVideoRoute =
+  JournalGrokImagineVideo15AiVideoRouteImport.update({
+    id: '/grok-imagine-video-1-5-ai-video',
+    path: '/grok-imagine-video-1-5-ai-video',
+    getParentRoute: () => JournalRoute,
+  } as any)
 const ApiPublicBlueprintDownloadRoute =
   ApiPublicBlueprintDownloadRouteImport.update({
     id: '/api/public/blueprint/download',
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
@@ -113,6 +121,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/journal': typeof JournalIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
@@ -129,6 +138,7 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
+    | '/journal/grok-imagine-video-1-5-ai-video'
     | '/portfolio/$slug'
     | '/journal/'
     | '/portfolio/'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/pricing'
     | '/sitemap.xml'
+    | '/journal/grok-imagine-video-1-5-ai-video'
     | '/portfolio/$slug'
     | '/journal'
     | '/portfolio'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
+    | '/journal/grok-imagine-video-1-5-ai-video'
     | '/portfolio/$slug'
     | '/journal/'
     | '/portfolio/'
@@ -279,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioSlugRouteImport
       parentRoute: typeof PortfolioRoute
     }
+    '/journal/grok-imagine-video-1-5-ai-video': {
+      id: '/journal/grok-imagine-video-1-5-ai-video'
+      path: '/grok-imagine-video-1-5-ai-video'
+      fullPath: '/journal/grok-imagine-video-1-5-ai-video'
+      preLoaderRoute: typeof JournalGrokImagineVideo15AiVideoRouteImport
+      parentRoute: typeof JournalRoute
+    }
     '/api/public/blueprint/download': {
       id: '/api/public/blueprint/download'
       path: '/api/public/blueprint/download'
@@ -290,10 +310,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface JournalRouteChildren {
+  JournalGrokImagineVideo15AiVideoRoute: typeof JournalGrokImagineVideo15AiVideoRoute
   JournalIndexRoute: typeof JournalIndexRoute
 }
 
 const JournalRouteChildren: JournalRouteChildren = {
+  JournalGrokImagineVideo15AiVideoRoute: JournalGrokImagineVideo15AiVideoRoute,
   JournalIndexRoute: JournalIndexRoute,
 }
 
