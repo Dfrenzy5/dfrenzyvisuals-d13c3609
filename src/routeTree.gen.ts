@@ -19,7 +19,9 @@ import { Route as BlueprintRouteImport } from './routes/blueprint'
 import { Route as AiFilmmakerRouteImport } from './routes/ai-filmmaker'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
+import { Route as JournalIndexRouteImport } from './routes/journal/index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as JournalGrokImagineVideo15AiVideoRouteImport } from './routes/journal/grok-imagine-video-1-5-ai-video'
 import { Route as ApiPublicBlueprintDownloadRouteImport } from './routes/api/public/blueprint/download'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -72,11 +74,22 @@ const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PortfolioRoute,
 } as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => JournalRoute,
+} as any)
 const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => PortfolioRoute,
 } as any)
+const JournalGrokImagineVideo15AiVideoRoute =
+  JournalGrokImagineVideo15AiVideoRouteImport.update({
+    id: '/grok-imagine-video-1-5-ai-video',
+    path: '/grok-imagine-video-1-5-ai-video',
+    getParentRoute: () => JournalRoute,
+  } as any)
 const ApiPublicBlueprintDownloadRoute =
   ApiPublicBlueprintDownloadRouteImport.update({
     id: '/api/public/blueprint/download',
@@ -90,11 +103,13 @@ export interface FileRoutesByFullPath {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
+  '/journal': typeof JournalRouteWithChildren
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/api/public/blueprint/download': typeof ApiPublicBlueprintDownloadRoute
 }
@@ -104,10 +119,11 @@ export interface FileRoutesByTo {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/journal': typeof JournalIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
   '/api/public/blueprint/download': typeof ApiPublicBlueprintDownloadRoute
 }
@@ -118,11 +134,13 @@ export interface FileRoutesById {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
+  '/journal': typeof JournalRouteWithChildren
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/api/public/blueprint/download': typeof ApiPublicBlueprintDownloadRoute
 }
@@ -138,7 +156,9 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
+    | '/journal/grok-imagine-video-1-5-ai-video'
     | '/portfolio/$slug'
+    | '/journal/'
     | '/portfolio/'
     | '/api/public/blueprint/download'
   fileRoutesByTo: FileRoutesByTo
@@ -148,10 +168,11 @@ export interface FileRouteTypes {
     | '/blueprint'
     | '/contact'
     | '/faq'
-    | '/journal'
     | '/pricing'
     | '/sitemap.xml'
+    | '/journal/grok-imagine-video-1-5-ai-video'
     | '/portfolio/$slug'
+    | '/journal'
     | '/portfolio'
     | '/api/public/blueprint/download'
   id:
@@ -165,7 +186,9 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
+    | '/journal/grok-imagine-video-1-5-ai-video'
     | '/portfolio/$slug'
+    | '/journal/'
     | '/portfolio/'
     | '/api/public/blueprint/download'
   fileRoutesById: FileRoutesById
@@ -176,7 +199,7 @@ export interface RootRouteChildren {
   BlueprintRoute: typeof BlueprintRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  JournalRoute: typeof JournalRoute
+  JournalRoute: typeof JournalRouteWithChildren
   PortfolioRoute: typeof PortfolioRouteWithChildren
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -255,12 +278,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioIndexRouteImport
       parentRoute: typeof PortfolioRoute
     }
+    '/journal/': {
+      id: '/journal/'
+      path: '/'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof JournalRoute
+    }
     '/portfolio/$slug': {
       id: '/portfolio/$slug'
       path: '/$slug'
       fullPath: '/portfolio/$slug'
       preLoaderRoute: typeof PortfolioSlugRouteImport
       parentRoute: typeof PortfolioRoute
+    }
+    '/journal/grok-imagine-video-1-5-ai-video': {
+      id: '/journal/grok-imagine-video-1-5-ai-video'
+      path: '/grok-imagine-video-1-5-ai-video'
+      fullPath: '/journal/grok-imagine-video-1-5-ai-video'
+      preLoaderRoute: typeof JournalGrokImagineVideo15AiVideoRouteImport
+      parentRoute: typeof JournalRoute
     }
     '/api/public/blueprint/download': {
       id: '/api/public/blueprint/download'
@@ -271,6 +308,19 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface JournalRouteChildren {
+  JournalGrokImagineVideo15AiVideoRoute: typeof JournalGrokImagineVideo15AiVideoRoute
+  JournalIndexRoute: typeof JournalIndexRoute
+}
+
+const JournalRouteChildren: JournalRouteChildren = {
+  JournalGrokImagineVideo15AiVideoRoute: JournalGrokImagineVideo15AiVideoRoute,
+  JournalIndexRoute: JournalIndexRoute,
+}
+
+const JournalRouteWithChildren =
+  JournalRoute._addFileChildren(JournalRouteChildren)
 
 interface PortfolioRouteChildren {
   PortfolioSlugRoute: typeof PortfolioSlugRoute
@@ -292,7 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlueprintRoute: BlueprintRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  JournalRoute: JournalRoute,
+  JournalRoute: JournalRouteWithChildren,
   PortfolioRoute: PortfolioRouteWithChildren,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
