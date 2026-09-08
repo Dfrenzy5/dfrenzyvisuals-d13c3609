@@ -19,6 +19,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/portfolio", changefreq: "weekly", priority: "0.9" },
           { path: "/journal", changefreq: "weekly", priority: "0.8" },
+          {
+            path: "/journal/grok-imagine-video-1-5-ai-video",
+            changefreq: "monthly",
+            priority: "0.8",
+          },
           { path: "/pricing", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
           { path: "/ai-filmmaker", changefreq: "monthly", priority: "0.8" },

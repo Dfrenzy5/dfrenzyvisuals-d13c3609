@@ -114,7 +114,7 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
   },
 ];
 
-const FILTERS = ["All", "Portfolio", "Events & Festivals"] as const;
+const FILTERS = ["All", "Articles", "Portfolio", "Events & Festivals"] as const;
 
 const STATUS_STYLES: Record<JournalStatus, string> = {
   "In Production": "border-neon/50 bg-neon/10 text-neon-bright",
@@ -191,7 +191,11 @@ function JournalPage() {
     filter === "All"
       ? JOURNAL_ENTRIES
       : JOURNAL_ENTRIES.filter((e) =>
-          filter === "Events & Festivals" ? e.category === "Event" : e.category === "Portfolio",
+          filter === "Events & Festivals"
+            ? e.category === "Event"
+            : filter === "Articles"
+              ? e.category === "Article"
+              : e.category === "Portfolio",
         );
 
   return (
