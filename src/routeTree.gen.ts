@@ -12,13 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
-import { Route as JournalRouteImport } from './routes/journal'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlueprintRouteImport } from './routes/blueprint'
 import { Route as AiFilmmakerRouteImport } from './routes/ai-filmmaker'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
+import { Route as JournalIndexRouteImport } from './routes/journal/index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
 import { Route as ApiPublicBlueprintDownloadRouteImport } from './routes/api/public/blueprint/download'
 
@@ -35,11 +35,6 @@ const PricingRoute = PricingRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -72,6 +67,11 @@ const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PortfolioRoute,
 } as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/journal/',
+  path: '/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -90,11 +90,11 @@ export interface FileRoutesByFullPath {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/api/public/blueprint/download': typeof ApiPublicBlueprintDownloadRoute
 }
@@ -104,10 +104,10 @@ export interface FileRoutesByTo {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/journal': typeof JournalIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
   '/api/public/blueprint/download': typeof ApiPublicBlueprintDownloadRoute
 }
@@ -118,11 +118,11 @@ export interface FileRoutesById {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
   '/api/public/blueprint/download': typeof ApiPublicBlueprintDownloadRoute
 }
@@ -134,11 +134,11 @@ export interface FileRouteTypes {
     | '/blueprint'
     | '/contact'
     | '/faq'
-    | '/journal'
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
     | '/portfolio/$slug'
+    | '/journal/'
     | '/portfolio/'
     | '/api/public/blueprint/download'
   fileRoutesByTo: FileRoutesByTo
@@ -148,10 +148,10 @@ export interface FileRouteTypes {
     | '/blueprint'
     | '/contact'
     | '/faq'
-    | '/journal'
     | '/pricing'
     | '/sitemap.xml'
     | '/portfolio/$slug'
+    | '/journal'
     | '/portfolio'
     | '/api/public/blueprint/download'
   id:
@@ -161,11 +161,11 @@ export interface FileRouteTypes {
     | '/blueprint'
     | '/contact'
     | '/faq'
-    | '/journal'
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
     | '/portfolio/$slug'
+    | '/journal/'
     | '/portfolio/'
     | '/api/public/blueprint/download'
   fileRoutesById: FileRoutesById
@@ -176,10 +176,10 @@ export interface RootRouteChildren {
   BlueprintRoute: typeof BlueprintRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  JournalRoute: typeof JournalRoute
   PortfolioRoute: typeof PortfolioRouteWithChildren
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  JournalIndexRoute: typeof JournalIndexRoute
   ApiPublicBlueprintDownloadRoute: typeof ApiPublicBlueprintDownloadRoute
 }
 
@@ -204,13 +204,6 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -255,6 +248,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioIndexRouteImport
       parentRoute: typeof PortfolioRoute
     }
+    '/journal/': {
+      id: '/journal/'
+      path: '/journal'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio/$slug': {
       id: '/portfolio/$slug'
       path: '/$slug'
@@ -292,10 +292,10 @@ const rootRouteChildren: RootRouteChildren = {
   BlueprintRoute: BlueprintRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  JournalRoute: JournalRoute,
   PortfolioRoute: PortfolioRouteWithChildren,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  JournalIndexRoute: JournalIndexRoute,
   ApiPublicBlueprintDownloadRoute: ApiPublicBlueprintDownloadRoute,
 }
 export const routeTree = rootRouteImport

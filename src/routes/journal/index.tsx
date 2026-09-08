@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Filter, ArrowRight, ArrowUpRight, Calendar, Tag } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 
-export const Route = createFileRoute("/journal")({
+export const Route = createFileRoute("/journal/")({
   head: () => ({
     meta: [
       { title: "The Journal — Studio Updates & AI Film Events | DFrenzy Visuals" },
