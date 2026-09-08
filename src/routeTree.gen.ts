@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as JournalRouteImport } from './routes/journal'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlueprintRouteImport } from './routes/blueprint'
@@ -35,6 +36,11 @@ const PricingRoute = PricingRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalRoute = JournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -68,9 +74,9 @@ const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
   getParentRoute: () => PortfolioRoute,
 } as any)
 const JournalIndexRoute = JournalIndexRouteImport.update({
-  id: '/journal/',
-  path: '/journal/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => JournalRoute,
 } as any)
 const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   id: '/$slug',
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/journal': typeof JournalRouteWithChildren
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -118,6 +125,7 @@ export interface FileRoutesById {
   '/blueprint': typeof BlueprintRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/journal': typeof JournalRouteWithChildren
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -134,6 +142,7 @@ export interface FileRouteTypes {
     | '/blueprint'
     | '/contact'
     | '/faq'
+    | '/journal'
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/blueprint'
     | '/contact'
     | '/faq'
+    | '/journal'
     | '/portfolio'
     | '/pricing'
     | '/sitemap.xml'
@@ -176,10 +186,10 @@ export interface RootRouteChildren {
   BlueprintRoute: typeof BlueprintRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  JournalRoute: typeof JournalRouteWithChildren
   PortfolioRoute: typeof PortfolioRouteWithChildren
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  JournalIndexRoute: typeof JournalIndexRoute
   ApiPublicBlueprintDownloadRoute: typeof ApiPublicBlueprintDownloadRoute
 }
 
@@ -204,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal': {
+      id: '/journal'
+      path: '/journal'
+      fullPath: '/journal'
+      preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -250,10 +267,10 @@ declare module '@tanstack/react-router' {
     }
     '/journal/': {
       id: '/journal/'
-      path: '/journal'
+      path: '/'
       fullPath: '/journal/'
       preLoaderRoute: typeof JournalIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof JournalRoute
     }
     '/portfolio/$slug': {
       id: '/portfolio/$slug'
@@ -271,6 +288,17 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface JournalRouteChildren {
+  JournalIndexRoute: typeof JournalIndexRoute
+}
+
+const JournalRouteChildren: JournalRouteChildren = {
+  JournalIndexRoute: JournalIndexRoute,
+}
+
+const JournalRouteWithChildren =
+  JournalRoute._addFileChildren(JournalRouteChildren)
 
 interface PortfolioRouteChildren {
   PortfolioSlugRoute: typeof PortfolioSlugRoute
@@ -292,10 +320,10 @@ const rootRouteChildren: RootRouteChildren = {
   BlueprintRoute: BlueprintRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  JournalRoute: JournalRouteWithChildren,
   PortfolioRoute: PortfolioRouteWithChildren,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  JournalIndexRoute: JournalIndexRoute,
   ApiPublicBlueprintDownloadRoute: ApiPublicBlueprintDownloadRoute,
 }
 export const routeTree = rootRouteImport
