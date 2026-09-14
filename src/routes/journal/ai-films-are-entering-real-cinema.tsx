@@ -105,6 +105,16 @@ function Article() {
 
           <h2 className="pt-8 text-3xl font-bold">Movie of the Day</h2>
 
+<img
+  src="/c059ffe2-ad28-4a5b-b682-9460b43e707c.png"
+  alt="A Face Only A Mother Could Love by Robert Gaudette"
+  className="mt-6 w-full rounded-2xl border border-white/10"
+/>
+
+<p>
+  <strong>A Face Only A Mother Could Love</strong> — Robert Gaudette.
+</p>
+
           <p>
   <strong>A Face Only A Mother Could Love</strong> — Robert Gaudette.
 </p>
