@@ -261,7 +261,7 @@ function TierCard({ t }: { t: Tier }) {
         <div className="mt-3 font-display text-base font-semibold tracking-[0.08em] text-neon-bright">
   {t.intl}
 </div>
-
+</div>
       <p className="mt-6 text-sm leading-relaxed text-foreground/80">{t.description}</p>
 
       <div className="mt-7">
