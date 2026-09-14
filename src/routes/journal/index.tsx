@@ -47,7 +47,6 @@ interface JournalEntry {
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
   {
-      {
     id: "ai-films-are-entering-real-cinema",
     date: "September 2026",
     category: "Article",
