@@ -258,8 +258,9 @@ function TierCard({ t }: { t: Tier }) {
             Projects start from ₦1,500,000
           </div>
         )}
-        <div className="mt-2 font-display text-[11px] tracking-[0.25em] text-muted-foreground">{t.intl}</div>
-      </div>
+        <div className="mt-3 font-display text-base font-semibold tracking-[0.08em] text-neon-bright">
+  {t.intl}
+</div>
 
       <p className="mt-6 text-sm leading-relaxed text-foreground/80">{t.description}</p>
 
