@@ -110,7 +110,7 @@ function Article() {
 </p>
 
 <a
-  href="https://aif.runwayml.com/"
+  href="https://www.youtube.com/watch?v=wytfCS-N8Sk"
   target="_blank"
   rel="noreferrer"
   className="inline-flex items-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold tracking-[0.15em] text-white transition-colors hover:border-white/50 hover:bg-white/5"
