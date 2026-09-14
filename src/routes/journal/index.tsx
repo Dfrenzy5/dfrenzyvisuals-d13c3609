@@ -59,6 +59,7 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
       route: "/journal/ai-films-are-entering-real-cinema",
     },
   },
+  {
     id: "grok-imagine-video-1-5-ai-video",
     date: "September 2026",
     category: "Article",
