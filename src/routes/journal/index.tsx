@@ -47,6 +47,19 @@ interface JournalEntry {
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
   {
+      {
+    id: "ai-films-are-entering-real-cinema",
+    date: "September 2026",
+    category: "Article",
+    title: "AI Films Aren't Just Experiments Anymore — They're Starting to Enter Real Cinema",
+    description:
+      "Robert Gaudette's award-winning AI short shows how generative filmmaking is moving beyond experiments and into serious cinematic storytelling.",
+    status: "Live",
+    to: {
+      label: "Read Article",
+      route: "/journal/ai-films-are-entering-real-cinema",
+    },
+  },
     id: "grok-imagine-video-1-5-ai-video",
     date: "September 2026",
     category: "Article",
