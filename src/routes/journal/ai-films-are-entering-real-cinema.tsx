@@ -106,8 +106,17 @@ function Article() {
           <h2 className="pt-8 text-3xl font-bold">Movie of the Day</h2>
 
           <p>
-            <strong>A Face Only A Mother Could Love</strong> — Robert Gaudette.
-          </p>
+  <strong>A Face Only A Mother Could Love</strong> — Robert Gaudette.
+</p>
+
+<a
+  href="https://aif.runwayml.com/"
+  target="_blank"
+  rel="noreferrer"
+  className="inline-flex items-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold tracking-[0.15em] text-white transition-colors hover:border-white/50 hover:bg-white/5"
+>
+  WATCH THE FILM ↗
+</a>
 
           <p>
             The film is a useful reminder that AI filmmaking is not about
