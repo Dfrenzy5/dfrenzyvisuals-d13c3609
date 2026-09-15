@@ -49,10 +49,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "DFRENZY VISUALS | AI Cinematic Film Studio" },
       {
-        name: "description",
-        content:
-          "Enter a futuristic AI film studio where movies, trailers, and music visuals are created inside a digital dimension.",
-      },
+  name: "description",
+  content:
+    "Enter a futuristic AI film studio where movies, trailers, and music visuals are created inside a digital dimension.",
+},
       {
         property: "og:title",
         content: "DFRENZY VISUALS — AI Cinematic Film Studio",
