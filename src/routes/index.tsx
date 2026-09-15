@@ -647,9 +647,57 @@ function Index() {
       )}
     </div>
     <WelcomeMessage />
-    <Suspense fallback={<div style={{ minHeight: 600 }} />}>
+        <Suspense fallback={<div style={{ minHeight: 600 }} />}>
       <LazyMount minHeight={640}><FeaturedShowcase /></LazyMount>
     </Suspense>
+
+    <section className="mx-auto w-full max-w-6xl px-6 py-20 sm:py-28">
+      <div className="max-w-4xl">
+        <p className="font-display text-xs tracking-[0.35em] text-[#00E5FF]">
+          ABOUT DFRENZY VISUALS
+        </p>
+
+        <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          Cinematic AI Filmmaking, Directed by Humans.
+        </h2>
+
+        <div className="mt-8 space-y-5 text-base leading-8 text-white/70 sm:text-lg">
+          <p>
+            DFRENZY VISUALS is a cinematic AI video production studio based in
+            Nigeria, creating films, commercials, trailers, music visuals and
+            branded content with advanced generative AI workflows.
+          </p>
+
+          <p>
+            Founded by Daniel Ebhowe, an AI filmmaker and creative director,
+            DFRENZY VISUALS combines cinematic storytelling, AI-generated
+            visuals, character consistency, virtual environments and
+            professional post-production to create distinctive visual
+            experiences for brands, filmmakers, agencies and international
+            clients.
+          </p>
+
+          <p>
+            From concept development and visual direction to AI video
+            generation, editing, sound and final delivery, our workflow is
+            built around one goal: turning ambitious ideas into cinematic
+            stories.
+          </p>
+
+          <p>
+            We specialize in AI filmmaking, cinematic AI commercials, AI film
+            production, AI trailers and branded visual content, with a
+            particular focus on character-driven storytelling and high-end
+            cinematic presentation.
+          </p>
+        </div>
+
+        <p className="mt-8 font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF]">
+          BASED IN NIGERIA. CREATING FOR A GLOBAL AUDIENCE.
+        </p>
+      </div>
+    </section>
+
     <Suspense fallback={null}>
       <TrustedBy />
       <StatsRow />
