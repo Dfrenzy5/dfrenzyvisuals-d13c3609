@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
       {
   name: "description",
   content:
-    "Enter a futuristic AI film studio where movies, trailers, and music visuals are created inside a digital dimension.",
+    "DFRENZY VISUALS is a Nigerian AI filmmaking and cinematic video production studio founded by Daniel Ebhowe, creating AI films, commercials, trailers and branded visual content for global clients.",
 },
       {
         property: "og:title",
