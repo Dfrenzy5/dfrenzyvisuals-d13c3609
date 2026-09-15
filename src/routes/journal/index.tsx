@@ -46,6 +46,20 @@ interface JournalEntry {
 }
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
+    {
+    id: "ai-cinema-festival-era-africa",
+    date: "September 2026",
+    category: "Article",
+    title:
+      "AI Cinema Has Entered Its Festival Era — And Africa Is Part of the Story",
+    description:
+      "NAIFF 2026, Godzilla in Lagos, and the growing festival ecosystem showing how African filmmakers are beginning to shape the future of AI cinema.",
+    status: "Live",
+    to: {
+      label: "Read Article",
+      route: "/journal/ai-cinema-festival-era-africa",
+    },
+  },
   {
     id: "ai-films-are-entering-real-cinema",
     date: "September 2026",
