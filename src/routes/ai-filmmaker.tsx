@@ -240,6 +240,33 @@ function AiFilmmakerPage()
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+  to="/films/edo-state-at-35"
+  className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+>
+  <div className="aspect-video overflow-hidden bg-white/5">
+    <img
+      src="https://img.youtube.com/vi/pcGK_lApTTs/maxresdefault.jpg"
+      alt="Edo State at 35 cinematic AI film by Daniel Ebhowe"
+      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  <div className="p-5">
+    <p className="mb-2 text-xs uppercase tracking-[0.2em] text-white/50">
+      Featured Film
+    </p>
+
+    <h3 className="text-xl font-semibold text-white">
+      Edo State at 35: The Journey, The Legacy & The Future
+    </h3>
+
+    <p className="mt-2 text-sm leading-relaxed text-white/60">
+      A cinematic AI film by Nigerian AI filmmaker Daniel Ebhowe,
+      exploring Edo State's journey, legacy and future.
+    </p>
+  </div>
+</Link>
             {selected.map((p, i) => (
               <Reveal key={p.slug} delay={i * 50}>
                 <Link
