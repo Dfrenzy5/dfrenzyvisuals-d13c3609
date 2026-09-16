@@ -68,6 +68,7 @@ export const Route = createFileRoute("/ai-filmmaker")({
     }),
   },
 ],
+  }), 
   component: AiFilmmakerPage,
 });
 
