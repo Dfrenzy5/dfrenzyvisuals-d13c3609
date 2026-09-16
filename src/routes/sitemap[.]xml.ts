@@ -29,6 +29,16 @@ export const Route = createFileRoute("/sitemap.xml")({
             changefreq: "monthly",
             priority: "0.8",
           },
+          {
+            path: "/journal/ai-cinema-festival-era-africa",
+            changefreq: "monthly",
+            priority: "0.8",
+          },
+          {
+            path: "/journal/ai-films-are-entering-real-cinema",
+            changefreq: "monthly",
+            priority: "0.8",
+          },
           { path: "/pricing", changefreq: "monthly", priority: "0.7" },
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
           { path: "/ai-filmmaker", changefreq: "monthly", priority: "0.8" },
