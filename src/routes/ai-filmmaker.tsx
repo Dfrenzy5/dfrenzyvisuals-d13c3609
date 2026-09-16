@@ -23,38 +23,51 @@ export const Route = createFileRoute("/ai-filmmaker")({
     ],
     links: [{ rel: "canonical", href: URL }],
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Daniel Ebhowe",
-          jobTitle: "AI Filmmaker, Director & Creative Director",
-          url: URL,
-          description: DESCRIPTION,
-          worksFor: {
+  {
+    type: "application/ld+json",
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      name: "Daniel Ebhowe — AI Filmmaker & Director",
+      description: DESCRIPTION,
+      url: URL,
+      mainEntity: {
+        "@type": "Person",
+        "@id": `${URL}#daniel-ebhowe`,
+        name: "Daniel Ebhowe",
+        url: URL,
+        jobTitle: "AI Filmmaker, Director & Creative Director",
+        description: DESCRIPTION,
+        worksFor: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#dfrenzy-visuals`,
+          name: "DFRENZY VISUALS",
+          url: `${SITE_URL}/`,
+        },
+        founder: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#dfrenzy-visuals`,
+        },
+        knowsAbout: [
+          "AI filmmaking",
+          "AI film production",
+          "Cinematic direction",
+          "Generative AI video production",
+          "Post-production and sound design",
+        ],
+        hasCredential: {
+          "@type": "EducationalOccupationalCredential",
+          name: "AI Filmmaking Pipeline Certified",
+          credentialCategory: "Certification",
+          recognizedBy: {
             "@type": "Organization",
-            name: "DFRENZY VISUALS",
-            url: `${SITE_URL}/`,
+            name: "Higgsfield Academy",
           },
-          founder: true,
-          knowsAbout: [
-            "AI filmmaking",
-            "AI film production",
-            "Cinematic direction",
-            "Generative AI video production",
-            "Post-production and sound design",
-          ],
-          hasCredential: {
-            "@type": "EducationalOccupationalCredential",
-            name: "AI Filmmaking Pipeline Certified",
-            credentialCategory: "Certification",
-            recognizedBy: { "@type": "Organization", name: "Higgsfield Academy" },
-          },
-        }),
+        },
       },
-    ],
-  }),
+    }),
+  },
+],
   component: AiFilmmakerPage,
 });
 
