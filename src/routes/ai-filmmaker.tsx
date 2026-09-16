@@ -6,9 +6,8 @@ import { Reveal } from "@/components/ui-studio/Reveal";
 import { studioLinkClass } from "@/components/ui-studio/StudioButton";
 import { CASE_STUDIES } from "@/data/case-studies";
 
-const TITLE = "Daniel Ebhowe — AI Filmmaker & Director | DFRENZY VISUALS";
-const DESCRIPTION =
-  "Daniel Ebhowe is an AI filmmaker, director and creative director, and the founder of DFRENZY VISUALS — a cinematic AI production studio making films, commercials and trailers through an AI-native, director-led pipeline.";
+const TITLE = "Daniel Ebhowe — AI Filmmaker & Director | Nigerian AI Filmmaker";
+const DESCRIPTION = "Daniel Ebhowe is a Nigerian AI filmmaker, director and creative director based in Nigeria, and founder of DFRENZY VISUALS, creating cinematic films, commercials, trailers and branded visual experiences for clients globally.";
 const URL = `${SITE_URL}/ai-filmmaker`;
 
 export const Route = createFileRoute("/ai-filmmaker")({
