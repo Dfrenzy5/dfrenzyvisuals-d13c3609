@@ -119,13 +119,13 @@ function AiFilmmakerPage()
               ABOUT THE FILMMAKER
             </h2>
             <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              <p>
-                Daniel Ebhowe is the filmmaker and creative director behind DFRENZY VISUALS,
-                an AI-native cinematic production studio built around one belief: emerging
-                technology should expand what filmmakers can create, not replace the craft of
-                filmmaking.
-              </p>
-              <p>
+            <p>
+               Daniel Ebhowe is a Nigerian AI filmmaker, director and creative director
+               behind DFRENZY VISUALS, an AI-native cinematic production studio based in
+               Nigeria. His work is built around one belief: emerging technology should
+               expand what filmmakers can create, not replace the craft of filmmaking.
+             </p>
+             <p>
                 His work combines cinematic direction, visual storytelling, generative AI,
                 editing, sound design and post-production to create films, commercials,
                 trailers, branded stories and immersive visual experiences. Each project moves
