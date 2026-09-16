@@ -704,6 +704,14 @@ function Index() {
 </p>
 
 <p className="mt-8 font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF]">
+  <p className="mt-6">
+  <Link
+    to="/ai-filmmaker"
+    className="font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF] transition-opacity hover:opacity-70"
+  >
+    MEET DANIEL EBHOWE — AI FILMMAKER →
+  </Link>
+</p>
   BASED IN NIGERIA. CREATING FOR A GLOBAL AUDIENCE.
 </p>
 
