@@ -704,7 +704,8 @@ function Index() {
 <p className="mt-8 font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF]">
   BASED IN NIGERIA. CREATING FOR A GLOBAL AUDIENCE.
 </p>
-
+</div>
+</section>
     <Suspense fallback={null}>
       <TrustedBy />
       <StatsRow />
