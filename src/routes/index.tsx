@@ -669,7 +669,7 @@ function Index() {
           </p>
 
           <p>
-            Founded by Daniel Ebhowe, an AI filmmaker and creative director,
+            Founded by Daniel Ebhowe, a Nigerian AI filmmaker and creative director,
             DFRENZY VISUALS combines cinematic storytelling, AI-generated
             visuals, character consistency, virtual environments and
             professional post-production to create distinctive visual
