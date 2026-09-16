@@ -46,6 +46,19 @@ interface JournalEntry {
 }
 
 const JOURNAL_ENTRIES: JournalEntry[] = [
+  {
+    id: "how-much-ai-filmmakers-earn-2026",
+    date: "September 2026",
+    category: "Article",
+    title: "How Much Do AI Filmmakers Earn? The 2026 Global & Nigerian Salary Guide",
+    description:
+      "A practical look at AI filmmaking income across global and Nigerian markets, from salaried AI-video roles to freelance production and remote international work.",
+    status: "Live",
+    to: {
+      label: "Read Article",
+      route: "/journal/how-much-do-ai-filmmakers-earn-2026",
+    },
+  },
     {
     id: "ai-cinema-festival-era-africa",
     date: "September 2026",
