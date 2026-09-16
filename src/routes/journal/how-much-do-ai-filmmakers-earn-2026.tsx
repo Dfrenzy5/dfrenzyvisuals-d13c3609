@@ -98,6 +98,7 @@ function ArticlePage() {
     name: "She Was Left With Nothing After His Death | THE INHERITANCE",
     description:
       "Movie of the Day from DFRENZY VISUALS, available on YouTube.",
+    thumbnailUrl: "https://img.youtube.com/vi/iYz-hZzFA9Y/maxresdefault.jpg",
     uploadDate: PUBLISHED,
     embedUrl: "https://www.youtube.com/embed/iYz-hZzFA9Y",
     contentUrl: "https://youtu.be/iYz-hZzFA9Y",
