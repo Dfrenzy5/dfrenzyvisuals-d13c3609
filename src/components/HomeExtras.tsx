@@ -107,12 +107,10 @@ export function FeaturedShowreel() {
 
 const TRUSTED = [
   "LEGACY SUMMIT",
-  "AURA STUDIOS",
-  "NORTHWIND",
+  "DIAMOND PROJECT",
+  "VIVKIVON",
   "ATLAS MEDIA",
-  "HELIOS",
-  "MERIDIAN",
-  "OBSIDIAN CO.",
+  "OGABRAND MOTION",
 ];
 
 export function TrustedBy() {
