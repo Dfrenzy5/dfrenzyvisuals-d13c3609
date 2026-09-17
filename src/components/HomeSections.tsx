@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import certAsset from "@/assets/higgsfield-certification.jpg.asset.json";
 
-const CERTIFICATE_URL = `https://dfrenzyvisuals.lovable.app${certAsset.url}`;
+const CERTIFICATE_URL = certAsset.url;
 
 /* ---------------- Services ---------------- */
 
