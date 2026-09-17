@@ -80,6 +80,7 @@ function ArticlePage() {
     inLanguage: "en",
     mainEntityOfPage: { "@type": "WebPage", "@id": URL },
     author: { "@type": "Organization", name: "DFRENZY VISUALS", url: SITE_URL },
+    image: [`${SITE_URL}${featuredImage}`],
     publisher: { "@type": "Organization", name: "DFRENZY VISUALS", url: SITE_URL },
     keywords: "Grok Imagine Video 1.5, AI video, AI filmmaking",
   };
