@@ -121,7 +121,7 @@ export function TrustedBy() {
     >
       <div className="mx-auto max-w-6xl">
         <p className="text-center font-display text-[10px] tracking-[0.5em] text-neon-bright">
-          TRUSTED BY BRANDS &amp; PRODUCERS WORLDWIDE
+          CLIENTS & CREATIVE COLLABORATORS
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-70">
           {TRUSTED.map((name) => (
