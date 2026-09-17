@@ -201,6 +201,7 @@ export function FeaturedProjects() {
               key={p.title}
               to="/portfolio/$slug"
               params={{ slug: p.slug }}
+              aria-label={`View ${p.title} project`}
               className="group relative aspect-video overflow-hidden rounded-2xl border border-neon/20 glass-panel"
             >
               <img
