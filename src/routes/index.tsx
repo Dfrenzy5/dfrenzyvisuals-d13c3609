@@ -19,6 +19,9 @@ const TrustedBy = lazy(() =>
 const DirectorsChoice = lazy(() =>
   import("@/components/HomeExtras").then((m) => ({ default: m.DirectorsChoice })),
 );
+const FeaturedProjects = lazy(() =>
+  import("@/components/HomeExtras").then((m) => ({ default: m.FeaturedProjects })),
+);
 const CreativeProcess = lazy(() =>
   import("@/components/HomeExtras").then((m) => ({ default: m.CreativeProcess })),
 );
@@ -713,8 +716,9 @@ function Index() {
 </div>
 </section>
     <Suspense fallback={null}>
-      <TrustedBy />
+           <TrustedBy />
       <StatsRow />
+      <FeaturedProjects />
       <Services />
       <DirectorsChoice />
       <CreativeProcess />
