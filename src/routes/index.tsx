@@ -483,8 +483,14 @@ function Index() {
             transition: "opacity 600ms ease-out",
           }}
         >
-          <h1 className="font-display text-2xl tracking-[0.5em] sm:text-4xl" style={{ color: "#FFFFFF", textShadow: "0 0 18px rgba(0,213,255,0.8)" }}>
-            {"\n"}
+          <h1
+            className="font-display text-2xl tracking-[0.5em] sm:text-4xl"
+            style={{
+              color: "#FFFFFF",
+              textShadow: "0 0 18px rgba(0,213,255,0.8)",
+            }}
+          >
+            DFRENZY VISUALS
           </h1>
           {show.identity && (
             <span
