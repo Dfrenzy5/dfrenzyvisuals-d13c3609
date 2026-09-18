@@ -294,9 +294,24 @@ export function CreativeProcess() {
 /* ---------------- Awards / Recognition ---------------- */
 
 const AWARDS = [
-  { Icon: Trophy, title: "Certified AI Filmmaking", subtitle: "Higgsfield Academy", note: "AI Filmmaking Pipeline Certified" },
-  { Icon: Award, title: "AI Filmmaking Practitioner", subtitle: "DFrenzy Visuals", note: "AI-native cinematic production & creative direction" },
-  { Icon: Sparkles, title: "Director-Led Production", subtitle: "DFrenzy Visuals", note: "Human direction combined with generative AI workflows" },
+  {
+    Icon: Trophy,
+    title: "AI FILMMAKING PIPELINE CERTIFIED",
+    subtitle: "Higgsfield Academy",
+    note: "Professional AI filmmaking training and certification",
+  },
+  {
+    Icon: Star,
+    title: "AI-NATIVE PRODUCTION",
+    subtitle: "DFrenzy Visuals",
+    note: "Cinematic production built around modern generative AI workflows",
+  },
+  {
+    Icon: Award,
+    title: "DIRECTOR-LED CREATIVE",
+    subtitle: "DFrenzy Visuals",
+    note: "Human creative direction across story, visuals, editing and finishing",
+  },
 ];
 
 export function Awards() {
