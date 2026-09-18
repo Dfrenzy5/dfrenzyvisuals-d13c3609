@@ -103,7 +103,7 @@ export function FeaturedShowreel() {
   );
 }
 
-/* ---------------- Trusted By ---------------- */
+/* ---------------- Selected Work & Collaborations ---------------- */
 
 const TRUSTED = [
   "LEGACY SUMMIT",
@@ -116,13 +116,19 @@ const TRUSTED = [
 export function TrustedBy() {
   return (
     <section
-      aria-label="Trusted by"
+      aria-label="Selected clients and creative collaborations"
       className="relative px-6 py-16 md:px-10"
     >
-      <div className="mx-auto max-w-6xl">
-        <p className="text-center font-display text-[10px] tracking-[0.5em] text-neon-bright">
-          CLIENTS & CREATIVE COLLABORATORS
+      <div className="mx-auto max-w-6xl text-center">
+        <p className="font-display text-[10px] tracking-[0.5em] text-neon-bright">
+          SELECTED CLIENTS & COLLABORATIONS
         </p>
+
+        <p className="mx-auto mt-3 max-w-2xl text-xs leading-relaxed text-muted-foreground sm:text-sm">
+          Selected brands, projects, and creative collaborations across
+          DFrenzy Visuals productions.
+        </p>
+
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-70">
           {TRUSTED.map((name) => (
             <span
