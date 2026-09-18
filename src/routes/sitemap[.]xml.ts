@@ -50,11 +50,29 @@ export const Route = createFileRoute("/sitemap.xml")({
             },
           { path: "/faq", changefreq: "monthly", priority: "0.7" },
           { path: "/blueprint", changefreq: "monthly", priority: "0.6" },
-          ...CASE_STUDIES.map((s) => ({
+                    ...CASE_STUDIES.map((s) => ({
             path: `/portfolio/${s.slug}`,
             changefreq: "monthly" as const,
             priority: "0.8",
           })),
+
+          ...JOURNAL_ENTRIES.flatMap((entry) => {
+            if (!entry.to) return [];
+
+            let path = entry.to.route;
+
+            for (const [key, value] of Object.entries(entry.to.params ?? {})) {
+              path = path.replace(`$${key}`, value);
+            }
+
+            return [
+              {
+                path,
+                changefreq: "monthly" as const,
+                priority: entry.category === "Article" ? "0.8" : "0.7",
+              },
+            ];
+          }),
         ];
 
         const urls = entries
