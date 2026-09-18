@@ -363,7 +363,7 @@ const FAQS = [
   },
   {
     q: "Do you work with international clients?",
-    a: "Yes. We operate remotely and have delivered work for clients across Africa, Europe, and North America.",
+    a: "Yes. We work remotely with clients, creators, brands, and production partners across different markets.",
   },
   {
     q: "What kind of brands do you work with?",
@@ -371,14 +371,13 @@ const FAQS = [
   },
   {
     q: "Do we own the final work?",
-    a: "Yes. Clients receive full usage rights to the delivered masters, with source files available on request.",
+    a: "Usage rights for the delivered work are agreed as part of each project. Source files can also be made available where agreed.",
   },
   {
     q: "How does the AI pipeline change quality?",
     a: "AI compresses production without compressing craft. Direction, editorial, color, and sound are still human-led.",
   },
 ];
-
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
