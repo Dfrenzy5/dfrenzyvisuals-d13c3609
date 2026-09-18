@@ -50,7 +50,10 @@ function JournalCard({ entry }: { entry: JournalEntry }) {
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 font-display text-[10px] tracking-[0.3em] text-muted-foreground">
           <Calendar className="h-3.5 w-3.5 text-neon-bright" />
-          <span>{entry.date.toUpperCase()}</span>
+          <span>{new Date(entry.date).toLocaleDateString("en-US", {
+  month: "long",
+  year: "numeric",
+}).toUpperCase()}</span>
         </div>
         <span className="rounded-full border border-neon/40 bg-background/60 px-3 py-1 font-display text-[9px] tracking-[0.3em] text-neon-bright backdrop-blur-md">
           {entry.category.toUpperCase()}
