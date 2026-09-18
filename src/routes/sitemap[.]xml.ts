@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { CASE_STUDIES } from "@/data/case-studies";
 import { SITE_URL } from "@/lib/site";
+import { JOURNAL_ENTRIES } from "@/data/journal";
 
 
 
