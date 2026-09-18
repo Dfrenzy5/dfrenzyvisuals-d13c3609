@@ -30,55 +30,58 @@ export const Route = createFileRoute("/portfolio/$slug")({
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: s
-        ? [
-            {
-              type: "application/ld+json",
-              children: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "CreativeWork",
-                name: s.title,
-                description: s.subtitle,
-                genre: s.category,
-                author: { "@type": "Organization", name: "DFrenzy Visuals" },
-                dateCreated: s.year,
-                url,
-                image: s.poster,
-                ...(s.youtube
-                  ? {
-                      video: {
-                        "@type": "VideoObject",
-                        name: s.title,
-                        description: s.subtitle,
-                        thumbnailUrl: s.poster,
-                        embedUrl: `https://www.youtube.com/embed/${s.youtube}`,
-                        uploadDate: `${s.year}-01-01`,
-                      },
-                    }
-                  : {}),
-              }),
-            },
-            ...(s.youtube
-              ? [
-                  {
-                    type: "application/ld+json",
-                    children: JSON.stringify({
-                      "@context": "https://schema.org",
-                      "@type": "VideoObject",
-                      name: s.title,
-                      description: s.subtitle,
-                      thumbnailUrl: s.poster,
-                      embedUrl: `https://www.youtube.com/embed/${s.youtube}`,
-                      uploadDate: `${s.year}-01-01`,
-                      publisher: {
-                        "@type": "Organization",
-                        name: "DFRENZY VISUALS",
-                      },
-                    }),
+  ? [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "@id": `${url}#work`,
+          name: s.title,
+          description: s.subtitle,
+          genre: s.category,
+          url,
+          image,
+          creator: {
+            "@type": "Person",
+            "@id": `${SITE_URL}/ai-filmmaker#daniel-ebhowe`,
+            name: "Daniel Ebhowe",
+            url: `${SITE_URL}/ai-filmmaker`,
+          },
+          producer: {
+            "@type": "Organization",
+            "@id": `${SITE_URL}/#dfrenzy-visuals`,
+            name: "DFRENZY VISUALS",
+            url: `${SITE_URL}/`,
+          },
+          ...(s.youtube
+            ? {
+                subjectOf: {
+                  "@type": "VideoObject",
+                  "@id": `${url}#video`,
+                  name: s.title,
+                  description: s.subtitle,
+                  thumbnailUrl: image,
+                  embedUrl: `https://www.youtube.com/embed/${s.youtube}`,
+                  publisher: {
+                    "@type": "Organization",
+                    "@id": `${SITE_URL}/#dfrenzy-visuals`,
+                    name: "DFRENZY VISUALS",
+                    url: `${SITE_URL}/`,
                   },
-                ]
-              : []),
-          ]
-        : [],
+                  creator: {
+                    "@type": "Person",
+                    "@id": `${SITE_URL}/ai-filmmaker#daniel-ebhowe`,
+                    name: "Daniel Ebhowe",
+                    url: `${SITE_URL}/ai-filmmaker`,
+                  },
+                },
+              }
+            : {}),
+        }),
+      },
+    ]
+  : [],
     };
   },
   notFoundComponent: () => (
