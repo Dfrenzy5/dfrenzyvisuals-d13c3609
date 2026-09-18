@@ -104,7 +104,8 @@ const FILMS: Film[] = [
     subtitle: "MUSIC VISUAL",
     category: "MUSIC VISUALS",
     image: film2,
-    description: "Rhythm-driven music film with high-contrast visual identity and bold choreography of light.",
+    description:
+      "Rhythm-driven music film with high-contrast visual identity and bold choreography of light.",
     productionType: "Music Visual",
     creativeDirection: "Bold / Editorial",
   },
@@ -115,7 +116,8 @@ const FILMS: Film[] = [
     subtitle: "SHORT FILM",
     category: "AI FILMS",
     image: film3,
-    description: "A near-future short film about the last broadcast leaving Earth and the people who hear it.",
+    description:
+      "A near-future short film about the last broadcast leaving Earth and the people who hear it.",
     productionType: "AI Short Film",
     creativeDirection: "Speculative Drama",
   },
@@ -127,7 +129,8 @@ const FILMS: Film[] = [
     category: "COMMERCIALS",
     image: "https://img.youtube.com/vi/woZwTipsk9o/maxresdefault.jpg",
     youtube: "https://youtu.be/woZwTipsk9o",
-    description: "Launch promo built to position a brand as the next category leader — kinetic, confident, future-facing.",
+    description:
+      "Launch promo built to position a brand as the next category leader — kinetic, confident, future-facing.",
     productionType: "Commercial",
     creativeDirection: "Kinetic / Modernist",
   },
@@ -138,7 +141,8 @@ const FILMS: Film[] = [
     subtitle: "AI FILM",
     category: "AI FILMS",
     image: film5,
-    description: "An atmospheric AI film about memory, machines, and the future we leave for others.",
+    description:
+      "An atmospheric AI film about memory, machines, and the future we leave for others.",
     productionType: "AI Short Film",
     creativeDirection: "Atmospheric / Contemplative",
   },
@@ -183,23 +187,22 @@ const FILMS: Film[] = [
     productionType: "AI Short Film",
     creativeDirection: "Dreamlike / Liminal Narrative",
     tools: "Generative Video Pipeline, Grok, Seedance, DaVinci Resolve",
-    {
-  id: "9",
-  slug: "the-future-of-human-vision",
-  title: "THE FUTURE OF HUMAN VISION",
-  subtitle: "AI · SCIENCE · THE NEXT MEDICAL REVOLUTION",
-  category: "DOCUMENTARIES",
-  image: "https://img.youtube.com/vi/zuMpAp4oi3Q/maxresdefault.jpg",
-  youtube: "https://youtu.be/zuMpAp4oi3Q",
-  description:
-    "A documentary exploring the future of human vision, artificial intelligence, medical innovation, and the technologies that could reshape how we understand and restore sight.",
-  productionType: "AI Documentary",
-  creativeDirection: "Science / Futurism",
-  tools: "AI Generative Pipeline, Editing & Post-Production",
-},
+  },
+  {
+    id: "9",
+    slug: "the-future-of-human-vision",
+    title: "THE FUTURE OF HUMAN VISION",
+    subtitle: "AI · SCIENCE · THE NEXT MEDICAL REVOLUTION",
+    category: "DOCUMENTARIES",
+    image: "https://img.youtube.com/vi/zuMpAp4oi3Q/maxresdefault.jpg",
+    youtube: "https://youtu.be/zuMpAp4oi3Q",
+    description:
+      "A documentary exploring the future of human vision, artificial intelligence, medical innovation, and the technologies that could reshape how we understand and restore sight.",
+    productionType: "AI Documentary",
+    creativeDirection: "Science / Futurism",
+    tools: "AI Generative Pipeline, Editing & Post-Production",
   },
 ];
-
 function PortfolioPage() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("ALL");
   const [open, setOpen] = useState<Film | null>(null);
