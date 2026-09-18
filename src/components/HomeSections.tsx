@@ -254,32 +254,35 @@ function About() {
   );
 }
 
-/* ---------------- Testimonials ---------------- */
+/* ---------------- Client Feedback ---------------- */
 
-const TESTIMONIALS = [
+const CLIENT_FEEDBACK = [
   {
-    quote:
-      "DFrenzy delivered a launch film that genuinely shifted how people perceive our brand. Cinematic, fast, on-spec.",
-    name: "Brand Lead",
-    role: "Consumer Tech",
+    quote: "This is amazing…",
   },
   {
-    quote:
-      "The trailer felt like a feature film. We doubled engagement and got picked up in trade press within a week.",
-    name: "Marketing Director",
-    role: "Lifestyle Label",
+    quote: "I love the video…",
   },
   {
-    quote:
-      "Working with DFrenzy is the closest thing to having an in-house production studio. Editorial taste + speed.",
-    name: "Founder",
-    role: "Creative Agency",
+    quote: "You really did a great job…",
+  },
+  {
+    quote: "This is exactly what I wanted…",
+  },
+  {
+    quote: "The video is beautiful…",
+  },
+  {
+    quote: "I'm impressed…",
+  },
+  {
+    quote: "Thank you for the work…",
   },
 ];
 
 export function Testimonials() {
   const [i, setI] = useState(0);
-  const total = TESTIMONIALS.length;
+  const total = CLIENT_FEEDBACK.length;
   const go = (d: number) => setI((p) => (p + d + total) % total);
 
   useEffect(() => {
@@ -287,7 +290,8 @@ export function Testimonials() {
     return () => clearInterval(id);
   }, [total]);
 
-  const t = TESTIMONIALS[i];
+  const t = CLIENT_FEEDBACK[i];
+
   return (
     <section
       aria-labelledby="testimonials-heading"
@@ -295,14 +299,20 @@ export function Testimonials() {
     >
       <div className="mx-auto max-w-4xl text-center">
         <p className="font-display text-[10px] tracking-[0.5em] text-neon-bright">
-          WHAT CLIENTS SAY
+          CLIENT FEEDBACK
         </p>
+
         <h2
           id="testimonials-heading"
           className="mt-3 font-display text-3xl font-black tracking-[0.18em] text-foreground sm:text-4xl"
         >
-          TESTIMONIALS
+          WHAT CLIENTS ARE SAYING
         </h2>
+
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Selected feedback received from clients across DFrenzy Visuals
+          productions.
+        </p>
 
         <div className="relative mt-12 overflow-hidden rounded-2xl border border-neon/20 glass-panel p-10 sm:p-14">
           <Quote
@@ -310,19 +320,24 @@ export function Testimonials() {
             className="absolute -left-2 -top-2 h-24 w-24 text-neon/15 sm:h-32 sm:w-32"
             strokeWidth={1}
           />
+
           <div key={i} className="animate-warp-in">
             <p className="relative z-10 text-lg italic leading-relaxed text-foreground sm:text-xl">
               "{t.quote}"
             </p>
+
             <div className="mt-8 flex items-center justify-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-full border border-neon/40 bg-neon/10 font-display text-sm font-bold text-neon-bright">
-                {t.name.charAt(0)}
+                DF
               </div>
+
               <div className="text-left">
                 <div className="font-display text-xs font-bold tracking-[0.2em] text-foreground">
-                  {t.name.toUpperCase()}
+                  DFRENZY VISUALS
                 </div>
-                <div className="text-xs text-muted-foreground">{t.role}</div>
+                <div className="text-xs text-muted-foreground">
+                  Client feedback
+                </div>
               </div>
             </div>
           </div>
@@ -331,17 +346,18 @@ export function Testimonials() {
             <button
               type="button"
               onClick={() => go(-1)}
-              aria-label="Previous testimonial"
+              aria-label="Previous client feedback"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-neon/40 text-muted-foreground transition-all hover:border-neon hover:text-neon-bright"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
+
             <div className="flex gap-2">
-              {TESTIMONIALS.map((_, idx) => (
+              {CLIENT_FEEDBACK.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
-                  aria-label={`Go to testimonial ${idx + 1}`}
+                  aria-label={`Go to client feedback ${idx + 1}`}
                   onClick={() => setI(idx)}
                   className={`h-1.5 rounded-full transition-all ${
                     idx === i ? "w-8 bg-neon-bright" : "w-1.5 bg-neon/30"
@@ -349,10 +365,11 @@ export function Testimonials() {
                 />
               ))}
             </div>
+
             <button
               type="button"
               onClick={() => go(1)}
-              aria-label="Next testimonial"
+              aria-label="Next client feedback"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-neon/40 text-muted-foreground transition-all hover:border-neon hover:text-neon-bright"
             >
               <ChevronRight className="h-4 w-4" />
