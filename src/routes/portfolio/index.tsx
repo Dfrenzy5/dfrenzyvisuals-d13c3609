@@ -183,6 +183,20 @@ const FILMS: Film[] = [
     productionType: "AI Short Film",
     creativeDirection: "Dreamlike / Liminal Narrative",
     tools: "Generative Video Pipeline, Grok, Seedance, DaVinci Resolve",
+    {
+  id: "9",
+  slug: "the-future-of-human-vision",
+  title: "THE FUTURE OF HUMAN VISION",
+  subtitle: "AI · SCIENCE · THE NEXT MEDICAL REVOLUTION",
+  category: "DOCUMENTARIES",
+  image: "https://img.youtube.com/vi/zuMpAp4oi3Q/maxresdefault.jpg",
+  youtube: "https://youtu.be/zuMpAp4oi3Q",
+  description:
+    "A documentary exploring the future of human vision, artificial intelligence, medical innovation, and the technologies that could reshape how we understand and restore sight.",
+  productionType: "AI Documentary",
+  creativeDirection: "Science / Futurism",
+  tools: "AI Generative Pipeline, Editing & Post-Production",
+},
   },
 ];
 
