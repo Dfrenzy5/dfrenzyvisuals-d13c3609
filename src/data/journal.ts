@@ -23,6 +23,19 @@ export interface JournalEntry {
 }
 
 export const JOURNAL_ENTRIES: JournalEntry[] = [
+    {
+    id: "how-to-create-consistent-characters-ai-filmmaking",
+    date: "2026-09-20",
+    category: "Article",
+    title: "How to Create Consistent Characters in AI Filmmaking",
+    description:
+      "A practical guide to maintaining character identity, wardrobe, continuity, and cinematic consistency across AI-generated shots and scenes.",
+    status: "Live",
+    to: {
+      label: "Read Article",
+      route: "/journal/how-to-create-consistent-characters-ai-filmmaking",
+    },
+  },
   {
     id: "how-much-ai-filmmakers-earn-2026",
     date: "2026-09-01",
