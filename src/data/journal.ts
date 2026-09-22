@@ -23,6 +23,19 @@ export interface JournalEntry {
 }
 
 export const JOURNAL_ENTRIES: JournalEntry[] = [
+  {
+  id: "i-need-a-very-good-ai-filmmaker",
+  date: "2026-09-22",
+  category: "Article",
+  title: "I Need a Very Good AI Filmmaker: How Do I Find the Right One?",
+  description:
+    "A practical guide to evaluating AI filmmakers for movies, commercials, brand films and cinematic AI video.",
+  status: "Live",
+  to: {
+    label: "Read Article",
+    route: "/journal/i-need-a-very-good-ai-filmmaker",
+  },
+},
     {
     id: "how-to-create-consistent-characters-ai-filmmaking",
     date: "2026-09-20",
