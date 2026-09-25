@@ -359,7 +359,7 @@ function PortfolioPage() {
                     <div className="font-display text-[10px] tracking-[0.4em] text-neon-bright">CINEMA MODE</div>
                     <div className="mt-2 font-display text-3xl font-black tracking-widest text-foreground md:text-5xl">{open.title}</div>
                     <p className="mt-2 text-sm tracking-widest text-muted-foreground">{open.subtitle}</p>
-                    
+                    <a
                       href="https://www.youtube.com/@DFRENZYVISUALS"
                       target="_blank"
                       rel="noreferrer"
