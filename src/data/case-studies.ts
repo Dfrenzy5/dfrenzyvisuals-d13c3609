@@ -1,3 +1,4 @@
+import tenMinutes from "@/assets/ten-minutes.jpg";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
