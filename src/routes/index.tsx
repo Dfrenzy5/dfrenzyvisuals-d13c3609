@@ -139,6 +139,55 @@ export const Route = createFileRoute("/")({
           },
         }),
       },
+            {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "How long does a typical project take?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Most trailers and promos deliver in 2–4 weeks. AI short films and event films are typically 3–6 weeks depending on scope.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do you work with international clients?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. We work remotely with clients, creators, brands, and production partners across different markets.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What kind of brands do you work with?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Luxury brands, real-estate developers, technology companies, corporates, agencies, and artists who want cinematic storytelling.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do we own the final work?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Usage rights for the delivered work are agreed as part of each project. Source files can also be made available where agreed.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How does the AI pipeline change quality?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "AI compresses production without compressing craft. Direction, editorial, color, and sound are still human-led.",
+              },
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: Index,
