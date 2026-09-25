@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, X, Filter, ArrowRight } from "lucide-react";
+import tenMinutes from "@/assets/ten-minutes.jpg";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
@@ -55,6 +56,21 @@ function ytId(url: string): string {
 }
 
 const FILMS: Film[] = [
+    {
+    id: "10-minutes",
+    slug: "10-minutes",
+    title: "10 MINUTES",
+    subtitle: "SOME ENTRANCES DON'T NEED AN EXPLANATION",
+    category: "PROMOS",
+    image: tenMinutes,
+    youtube: "https://youtu.be/brzlfy2HSIc",
+    description:
+      "A wordless cold open — a walk through Lagos at golden hour that cuts into a room full of drawn guns, and one man who isn't rattled by it. Built to sell the studio's cinematic range without naming a single client.",
+    productionType: "Brand Film",
+    creativeDirection: "Crime-Thriller Cold Open",
+    client: "DFRENZY VISUALS",
+    tools: "Seedance, Higgsfield Cinema Studio, DaVinci Resolve",
+  },
   {
     id: "the-leopard-king",
     slug: "the-leopard-king",
