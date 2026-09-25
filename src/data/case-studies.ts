@@ -30,6 +30,69 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    slug: "10-minutes",
+    title: "10 MINUTES",
+    subtitle: "Some entrances don't need an explanation.",
+    category: "Brand Film",
+    client: "DFRENZY VISUALS",
+    year: "2026",
+    duration: "1 week",
+    role: "Direction · AI Pipeline · Edit · Sound",
+    poster: tenMinutes,
+    youtube: "brzlfy2HSIc",
+    problem:
+      "Sell the studio's own AI-filmmaking pipeline without a single line of dialogue or a pitch deck — prove the craft by putting the founder himself in the frame, under real pressure, in a scene that has to be earned shot by shot.",
+    concept:
+      "A cold open with no exposition: a man walks the streets of Lagos at golden hour, unhurried, then steps into a room full of drawn guns like he already knows how it ends. The countdown clock isn't explained — it doesn't need to be. Tension is carried entirely by blocking, eyeline, and the stillness of one man against a room that's moving.",
+    moodboard: [
+      "Golden-hour Lagos street, handheld intimacy",
+      "Cold, controlled interior — glass, marble, gunmetal",
+      "Silhouette and rim-light character reveals",
+      "Ember/smoke-lit closing hero shot",
+    ],
+    production:
+      "Built as a two-location cold open — exterior street walk, then interior standoff — with continuity locked on wardrobe, jewelry, and tattoo detail across every shot so the cut between locations reads as one unbroken character, not two separate generations.",
+    aiPipeline: [
+      "Character-consistency locking across exterior and interior shots",
+      "Crowd and extras generation for the street-level Lagos sequence",
+      "Choreographed multi-subject blocking for the armed standoff",
+      "Grain, smoke, and ember finishing pass on the closing hero shot",
+    ],
+    editing:
+      "Cut for restraint — no music swells, no fast cutting. The countdown card is the only text in the piece, dropped in at the act break to reframe everything that came before it.",
+    outcome:
+      "A brand short that makes the case for the studio's cinematic range without naming a single client — confidence, tension, and craft standing in for a showreel.",
+    impact: [
+      "Flagship brand short for dfrenzyvisuals.com",
+      "Founder-led piece demonstrating full-pipeline range in under a minute",
+    ],
+    tools: ["Seedance", "Higgsfield Cinema Studio", "DaVinci Resolve"],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "10 MINUTES is a brand short produced by DFRENZY VISUALS, a full-service AI cinematic production studio based in Lagos and Uyo, Nigeria. Rather than pitch the studio's capabilities directly, the piece puts founder Daniel Ebhowe on camera in a wordless cold open — a street-level entrance that cuts into a tension-filled standoff — built to demonstrate that an AI-native pipeline can carry genuine cinematic tension, not just visual polish.",
+      },
+      {
+        heading: "Production Pipeline",
+        body: "The piece was built across two distinct environments — an exterior Lagos street sequence and an interior standoff — with character continuity locked across wardrobe, jewelry, and tattoo detail so the transition between locations reads as one continuous performance rather than two separate generations.",
+        points: [
+          "Character-consistency locking across every shot, exterior to interior",
+          "Multi-subject blocking for the surrounding standoff sequence",
+          "Structured, restrained edit built around a single title-card reveal",
+          "Finishing pass for grain, smoke, and ember detail on the closing shot",
+        ],
+      },
+      {
+        heading: "Why It Matters",
+        body: "Most AI showreels lead with spectacle. 10 MINUTES leads with restraint — deliberately withholding music swells, fast cuts, and dialogue to prove the pipeline can hold an audience on tension alone. It's a demonstration of directorial control as much as generative capability.",
+      },
+      {
+        heading: "About DFRENZY VISUALS",
+        body: "DFRENZY VISUALS is a Nigerian AI cinematic production studio producing original short films, drama series, and music videos alongside client commercial work — event promo campaigns and brand storytelling for businesses across Lagos, Uyo, and Calabar. The studio's production stack spans Grok AI, Seedance, Higgsfield Cinema Studio, Kling, Veo, and DaVinci Resolve, built around a consistent in-house character and continuity-locking methodology used across every original and client project.",
+      },
+    ],
+  },
+  {
     slug: "unbliss",
     title: "UNBLISS",
     subtitle: "Some love stories have witnesses",
@@ -408,69 +471,6 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Showcases the studio's dreamlike, liminal-space range",
     ],
     tools: ["Generative Video Pipeline", "Grok", "Seedance", "DaVinci Resolve"],
-  },
-    {
-    slug: "10-minutes",
-    title: "10 MINUTES",
-    subtitle: "Some entrances don't need an explanation.",
-    category: "Brand Film",
-    client: "DFRENZY VISUALS",
-    year: "2026",
-    duration: "1 week",
-    role: "Direction · AI Pipeline · Edit · Sound",
-    poster: tenMinutes,
-    youtube: "brzlfy2HSIc",
-    problem:
-      "Sell the studio's own AI-filmmaking pipeline without a single line of dialogue or a pitch deck — prove the craft by putting the founder himself in the frame, under real pressure, in a scene that has to be earned shot by shot.",
-    concept:
-      "A cold open with no exposition: a man walks the streets of Lagos at golden hour, unhurried, then steps into a room full of drawn guns like he already knows how it ends. The countdown clock isn't explained — it doesn't need to be. Tension is carried entirely by blocking, eyeline, and the stillness of one man against a room that's moving.",
-    moodboard: [
-      "Golden-hour Lagos street, handheld intimacy",
-      "Cold, controlled interior — glass, marble, gunmetal",
-      "Silhouette and rim-light character reveals",
-      "Ember/smoke-lit closing hero shot",
-    ],
-    production:
-      "Built as a two-location cold open — exterior street walk, then interior standoff — with continuity locked on wardrobe, jewelry, and tattoo detail across every shot so the cut between locations reads as one unbroken character, not two separate generations.",
-    aiPipeline: [
-      "Character-consistency locking across exterior and interior shots",
-      "Crowd and extras generation for the street-level Lagos sequence",
-      "Choreographed multi-subject blocking for the armed standoff",
-      "Grain, smoke, and ember finishing pass on the closing hero shot",
-    ],
-    editing:
-      "Cut for restraint — no music swells, no fast cutting. The countdown card is the only text in the piece, dropped in at the act break to reframe everything that came before it.",
-    outcome:
-      "A brand short that makes the case for the studio's cinematic range without naming a single client — confidence, tension, and craft standing in for a showreel.",
-    impact: [
-      "Flagship brand short for dfrenzyvisuals.com",
-      "Founder-led piece demonstrating full-pipeline range in under a minute",
-    ],
-    tools: ["Seedance", "Higgsfield Cinema Studio", "DaVinci Resolve"],
-    writtenCaseStudy: [
-      {
-        heading: "Overview",
-        body: "10 MINUTES is a brand short produced by DFRENZY VISUALS, a full-service AI cinematic production studio based in Lagos and Uyo, Nigeria. Rather than pitch the studio's capabilities directly, the piece puts founder Daniel Ebhowe on camera in a wordless cold open — a street-level entrance that cuts into a tension-filled standoff — built to demonstrate that an AI-native pipeline can carry genuine cinematic tension, not just visual polish.",
-      },
-      {
-        heading: "Production Pipeline",
-        body: "The piece was built across two distinct environments — an exterior Lagos street sequence and an interior standoff — with character continuity locked across wardrobe, jewelry, and tattoo detail so the transition between locations reads as one continuous performance rather than two separate generations.",
-        points: [
-          "Character-consistency locking across every shot, exterior to interior",
-          "Multi-subject blocking for the surrounding standoff sequence",
-          "Structured, restrained edit built around a single title-card reveal",
-          "Finishing pass for grain, smoke, and ember detail on the closing shot",
-        ],
-      },
-      {
-        heading: "Why It Matters",
-        body: "Most AI showreels lead with spectacle. 10 MINUTES leads with restraint — deliberately withholding music swells, fast cuts, and dialogue to prove the pipeline can hold an audience on tension alone. It's a demonstration of directorial control as much as generative capability.",
-      },
-      {
-        heading: "About DFRENZY VISUALS",
-        body: "DFRENZY VISUALS is a Nigerian AI cinematic production studio producing original short films, drama series, and music videos alongside client commercial work — event promo campaigns and brand storytelling for businesses across Lagos, Uyo, and Calabar. The studio's production stack spans Grok AI, Seedance, Higgsfield Cinema Studio, Kling, Veo, and DaVinci Resolve, built around a consistent in-house character and continuity-locking methodology used across every original and client project.",
-      },
-    ],
   },
 ];
 
