@@ -86,6 +86,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
+          "@id": `${SITE_URL}/#dfrenzy-visuals`,
           name: "DFRENZY VISUALS",
           alternateName: "DfrenzyVisuals",
           url: `${SITE_URL}/`,
