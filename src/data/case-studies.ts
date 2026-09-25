@@ -29,9 +29,9 @@ export type CaseStudy = {
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
-  {
-    slug: "10-minutes",
-    title: "10 MINUTES",
+    {
+    slug: "the-man-they-should-have-feared",
+    title: "THE MAN THEY SHOULD HAVE FEARED",
     subtitle: "Some entrances don't need an explanation.",
     category: "Brand Film",
     client: "DFRENZY VISUALS",
@@ -43,7 +43,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     problem:
       "Sell the studio's own AI-filmmaking pipeline without a single line of dialogue or a pitch deck — prove the craft by putting the founder himself in the frame, under real pressure, in a scene that has to be earned shot by shot.",
     concept:
-      "A cold open with no exposition: a man walks the streets of Lagos at golden hour, unhurried, then steps into a room full of drawn guns like he already knows how it ends. The countdown clock isn't explained — it doesn't need to be. Tension is carried entirely by blocking, eyeline, and the stillness of one man against a room that's moving.",
+      "A cold open with no exposition: a man walks the streets of Lagos at golden hour, unhurried, then steps into a room full of drawn guns like he already knows how it ends. Tension is carried entirely by blocking, eyeline, and the stillness of one man against a room that's moving.",
     moodboard: [
       "Golden-hour Lagos street, handheld intimacy",
       "Cold, controlled interior — glass, marble, gunmetal",
@@ -59,7 +59,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Grain, smoke, and ember finishing pass on the closing hero shot",
     ],
     editing:
-      "Cut for restraint — no music swells, no fast cutting. The countdown card is the only text in the piece, dropped in at the act break to reframe everything that came before it.",
+      "Cut for restraint — no dialogue, no fast cutting. Scored to \"10 Minutes\" by 6uff ft. Odumudu Black, with the title card timed to the track's own countdown motif.",
     outcome:
       "A brand short that makes the case for the studio's cinematic range without naming a single client — confidence, tension, and craft standing in for a showreel.",
     impact: [
@@ -70,7 +70,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     writtenCaseStudy: [
       {
         heading: "Overview",
-        body: "10 MINUTES is a brand short produced by DFRENZY VISUALS, a full-service AI cinematic production studio based in Lagos and Uyo, Nigeria. Rather than pitch the studio's capabilities directly, the piece puts founder Daniel Ebhowe on camera in a wordless cold open — a street-level entrance that cuts into a tension-filled standoff — built to demonstrate that an AI-native pipeline can carry genuine cinematic tension, not just visual polish.",
+        body: "THE MAN THEY SHOULD HAVE FEARED is a brand short produced by DFRENZY VISUALS, a full-service AI cinematic production studio based in Lagos and Uyo, Nigeria. Rather than pitch the studio's capabilities directly, the piece puts founder Daniel Ebhowe on camera in a wordless cold open — a street-level entrance that cuts into a tension-filled standoff — built to demonstrate that an AI-native pipeline can carry genuine cinematic tension, not just visual polish.",
       },
       {
         heading: "Production Pipeline",
@@ -84,7 +84,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         heading: "Why It Matters",
-        body: "Most AI showreels lead with spectacle. 10 MINUTES leads with restraint — deliberately withholding music swells, fast cuts, and dialogue to prove the pipeline can hold an audience on tension alone. It's a demonstration of directorial control as much as generative capability.",
+        body: "Most AI showreels lead with spectacle. This one leads with restraint — deliberately withholding dialogue and fast cuts to prove the pipeline can hold an audience on tension alone. It's a demonstration of directorial control as much as generative capability.",
       },
       {
         heading: "About DFRENZY VISUALS",
@@ -92,6 +92,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+    
   {
     slug: "unbliss",
     title: "UNBLISS",
