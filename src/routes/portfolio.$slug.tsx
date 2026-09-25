@@ -56,22 +56,13 @@ export const Route = createFileRoute("/portfolio/$slug")({
           },
           ...(s.youtube
             ? {
-                subjectOf: {
+                                subjectOf: {
                   "@type": "VideoObject",
                   "@id": `${url}#video`,
                   name: s.title,
                   description: s.subtitle,
                   thumbnailUrl: image,
-                                    name: s.title,
-                  description: s.subtitle,
-                  thumbnailUrl: image,
                   uploadDate: `${s.year}-01-01T00:00:00+01:00`,
-                  embedUrl: `https://www.youtube.com/embed/${s.youtube}`,
-                  publisher: {
-                    "@type": "Organization",
-                    "@id": `${SITE_URL}/#dfrenzy-visuals`,
-                    name: "DFRENZY VISUALS",
-                    url: `${SITE_URL}/`,
                   embedUrl: `https://www.youtube.com/embed/${s.youtube}`,
                   publisher: {
                     "@type": "Organization",
