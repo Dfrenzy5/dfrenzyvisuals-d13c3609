@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Check, Clapperboard, Film, Sparkles, Crown, Plus } from "lucide-react";
+import { Check, Clapperboard, Film, Sparkles, Crown, Plus, Tv } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 import { Container, Section } from "@/components/ui-studio/Container";
 import { Reveal } from "@/components/ui-studio/Reveal";
@@ -11,13 +11,13 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Production levels for cinematic AI film: Cinematic Content, Cinematic Commercial, Narrative Film and Studio Production. From ₦150,000 — custom quotes for larger projects.",
+          "Production levels for cinematic AI film: Cinematic Content, Cinematic Commercial, Narrative Film, Long-Form & Episodic, and Studio Production. From ₦150,000 — custom quotes for larger projects.",
       },
       { property: "og:title", content: "Pricing — Cinematic AI Production | DFRENZY VISUALS" },
       {
         property: "og:description",
         content:
-          "Choose a production level — Cinematic Content, Cinematic Commercial, Narrative Film or Studio Production — or request a custom quote.",
+          "Choose a production level — Cinematic Content, Cinematic Commercial, Narrative Film, Long-Form & Episodic, or Studio Production — or request a custom quote.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/pricing` },
@@ -143,6 +143,34 @@ const tiers: Tier[] = [
   },
   {
     num: "04",
+    name: "LONG-FORM & EPISODIC",
+    Icon: Tv,
+    price: "From $5,000",
+    intl: "Naira pricing available on request",
+    description:
+      "For 30-minute narrative films and episodic series — full-length storytelling built for one-off pilots or ongoing monthly production.",
+    includesLabel: "INCLUDES",
+    includes: [
+      "One 30-minute episode or standalone film",
+      "Standard tier from $5,000 (2–3 weeks) — from $4,000 per film with confirmed monthly volume",
+      "Cinematic tier from $15,000 (4–6 weeks) — multi-location, suspense/action, VFX, 4K master",
+      "Full character, wardrobe & location continuity bible",
+      "Structured for recurring, series-based or episodic delivery",
+      "Frame-by-frame AI-QC pass before final export",
+      "Watermarked preview ahead of final delivery",
+    ],
+    idealLabel: "IDEAL FOR",
+    ideal: [
+      "Episodic drama series",
+      "Book / novel adaptations",
+      "Long-term volume production contracts",
+      "Recurring monthly production partners",
+    ],
+    note: "50% deposit to begin production; rights transfer on final payment. A pilot episode is recommended before committing to a full series or long-term volume contract.",
+    cta: "DISCUSS YOUR SERIES",
+  },
+  {
+    num: "05",
     name: "STUDIO PRODUCTION",
     Icon: Crown,
     price: "CUSTOM QUOTE",
