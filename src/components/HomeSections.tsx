@@ -12,9 +12,8 @@ import {
   ChevronRight,
   ShieldCheck,
 } from "lucide-react";
-import certAsset from "@/assets/higgsfield-certification.jpg.asset.json";
 
-const CERTIFICATE_URL = certAsset.url;
+  const CERTIFICATE_URL = "/HFA-2026-6SOBWU3TUBDE.png";
 
 /* ---------------- Services ---------------- */
 
