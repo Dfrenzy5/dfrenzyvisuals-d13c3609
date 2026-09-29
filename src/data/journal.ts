@@ -21,7 +21,19 @@ export interface JournalEntry {
     params?: Record<string, string>;
   };
 }
-
+{
+  id: "kling-4-ai-filmmaking-future",
+  date: "2026-09-29",
+  category: "Article",
+  title: "Kling 4.0 and the Future of AI Filmmaking",
+  description:
+    "How Kling 4.0 represents the next evolution of AI video generation and what it means for AI filmmakers, cinematic storytelling, and the future of production.",
+  status: "Live",
+  to: {
+    label: "Read Article",
+    route: "/journal/kling-4-ai-filmmaking-future",
+  },
+},
 export const JOURNAL_ENTRIES: JournalEntry[] = [
   {
   id: "i-need-a-very-good-ai-filmmaker",
