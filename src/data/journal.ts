@@ -21,6 +21,9 @@ export interface JournalEntry {
     params?: Record<string, string>;
   };
 }
+
+export const JOURNAL_ENTRIES: JournalEntry[] = [
+  
 {
   id: "kling-4-ai-filmmaking-future",
   date: "2026-09-29",
@@ -34,7 +37,6 @@ export interface JournalEntry {
     route: "/journal/kling-4-ai-filmmaking-future",
   },
 },
-export const JOURNAL_ENTRIES: JournalEntry[] = [
   {
   id: "i-need-a-very-good-ai-filmmaker",
   date: "2026-09-22",
