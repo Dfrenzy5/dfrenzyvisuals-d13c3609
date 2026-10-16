@@ -17,9 +17,17 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as FilmsEdoStateAt35RouteImport } from './routes/films/edo-state-at-35'
 import { Route as JournalIndexRouteImport } from './routes/journal/index'
+import { Route as JournalAiCinemaFestivalEraAfricaRouteImport } from './routes/journal/ai-cinema-festival-era-africa'
+import { Route as JournalAiFilmsAreEnteringRealCinemaRouteImport } from './routes/journal/ai-films-are-entering-real-cinema'
 import { Route as JournalGrokImagineVideo15AiVideoRouteImport } from './routes/journal/grok-imagine-video-1-5-ai-video'
+import { Route as JournalHowMuchDoAiFilmmakersEarn2026RouteImport } from './routes/journal/how-much-do-ai-filmmakers-earn-2026'
+import { Route as JournalHowToCreateConsistentCharactersAiFilmmakingRouteImport } from './routes/journal/how-to-create-consistent-characters-ai-filmmaking'
+import { Route as JournalINeedAVeryGoodAiFilmmakerRouteImport } from './routes/journal/i-need-a-very-good-ai-filmmaker'
+import { Route as JournalKling4AiFilmmakingFutureRouteImport } from './routes/journal/kling-4-ai-filmmaking-future'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio/index'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
 import { Route as ApiPublicBlueprintDownloadRouteImport } from './routes/api/public/blueprint/download'
@@ -64,9 +72,19 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilmsEdoStateAt35Route = FilmsEdoStateAt35RouteImport.update({
+  id: '/films/edo-state-at-35',
+  path: '/films/edo-state-at-35',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JournalIndexRoute = JournalIndexRouteImport.update({
@@ -74,10 +92,46 @@ const JournalIndexRoute = JournalIndexRouteImport.update({
   path: '/',
   getParentRoute: () => JournalRoute,
 } as any)
+const JournalAiCinemaFestivalEraAfricaRoute =
+  JournalAiCinemaFestivalEraAfricaRouteImport.update({
+    id: '/ai-cinema-festival-era-africa',
+    path: '/ai-cinema-festival-era-africa',
+    getParentRoute: () => JournalRoute,
+  } as any)
+const JournalAiFilmsAreEnteringRealCinemaRoute =
+  JournalAiFilmsAreEnteringRealCinemaRouteImport.update({
+    id: '/ai-films-are-entering-real-cinema',
+    path: '/ai-films-are-entering-real-cinema',
+    getParentRoute: () => JournalRoute,
+  } as any)
 const JournalGrokImagineVideo15AiVideoRoute =
   JournalGrokImagineVideo15AiVideoRouteImport.update({
     id: '/grok-imagine-video-1-5-ai-video',
     path: '/grok-imagine-video-1-5-ai-video',
+    getParentRoute: () => JournalRoute,
+  } as any)
+const JournalHowMuchDoAiFilmmakersEarn2026Route =
+  JournalHowMuchDoAiFilmmakersEarn2026RouteImport.update({
+    id: '/how-much-do-ai-filmmakers-earn-2026',
+    path: '/how-much-do-ai-filmmakers-earn-2026',
+    getParentRoute: () => JournalRoute,
+  } as any)
+const JournalHowToCreateConsistentCharactersAiFilmmakingRoute =
+  JournalHowToCreateConsistentCharactersAiFilmmakingRouteImport.update({
+    id: '/how-to-create-consistent-characters-ai-filmmaking',
+    path: '/how-to-create-consistent-characters-ai-filmmaking',
+    getParentRoute: () => JournalRoute,
+  } as any)
+const JournalINeedAVeryGoodAiFilmmakerRoute =
+  JournalINeedAVeryGoodAiFilmmakerRouteImport.update({
+    id: '/i-need-a-very-good-ai-filmmaker',
+    path: '/i-need-a-very-good-ai-filmmaker',
+    getParentRoute: () => JournalRoute,
+  } as any)
+const JournalKling4AiFilmmakingFutureRoute =
+  JournalKling4AiFilmmakingFutureRouteImport.update({
+    id: '/kling-4-ai-filmmaking-future',
+    path: '/kling-4-ai-filmmaking-future',
     getParentRoute: () => JournalRoute,
   } as any)
 const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
@@ -106,8 +160,16 @@ export interface FileRoutesByFullPath {
   '/journal': typeof JournalRouteWithChildren
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/films/edo-state-at-35': typeof FilmsEdoStateAt35Route
+  '/journal/ai-cinema-festival-era-africa': typeof JournalAiCinemaFestivalEraAfricaRoute
+  '/journal/ai-films-are-entering-real-cinema': typeof JournalAiFilmsAreEnteringRealCinemaRoute
   '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
+  '/journal/how-much-do-ai-filmmakers-earn-2026': typeof JournalHowMuchDoAiFilmmakersEarn2026Route
+  '/journal/how-to-create-consistent-characters-ai-filmmaking': typeof JournalHowToCreateConsistentCharactersAiFilmmakingRoute
+  '/journal/i-need-a-very-good-ai-filmmaker': typeof JournalINeedAVeryGoodAiFilmmakerRoute
+  '/journal/kling-4-ai-filmmaking-future': typeof JournalKling4AiFilmmakingFutureRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
@@ -120,8 +182,16 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/pricing': typeof PricingRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/films/edo-state-at-35': typeof FilmsEdoStateAt35Route
+  '/journal/ai-cinema-festival-era-africa': typeof JournalAiCinemaFestivalEraAfricaRoute
+  '/journal/ai-films-are-entering-real-cinema': typeof JournalAiFilmsAreEnteringRealCinemaRoute
   '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
+  '/journal/how-much-do-ai-filmmakers-earn-2026': typeof JournalHowMuchDoAiFilmmakersEarn2026Route
+  '/journal/how-to-create-consistent-characters-ai-filmmaking': typeof JournalHowToCreateConsistentCharactersAiFilmmakingRoute
+  '/journal/i-need-a-very-good-ai-filmmaker': typeof JournalINeedAVeryGoodAiFilmmakerRoute
+  '/journal/kling-4-ai-filmmaking-future': typeof JournalKling4AiFilmmakingFutureRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/journal': typeof JournalIndexRoute
   '/portfolio': typeof PortfolioIndexRoute
@@ -137,8 +207,16 @@ export interface FileRoutesById {
   '/journal': typeof JournalRouteWithChildren
   '/portfolio': typeof PortfolioRouteWithChildren
   '/pricing': typeof PricingRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/films/edo-state-at-35': typeof FilmsEdoStateAt35Route
+  '/journal/ai-cinema-festival-era-africa': typeof JournalAiCinemaFestivalEraAfricaRoute
+  '/journal/ai-films-are-entering-real-cinema': typeof JournalAiFilmsAreEnteringRealCinemaRoute
   '/journal/grok-imagine-video-1-5-ai-video': typeof JournalGrokImagineVideo15AiVideoRoute
+  '/journal/how-much-do-ai-filmmakers-earn-2026': typeof JournalHowMuchDoAiFilmmakersEarn2026Route
+  '/journal/how-to-create-consistent-characters-ai-filmmaking': typeof JournalHowToCreateConsistentCharactersAiFilmmakingRoute
+  '/journal/i-need-a-very-good-ai-filmmaker': typeof JournalINeedAVeryGoodAiFilmmakerRoute
+  '/journal/kling-4-ai-filmmaking-future': typeof JournalKling4AiFilmmakingFutureRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/journal/': typeof JournalIndexRoute
   '/portfolio/': typeof PortfolioIndexRoute
@@ -155,8 +233,16 @@ export interface FileRouteTypes {
     | '/journal'
     | '/portfolio'
     | '/pricing'
+    | '/robots.txt'
     | '/sitemap.xml'
+    | '/films/edo-state-at-35'
+    | '/journal/ai-cinema-festival-era-africa'
+    | '/journal/ai-films-are-entering-real-cinema'
     | '/journal/grok-imagine-video-1-5-ai-video'
+    | '/journal/how-much-do-ai-filmmakers-earn-2026'
+    | '/journal/how-to-create-consistent-characters-ai-filmmaking'
+    | '/journal/i-need-a-very-good-ai-filmmaker'
+    | '/journal/kling-4-ai-filmmaking-future'
     | '/portfolio/$slug'
     | '/journal/'
     | '/portfolio/'
@@ -169,8 +255,16 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/pricing'
+    | '/robots.txt'
     | '/sitemap.xml'
+    | '/films/edo-state-at-35'
+    | '/journal/ai-cinema-festival-era-africa'
+    | '/journal/ai-films-are-entering-real-cinema'
     | '/journal/grok-imagine-video-1-5-ai-video'
+    | '/journal/how-much-do-ai-filmmakers-earn-2026'
+    | '/journal/how-to-create-consistent-characters-ai-filmmaking'
+    | '/journal/i-need-a-very-good-ai-filmmaker'
+    | '/journal/kling-4-ai-filmmaking-future'
     | '/portfolio/$slug'
     | '/journal'
     | '/portfolio'
@@ -185,8 +279,16 @@ export interface FileRouteTypes {
     | '/journal'
     | '/portfolio'
     | '/pricing'
+    | '/robots.txt'
     | '/sitemap.xml'
+    | '/films/edo-state-at-35'
+    | '/journal/ai-cinema-festival-era-africa'
+    | '/journal/ai-films-are-entering-real-cinema'
     | '/journal/grok-imagine-video-1-5-ai-video'
+    | '/journal/how-much-do-ai-filmmakers-earn-2026'
+    | '/journal/how-to-create-consistent-characters-ai-filmmaking'
+    | '/journal/i-need-a-very-good-ai-filmmaker'
+    | '/journal/kling-4-ai-filmmaking-future'
     | '/portfolio/$slug'
     | '/journal/'
     | '/portfolio/'
@@ -202,7 +304,9 @@ export interface RootRouteChildren {
   JournalRoute: typeof JournalRouteWithChildren
   PortfolioRoute: typeof PortfolioRouteWithChildren
   PricingRoute: typeof PricingRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  FilmsEdoStateAt35Route: typeof FilmsEdoStateAt35Route
   ApiPublicBlueprintDownloadRoute: typeof ApiPublicBlueprintDownloadRoute
 }
 
@@ -264,11 +368,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/films/edo-state-at-35': {
+      id: '/films/edo-state-at-35'
+      path: '/films/edo-state-at-35'
+      fullPath: '/films/edo-state-at-35'
+      preLoaderRoute: typeof FilmsEdoStateAt35RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journal/': {
@@ -278,11 +396,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JournalIndexRouteImport
       parentRoute: typeof JournalRoute
     }
+    '/journal/ai-cinema-festival-era-africa': {
+      id: '/journal/ai-cinema-festival-era-africa'
+      path: '/ai-cinema-festival-era-africa'
+      fullPath: '/journal/ai-cinema-festival-era-africa'
+      preLoaderRoute: typeof JournalAiCinemaFestivalEraAfricaRouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/journal/ai-films-are-entering-real-cinema': {
+      id: '/journal/ai-films-are-entering-real-cinema'
+      path: '/ai-films-are-entering-real-cinema'
+      fullPath: '/journal/ai-films-are-entering-real-cinema'
+      preLoaderRoute: typeof JournalAiFilmsAreEnteringRealCinemaRouteImport
+      parentRoute: typeof JournalRoute
+    }
     '/journal/grok-imagine-video-1-5-ai-video': {
       id: '/journal/grok-imagine-video-1-5-ai-video'
       path: '/grok-imagine-video-1-5-ai-video'
       fullPath: '/journal/grok-imagine-video-1-5-ai-video'
       preLoaderRoute: typeof JournalGrokImagineVideo15AiVideoRouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/journal/how-much-do-ai-filmmakers-earn-2026': {
+      id: '/journal/how-much-do-ai-filmmakers-earn-2026'
+      path: '/how-much-do-ai-filmmakers-earn-2026'
+      fullPath: '/journal/how-much-do-ai-filmmakers-earn-2026'
+      preLoaderRoute: typeof JournalHowMuchDoAiFilmmakersEarn2026RouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/journal/how-to-create-consistent-characters-ai-filmmaking': {
+      id: '/journal/how-to-create-consistent-characters-ai-filmmaking'
+      path: '/how-to-create-consistent-characters-ai-filmmaking'
+      fullPath: '/journal/how-to-create-consistent-characters-ai-filmmaking'
+      preLoaderRoute: typeof JournalHowToCreateConsistentCharactersAiFilmmakingRouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/journal/i-need-a-very-good-ai-filmmaker': {
+      id: '/journal/i-need-a-very-good-ai-filmmaker'
+      path: '/i-need-a-very-good-ai-filmmaker'
+      fullPath: '/journal/i-need-a-very-good-ai-filmmaker'
+      preLoaderRoute: typeof JournalINeedAVeryGoodAiFilmmakerRouteImport
+      parentRoute: typeof JournalRoute
+    }
+    '/journal/kling-4-ai-filmmaking-future': {
+      id: '/journal/kling-4-ai-filmmaking-future'
+      path: '/kling-4-ai-filmmaking-future'
+      fullPath: '/journal/kling-4-ai-filmmaking-future'
+      preLoaderRoute: typeof JournalKling4AiFilmmakingFutureRouteImport
       parentRoute: typeof JournalRoute
     }
     '/portfolio/': {
@@ -310,12 +470,27 @@ declare module '@tanstack/react-router' {
 }
 
 interface JournalRouteChildren {
+  JournalAiCinemaFestivalEraAfricaRoute: typeof JournalAiCinemaFestivalEraAfricaRoute
+  JournalAiFilmsAreEnteringRealCinemaRoute: typeof JournalAiFilmsAreEnteringRealCinemaRoute
   JournalGrokImagineVideo15AiVideoRoute: typeof JournalGrokImagineVideo15AiVideoRoute
+  JournalHowMuchDoAiFilmmakersEarn2026Route: typeof JournalHowMuchDoAiFilmmakersEarn2026Route
+  JournalHowToCreateConsistentCharactersAiFilmmakingRoute: typeof JournalHowToCreateConsistentCharactersAiFilmmakingRoute
+  JournalINeedAVeryGoodAiFilmmakerRoute: typeof JournalINeedAVeryGoodAiFilmmakerRoute
+  JournalKling4AiFilmmakingFutureRoute: typeof JournalKling4AiFilmmakingFutureRoute
   JournalIndexRoute: typeof JournalIndexRoute
 }
 
 const JournalRouteChildren: JournalRouteChildren = {
+  JournalAiCinemaFestivalEraAfricaRoute: JournalAiCinemaFestivalEraAfricaRoute,
+  JournalAiFilmsAreEnteringRealCinemaRoute:
+    JournalAiFilmsAreEnteringRealCinemaRoute,
   JournalGrokImagineVideo15AiVideoRoute: JournalGrokImagineVideo15AiVideoRoute,
+  JournalHowMuchDoAiFilmmakersEarn2026Route:
+    JournalHowMuchDoAiFilmmakersEarn2026Route,
+  JournalHowToCreateConsistentCharactersAiFilmmakingRoute:
+    JournalHowToCreateConsistentCharactersAiFilmmakingRoute,
+  JournalINeedAVeryGoodAiFilmmakerRoute: JournalINeedAVeryGoodAiFilmmakerRoute,
+  JournalKling4AiFilmmakingFutureRoute: JournalKling4AiFilmmakingFutureRoute,
   JournalIndexRoute: JournalIndexRoute,
 }
 
@@ -345,7 +520,9 @@ const rootRouteChildren: RootRouteChildren = {
   JournalRoute: JournalRouteWithChildren,
   PortfolioRoute: PortfolioRouteWithChildren,
   PricingRoute: PricingRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  FilmsEdoStateAt35Route: FilmsEdoStateAt35Route,
   ApiPublicBlueprintDownloadRoute: ApiPublicBlueprintDownloadRoute,
 }
 export const routeTree = rootRouteImport
