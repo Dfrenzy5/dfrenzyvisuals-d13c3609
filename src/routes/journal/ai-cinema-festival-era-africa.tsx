@@ -55,9 +55,9 @@ function H2({ children }: { children: React.ReactNode }) {
   );
 }
 
-function P({ children }: { children: React.ReactNode }) {
+function P({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className="text-lg leading-8 text-white/75">{children}</p>
+    <p className={className ?? "text-lg leading-8 text-white/75"}>{children}</p>
   );
 }
 
