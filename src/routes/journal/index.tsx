@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { JOURNAL_ENTRIES, type JournalEntry } from "@/data/journal";
+import { JOURNAL_ENTRIES, type JournalEntry, type JournalStatus } from "@/data/journal";
 import { useState } from "react";
 import { Filter, ArrowRight, ArrowUpRight, Calendar, Tag } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
