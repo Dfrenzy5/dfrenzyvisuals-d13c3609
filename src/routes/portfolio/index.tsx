@@ -72,6 +72,21 @@ const FILMS: Film[] = [
     tools: "Seedance, Higgsfield Cinema Studio, DaVinci Resolve",
   },
   {
+    id: "diamond-project",
+    slug: "diamond-project",
+    title: "THE DIAMOND PROJECT",
+    subtitle: "A NEW PATH TO PERSONAL GROWTH & OPPORTUNITY",
+    category: "COMMERCIALS",
+    image: "https://img.youtube.com/vi/4YpCJWDtNQQ/maxresdefault.jpg",
+    youtube: "https://youtu.be/4YpCJWDtNQQ",
+    description:
+      "A promotional film for The Diamond Project, presenting a vision of personal growth and opportunity through engaging visual storytelling. Produced by DFRENZY VISUALS.",
+    productionType: "Promotional Film",
+    creativeDirection: "Personal Growth / Opportunity",
+    client: "The Diamond Project",
+    tools: "AI Cinematic Production, Editing & Post-Production",
+  },
+  {
     id: "the-leopard-king",
     slug: "the-leopard-king",
     title: "THE LEOPARD KING",
