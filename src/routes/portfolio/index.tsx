@@ -72,6 +72,21 @@ const FILMS: Film[] = [
     tools: "Seedance, Higgsfield Cinema Studio, DaVinci Resolve",
   },
   {
+    id: "the-data-evangelist",
+    slug: "the-data-evangelist",
+    title: "THE DATA EVANGELIST",
+    subtitle: "A CINEMATIC AI FILM",
+    category: "AI FILMS",
+    image: "https://img.youtube.com/vi/9v3PR4vvOSQ/maxresdefault.jpg",
+    youtube: "https://youtu.be/9v3PR4vvOSQ",
+    description:
+      "A cinematic film exploring data, leadership, and digital transformation through character-led visual storytelling. Produced by DFRENZY VISUALS.",
+    productionType: "Cinematic AI Film",
+    creativeDirection: "Technology / Leadership / Digital Transformation",
+    client: "DFRENZY VISUALS",
+    tools: "AI Filmmaking, Cinematic Visual Storytelling, Editing & Post-Production",
+  },
+  {
     id: "diamond-project",
     slug: "diamond-project",
     title: "THE DIAMOND PROJECT",
