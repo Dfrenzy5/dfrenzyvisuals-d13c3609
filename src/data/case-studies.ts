@@ -473,6 +473,45 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tools: ["Generative Video Pipeline", "Grok", "Seedance", "DaVinci Resolve"],
   },
+  {
+    slug: "the-data-evangelist",
+    title: "THE DATA EVANGELIST",
+    subtitle: "A cinematic film exploring data, leadership, and digital transformation.",
+    category: "AI Films",
+    client: "DFRENZY VISUALS",
+    year: "2026",
+    duration: "Cinematic film",
+    role: "Creative Direction · AI Film Production · Post-Production",
+    poster: "https://img.youtube.com/vi/9v3PR4vvOSQ/maxresdefault.jpg",
+    youtube: "9v3PR4vvOSQ",
+    problem:
+      "Present a compelling, character-led story around the influence of data and digital transformation, with a visual treatment suited to a premium professional audience.",
+    concept:
+      "A cinematic portrait of leadership and technological possibility, using an executive-led visual narrative and a polished blue-and-gold visual language.",
+    moodboard: [
+      "Contemporary executive environments",
+      "Global connectivity and data-network imagery",
+      "Cool blue tones balanced with warm gold highlights",
+      "Confident, composed character-led framing",
+    ],
+    production:
+      "Developed as a cinematic AI film, combining visual storytelling, character-focused imagery, and an editorial approach designed for a professional audience.",
+    aiPipeline: [
+      "Creative direction and visual planning",
+      "AI-assisted visual generation and scene development",
+      "Character and visual continuity management",
+      "Editorial assembly and finishing",
+    ],
+    editing:
+      "Edited for a cohesive cinematic presentation, balancing executive imagery, technology motifs, and a consistent blue-and-gold visual identity.",
+    outcome:
+      "A cinematic portfolio project demonstrating DFRENZY VISUALS' approach to AI-assisted filmmaking and professional visual storytelling.",
+    impact: [
+      "Showcases the studio's AI filmmaking and visual storytelling capabilities",
+      "Adds a technology-and-leadership themed film to the studio portfolio",
+    ],
+    tools: ["AI Filmmaking", "Cinematic Visual Storytelling", "Editing & Post-Production"],
+  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
