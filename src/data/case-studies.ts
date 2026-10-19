@@ -634,6 +634,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
-];(slug: string): CaseStudy | undefined {
+];
+
+export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((c) => c.slug === slug);
 }
