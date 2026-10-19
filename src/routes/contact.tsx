@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Send, CheckCircle2, MessageCircle, Mail, MapPin, Youtube, Instagram } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
+import { sendContactEnquiry } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,6 +22,8 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10 md:px-10">
@@ -129,12 +132,37 @@ function ContactPage() {
             </div>
           ) : (
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setSent(true);
+                if (isSending) return;
+                setIsSending(true);
+                setErrorMessage("");
+                const formData = new FormData(e.currentTarget);
+                try {
+                  const result = await sendContactEnquiry({
+                    name: String(formData.get("name") ?? ""),
+                    email: String(formData.get("email") ?? ""),
+                    projectType: String(formData.get("projectType") ?? ""),
+                    message: String(formData.get("message") ?? ""),
+                    company: String(formData.get("company") ?? ""),
+                  });
+                  if (!result.ok) {
+                    setErrorMessage(result.error ?? "We couldn't send your enquiry. Please try again or contact us directly by email or WhatsApp.");
+                    return;
+                  }
+                  setSent(true);
+                } catch {
+                  setErrorMessage("We couldn't send your enquiry. Please try again or contact us directly by email or WhatsApp.");
+                } finally {
+                  setIsSending(false);
+                }
               }}
               className="grid grid-cols-1 gap-6"
             >
+              <div aria-hidden="true" className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden">
+                <label htmlFor="contact-company">Leave this field empty</label>
+                <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <Field label="YOUR NAME" name="name" placeholder="Enter your name" />
               <Field label="EMAIL ADDRESS" name="email" type="email" placeholder="Enter your email" />
               <div>
@@ -142,6 +170,8 @@ function ContactPage() {
                 <select
                   required
                   className="mt-2 w-full rounded-md border border-neon/40 bg-deep/50 px-4 py-3 text-sm text-foreground outline-none transition-all focus:border-neon focus:neon-glow"
+                  name="projectType"
+                  required
                   defaultValue=""
                 >
                   <option value="" disabled>Select project type</option>
@@ -150,6 +180,7 @@ function ContactPage() {
                   <option>Brand Promo</option>
                   <option>Short Film</option>
                   <option>Full AI Film Production</option>
+                  <option>Other / Not sure yet</option>
                 </select>
               </div>
               <div>
@@ -157,6 +188,8 @@ function ContactPage() {
                 <div className="relative mt-2">
                   <textarea
                     required
+                    name="message"
+                    maxLength={5000}
                     rows={5}
                     placeholder="> Tell us about your project..."
                     className="w-full resize-none rounded-md border border-neon/40 bg-deep/50 px-4 py-3 font-mono text-sm text-foreground outline-none transition-all focus:border-neon focus:neon-glow"
@@ -165,12 +198,18 @@ function ContactPage() {
                 </div>
               </div>
 
+              {errorMessage && (
+                <p role="alert" className="rounded-md border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                  {errorMessage}
+                </p>
+              )}
               <button
                 type="submit"
-                className="group relative mt-2 flex items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-sm font-bold tracking-[0.35em] text-neon-bright transition-all hover:neon-glow"
+                disabled={isSending}
+                className="group relative mt-2 flex items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-sm font-bold tracking-[0.35em] text-neon-bright transition-all hover:neon-glow disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <span className="sweep-line relative flex items-center gap-3">
-                  <Send className="h-4 w-4" /> SEND TRANSMISSION
+                  <Send className="h-4 w-4" /> {isSending ? "SENDING..." : "SEND TRANSMISSION"}
                 </span>
               </button>
             </form>
