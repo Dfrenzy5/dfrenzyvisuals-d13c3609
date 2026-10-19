@@ -171,7 +171,6 @@ function ContactPage() {
                   required
                   className="mt-2 w-full rounded-md border border-neon/40 bg-deep/50 px-4 py-3 text-sm text-foreground outline-none transition-all focus:border-neon focus:neon-glow"
                   name="projectType"
-                  required
                   defaultValue=""
                 >
                   <option value="" disabled>Select project type</option>
