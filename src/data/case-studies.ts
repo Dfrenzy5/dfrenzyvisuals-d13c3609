@@ -512,8 +512,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tools: ["AI Filmmaking", "Cinematic Visual Storytelling", "Editing & Post-Production"],
   },
-];
-,
 
   {
     slug: "diamond-project",
@@ -576,6 +574,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((c) => c.slug === slug);
