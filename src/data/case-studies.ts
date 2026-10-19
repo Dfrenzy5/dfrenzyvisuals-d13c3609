@@ -513,6 +513,69 @@ export const CASE_STUDIES: CaseStudy[] = [
     tools: ["AI Filmmaking", "Cinematic Visual Storytelling", "Editing & Post-Production"],
   },
 ];
+,
+
+  {
+    slug: "diamond-project",
+    title: "THE DIAMOND PROJECT",
+    subtitle: "A promotional film presenting a vision of personal growth and opportunity.",
+    category: "Commercial",
+    client: "The Diamond Project",
+    year: "2026",
+    duration: "Promotional film",
+    role: "Creative Direction · AI Cinematic Production · Editing & Post-Production",
+    poster: "https://img.youtube.com/vi/4YpCJWDtNQQ/maxresdefault.jpg",
+    youtube: "4YpCJWDtNQQ",
+    problem:
+      "Present The Diamond Project's message of personal growth and opportunity in a compelling promotional film designed to communicate the initiative clearly and create audience interest.",
+    concept:
+      "A cinematic promotional treatment that frames the project as an opportunity worth exploring, using visual storytelling to give the message energy and a polished presentation.",
+    moodboard: [
+      "Premium, cinematic promotional imagery",
+      "Clear visual hierarchy around the project's message",
+      "Confident pacing and purposeful transitions",
+      "A polished finish suited to digital and social distribution",
+    ],
+    production:
+      "The film is presented as a promotional asset produced by DFRENZY VISUALS. The case study focuses on the communication goal and finished video, without claiming unverified production details or performance metrics.",
+    aiPipeline: [
+      "Creative direction shaped around the project's personal-growth and opportunity message",
+      "Cinematic visual storytelling to support the promotional narrative",
+      "Editing and post-production to assemble the finished film",
+    ],
+    editing:
+      "The final piece is positioned as a concise promotional film, with the edit serving the message and keeping the viewing experience focused. Specific edit, sound, and grading decisions can be documented further when production notes are available.",
+    outcome:
+      "A finished promotional film for The Diamond Project, giving the initiative a shareable visual presentation for its audience.",
+    impact: [
+      "A dedicated portfolio presentation for The Diamond Project film",
+      "A direct viewing destination for prospective clients and collaborators",
+    ],
+    tools: ["AI Cinematic Production", "Visual Storytelling", "Editing & Post-Production"],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "THE DIAMOND PROJECT is a promotional film produced by DFRENZY VISUALS. The film presents a message centred on personal growth and opportunity, using a cinematic format to give the initiative a clear, shareable visual identity.",
+      },
+      {
+        heading: "Creative Objective",
+        body: "The objective is to introduce the project through an engaging film that makes its central promise easy to understand and gives viewers a reason to learn more. The visual treatment supports the message rather than replacing it with unsupported claims.",
+      },
+      {
+        heading: "Production Approach",
+        body: "The project is showcased here as a finished promotional asset. The case study documents the creative purpose and deliverable while avoiding unverified claims about budgets, production schedules, audience metrics, or specific tools used on this individual project.",
+        points: [
+          "Promotional storytelling focused on personal growth and opportunity",
+          "Cinematic visual presentation for digital viewing",
+          "Editing and post-production for a cohesive finished film",
+        ],
+      },
+      {
+        heading: "Final Film",
+        body: "Watch the embedded film above to experience the finished promotional piece. For organisations seeking a similarly polished campaign film, DFRENZY VISUALS develops cinematic visual storytelling tailored to the message and audience.",
+      },
+    ],
+  },
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((c) => c.slug === slug);
