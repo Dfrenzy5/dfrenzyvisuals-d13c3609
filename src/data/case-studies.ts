@@ -574,8 +574,66 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
-];
-
-export function getCaseStudy(slug: string): CaseStudy | undefined {
+  {
+    slug: "the-future-of-human-vision",
+    title: "THE FUTURE OF HUMAN VISION",
+    subtitle: "A documentary exploring the future of sight, AI, and medical innovation.",
+    category: "Documentary",
+    year: "2026",
+    duration: "Documentary film",
+    role: "Creative Direction · AI Film Production · Post-Production",
+    poster: "https://img.youtube.com/vi/zuMpAp4oi3Q/maxresdefault.jpg",
+    youtube: "zuMpAp4oi3Q",
+    problem:
+      "Explore how artificial intelligence, medical innovation, and emerging technologies could reshape how we understand and restore human sight, making a complex subject accessible through documentary storytelling.",
+    concept:
+      "A forward-looking documentary treatment connecting human vision with the possibilities of technology and scientific progress, using cinematic presentation to guide viewers through the subject.",
+    moodboard: [
+      "Clean, contemporary documentary imagery",
+      "Human vision and medical innovation",
+      "Technology-led visual storytelling",
+      "A polished, accessible presentation for a broad audience",
+    ],
+    production:
+      "The project is presented as a documentary film focused on the intersection of human vision, artificial intelligence, and medical innovation. This case study documents the subject and creative purpose without asserting unverified production methods, interviews, scientific claims, or impact metrics.",
+    aiPipeline: [
+      "Documentary-focused creative direction",
+      "Visual storytelling around vision and emerging technology",
+      "Editorial structure designed to make a complex topic approachable",
+    ],
+    editing:
+      "The film is presented as a cohesive documentary experience, with the editorial approach serving the subject and its forward-looking perspective. Specific edit, sound, and grading decisions can be documented further when production notes are available.",
+    outcome:
+      "A documentary portfolio project exploring technologies that may influence how human sight is understood, supported, and restored.",
+    impact: [
+      "Adds a human-vision and medical-innovation documentary to the portfolio",
+      "Provides a dedicated viewing destination for the finished film",
+    ],
+    tools: ["Documentary Filmmaking", "Visual Storytelling", "Editing & Post-Production"],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "THE FUTURE OF HUMAN VISION is a documentary exploring the future of sight, artificial intelligence, medical innovation, and technologies that could reshape how we understand and restore vision. The film brings a forward-looking subject into a cinematic documentary format.",
+      },
+      {
+        heading: "Creative Objective",
+        body: "The objective is to make a complex, rapidly evolving field approachable for viewers while keeping the focus on human vision and the possibilities opened by scientific and technological progress. The story is framed around exploration rather than unsupported promises about future outcomes.",
+      },
+      {
+        heading: "Production Approach",
+        body: "The case study presents the finished documentary and its central themes. It avoids unverified claims about specific research findings, medical outcomes, production methods, or audience performance.",
+        points: [
+          "Documentary storytelling focused on human vision and emerging technology",
+          "A cinematic presentation designed to support an accessible viewing experience",
+          "An editorial focus on the relationship between AI, medical innovation, and the future of sight",
+        ],
+      },
+      {
+        heading: "Final Film",
+        body: "Watch the film above to explore the documentary's perspective on human vision and technological innovation. DFRENZY VISUALS develops cinematic films and visual stories that help audiences engage with ambitious ideas.",
+      },
+    ],
+  },
+];(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((c) => c.slug === slug);
 }
