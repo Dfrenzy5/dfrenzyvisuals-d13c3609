@@ -17,7 +17,8 @@ export const sendContactEnquiry = createServerFn({ method: "POST" })
     const message = typeof data.message === "string" ? data.message.trim() : "";
     if (typeof data.company === "string" && data.company.trim()) return { ok: false, error: "We could not send your enquiry. Please try again." };
     if (name.length < 2 || name.length > 120) return { ok: false, error: "Please enter your name (up to 120 characters)." };
-    if (email.length > 254 || !/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email)) return { ok: false, error: "Please enter a valid email address." };
+    const { isValidEmail } = await import("./blueprint.server");
+    if (!isValidEmail(email)) return { ok: false, error: "Please enter a valid email address." };
     const allowedProjects = ["AI Trailer", "Music Visual", "Brand Promo", "Short Film", "Full AI Film Production", "Other / Not sure yet"];
     if (!allowedProjects.includes(projectType)) return { ok: false, error: "Please select a valid project type." };
     if (message.length < 10 || message.length > 5000) return { ok: false, error: "Please enter a message between 10 and 5,000 characters." };
