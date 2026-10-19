@@ -140,11 +140,13 @@ function ContactPage() {
                 const formData = new FormData(e.currentTarget);
                 try {
                   const result = await sendContactEnquiry({
-                    name: String(formData.get("name") ?? ""),
-                    email: String(formData.get("email") ?? ""),
-                    projectType: String(formData.get("projectType") ?? ""),
-                    message: String(formData.get("message") ?? ""),
-                    company: String(formData.get("company") ?? ""),
+                    data: {
+                      name: String(formData.get("name") ?? ""),
+                      email: String(formData.get("email") ?? ""),
+                      projectType: String(formData.get("projectType") ?? ""),
+                      message: String(formData.get("message") ?? ""),
+                      company: String(formData.get("company") ?? ""),
+                    },
                   });
                   if (!result.ok) {
                     setErrorMessage(result.error ?? "We couldn't send your enquiry. Please try again or contact us directly by email or WhatsApp.");
