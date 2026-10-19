@@ -735,60 +735,82 @@ function Index() {
     </Suspense>
 
     <section className="mx-auto w-full max-w-6xl px-6 py-20 sm:py-28">
-      <div className="max-w-4xl">
+      <div className="mb-12">
         <p className="font-display text-xs tracking-[0.35em] text-[#00E5FF]">
           ABOUT DFRENZY VISUALS
         </p>
-
-        <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-4 max-w-4xl font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
           Cinematic AI Filmmaking, Directed by Humans.
         </h2>
+      </div>
 
-        <div className="mt-8 space-y-5 text-base leading-8 text-white/70 sm:text-lg">
-          <p>
-            DFRENZY VISUALS is a cinematic AI video production studio based in
-            Nigeria, creating films, commercials, trailers, music visuals and
-            branded content with advanced generative AI workflows.
-          </p>
-
-          <p>
-            Founded by Daniel Ebhowe, a Nigerian AI filmmaker and creative director,
-            DFRENZY VISUALS combines cinematic storytelling, AI-generated
-            visuals, character consistency, virtual environments and
-            professional post-production to create distinctive visual
-            experiences for brands, filmmakers, agencies and international
-            clients.
-          </p>
-
-          <p>
-            From concept development and visual direction to AI video
-            generation, editing, sound and final delivery, our workflow is
-            built around one goal: turning ambitious ideas into cinematic
-            stories.
-          </p>
-
-          <p>
-            We specialize in AI filmmaking, cinematic AI commercials, AI film
-            production, AI trailers and branded visual content, with a
-            particular focus on character-driven storytelling and high-end
-            cinematic presentation.
+      <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-14">
+        <div className="relative mx-auto w-full max-w-md md:mx-0">
+          <div className="absolute -inset-3 rounded-2xl border border-[#00E5FF]/20" aria-hidden="true" />
+          <img
+            src="/images/daniel-ebhowe-cinematic.webp"
+            alt="Daniel Ebhowe, AI Filmmaker and Creative Director of DFRENZY VISUALS"
+            className="relative aspect-[4/5] w-full rounded-xl object-cover object-center shadow-2xl"
+            loading="lazy"
+            decoding="async"
+            width="900"
+            height="1125"
+          />
+          <p className="mt-4 font-display text-xs tracking-[0.25em] text-white/50">
+            DANIEL EBHOWE · FOUNDER & CREATIVE DIRECTOR
           </p>
         </div>
 
-<p className="mt-6">
-  <Link
-    to="/ai-filmmaker"
-    className="font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF] transition-opacity hover:opacity-70"
-  >
-    MEET DANIEL EBHOWE — AI FILMMAKER →
-  </Link>
-</p>
+        <div>
+          <p className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            Daniel Ebhowe
+          </p>
+          <p className="mt-2 text-sm font-semibold tracking-[0.18em] text-[#00E5FF]">
+            AI FILMMAKER & CREATIVE DIRECTOR
+          </p>
 
-<p className="mt-8 font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF]">
-  BASED IN NIGERIA. CREATING FOR A GLOBAL AUDIENCE.
-</p>
-</div>
-</section>
+          <div className="mt-7 space-y-5 text-base leading-8 text-white/70 sm:text-lg">
+            <p>
+              DFRENZY VISUALS is a cinematic AI video production studio based in
+              Nigeria, creating films, commercials, trailers, music visuals and
+              branded content with advanced generative AI workflows.
+            </p>
+            <p>
+              Founded by Daniel Ebhowe, a Nigerian AI filmmaker and creative director,
+              DFRENZY VISUALS combines cinematic storytelling, AI-generated
+              visuals, character consistency, virtual environments and
+              professional post-production to create distinctive visual
+              experiences for brands, filmmakers, agencies and international
+              clients.
+            </p>
+            <p>
+              From concept development and visual direction to AI video
+              generation, editing, sound and final delivery, our workflow is
+              built around one goal: turning ambitious ideas into cinematic
+              stories.
+            </p>
+            <p>
+              We specialize in AI filmmaking, cinematic AI commercials, AI film
+              production, AI trailers and branded visual content, with a
+              particular focus on character-driven storytelling and high-end
+              cinematic presentation.
+            </p>
+          </div>
+
+          <p className="mt-7">
+            <Link
+              to="/ai-filmmaker"
+              className="font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF] transition-opacity hover:opacity-70"
+            >
+              MEET DANIEL EBHOWE — AI FILMMAKER →
+            </Link>
+          </p>
+          <p className="mt-8 font-display text-sm font-semibold tracking-[0.18em] text-[#00E5FF]">
+            BASED IN NIGERIA. CREATING FOR A GLOBAL AUDIENCE.
+          </p>
+        </div>
+      </div>
+    </section>
     <Suspense fallback={null}>
            <TrustedBy />
       <StatsRow />
