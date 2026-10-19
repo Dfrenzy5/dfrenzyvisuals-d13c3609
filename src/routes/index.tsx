@@ -748,7 +748,7 @@ function Index() {
         <div className="relative mx-auto w-full max-w-md md:mx-0">
           <div className="absolute -inset-3 rounded-2xl border border-[#00E5FF]/20" aria-hidden="true" />
           <img
-            src="/Cinematic%20Amber%20and%20Blue%20Studio%20Portrait.png"
+            src="/download.webp"
             alt="Daniel Ebhowe, AI Filmmaker and Creative Director of DFRENZY VISUALS"
             className="relative aspect-[4/5] w-full rounded-xl object-cover object-center shadow-2xl"
             loading="lazy"
