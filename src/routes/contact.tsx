@@ -165,19 +165,20 @@ function ContactPage() {
               </button>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="grid grid-cols-1 gap-6"
-            >
+            <form onSubmit={onSubmit} className="grid grid-cols-1 gap-6">
+              {/* Honeypot — hidden from humans and assistive tech */}
+              <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+                <label htmlFor="ct-company">Company</label>
+                <input id="ct-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+
               <Field label="YOUR NAME" name="name" placeholder="Enter your name" />
               <Field label="EMAIL ADDRESS" name="email" type="email" placeholder="Enter your email" />
               <div>
                 <Label>PROJECT TYPE</Label>
                 <select
                   required
+                  name="projectType"
                   className="mt-2 w-full rounded-md border border-neon/40 bg-deep/50 px-4 py-3 text-sm text-foreground outline-none transition-all focus:border-neon focus:neon-glow"
                   defaultValue=""
                 >
@@ -194,6 +195,7 @@ function ContactPage() {
                 <div className="relative mt-2">
                   <textarea
                     required
+                    name="message"
                     rows={5}
                     placeholder="> Tell us about your project..."
                     className="w-full resize-none rounded-md border border-neon/40 bg-deep/50 px-4 py-3 font-mono text-sm text-foreground outline-none transition-all focus:border-neon focus:neon-glow"
@@ -204,12 +206,28 @@ function ContactPage() {
 
               <button
                 type="submit"
-                className="group relative mt-2 flex items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-sm font-bold tracking-[0.35em] text-neon-bright transition-all hover:neon-glow"
+                disabled={sending}
+                className="group relative mt-2 flex items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-neon bg-neon/10 px-8 py-4 font-display text-sm font-bold tracking-[0.35em] text-neon-bright transition-all hover:neon-glow disabled:opacity-60"
               >
                 <span className="sweep-line relative flex items-center gap-3">
-                  <Send className="h-4 w-4" /> SEND TRANSMISSION
+                  {sending ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" /> SENDING…
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" /> SEND TRANSMISSION
+                    </>
+                  )}
                 </span>
               </button>
+
+              {error && (
+                <p role="alert" className="flex items-center gap-2 text-[12px] text-red-400">
+                  <AlertTriangle className="h-4 w-4 shrink-0" />
+                  {error}
+                </p>
+              )}
             </form>
           )}
         </div>
