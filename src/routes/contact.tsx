@@ -22,7 +22,42 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const submit = useServerFn(submitContactEnquiry);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const inFlight = useRef(false);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (inFlight.current) return;
+    const fd = new FormData(e.currentTarget);
+    inFlight.current = true;
+    setSending(true);
+    setError(null);
+    try {
+      const result = await submit({
+        data: {
+          name: String(fd.get("name") ?? ""),
+          email: String(fd.get("email") ?? ""),
+          projectType: String(fd.get("projectType") ?? ""),
+          message: String(fd.get("message") ?? ""),
+          company: String(fd.get("company") ?? ""),
+        },
+      });
+      if (!result.ok) {
+        setError(result.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setSent(true);
+    } catch (err) {
+      console.error(err);
+      setError("We couldn't send your enquiry. Please try again or contact us directly by email or WhatsApp.");
+    } finally {
+      inFlight.current = false;
+      setSending(false);
+    }
+  };
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10 md:px-10">
