@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Send, CheckCircle2, MessageCircle, Mail, MapPin, Youtube, Instagram } from "lucide-react";
+import { useRef, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { Send, CheckCircle2, MessageCircle, Mail, MapPin, Youtube, Instagram, Loader2, AlertTriangle } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
+import { submitContactEnquiry } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
