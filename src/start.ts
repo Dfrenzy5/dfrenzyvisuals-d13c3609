@@ -1,7 +1,11 @@
 import { createStart, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+import { attachSupabaseAuth } from "@/lib/supabase-auth-middleware";
+// NOTE: Intentionally NOT the generated @/integrations/supabase/auth-attacher —
+// it constructs the browser Supabase client and throws when the public env
+// vars are missing (external builds), breaking all public server functions.
+// See src/lib/supabase-auth-middleware.ts.
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
