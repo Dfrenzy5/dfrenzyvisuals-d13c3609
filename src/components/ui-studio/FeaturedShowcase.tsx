@@ -20,6 +20,18 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    slug: "faithclinic-the-ageless-god",
+    title: "THE AGELESS GOD",
+    category: "Cinematic Event Film",
+    categoryKey: "commercials",
+    summary: "A cinematic chapel anniversary film celebrating faith, worship, and the enduring greatness of God.",
+    poster: "https://img.youtube.com/vi/yhdf2l-T6-Q/maxresdefault.jpg",
+    youtube: "yhdf2l-T6-Q",
+    services: "Creative Direction · AI Visual Production · Edit · Sound",
+    client: "FaithClinic Chapel",
+  },
+
+  {
     slug: "unbliss",
     title: "UNBLISS",
     category: "Cinematic Trailer",
