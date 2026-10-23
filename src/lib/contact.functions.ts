@@ -23,15 +23,16 @@ export const submitContactEnquiry = createServerFn({ method: "POST" })
     const validated = validateContactInput(data);
     if (!validated.ok) return { ok: false, error: validated.error };
 
-    // This form only sends an email; it does not require Supabase or database storage.
+    // Email-only contact flow: no Supabase/database dependency.
     const emailResult = await sendContactNotification(validated);
 
     if (!emailResult.ok) {
       console.error("contact: notification email failed", emailResult.error);
+      // Surface only a short diagnostic code, never the API key or provider response body.
+      const diagnostic = emailResult.error ?? "unknown";
       return {
         ok: false,
-        error:
-          "We couldn't send your enquiry. Please try again or contact us directly by email or WhatsApp.",
+        error: `Email delivery failed (${diagnostic}). Please contact us directly by email or WhatsApp.`,
       };
     }
 
