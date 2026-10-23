@@ -1,5 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import { getRequest, getRequestHeader } from "@tanstack/react-start/server";
 import type { ContactInput } from "./contact.server";
 
 export interface ContactResult {
@@ -15,7 +14,6 @@ export const submitContactEnquiry = createServerFn({ method: "POST" })
     const { validateContactInput, sendContactNotification } = await import(
       "./contact.server"
     );
-    const { checkRateLimit, hashClient } = await import("./blueprint.server");
 
     // Honeypot: silently accept-but-reject bots.
     if (data.company && data.company.trim() !== "") {
@@ -25,50 +23,11 @@ export const submitContactEnquiry = createServerFn({ method: "POST" })
     const validated = validateContactInput(data);
     if (!validated.ok) return { ok: false, error: validated.error };
 
-    // Rate limit by client IP (falls back to the email when no IP header exists).
-    let clientKey = validated.email;
-    try {
-      const fwd =
-        getRequestHeader("cf-connecting-ip") ??
-        getRequestHeader("x-forwarded-for") ??
-        getRequestHeader("x-real-ip");
-      if (fwd) clientKey = fwd.split(",")[0]!.trim();
-      else {
-        const req = getRequest();
-        if (req?.headers.get("x-forwarded-for"))
-          clientKey = req.headers.get("x-forwarded-for")!.split(",")[0]!.trim();
-      }
-    } catch {
-      /* header access is best-effort */
-    }
+    // This form only sends an email; it does not require Supabase or database storage.
+    const emailResult = await sendContactNotification(validated);
 
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-
-    try {
-      const allowed = await checkRateLimit(await hashClient(clientKey));
-      if (!allowed) {
-        return {
-          ok: false,
-          error: "Too many requests. Please try again in a little while.",
-        };
-      }
-    } catch (err) {
-      console.error("contact: rate limit check failed", err);
-    }
-
-    const { data: inserted, error: insertError } = await supabaseAdmin
-      .from("contact_submissions")
-      .insert({
-        name: validated.name,
-        email: validated.email,
-        project_type: validated.projectType,
-        message: validated.message,
-      })
-      .select("id")
-      .single();
-
-    if (insertError || !inserted) {
-      console.error("contact: insert failed", insertError);
+    if (!emailResult.ok) {
+      console.error("contact: notification email failed", emailResult.error);
       return {
         ok: false,
         error:
@@ -76,16 +35,5 @@ export const submitContactEnquiry = createServerFn({ method: "POST" })
       };
     }
 
-    const emailResult = await sendContactNotification(validated);
-
-    await supabaseAdmin
-      .from("contact_submissions")
-      .update({
-        email_delivery_status: emailResult.ok
-          ? "sent"
-          : `failed: ${emailResult.error ?? "unknown"}`,
-      })
-      .eq("id", inserted.id);
-
-    return { ok: true, emailSent: emailResult.ok };
+    return { ok: true, emailSent: true };
   });
