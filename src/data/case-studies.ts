@@ -29,6 +29,33 @@ export type CaseStudy = {
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
+  {
+    slug: "faithclinic-the-ageless-god",
+    title: "THE AGELESS GOD",
+    subtitle: "FaithClinic Chapel Anniversary 2026 — a cinematic celebration of faith, worship, and the enduring greatness of God.",
+    category: "Event Film",
+    client: "FaithClinic Chapel",
+    year: "2026",
+    duration: "90 seconds",
+    role: "Creative Direction · AI Visual Production · Edit · Sound",
+    poster: "https://img.youtube.com/vi/yhdf2l-T6-Q/maxresdefault.jpg",
+    youtube: "yhdf2l-T6-Q",
+    problem: "Create an engaging anniversary film that communicates the spirit of FaithClinic Chapel through memorable visuals and clear event identity.",
+    concept: "A cinematic faith-led visual journey combining worship, human moments, warm light, and anniversary branding to celebrate The Ageless God.",
+    moodboard: ["Warm gold and amber highlights", "Worship and congregation imagery", "Atmospheric light and cinematic contrast", "Elegant anniversary title graphics"],
+    production: "A short-form promotional film designed for digital viewing, combining cinematic imagery, event messaging, and a clear anniversary identity.",
+    aiPipeline: ["AI-assisted cinematic visual creation", "Visual direction around worship and celebration", "Consistent gold-toned visual treatment"],
+    editing: "Edited as a concise promotional experience, balancing atmospheric imagery, event information, and branded title moments.",
+    outcome: "A cinematic chapel anniversary promo for FaithClinic, created to celebrate the 2026 anniversary and support digital event promotion.",
+    impact: ["Portfolio example of cinematic event-promo production", "Demonstrates AI-powered visual storytelling for faith-based organisations"],
+    tools: ["AI Video Production", "Cinematic Editing", "Motion Graphics", "Sound Design"],
+    writtenCaseStudy: [
+      { heading: "Overview", body: "THE AGELESS GOD is a cinematic promotional film for FaithClinic Chapel Anniversary 2026. The piece celebrates faith and worship through atmospheric visuals, anniversary branding, and a focused event-promo structure." },
+      { heading: "Creative Approach", body: "The visual language centres on warm gold and amber tones, expressive worship moments, and luminous architectural imagery. The aim is to create an uplifting, memorable film that feels more cinematic than a conventional event announcement.", points: ["Cinematic faith-led visual storytelling", "Anniversary identity and title graphics", "A polished promotional edit for digital platforms"] },
+      { heading: "Final Film", body: "Watch the finished FaithClinic Chapel Anniversary 2026 film above. DFRENZY VISUALS creates cinematic promotional films for churches, ministries, events, and brands." }
+    ],
+  },
+
     {
     slug: "the-man-they-should-have-feared",
     title: "THE MAN THEY SHOULD HAVE FEARED",
