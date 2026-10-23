@@ -57,6 +57,21 @@ function ytId(url: string): string {
 
 const FILMS: Film[] = [
   {
+    id: "faithclinic-the-ageless-god",
+    slug: "faithclinic-the-ageless-god",
+    title: "THE AGELESS GOD",
+    subtitle: "FAITHCLINIC CHAPEL ANNIVERSARY 2026",
+    category: "EVENTS",
+    image: "https://img.youtube.com/vi/yhdf2l-T6-Q/maxresdefault.jpg",
+    youtube: "https://youtu.be/yhdf2l-T6-Q",
+    description: "A cinematic chapel anniversary film celebrating faith, worship, and the enduring greatness of God. Produced by DFRENZY VISUALS.",
+    productionType: "Cinematic Event Promo",
+    creativeDirection: "Faith · Worship · Anniversary Celebration",
+    client: "FaithClinic Chapel",
+    tools: "AI Cinematic Production, Editing & Post-Production",
+  },
+
+  {
     id: "the-man-they-should-have-feared",
     slug: "the-man-they-should-have-feared",
     title: "THE MAN THEY SHOULD HAVE FEARED",
