@@ -541,6 +541,61 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
 
   {
+    slug: "last-call-financial-freedom",
+    title: "LAST CALL",
+    subtitle: "Financial Freedom — Cinematic Event Promo · Lagos, Nigeria",
+    category: "Event Promo",
+    year: "2026",
+    role: "Creative Direction · AI Cinematic Production · Editing & Post-Production",
+    poster: "https://img.youtube.com/vi/_ntl1bDdKbM/maxresdefault.jpg",
+    youtube: "_ntl1bDdKbM",
+    problem:
+      "Present a financial-freedom-themed event through a concise, attention-grabbing cinematic promo designed for digital audiences.",
+    concept:
+      "A bold promotional treatment built around the urgency of the message, cinematic imagery, and a Lagos, Nigeria setting.",
+    moodboard: [
+      "Deep teal and gold visual accents",
+      "Premium cinematic contrast",
+      "Strong title-led visual hierarchy",
+      "Lagos-inspired urban atmosphere",
+    ],
+    production:
+      "A cinematic event-promotion piece produced by DFRENZY VISUALS for online viewing and sharing.",
+    aiPipeline: [
+      "Creative direction shaped around the event-promotion message",
+      "Cinematic visual storytelling",
+      "Visual continuity and finishing for a cohesive final presentation",
+    ],
+    editing:
+      "A focused promotional edit designed to communicate the theme clearly and maintain visual momentum.",
+    outcome:
+      "A shareable cinematic promo presenting the theme of financial freedom and adding an event-promotion example to the DFRENZY VISUALS portfolio.",
+    impact: [
+      "A dedicated portfolio page for the finished film",
+      "A direct viewing destination for prospective clients and collaborators",
+    ],
+    tools: ["AI Cinematic Production", "Visual Storytelling", "Editing & Post-Production"],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "LAST CALL is a cinematic event promo centred on financial freedom, produced by DFRENZY VISUALS. The film uses a bold promotional presentation to bring the message to digital audiences.",
+      },
+      {
+        heading: "Creative Approach",
+        body: "The project is positioned around urgency, strong title treatment, cinematic contrast, and a Lagos, Nigeria setting. The creative objective is to give the event message a memorable visual presentation.",
+        points: [
+          "Financial-freedom-themed event promotion",
+          "Cinematic visual storytelling for digital platforms",
+          "A focused, shareable final film",
+        ],
+      },
+      {
+        heading: "Final Film",
+        body: "Watch LAST CALL above to experience the finished cinematic event promo. DFRENZY VISUALS creates cinematic promotional films and branded storytelling for organisations and events.",
+      },
+    ],
+  },
+  {
     slug: "diamond-project",
     title: "THE DIAMOND PROJECT",
     subtitle: "A promotional film presenting a vision of personal growth and opportunity.",
