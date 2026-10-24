@@ -72,6 +72,21 @@ const FILMS: Film[] = [
   },
 
   {
+    id: "last-call-financial-freedom",
+    slug: "last-call-financial-freedom",
+    title: "LAST CALL",
+    subtitle: "FINANCIAL FREEDOM · CINEMATIC EVENT PROMO",
+    category: "PROMOS",
+    image: "https://img.youtube.com/vi/_ntl1bDdKbM/maxresdefault.jpg",
+    youtube: "https://youtu.be/_ntl1bDdKbM",
+    description:
+      "A cinematic event promo built around the theme of financial freedom, presented with a bold visual identity and a Lagos, Nigeria setting. Produced by DFRENZY VISUALS.",
+    productionType: "Cinematic Event Promo",
+    creativeDirection: "Financial Freedom / Event Promotion",
+    client: "DFRENZY VISUALS",
+    tools: "AI Cinematic Production, Editing & Post-Production",
+  },
+  {
     id: "the-man-they-should-have-feared",
     slug: "the-man-they-should-have-feared",
     title: "THE MAN THEY SHOULD HAVE FEARED",
