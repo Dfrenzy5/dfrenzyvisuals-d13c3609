@@ -30,6 +30,37 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    slug: "the-score",
+    title: "THE SCORE",
+    subtitle: "A cinematic brand film introducing Klout and the opportunity within Africa's creator economy.",
+    category: "Brand Film",
+    client: "Klout",
+    year: "2026",
+    duration: "60 seconds",
+    role: "Creative Direction · AI Visual Production · Editing · Post-Production",
+    poster: "https://img.youtube.com/vi/_0dT--jkhY4/maxresdefault.jpg",
+    youtube: "_0dT--jkhY4",
+    problem: "Communicate Klout's creator-economy proposition in a concise, visually engaging film that feels like a cinematic brand experience rather than a conventional corporate explainer.",
+    concept: "A character-led journey into a world of creators and possibility. The film uses an industrial creative environment, a presenter-led narrative and a digital map visualisation to connect individual creative disciplines with the wider creator economy.",
+    moodboard: ["Atmospheric industrial warehouse environment", "Cinematic lighting with controlled highlights", "Confident presenter-led brand storytelling", "Digital map and economic-data visualisation", "A clear, memorable Klout brand reveal"],
+    production: "Produced as a 60-second brand film for Klout. DFRENZY VISUALS shaped the visual storytelling around a presenter and a group of creative professionals, using the warehouse setting and digital visualisation as recurring visual anchors. The film moves from the scale of the opportunity to the people and creative disciplines that make the ecosystem real.",
+    aiPipeline: ["Creative development and visual direction for a concise brand narrative", "AI-assisted visual production and scene development", "Presenter-led and ensemble visual storytelling", "Digital-map and on-screen information integration", "Editorial assembly and brand-focused finishing"],
+    editing: "The final 60-second edit brings the presenter, creator community, economic messaging and Klout identity into one continuous brand narrative. Visual pacing and transitions are designed to keep the message clear while maintaining a cinematic promotional feel.",
+    outcome: "A one-minute cinematic brand film introducing Klout through the people, creative disciplines and economic potential associated with Africa's creator economy.",
+    impact: ["A concise brand-storytelling asset for Klout", "Positions creators and creative professionals at the centre of the narrative", "Demonstrates DFRENZY VISUALS' approach to AI-powered commercial and brand-film production"],
+    tools: ["AI-Assisted Visual Production", "Creative Direction", "Cinematic Editing", "Motion Graphics", "Post-Production"],
+    writtenCaseStudy: [
+      { heading: "Overview", body: "THE SCORE is a 60-second cinematic brand film produced by DFRENZY VISUALS for Klout. The film introduces the creator economy through a visual narrative centred on creative professionals, a presenter-led story and a digital map visualisation. Its purpose is to make a large economic idea feel human, immediate and visually engaging." },
+      { heading: "The Creative Challenge", body: "The challenge was to communicate a broad, fast-moving industry opportunity in a short runtime without making the film feel like a data presentation. The creative solution was to place people and creative practice at the centre, using visual information to support the story rather than overwhelm it.", points: ["Translate an industry-wide message into a focused 60-second narrative", "Keep the story accessible through a presenter and a recognisable creative environment", "Balance cinematic atmosphere with clear brand communication"] },
+      { heading: "Creative Direction", body: "The industrial warehouse setting gives the film a distinctive visual world. A presenter in a pale pink blazer guides the audience while a group of creative professionals and a glowing digital map expand the story beyond one individual. The sequence connects the people who make creative work with the larger ecosystem around them." },
+      { heading: "Production & AI Workflow", body: "DFRENZY VISUALS developed the film through an AI-assisted visual production workflow, combining directed scene development, visual continuity, editorial planning and post-production. The case study describes the creative workflow without attributing unverified generation tools or production metrics." },
+      { heading: "Editing & Finishing", body: "The edit is structured to move from the creator-economy proposition to the people behind it, then resolve with the Klout identity. On-screen information and visual transitions support the message while keeping the film's one-minute format focused." },
+      { heading: "Final Film", body: "THE SCORE is a compact brand film that presents Klout's creator-economy message through cinematic visual storytelling. Watch the complete film above." },
+      { heading: "Production Credits", points: ["Client / Brand: Klout", "Studio: DFRENZY VISUALS", "Creative Direction, AI Visual Production & Post-Production: DFRENZY VISUALS"] }
+    ],
+  },
+
+  {
     slug: "faithclinic-the-ageless-god",
     title: "THE AGELESS GOD",
     subtitle: "FaithClinic Chapel Anniversary 2026 — a cinematic celebration of faith, worship, and the enduring greatness of God.",
