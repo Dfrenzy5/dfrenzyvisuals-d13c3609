@@ -148,6 +148,12 @@ export function TrustedBy() {
 
 const FEATURED_PROJECTS = [
   {
+    slug: "the-score",
+    title: "THE SCORE",
+    tag: "KLOUT · CINEMATIC BRAND FILM",
+    image: "https://img.youtube.com/vi/_0dT--jkhY4/maxresdefault.jpg",
+  },
+  {
     slug: "unbliss",
     title: "UNBLISS",
     tag: "CINEMATIC TRAILER",

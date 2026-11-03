@@ -57,6 +57,21 @@ function ytId(url: string): string {
 
 const FILMS: Film[] = [
   {
+    id: "the-score",
+    slug: "the-score",
+    title: "THE SCORE",
+    subtitle: "KLOUT · CINEMATIC BRAND FILM",
+    category: "COMMERCIALS",
+    image: "https://img.youtube.com/vi/_0dT--jkhY4/maxresdefault.jpg",
+    youtube: "https://youtu.be/_0dT--jkhY4",
+    description: "A 60-second cinematic brand film introducing Klout through the people, creative disciplines and opportunity within Africa's creator economy. Produced by DFRENZY VISUALS.",
+    productionType: "Cinematic Brand Film",
+    creativeDirection: "Creator Economy / Brand Storytelling",
+    client: "Klout",
+    tools: "AI-Assisted Visual Production, Creative Direction, Editing & Post-Production",
+  },
+
+  {
     id: "faithclinic-the-ageless-god",
     slug: "faithclinic-the-ageless-god",
     title: "THE AGELESS GOD",
