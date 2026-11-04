@@ -16,7 +16,6 @@ import {
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
-import unbliss from "@/assets/unbliss.jpg";
 
 /* ---------------- Featured Showreel ---------------- */
 
@@ -487,7 +486,7 @@ export function DirectorsChoice() {
           >
             <div className="relative aspect-video">
               <img
-                src={unbliss}
+                src="https://img.youtube.com/vi/aoc6ZZt9DN0/maxresdefault.jpg"
                 alt="UNBLISS — cinematic trailer poster"
                 loading="lazy"
                 decoding="async"
