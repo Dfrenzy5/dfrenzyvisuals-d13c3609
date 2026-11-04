@@ -57,6 +57,7 @@ jobs:
         with:
           name: phase-6-bundle-treemap
           path: |
-            **/bundle-report.html
+            .output/public/bundle-report.html
+            bundle-report.html
           if-no-files-found: warn
           retention-days: 7
