@@ -1,0 +1,33 @@
+name: Phase 6 Implementation Bundle Check
+on:
+  push:
+    branches:
+      - perf/phase-6-main-entry-split
+permissions:
+  contents: read
+concurrency:
+  group: phase-6-implementation-bundle
+  cancel-in-progress: true
+jobs:
+  build-and-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Add temporary bundle visualizer to runner
+        run: bun add --dev rollup-plugin-visualizer
+      - name: Production build with treemap
+        run: bunx vite build --config vite.analyze.config.ts
+      - name: Report browser asset sizes
+        run: bun run scripts/report-build-sizes.mjs >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload treemap
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase-6-implementation-treemap
+          path: .output/public/bundle-report.html
+          if-no-files-found: warn
+          retention-days: 7
