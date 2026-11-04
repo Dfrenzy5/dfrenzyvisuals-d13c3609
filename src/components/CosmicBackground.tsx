@@ -28,7 +28,7 @@ export function CosmicBackground() {
         {stars.map((s, i) => (
           <span
             key={i}
-            className="absolute rounded-full bg-neon-bright animate-twinkle"
+            className="cosmic-star absolute rounded-full bg-neon-bright animate-twinkle"
             style={{
               left: `${s.x}%`,
               top: `${s.y}%`,
