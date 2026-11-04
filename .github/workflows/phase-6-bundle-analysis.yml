@@ -4,17 +4,6 @@ on:
   push:
     branches:
       - perf/phase-6-bundle-measurement
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "vite.analyze.config.ts"
-      - "scripts/report-build-sizes.mjs"
-      - ".github/workflows/phase-6-bundle-analysis.yml"
-      - "package.json"
-      - "bun.lock"
-      - "vite.config.ts"
-      - "src/**"
   workflow_dispatch:
 
 permissions:
