@@ -16,7 +16,7 @@ import { CosmicBackground } from "../components/CosmicBackground";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { WhatsAppButton } from "../components/WhatsAppButton";
-import { FloatingStartProject } from "../components/HomeExtras";
+import { FloatingStartProject } from "../components/FloatingStartProject";
 
 function NotFoundComponent() {
   return (
