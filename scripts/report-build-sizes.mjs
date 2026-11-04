@@ -4,7 +4,7 @@ import { promisify } from "node:util";
 import path from "node:path";
 
 const gzipAsync = promisify(gzip);
-const roots = ["dist", ".output"];
+const roots = [".output/public/assets"];
 const rows = [];
 
 async function walk(dir) {
@@ -46,7 +46,7 @@ const totals = rows.reduce(
   (acc, row) => ({ raw: acc.raw + row.raw, gzip: acc.gzip + row.gzip }),
   { raw: 0, gzip: 0 },
 );
-console.log(`\n**Total JS/CSS:** ${format(totals.raw)} raw / ${format(totals.gzip)} gzip across ${rows.length} files.`);
+console.log(`\n**Browser-delivered JS/CSS:** ${format(totals.raw)} raw / ${format(totals.gzip)} gzip across ${rows.length} files.`);
 if (rows.length === 0) {
   console.log("\nNo built JS/CSS assets found in dist/ or .output/. Check the build output directory.");
 }
