@@ -5,7 +5,6 @@ import tenMinutes from "@/assets/ten-minutes.jpg";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
-import unbliss from "@/assets/unbliss.jpg";
 import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolio/")({
@@ -166,7 +165,7 @@ const FILMS: Film[] = [
     title: "UNBLISS",
     subtitle: "SOME LOVE STORIES HAVE WITNESSES",
     category: "TRAILERS",
-    image: unbliss,
+    image: "https://img.youtube.com/vi/aoc6ZZt9DN0/maxresdefault.jpg",
     youtube: "https://youtu.be/aoc6ZZt9DN0",
     description:
       "A poetic cinematic trailer charting a love story told through unseen witnesses — moody, atmospheric, and emotionally precise.",

@@ -4,7 +4,6 @@ import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
-import unbliss from "@/assets/unbliss.jpg";
 
 type Project = {
   slug: string;
@@ -38,7 +37,7 @@ const PROJECTS: Project[] = [
     categoryKey: "brand-films",
     summary:
       "A poetic love story told through unseen witnesses — moody, atmospheric, and emotionally precise.",
-    poster: unbliss,
+    poster: "https://img.youtube.com/vi/aoc6ZZt9DN0/maxresdefault.jpg",
     youtube: "aoc6ZZt9DN0",
     services: "Direction · AI Pipeline · Edit · Sound",
   },

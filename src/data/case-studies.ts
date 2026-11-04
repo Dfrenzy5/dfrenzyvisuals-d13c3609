@@ -2,7 +2,6 @@ import tenMinutes from "@/assets/ten-minutes.jpg";
 import film2 from "@/assets/film-2.jpg";
 import film3 from "@/assets/film-3.jpg";
 import film5 from "@/assets/film-5.jpg";
-import unbliss from "@/assets/unbliss.jpg";
 
 export type CaseStudy = {
   slug: string;
@@ -160,7 +159,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     year: "2025",
     duration: "3 weeks",
     role: "Direction · AI Pipeline · Edit · Sound",
-    poster: unbliss,
+    poster: "https://img.youtube.com/vi/aoc6ZZt9DN0/maxresdefault.jpg",
     youtube: "aoc6ZZt9DN0",
     problem:
       "Deliver a full-cinema trailer for a poetic love story without a live-action shoot budget — while preserving emotional truth, performance nuance, and editorial craft.",
