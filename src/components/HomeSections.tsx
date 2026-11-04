@@ -169,6 +169,11 @@ function StatsRow() {
               <img
                 src={CERTIFICATE_URL}
                 alt="Higgsfield Academy Certification"
+                width="56"
+                height="40"
+                loading="lazy"
+                fetchPriority="low"
+                decoding="async"
                 className="h-full w-full object-cover"
               />
             </div>

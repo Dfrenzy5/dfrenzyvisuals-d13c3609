@@ -1,7 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Film, DollarSign, Send, Youtube, Instagram, Mail, Sparkles, BookOpen, Newspaper } from "lucide-react";
 import { useEffect, useState } from "react";
-import dfLogo from "@/assets/df-logo.png";
 
 const nav = [
   { to: "/portfolio", label: "PORTFOLIO", Icon: Film },
@@ -36,7 +35,7 @@ export function SiteHeader() {
         <Link to="/" className="group flex items-center gap-3">
           <div className="relative h-9 w-9 overflow-hidden rounded-lg ring-1 ring-neon/40 transition-all group-hover:ring-neon group-hover:neon-glow">
             <img
-              src={dfLogo}
+              src="/apple-touch-icon.png"
               alt="DFRENZY VISUALS logo"
               width={36}
               height={36}

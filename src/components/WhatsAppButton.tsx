@@ -5,18 +5,10 @@ const WHATSAPP_URL =
 
 export function WhatsAppButton() {
   const [mounted, setMounted] = useState(false);
-  const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 400);
-    const interval = setInterval(() => {
-      setPulse(true);
-      setTimeout(() => setPulse(false), 1600);
-    }, 12000);
-    return () => {
-      clearTimeout(t);
-      clearInterval(interval);
-    };
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -36,23 +28,18 @@ export function WhatsAppButton() {
         CHAT WITH DFRENZY VISUALS
       </span>
 
-      {/* Pulse ring */}
-      {pulse && (
-        <span
-          className="pointer-events-none absolute inset-0 rounded-full"
-          style={{
-            animation: "wa-pulse 1.6s ease-out",
-            boxShadow: "0 0 0 0 oklch(0.78 0.18 150 / 0.7)",
-          }}
-        />
-      )}
+      {/* Decorative pulse uses transform and opacity to stay compositor-friendly. */}
+      <span
+        aria-hidden="true"
+        className="wa-pulse-ring pointer-events-none absolute inset-0 rounded-full border border-[oklch(0.78_0.18_150/0.7)]"
+      />
 
       <a
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with DFrenzy Visuals on WhatsApp"
-        className="relative flex h-14 w-14 items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.78_0.15_85)] sm:h-16 sm:w-16"
+        className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border transition-all duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.78_0.15_85)] sm:h-16 sm:w-16"
         style={{
           background:
             "linear-gradient(135deg, oklch(0.18 0.04 150 / 0.7), oklch(0.08 0.02 150 / 0.85))",
