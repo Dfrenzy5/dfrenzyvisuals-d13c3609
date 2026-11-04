@@ -71,8 +71,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: `${SITE_URL}/` },
-      { rel: "preconnect", href: "https://www.youtube-nocookie.com" },
-      { rel: "preconnect", href: "https://i.ytimg.com" },
     ],
     scripts: [
       {
@@ -224,14 +222,13 @@ function Index() {
   const [phase, setPhase] = useState<Phase>("cosmic");
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState<number | null>(null);
-  const [showShowreel, setShowShowreel] = useState(true);
+  const [showreelLoaded, setShowreelLoaded] = useState(false);
   const [showreelMuted, setShowreelMuted] = useState(true);
   const showreelFrameRef = useRef<HTMLIFrameElement>(null);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
   useEffect(() => {
-    if (showShowreel) return;
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     const queue: Array<[number, Phase]> = [
       [PHASE_TIMINGS.energy, "energy"],
@@ -245,11 +242,11 @@ function Index() {
       timeouts.push(setTimeout(() => setPhase(p), ms));
     });
     return () => timeouts.forEach(clearTimeout);
-  }, [showShowreel]);
+  }, []);
 
   // Mouse parallax (subtle camera drift)
   useEffect(() => {
-    if (showShowreel) return;
+    if (showreel) return;
     const onMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
       const y = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -257,7 +254,7 @@ function Index() {
     };
     window.addEventListener("pointermove", onMove);
     return () => window.removeEventListener("pointermove", onMove);
-  }, [showShowreel]);
+  }, []);
 
   // intensity ramps as phases progress (drives canvas attraction)
   useEffect(() => {
@@ -276,7 +273,7 @@ function Index() {
 
   // ----- Particle field (cosmic + energy formation + idle drift) -----
   useEffect(() => {
-    if (showShowreel) return;
+    if (showreel) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -380,32 +377,23 @@ function Index() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, [showShowreel]);
+  }, []);
 
-  // ----- Showreel entrance and playback controls -----
-  const enterWebsite = useCallback(() => {
-    setShowShowreel(false);
-    setPhase("cosmic");
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowreelLoaded(true), 1400);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const toggleShowreelSound = useCallback(() => {
     const nextMuted = !showreelMuted;
     setShowreelMuted(nextMuted);
     showreelFrameRef.current?.contentWindow?.postMessage(
-      JSON.stringify({
-        event: "command",
-        func: nextMuted ? "mute" : "unMute",
-        args: [],
-      }),
-      "*",
+      JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
     );
   }, [showreelMuted]);
 
-  // Reopen the showreel from the homepage navigation.
   const handleEnter = useCallback(() => {
-    setShowreelMuted(true);
-    setShowShowreel(true);
-    setPhase("idle");
+    document.getElementById("showreel")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   const skipIntro = useCallback(() => {
@@ -430,45 +418,38 @@ function Index() {
 
   return (
     <>
-    {showShowreel && (
-      <div
-        className="fixed inset-0 z-[100] flex h-[100dvh] min-h-[100svh] items-center justify-center overflow-hidden bg-black"
-        role="dialog"
-        aria-modal="true"
-        aria-label="DFRENZY VISUALS official cinematic showreel"
-      >
-        <iframe
-          ref={showreelFrameRef}
-          className="absolute inset-0 h-full w-full border-0"
-          src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
-          title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          referrerPolicy="strict-origin-when-cross-origin"
-          loading="eager"
-          allowFullScreen
-        />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
-        <div className="absolute right-4 top-4 z-10 sm:right-8 sm:top-8">
-          <button
-            type="button"
-            onClick={toggleShowreelSound}
-            aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
-            className="rounded-sm border border-white/50 bg-black/55 px-4 py-3 font-display text-[0.65rem] font-semibold tracking-[0.22em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]"
-          >
-            {showreelMuted ? "SOUND ON" : "MUTE"}
-          </button>
-        </div>
-        <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center px-4 sm:bottom-10">
-          <button
-            type="button"
-            onClick={enterWebsite}
-            className="border border-[#00E5FF]/80 bg-black/65 px-7 py-4 font-display text-xs font-bold tracking-[0.28em] text-white shadow-[0_0_24px_rgba(0,229,255,0.2)] backdrop-blur-sm transition hover:bg-[#00E5FF] hover:text-[#02121a] sm:px-10"
-          >
-            ENTER WEBSITE <span aria-hidden="true">→</span>
-          </button>
+    <section id="showreel" aria-label="DFRENZY VISUALS official cinematic showreel" className="relative isolate w-full overflow-hidden bg-black">
+      <div className="relative mx-auto w-full max-w-[1600px]">
+        <div className="relative aspect-video w-full overflow-hidden bg-[#05080d]">
+          {showreelLoaded ? (
+            <iframe ref={showreelFrameRef} className="absolute inset-0 h-full w-full border-0"
+              src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
+              title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              referrerPolicy="strict-origin-when-cross-origin" loading="eager" allowFullScreen />
+          ) : (
+            <img src="https://i.ytimg.com/vi/K1Y7HWuhqcU/maxresdefault.jpg"
+              alt="DFRENZY VISUALS official cinematic showreel" className="absolute inset-0 h-full w-full object-cover"
+              width="1280" height="720" loading="eager" fetchPriority="high" decoding="async"
+              onError={(event) => { event.currentTarget.src = "https://i.ytimg.com/vi/K1Y7HWuhqcU/hqdefault.jpg"; }} />
+          )}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
+          <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-3 p-5 sm:p-10 lg:p-14">
+            <p className="font-display text-[0.6rem] font-semibold tracking-[0.32em] text-[#00E5FF] sm:text-xs">DFRENZY VISUALS PRESENTS</p>
+            <h1 className="max-w-4xl font-display text-2xl font-bold tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl">AI CINEMATIC FILM STUDIO</h1>
+            <p className="max-w-2xl text-xs leading-relaxed text-white/85 sm:text-base">Nigerian-led cinematic storytelling, AI film production and premium visual content for brands and global audiences.</p>
+            <div className="pointer-events-auto flex flex-wrap items-center gap-3">
+              <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
+                className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
+                {showreelMuted ? "SOUND ON" : "MUTE"}
+              </button>
+              {!showreelLoaded && <button type="button" onClick={() => setShowreelLoaded(true)}
+                className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">PLAY SHOWREEL</button>}
+            </div>
+          </div>
         </div>
       </div>
-    )}
+    </section>
     <div
       id="hero"
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
@@ -629,7 +610,7 @@ function Index() {
             transition: "opacity 600ms ease-out",
           }}
         >
-          <h1
+          <h2
             className="font-display text-2xl tracking-[0.5em] sm:text-4xl"
             style={{
               color: "#FFFFFF",
@@ -637,7 +618,7 @@ function Index() {
             }}
           >
             DFRENZY VISUALS
-          </h1>
+          </h2>
           {show.identity && (
             <span
               className="pointer-events-none absolute inset-0 block"
