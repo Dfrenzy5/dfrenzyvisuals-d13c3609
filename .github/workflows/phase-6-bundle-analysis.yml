@@ -1,0 +1,54 @@
+name: Phase 6 Bundle Analysis
+
+on:
+  push:
+    branches:
+      - perf/phase-6-bundle-measurement
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: phase-6-bundle-analysis-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Install temporary visualizer (not saved to project dependencies)
+        run: npm install --no-save --package-lock=false rollup-plugin-visualizer
+
+      - name: Build with module treemap
+        run: npx vite build --config vite.analyze.config.ts
+
+      - name: Report built JS and CSS sizes
+        run: node scripts/report-build-sizes.mjs >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Locate treemap report
+        if: always()
+        run: find . -name bundle-report.html -not -path './node_modules/*' -print
+
+      - name: Upload bundle treemap
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase-6-bundle-treemap
+          path: |
+            **/bundle-report.html
+          if-no-files-found: warn
+          retention-days: 7
