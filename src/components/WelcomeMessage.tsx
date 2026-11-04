@@ -34,16 +34,44 @@ export function WelcomeMessage() {
   }, []);
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      const el = ref.current;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
-      setParallax({ x, y });
+    // Parallax is decorative: avoid global pointer work on touch and reduced-motion devices.
+    if (
+      !window.matchMedia("(pointer: fine)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const el = ref.current;
+    if (!el) return;
+
+    let frame = 0;
+    const onMove = (e: PointerEvent) => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const bounds = el.getBoundingClientRect();
+        const x = ((e.clientX - bounds.left) / bounds.width - 0.5) * 2;
+        const y = ((e.clientY - bounds.top) / bounds.height - 0.5) * 2;
+        setParallax({ x, y });
+      });
     };
-    window.addEventListener("pointermove", onMove);
-    return () => window.removeEventListener("pointermove", onMove);
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        window.addEventListener("pointermove", onMove, { passive: true });
+      } else {
+        window.removeEventListener("pointermove", onMove);
+        setParallax({ x: 0, y: 0 });
+      }
+    });
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("pointermove", onMove);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Pre-computed gold particle field (deterministic for SSR)
