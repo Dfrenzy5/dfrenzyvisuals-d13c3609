@@ -9,7 +9,8 @@ import {
   Lightbulb,
   Quote,
 } from "lucide-react";
-import { Container, Section } from "@/components/ui-studio/Container";
+import { Container } from "@/components/ui-studio/Container";
+import { Section } from "@/components/ui-studio/Section";
 import { Reveal } from "@/components/ui-studio/Reveal";
 import { studioLinkClass } from "@/components/ui-studio/studioButtonStyles";
 import { BlueprintForm } from "@/components/BlueprintForm";
