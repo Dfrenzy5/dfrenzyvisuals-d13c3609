@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import dfLogo from "@/assets/df-logo.png";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { LazyMount } from "@/components/ui-studio/LazyMount";
 import { SITE_URL } from "@/lib/site";
@@ -631,7 +630,7 @@ function Index() {
           <div
             className="absolute inset-0 bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('${dfLogo}')`,
+              backgroundImage: "url('/apple-touch-icon.png')",
               backgroundSize: "contain",
               filter:
                 "drop-shadow(0 0 24px #00E5FF) drop-shadow(0 0 60px rgba(58,168,255,0.6))",
@@ -850,11 +849,12 @@ function Index() {
             alt="Daniel Ebhowe, AI Filmmaker and Creative Director of DFRENZY VISUALS"
             className="relative aspect-[4/5] w-full rounded-xl object-cover object-center shadow-2xl"
             loading="lazy"
+            fetchPriority="low"
             decoding="async"
             width="900"
             height="1125"
           />
-          <p className="mt-4 font-display text-xs tracking-[0.25em] text-white/50">
+          <p className="mt-4 font-display text-xs tracking-[0.25em] text-white/70">
             DANIEL EBHOWE · FOUNDER & CREATIVE DIRECTOR
           </p>
         </div>
