@@ -1,14 +1,17 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
-import { CASE_STUDIES, getCaseStudy } from "@/data/case-studies";
+
 import type { CaseStudy } from "@/data/case-studies";
 import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolio/$slug")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
+    const { CASE_STUDIES, getCaseStudy } = await import("@/data/case-studies");
     const study = getCaseStudy(params.slug);
     if (!study) throw notFound();
-    return { study };
+    const index = CASE_STUDIES.findIndex((item) => item.slug === study.slug);
+    const next = CASE_STUDIES[(index + 1) % CASE_STUDIES.length];
+    return { study, next: { slug: next.slug, title: next.title, subtitle: next.subtitle } };
   },
   head: ({ params, loaderData }) => {
     const s = loaderData?.study;
@@ -131,9 +134,10 @@ function Section({
 }
 
 function CaseStudyPage() {
-  const { study } = Route.useLoaderData() as { study: CaseStudy };
-  const idx = CASE_STUDIES.findIndex((c) => c.slug === study.slug);
-  const next = CASE_STUDIES[(idx + 1) % CASE_STUDIES.length];
+  const { study, next } = Route.useLoaderData() as {
+    study: CaseStudy;
+    next: Pick<CaseStudy, "slug" | "title" | "subtitle">;
+  };
 
   return (
     <article className="mx-auto max-w-6xl px-6 py-10 md:px-10">
