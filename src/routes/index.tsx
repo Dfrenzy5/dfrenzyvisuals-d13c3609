@@ -69,7 +69,9 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: `${SITE_URL}/` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -220,6 +222,9 @@ function Index() {
   const [phase, setPhase] = useState<Phase>("cosmic");
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState<number | null>(null);
+  const [showreelLoaded, setShowreelLoaded] = useState(false);
+  const [showreelMuted, setShowreelMuted] = useState(true);
+  const showreelFrameRef = useRef<HTMLIFrameElement>(null);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
@@ -241,6 +246,7 @@ function Index() {
 
   // Mouse parallax (subtle camera drift)
   useEffect(() => {
+    if (showreel) return;
     const onMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
       const y = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -267,12 +273,19 @@ function Index() {
 
   // ----- Particle field (cosmic + energy formation + idle drift) -----
   useEffect(() => {
+    if (showreel) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const isMobile = window.innerWidth < 768;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.75);
     let w = 0;
     let h = 0;
     const resize = () => {
@@ -285,11 +298,7 @@ function Index() {
     resize();
     window.addEventListener("resize", resize);
 
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const N = reduced ? 40 : isMobile ? 80 : 180;
+    const N = isMobile ? 40 : 150;
     const particles = Array.from({ length: N }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -329,7 +338,7 @@ function Index() {
         ctx.arc(p.x, p.y, p.r * (1 + k * 0.6), 0, Math.PI * 2);
         ctx.fillStyle = `rgba(0, 229, 255, ${p.a * glow})`;
         ctx.shadowColor = "#00E5FF";
-        ctx.shadowBlur = 8 + k * 18;
+        ctx.shadowBlur = isMobile ? 4 : 8 + k * 18;
         ctx.fill();
       }
 
@@ -370,13 +379,22 @@ function Index() {
     };
   }, []);
 
-  // ----- CTA click → warp transition then navigate -----
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowreelLoaded(true), 1400);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const toggleShowreelSound = useCallback(() => {
+    const nextMuted = !showreelMuted;
+    setShowreelMuted(nextMuted);
+    showreelFrameRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
+    );
+  }, [showreelMuted]);
+
   const handleEnter = useCallback(() => {
-    setPhase("warp");
-    setTimeout(() => {
-      navigate({ to: "/portfolio" });
-    }, 1100);
-  }, [navigate]);
+    document.getElementById("showreel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   const skipIntro = useCallback(() => {
     setPhase("idle");
@@ -400,6 +418,38 @@ function Index() {
 
   return (
     <>
+    <section id="showreel" aria-label="DFRENZY VISUALS official cinematic showreel" className="relative isolate w-full overflow-hidden bg-black">
+      <div className="relative mx-auto w-full max-w-[1600px]">
+        <div className="relative aspect-video w-full overflow-hidden bg-[#05080d]">
+          {showreelLoaded ? (
+            <iframe ref={showreelFrameRef} className="absolute inset-0 h-full w-full border-0"
+              src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
+              title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              referrerPolicy="strict-origin-when-cross-origin" loading="eager" allowFullScreen />
+          ) : (
+            <img src="https://i.ytimg.com/vi/K1Y7HWuhqcU/maxresdefault.jpg"
+              alt="DFRENZY VISUALS official cinematic showreel" className="absolute inset-0 h-full w-full object-cover"
+              width="1280" height="720" loading="eager" fetchPriority="high" decoding="async"
+              onError={(event) => { event.currentTarget.src = "https://i.ytimg.com/vi/K1Y7HWuhqcU/hqdefault.jpg"; }} />
+          )}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
+          <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-3 p-5 sm:p-10 lg:p-14">
+            <p className="font-display text-[0.6rem] font-semibold tracking-[0.32em] text-[#00E5FF] sm:text-xs">DFRENZY VISUALS PRESENTS</p>
+            <h1 className="max-w-4xl font-display text-2xl font-bold tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl">AI CINEMATIC FILM STUDIO</h1>
+            <p className="max-w-2xl text-xs leading-relaxed text-white/85 sm:text-base">Nigerian-led cinematic storytelling, AI film production and premium visual content for brands and global audiences.</p>
+            <div className="pointer-events-auto flex flex-wrap items-center gap-3">
+              <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
+                className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
+                {showreelMuted ? "SOUND ON" : "MUTE"}
+              </button>
+              {!showreelLoaded && <button type="button" onClick={() => setShowreelLoaded(true)}
+                className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">PLAY SHOWREEL</button>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <div
       id="hero"
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
@@ -560,7 +610,7 @@ function Index() {
             transition: "opacity 600ms ease-out",
           }}
         >
-          <h1
+          <h2
             className="font-display text-2xl tracking-[0.5em] sm:text-4xl"
             style={{
               color: "#FFFFFF",
@@ -568,7 +618,7 @@ function Index() {
             }}
           >
             DFRENZY VISUALS
-          </h1>
+          </h2>
           {show.identity && (
             <span
               className="pointer-events-none absolute inset-0 block"
@@ -812,18 +862,18 @@ function Index() {
       </div>
     </section>
     <Suspense fallback={null}>
-           <TrustedBy />
-      <StatsRow />
-      <FeaturedProjects />
-      <Services />
-      <DirectorsChoice />
-      <CreativeProcess />
-      <CreativeLab />
-      <Testimonials />
-      <Awards />
-      <MeetTheDirector />
-      <FAQ />
-      <ContactCTA />
+      <LazyMount minHeight={180}><TrustedBy /></LazyMount>
+      <LazyMount minHeight={180}><StatsRow /></LazyMount>
+      <LazyMount minHeight={720}><FeaturedProjects /></LazyMount>
+      <LazyMount minHeight={640}><Services /></LazyMount>
+      <LazyMount minHeight={480}><DirectorsChoice /></LazyMount>
+      <LazyMount minHeight={520}><CreativeProcess /></LazyMount>
+      <LazyMount minHeight={520}><CreativeLab /></LazyMount>
+      <LazyMount minHeight={520}><Testimonials /></LazyMount>
+      <LazyMount minHeight={420}><Awards /></LazyMount>
+      <LazyMount minHeight={600}><MeetTheDirector /></LazyMount>
+      <LazyMount minHeight={520}><FAQ /></LazyMount>
+      <LazyMount minHeight={360}><ContactCTA /></LazyMount>
     </Suspense>
     </>
   );
