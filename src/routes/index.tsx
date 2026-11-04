@@ -244,16 +244,32 @@ function Index() {
     return () => timeouts.forEach(clearTimeout);
   }, []);
 
-  // Mouse parallax (subtle camera drift)
+  // Mouse parallax is limited to fine-pointer devices to avoid touch-device work.
   useEffect(() => {
-    if (showreel) return;
-    const onMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      setParallax({ x, y });
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!finePointer || reducedMotion) return;
+
+    let frame = 0;
+    let latestEvent: PointerEvent | null = null;
+    const onMove = (event: PointerEvent) => {
+      latestEvent = event;
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        if (latestEvent) {
+          const x = (latestEvent.clientX / window.innerWidth - 0.5) * 2;
+          const y = (latestEvent.clientY / window.innerHeight - 0.5) * 2;
+          setParallax({ x, y });
+        }
+        frame = 0;
+      });
     };
-    window.addEventListener("pointermove", onMove);
-    return () => window.removeEventListener("pointermove", onMove);
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   // intensity ramps as phases progress (drives canvas attraction)
@@ -271,114 +287,146 @@ function Index() {
     intensityRef.current = map[phase];
   }, [phase]);
 
-  // ----- Particle field (cosmic + energy formation + idle drift) -----
+  // ----- Adaptive particle field: pauses off-screen and when the tab is hidden. -----
   useEffect(() => {
-    if (showreel) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const isMobile = window.innerWidth < 768;
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.75);
-    let w = 0;
-    let h = 0;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.15 : 1.5);
+    const frameInterval = isMobile ? 1000 / 24 : 1000 / 30;
+    let width = 0;
+    let height = 0;
+    let raf = 0;
+    let lastFrame = 0;
+    let pageVisible = !document.hidden;
+    let heroVisible = false;
+
     const resize = () => {
-      w = canvas.offsetWidth;
-      h = canvas.offsetHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      if (!width || !height) return;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
-    window.addEventListener("resize", resize);
 
-    const N = isMobile ? 40 : 150;
-    const particles = Array.from({ length: N }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.6 + 0.3,
+    const particleCount = isMobile ? 28 : 90;
+    const particles = Array.from({ length: particleCount }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.5 + 0.3,
       vx: (Math.random() - 0.5) * 0.25,
       vy: (Math.random() - 0.5) * 0.25,
       a: Math.random() * 0.6 + 0.2,
-      hue: Math.random() < 0.15 ? 210 : 195,
     }));
 
-    let raf = 0;
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-      const cx = w / 2;
-      const cy = h / 2;
-      const k = intensityRef.current;
+    const drawFrame = (now: number) => {
+      ctx.clearRect(0, 0, width, height);
+      const cx = width / 2;
+      const cy = height / 2;
+      const intensity = intensityRef.current;
 
-      for (const p of particles) {
-        // attraction toward center scaled by k
-        const dx = cx - p.x;
-        const dy = cy - p.y;
-        const dist = Math.hypot(dx, dy) + 0.001;
-        const pull = (k * 0.12) / Math.max(dist * 0.005, 0.4);
-        p.vx += (dx / dist) * pull;
-        p.vy += (dy / dist) * pull;
-        // damping
-        p.vx *= 0.96;
-        p.vy *= 0.96;
-        p.x += p.vx;
-        p.y += p.vy;
+      for (const particle of particles) {
+        const dx = cx - particle.x;
+        const dy = cy - particle.y;
+        const distance = Math.hypot(dx, dy) + 0.001;
+        const pull = (intensity * 0.12) / Math.max(distance * 0.005, 0.4);
+        particle.vx = (particle.vx + (dx / distance) * pull) * 0.96;
+        particle.vy = (particle.vy + (dy / distance) * pull) * 0.96;
+        particle.x += particle.vx;
+        particle.y += particle.vy;
 
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
+        if (particle.x < 0 || particle.x > width) particle.vx *= -1;
+        if (particle.y < 0 || particle.y > height) particle.vy *= -1;
 
-        const glow = 0.5 + k * 0.6;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * (1 + k * 0.6), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 229, 255, ${p.a * glow})`;
+        ctx.arc(particle.x, particle.y, particle.r * (1 + intensity * 0.6), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 229, 255, ${particle.a * (0.5 + intensity * 0.6)})`;
         ctx.shadowColor = "#00E5FF";
-        ctx.shadowBlur = isMobile ? 4 : 8 + k * 18;
+        ctx.shadowBlur = isMobile ? 2 : 6 + intensity * 10;
         ctx.fill();
       }
 
-      // central energy core during energy + logo phases
-      if (k > 0.4) {
-        const radius = 60 + Math.sin(performance.now() / 200) * 8;
-        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 2.4);
-        grad.addColorStop(0, `rgba(58, 168, 255, ${0.55 * k})`);
-        grad.addColorStop(0.4, `rgba(0, 213, 255, ${0.25 * k})`);
-        grad.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = grad;
+      if (intensity > 0.4) {
+        const radius = 60 + Math.sin(now / 200) * 8;
+        const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 2.4);
+        gradient.addColorStop(0, `rgba(58, 168, 255, ${0.55 * intensity})`);
+        gradient.addColorStop(0.4, `rgba(0, 213, 255, ${0.25 * intensity})`);
+        gradient.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(cx, cy, radius * 2.4, 0, Math.PI * 2);
         ctx.fill();
 
-        // lightning-ish radial spokes during energy formation
-        if (k > 0.7) {
-          ctx.strokeStyle = `rgba(180, 230, 255, ${0.18})`;
+        if (intensity > 0.7) {
+          ctx.strokeStyle = "rgba(180, 230, 255, 0.18)";
           ctx.lineWidth = 0.6;
-          const arms = 12;
-          for (let i = 0; i < arms; i++) {
-            const a = (i / arms) * Math.PI * 2 + performance.now() / 1400;
+          for (let i = 0; i < 12; i++) {
+            const angle = (i / 12) * Math.PI * 2 + now / 1400;
             ctx.beginPath();
             ctx.moveTo(cx, cy);
-            ctx.lineTo(cx + Math.cos(a) * radius * 3.2, cy + Math.sin(a) * radius * 3.2);
+            ctx.lineTo(cx + Math.cos(angle) * radius * 3.2, cy + Math.sin(angle) * radius * 3.2);
             ctx.stroke();
           }
         }
       }
-
-      raf = requestAnimationFrame(draw);
     };
-    draw();
+
+    const stop = () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      raf = 0;
+    };
+    const tick = (now: number) => {
+      if (!pageVisible || !heroVisible) {
+        stop();
+        return;
+      }
+      if (now - lastFrame >= frameInterval) {
+        drawFrame(now);
+        lastFrame = now;
+      }
+      raf = window.requestAnimationFrame(tick);
+    };
+    const start = () => {
+      if (!pageVisible || !heroVisible || raf) return;
+      lastFrame = 0;
+      raf = window.requestAnimationFrame(tick);
+    };
+    const onVisibilityChange = () => {
+      pageVisible = !document.hidden;
+      if (pageVisible) start();
+      else stop();
+    };
+    const observer = typeof IntersectionObserver !== "undefined"
+      ? new IntersectionObserver(([entry]) => {
+          heroVisible = Boolean(entry?.isIntersecting);
+          if (heroVisible) start();
+          else stop();
+        }, { rootMargin: "80px 0px" })
+      : null;
+
+    observer?.observe(canvas);
+    if (!observer) {
+      heroVisible = true;
+      start();
+    }
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("resize", resize, { passive: true });
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
+      observer?.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("resize", resize);
     };
   }, []);
-
   useEffect(() => {
     const timer = window.setTimeout(() => setShowreelLoaded(true), 1400);
     return () => window.clearTimeout(timer);
