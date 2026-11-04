@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Container, Section } from "@/components/ui-studio/Container";
 import { Reveal } from "@/components/ui-studio/Reveal";
-import { studioLinkClass } from "@/components/ui-studio/StudioButton";
+import { studioLinkClass } from "@/components/ui-studio/studioButtonStyles";
 import { BlueprintForm } from "@/components/BlueprintForm";
 import { track } from "@/lib/analytics";
 import { Link } from "@tanstack/react-router";
