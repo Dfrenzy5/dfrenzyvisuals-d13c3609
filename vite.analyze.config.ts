@@ -17,6 +17,7 @@ export default defineConfig({
         template: "treemap",
         gzipSize: true,
         brotliSize: true,
+        emitFile: true,
         open: false,
       }),
     ],
