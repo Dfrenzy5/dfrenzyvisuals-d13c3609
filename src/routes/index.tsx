@@ -69,7 +69,11 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: `${SITE_URL}/` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/` },
+      { rel: "preconnect", href: "https://www.youtube-nocookie.com" },
+      { rel: "preconnect", href: "https://i.ytimg.com" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -220,10 +224,14 @@ function Index() {
   const [phase, setPhase] = useState<Phase>("cosmic");
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState<number | null>(null);
+  const [showShowreel, setShowShowreel] = useState(true);
+  const [showreelMuted, setShowreelMuted] = useState(true);
+  const showreelFrameRef = useRef<HTMLIFrameElement>(null);
   const navigate = useNavigate();
 
   // ----- Phase timeline -----
   useEffect(() => {
+    if (showShowreel) return;
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     const queue: Array<[number, Phase]> = [
       [PHASE_TIMINGS.energy, "energy"],
@@ -237,10 +245,11 @@ function Index() {
       timeouts.push(setTimeout(() => setPhase(p), ms));
     });
     return () => timeouts.forEach(clearTimeout);
-  }, []);
+  }, [showShowreel]);
 
   // Mouse parallax (subtle camera drift)
   useEffect(() => {
+    if (showShowreel) return;
     const onMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
       const y = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -248,7 +257,7 @@ function Index() {
     };
     window.addEventListener("pointermove", onMove);
     return () => window.removeEventListener("pointermove", onMove);
-  }, []);
+  }, [showShowreel]);
 
   // intensity ramps as phases progress (drives canvas attraction)
   useEffect(() => {
@@ -267,12 +276,19 @@ function Index() {
 
   // ----- Particle field (cosmic + energy formation + idle drift) -----
   useEffect(() => {
+    if (showShowreel) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const isMobile = window.innerWidth < 768;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.75);
     let w = 0;
     let h = 0;
     const resize = () => {
@@ -285,11 +301,7 @@ function Index() {
     resize();
     window.addEventListener("resize", resize);
 
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const N = reduced ? 40 : isMobile ? 80 : 180;
+    const N = isMobile ? 40 : 150;
     const particles = Array.from({ length: N }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
@@ -329,7 +341,7 @@ function Index() {
         ctx.arc(p.x, p.y, p.r * (1 + k * 0.6), 0, Math.PI * 2);
         ctx.fillStyle = `rgba(0, 229, 255, ${p.a * glow})`;
         ctx.shadowColor = "#00E5FF";
-        ctx.shadowBlur = 8 + k * 18;
+        ctx.shadowBlur = isMobile ? 4 : 8 + k * 18;
         ctx.fill();
       }
 
@@ -368,15 +380,33 @@ function Index() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
+  }, [showShowreel]);
+
+  // ----- Showreel entrance and playback controls -----
+  const enterWebsite = useCallback(() => {
+    setShowShowreel(false);
+    setPhase("cosmic");
   }, []);
 
-  // ----- CTA click → warp transition then navigate -----
+  const toggleShowreelSound = useCallback(() => {
+    const nextMuted = !showreelMuted;
+    setShowreelMuted(nextMuted);
+    showreelFrameRef.current?.contentWindow?.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: nextMuted ? "mute" : "unMute",
+        args: [],
+      }),
+      "*",
+    );
+  }, [showreelMuted]);
+
+  // Reopen the showreel from the homepage navigation.
   const handleEnter = useCallback(() => {
-    setPhase("warp");
-    setTimeout(() => {
-      navigate({ to: "/portfolio" });
-    }, 1100);
-  }, [navigate]);
+    setShowreelMuted(true);
+    setShowShowreel(true);
+    setPhase("idle");
+  }, []);
 
   const skipIntro = useCallback(() => {
     setPhase("idle");
@@ -400,6 +430,45 @@ function Index() {
 
   return (
     <>
+    {showShowreel && (
+      <div
+        className="fixed inset-0 z-[100] flex h-[100dvh] min-h-[100svh] items-center justify-center overflow-hidden bg-black"
+        role="dialog"
+        aria-modal="true"
+        aria-label="DFRENZY VISUALS official cinematic showreel"
+      >
+        <iframe
+          ref={showreelFrameRef}
+          className="absolute inset-0 h-full w-full border-0"
+          src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
+          title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          referrerPolicy="strict-origin-when-cross-origin"
+          loading="eager"
+          allowFullScreen
+        />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 to-transparent" />
+        <div className="absolute right-4 top-4 z-10 sm:right-8 sm:top-8">
+          <button
+            type="button"
+            onClick={toggleShowreelSound}
+            aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
+            className="rounded-sm border border-white/50 bg-black/55 px-4 py-3 font-display text-[0.65rem] font-semibold tracking-[0.22em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]"
+          >
+            {showreelMuted ? "SOUND ON" : "MUTE"}
+          </button>
+        </div>
+        <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center px-4 sm:bottom-10">
+          <button
+            type="button"
+            onClick={enterWebsite}
+            className="border border-[#00E5FF]/80 bg-black/65 px-7 py-4 font-display text-xs font-bold tracking-[0.28em] text-white shadow-[0_0_24px_rgba(0,229,255,0.2)] backdrop-blur-sm transition hover:bg-[#00E5FF] hover:text-[#02121a] sm:px-10"
+          >
+            ENTER WEBSITE <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    )}
     <div
       id="hero"
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
@@ -812,18 +881,18 @@ function Index() {
       </div>
     </section>
     <Suspense fallback={null}>
-           <TrustedBy />
-      <StatsRow />
-      <FeaturedProjects />
-      <Services />
-      <DirectorsChoice />
-      <CreativeProcess />
-      <CreativeLab />
-      <Testimonials />
-      <Awards />
-      <MeetTheDirector />
-      <FAQ />
-      <ContactCTA />
+      <LazyMount minHeight={180}><TrustedBy /></LazyMount>
+      <LazyMount minHeight={180}><StatsRow /></LazyMount>
+      <LazyMount minHeight={720}><FeaturedProjects /></LazyMount>
+      <LazyMount minHeight={640}><Services /></LazyMount>
+      <LazyMount minHeight={480}><DirectorsChoice /></LazyMount>
+      <LazyMount minHeight={520}><CreativeProcess /></LazyMount>
+      <LazyMount minHeight={520}><CreativeLab /></LazyMount>
+      <LazyMount minHeight={520}><Testimonials /></LazyMount>
+      <LazyMount minHeight={420}><Awards /></LazyMount>
+      <LazyMount minHeight={600}><MeetTheDirector /></LazyMount>
+      <LazyMount minHeight={520}><FAQ /></LazyMount>
+      <LazyMount minHeight={360}><ContactCTA /></LazyMount>
     </Suspense>
     </>
   );
