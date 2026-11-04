@@ -16,28 +16,25 @@ concurrency:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Check out source
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install project dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
-      - name: Install temporary visualizer (not saved to project dependencies)
-        run: npm install --no-save --package-lock=false rollup-plugin-visualizer
+      - name: Install temporary visualizer for this runner only
+        run: bun add --dev rollup-plugin-visualizer
 
       - name: Build with module treemap
-        run: npx vite build --config vite.analyze.config.ts
+        run: bunx vite build --config vite.analyze.config.ts
 
       - name: Report built JS and CSS sizes
-        run: node scripts/report-build-sizes.mjs >> "$GITHUB_STEP_SUMMARY"
+        run: bun run scripts/report-build-sizes.mjs >> "$GITHUB_STEP_SUMMARY"
 
       - name: Locate treemap report
         if: always()
