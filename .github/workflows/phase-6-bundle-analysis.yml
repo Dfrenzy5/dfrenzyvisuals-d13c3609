@@ -1,6 +1,9 @@
 name: Phase 6 Bundle Analysis
 
 on:
+  push:
+    branches:
+      - perf/phase-6-bundle-measurement
   pull_request:
     branches:
       - main
