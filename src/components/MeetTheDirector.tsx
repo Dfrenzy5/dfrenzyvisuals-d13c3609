@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Clapperboard } from "lucide-react";
 import { Container } from "@/components/ui-studio/Container";
 import { Reveal } from "@/components/ui-studio/Reveal";
-import { studioLinkClass } from "@/components/ui-studio/StudioButton";
+import { studioLinkClass } from "@/components/ui-studio/studioButtonStyles";
 
 export function MeetTheDirector() {
   return (

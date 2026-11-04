@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Download, ShieldCheck, Loader2, AlertTriangle } from "lucide-react";
 import { registerBlueprintLead } from "@/lib/blueprint.functions";
-import { studioLinkClass } from "@/components/ui-studio/StudioButton";
+import { studioLinkClass } from "@/components/ui-studio/studioButtonStyles";
 import { track } from "@/lib/analytics";
 
 type Status = "idle" | "loading" | "success" | "error";

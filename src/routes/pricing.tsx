@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Clapperboard, Film, Sparkles, Crown, Plus, Tv } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
-import { Container, Section } from "@/components/ui-studio/Container";
+import { Container } from "@/components/ui-studio/Container";
+import { Section } from "@/components/ui-studio/Section";
 import { Reveal } from "@/components/ui-studio/Reveal";
 
 export const Route = createFileRoute("/pricing")({
