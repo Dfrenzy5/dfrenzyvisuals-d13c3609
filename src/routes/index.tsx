@@ -440,51 +440,29 @@ function Index() {
       window.removeEventListener("resize", resize);
     };
   }, []);
-  // YouTube's iframe may load before its player API is ready. Keep the
-  // requested mute state in a ref and apply it again when the player signals onReady.
-  useEffect(() => {
-    const onMessage = (event: MessageEvent) => {
-      const frame = showreelFrameRef.current;
-      if (!frame || event.source !== frame.contentWindow) return;
-      if (event.origin !== "https://www.youtube-nocookie.com" && event.origin !== "https://www.youtube.com") return;
+  // Queue sound preference until the deferred iframe document has loaded.
+  // This prevents a quick SOUND ON click from being lost during player startup.
+  const showreelFrameLoadedRef = useRef(false);
 
-      let message: { event?: string };
-      try {
-        message = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-      } catch {
-        return;
-      }
-
-      if (message?.event === "onReady") {
-        showreelPlayerReadyRef.current = true;
-        frame.contentWindow?.postMessage(
-          JSON.stringify({ event: "command", func: showreelMutedRef.current ? "mute" : "unMute", args: [] }),
-          "*",
-        );
-      }
-    };
-
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
+  const applyShowreelSound = useCallback(() => {
+    if (!showreelFrameLoadedRef.current) return;
+    showreelFrameRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: showreelMutedRef.current ? "mute" : "unMute", args: [] }),
+      "*",
+    );
   }, []);
 
   const handleShowreelFrameLoad = useCallback(() => {
-    showreelPlayerReadyRef.current = false;
-    // Start the iframe API message handshake; onReady will re-apply the
-    // latest user-selected sound state, even if the button was clicked early.
-    showreelFrameRef.current?.contentWindow?.postMessage(JSON.stringify({ event: "listening" }), "*");
-  }, []);
+    showreelFrameLoadedRef.current = true;
+    applyShowreelSound();
+  }, [applyShowreelSound]);
 
   const toggleShowreelSound = useCallback(() => {
     const nextMuted = !showreelMutedRef.current;
     showreelMutedRef.current = nextMuted;
     setShowreelMuted(nextMuted);
-    if (showreelPlayerReadyRef.current) {
-      showreelFrameRef.current?.contentWindow?.postMessage(
-        JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
-      );
-    }
-  }, []);
+    applyShowreelSound();
+  }, [applyShowreelSound]);
 
   const handleEnter = useCallback(() => {
     document.getElementById("showreel")?.scrollIntoView({ behavior: "smooth", block: "start" });
