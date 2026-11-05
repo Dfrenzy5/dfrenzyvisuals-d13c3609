@@ -26,6 +26,7 @@ export const Route = createFileRoute("/portfolio/")({
 type Film = {
   id: string;
   slug?: string;
+  dedicatedPage?: boolean;
   title: string;
   subtitle: string;
   category: string;
@@ -68,6 +69,21 @@ const FILMS: Film[] = [
     creativeDirection: "Creator Economy / Brand Storytelling",
     client: "Klout",
     tools: "AI-Assisted Visual Production, Creative Direction, Editing & Post-Production",
+  },
+
+  {
+    id: "edo-state-at-35",
+    dedicatedPage: true,
+    title: "EDO STATE AT 35",
+    subtitle: "THE JOURNEY · THE LEGACY · THE FUTURE",
+    category: "AI FILMS",
+    image: "https://img.youtube.com/vi/pcGK_lApTTs/maxresdefault.jpg",
+    youtube: "https://youtu.be/pcGK_lApTTs",
+    description:
+      "A cinematic AI film exploring Edo State's journey, heritage, development and future from 1991 to 2026. Created by Daniel Ebhowe and DFRENZY VISUALS.",
+    productionType: "Cinematic AI Film",
+    creativeDirection: "History · Cultural Heritage · Development",
+    tools: "Midjourney, Seedance 2.5, Kling AI, Runway, Topaz Video AI, DaVinci Resolve Studio",
   },
 
   {
@@ -464,7 +480,15 @@ function PortfolioPage() {
                   </p>
                 )}
                 <div className="mt-7 flex flex-wrap gap-3">
-                  {open.slug && (
+                  {open.dedicatedPage ? (
+                    <Link
+                      to="/films/edo-state-at-35"
+                      onClick={() => setOpen(null)}
+                      className="inline-flex items-center gap-2 rounded-full border-2 border-neon bg-neon/10 px-6 py-3 font-display text-xs tracking-[0.3em] text-neon-bright transition-all hover:neon-glow"
+                    >
+                      VIEW FULL FILM <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  ) : open.slug ? (
                     <Link
                       to="/portfolio/$slug"
                       params={{ slug: open.slug }}
@@ -473,7 +497,7 @@ function PortfolioPage() {
                     >
                       VIEW FULL CASE STUDY <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
-                  )}
+                  ) : null}
                   <Link
                     to="/contact"
                     onClick={() => setOpen(null)}
