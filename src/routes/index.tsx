@@ -229,6 +229,8 @@ function Index() {
   const [countdown, setCountdown] = useState<number | null>(null);
   const [showreelLoaded, setShowreelLoaded] = useState(false);
   const [showreelMuted, setShowreelMuted] = useState(true);
+  const showreelMutedRef = useRef(true);
+  const showreelPlayerReadyRef = useRef(false);
   const showreelFrameRef = useRef<HTMLIFrameElement>(null);
   const navigate = useNavigate();
 
@@ -438,13 +440,51 @@ function Index() {
       window.removeEventListener("resize", resize);
     };
   }, []);
+  // YouTube's iframe may load before its player API is ready. Keep the
+  // requested mute state in a ref and apply it again when the player signals onReady.
+  useEffect(() => {
+    const onMessage = (event: MessageEvent) => {
+      const frame = showreelFrameRef.current;
+      if (!frame || event.source !== frame.contentWindow) return;
+      if (event.origin !== "https://www.youtube-nocookie.com" && event.origin !== "https://www.youtube.com") return;
+
+      let message: { event?: string };
+      try {
+        message = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+      } catch {
+        return;
+      }
+
+      if (message?.event === "onReady") {
+        showreelPlayerReadyRef.current = true;
+        frame.contentWindow?.postMessage(
+          JSON.stringify({ event: "command", func: showreelMutedRef.current ? "mute" : "unMute", args: [] }),
+          "*",
+        );
+      }
+    };
+
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
+  const handleShowreelFrameLoad = useCallback(() => {
+    showreelPlayerReadyRef.current = false;
+    // Start the iframe API message handshake; onReady will re-apply the
+    // latest user-selected sound state, even if the button was clicked early.
+    showreelFrameRef.current?.contentWindow?.postMessage(JSON.stringify({ event: "listening" }), "*");
+  }, []);
+
   const toggleShowreelSound = useCallback(() => {
-    const nextMuted = !showreelMuted;
+    const nextMuted = !showreelMutedRef.current;
+    showreelMutedRef.current = nextMuted;
     setShowreelMuted(nextMuted);
-    showreelFrameRef.current?.contentWindow?.postMessage(
-      JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
-    );
-  }, [showreelMuted]);
+    if (showreelPlayerReadyRef.current) {
+      showreelFrameRef.current?.contentWindow?.postMessage(
+        JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
+      );
+    }
+  }, []);
 
   const handleEnter = useCallback(() => {
     document.getElementById("showreel")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -479,6 +519,7 @@ function Index() {
             <iframe ref={showreelFrameRef} className="absolute inset-0 h-full w-full border-0"
               src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
               title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
+              onLoad={handleShowreelFrameLoad}
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               referrerPolicy="strict-origin-when-cross-origin" loading="eager" allowFullScreen />
           ) : (
