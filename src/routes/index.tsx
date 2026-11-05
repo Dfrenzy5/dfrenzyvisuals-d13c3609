@@ -495,7 +495,7 @@ function Index() {
         <div className="relative aspect-video w-full overflow-hidden bg-[#05080d]">
           {showreelLoaded ? (
             <iframe ref={showreelFrameRef} className="absolute inset-0 h-full w-full border-0"
-              src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
+              src={`https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`}
               title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
               onLoad={handleShowreelFrameLoad}
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
