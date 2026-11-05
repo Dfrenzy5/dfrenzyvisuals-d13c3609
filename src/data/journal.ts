@@ -160,8 +160,8 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
     category: "Event",
     title: 'Competing in Warsaw Glitch — "Suite Dreams" AI Filmmaking Challenge',
     description:
-      "A Seedance 2.5 cyberpunk fantasy concept built around the Warsaw Presidential Hotel as lead character. Entry deadline August 28.",
-    status: "In Production",
+      "Completed and submitted to the Suite Dreams GenJam challenge for Machine Cinema's Warsaw Glitch festival as an original AI short film.",
+    status: "Completed",
   },
   {
     id: "the-inheritance-the-reading",
@@ -169,8 +169,8 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
     category: "Portfolio",
     title: "THE INHERITANCE: The Reading",
     description:
-      "A 29-shot AI-generated festival short film, targeting the Astana AI Film Festival and Token AI Film Festival.",
-    status: "In Production",
+      "A completed 29-shot AI-generated festival short film developed for the Astana AI Film Festival and Token AI Film Festival.",
+    status: "Completed",
   },
   {
     id: "diamond-project-business-conference-promo",
@@ -178,7 +178,7 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
     category: "Portfolio",
     title: "Diamond Project Business Conference Promo",
     description:
-      "A 10-clip cinematic event promo produced for a Lagos business conference.",
-    status: "In Production",
+      "A completed 10-clip cinematic event promo produced for a Lagos business conference.",
+    status: "Completed",
   },
 ];
