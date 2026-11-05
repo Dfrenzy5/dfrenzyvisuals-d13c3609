@@ -69,6 +69,12 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: "https://i.ytimg.com/vi/K1Y7HWuhqcU/maxresdefault.jpg",
+        fetchPriority: "high",
+      },
       { rel: "canonical", href: `${SITE_URL}/` },
     ],
     scripts: [
