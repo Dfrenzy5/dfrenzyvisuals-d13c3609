@@ -217,9 +217,9 @@ type Phase =
 
 function Index() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const intensityRef = useRef(0); // 0..1 drives particle gather
   const [phase, setPhase] = useState<Phase>("cosmic");
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState<number | null>(null);
   const [showreelLoaded, setShowreelLoaded] = useState(false);
   const [showreelMuted, setShowreelMuted] = useState(true);
@@ -255,10 +255,16 @@ function Index() {
       latestEvent = event;
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
-        if (latestEvent) {
+        if (latestEvent && heroRef.current) {
           const x = (latestEvent.clientX / window.innerWidth - 0.5) * 2;
           const y = (latestEvent.clientY / window.innerHeight - 0.5) * 2;
-          setParallax({ x, y });
+          const hero = heroRef.current;
+          hero.style.setProperty("--parallax-center-x", `${x * -8}px`);
+          hero.style.setProperty("--parallax-center-y", `${y * -8}px`);
+          for (let factor = 0; factor < 5; factor++) {
+            hero.style.setProperty(`--parallax-x-${factor}`, `${x * factor * 2}px`);
+            hero.style.setProperty(`--parallax-y-${factor}`, `${y * factor * 2}px`);
+          }
         }
         frame = 0;
       });
@@ -499,6 +505,7 @@ function Index() {
     </section>
     <div
       id="hero"
+      ref={heroRef}
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
       style={{
         background:
@@ -537,7 +544,7 @@ function Index() {
                 boxShadow: "0 0 6px rgba(0,213,255,0.7)",
                 opacity: 0.4,
                 animation: `debris-drift ${duration}s ${delay}s ease-in-out infinite`,
-                transform: `translate3d(${parallax.x * (i % 5) * 2}px, ${parallax.y * (i % 5) * 2}px, 0)`,
+                transform: `translate3d(var(--parallax-x-${i % 5}, 0px), var(--parallax-y-${i % 5}, 0px), 0)`,
               }}
             />
           );
@@ -581,7 +588,7 @@ function Index() {
           transformOrigin: "center",
           transform: phase === "warp"
             ? undefined
-            : `translate3d(${parallax.x * -8}px, ${parallax.y * -8}px, 0)`,
+            : "translate3d(var(--parallax-center-x, 0px), var(--parallax-center-y, 0px), 0)",
           transition: "transform 400ms ease-out",
         }}
       >
