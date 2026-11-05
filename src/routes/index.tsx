@@ -852,14 +852,14 @@ function Index() {
         <div className="relative mx-auto w-full max-w-md md:mx-0">
           <div className="absolute -inset-3 rounded-2xl border border-[#00E5FF]/20" aria-hidden="true" />
           <img
-            src="/Cinematic%20Amber%20and%20Blue%20Studio%20Portrait.png"
+            src="/cinematic-amber-blue-studio-portrait.webp"
             alt="Daniel Ebhowe, AI Filmmaker and Creative Director of DFRENZY VISUALS"
             className="relative aspect-[4/5] w-full rounded-xl object-cover object-center shadow-2xl"
             loading="lazy"
             fetchPriority="low"
             decoding="async"
-            width="900"
-            height="1125"
+            width="1122"
+            height="1402"
           />
           <p className="mt-4 font-display text-xs tracking-[0.25em] text-white/70">
             DANIEL EBHOWE · FOUNDER & CREATIVE DIRECTOR
