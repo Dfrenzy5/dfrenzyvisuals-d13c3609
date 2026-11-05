@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "dns-prefetch", href: "https://www.youtube-nocookie.com" },
       { rel: "preconnect", href: "https://i.ytimg.com" },
       { rel: "dns-prefetch", href: "https://img.youtube.com" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;700&display=swap" },
+      { rel: "preload", as: "style", href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;700&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -148,6 +148,18 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Apply the preloaded Google Fonts stylesheet after hydration so it does not
+  // block the first paint. The preload above keeps the font CSS request early.
+  useEffect(() => {
+    const id = "dfrenzy-google-fonts";
+    if (document.getElementById(id)) return;
+    const stylesheet = document.createElement("link");
+    stylesheet.id = id;
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;700&display=swap";
+    document.head.appendChild(stylesheet);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
