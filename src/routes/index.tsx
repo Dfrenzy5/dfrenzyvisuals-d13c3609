@@ -426,11 +426,6 @@ function Index() {
       window.removeEventListener("resize", resize);
     };
   }, []);
-  useEffect(() => {
-    const timer = window.setTimeout(() => setShowreelLoaded(true), 1400);
-    return () => window.clearTimeout(timer);
-  }, []);
-
   const toggleShowreelSound = useCallback(() => {
     const nextMuted = !showreelMuted;
     setShowreelMuted(nextMuted);
@@ -486,12 +481,17 @@ function Index() {
             <h1 className="max-w-4xl font-display text-2xl font-bold tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl">AI CINEMATIC FILM STUDIO</h1>
             <p className="max-w-2xl text-xs leading-relaxed text-white/85 sm:text-base">Nigerian-led cinematic storytelling, AI film production and premium visual content for brands and global audiences.</p>
             <div className="pointer-events-auto flex flex-wrap items-center gap-3">
-              <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
-                className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
-                {showreelMuted ? "SOUND ON" : "MUTE"}
-              </button>
-              {!showreelLoaded && <button type="button" onClick={() => setShowreelLoaded(true)}
-                className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">PLAY SHOWREEL</button>}
+              {!showreelLoaded ? (
+                <button type="button" onClick={() => setShowreelLoaded(true)}
+                  className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">
+                  PLAY SHOWREEL
+                </button>
+              ) : (
+                <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
+                  className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
+                  {showreelMuted ? "SOUND ON" : "MUTE"}
+                </button>
+              )}
             </div>
           </div>
         </div>
