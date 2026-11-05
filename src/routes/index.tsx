@@ -69,6 +69,12 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: "https://i.ytimg.com/vi/K1Y7HWuhqcU/maxresdefault.jpg",
+        fetchPriority: "high",
+      },
       { rel: "canonical", href: `${SITE_URL}/` },
     ],
     scripts: [
@@ -217,12 +223,14 @@ type Phase =
 
 function Index() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const intensityRef = useRef(0); // 0..1 drives particle gather
   const [phase, setPhase] = useState<Phase>("cosmic");
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState<number | null>(null);
   const [showreelLoaded, setShowreelLoaded] = useState(false);
   const [showreelMuted, setShowreelMuted] = useState(true);
+  const showreelMutedRef = useRef(true);
+  const showreelPlayerReadyRef = useRef(false);
   const showreelFrameRef = useRef<HTMLIFrameElement>(null);
   const navigate = useNavigate();
 
@@ -255,10 +263,16 @@ function Index() {
       latestEvent = event;
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
-        if (latestEvent) {
+        if (latestEvent && heroRef.current) {
           const x = (latestEvent.clientX / window.innerWidth - 0.5) * 2;
           const y = (latestEvent.clientY / window.innerHeight - 0.5) * 2;
-          setParallax({ x, y });
+          const hero = heroRef.current;
+          hero.style.setProperty("--parallax-center-x", `${x * -8}px`);
+          hero.style.setProperty("--parallax-center-y", `${y * -8}px`);
+          for (let factor = 0; factor < 5; factor++) {
+            hero.style.setProperty(`--parallax-x-${factor}`, `${x * factor * 2}px`);
+            hero.style.setProperty(`--parallax-y-${factor}`, `${y * factor * 2}px`);
+          }
         }
         frame = 0;
       });
@@ -426,18 +440,29 @@ function Index() {
       window.removeEventListener("resize", resize);
     };
   }, []);
-  useEffect(() => {
-    const timer = window.setTimeout(() => setShowreelLoaded(true), 1400);
-    return () => window.clearTimeout(timer);
+  // Queue sound preference until the deferred iframe document has loaded.
+  // This prevents a quick SOUND ON click from being lost during player startup.
+  const showreelFrameLoadedRef = useRef(false);
+
+  const applyShowreelSound = useCallback(() => {
+    if (!showreelFrameLoadedRef.current) return;
+    showreelFrameRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: showreelMutedRef.current ? "mute" : "unMute", args: [] }),
+      "*",
+    );
   }, []);
 
+  const handleShowreelFrameLoad = useCallback(() => {
+    showreelFrameLoadedRef.current = true;
+    applyShowreelSound();
+  }, [applyShowreelSound]);
+
   const toggleShowreelSound = useCallback(() => {
-    const nextMuted = !showreelMuted;
+    const nextMuted = !showreelMutedRef.current;
+    showreelMutedRef.current = nextMuted;
     setShowreelMuted(nextMuted);
-    showreelFrameRef.current?.contentWindow?.postMessage(
-      JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
-    );
-  }, [showreelMuted]);
+    applyShowreelSound();
+  }, [applyShowreelSound]);
 
   const handleEnter = useCallback(() => {
     document.getElementById("showreel")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -470,14 +495,15 @@ function Index() {
         <div className="relative aspect-video w-full overflow-hidden bg-[#05080d]">
           {showreelLoaded ? (
             <iframe ref={showreelFrameRef} className="absolute inset-0 h-full w-full border-0"
-              src="https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=https%3A%2F%2Fdfrenzyvisuals.com"
+              src={`https://www.youtube-nocookie.com/embed/K1Y7HWuhqcU?autoplay=1&mute=1&loop=1&playlist=K1Y7HWuhqcU&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`}
               title="DFRENZY VISUALS — Official Cinematic Showreel 2026"
+              onLoad={handleShowreelFrameLoad}
               allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               referrerPolicy="strict-origin-when-cross-origin" loading="eager" allowFullScreen />
           ) : (
             <img src="https://i.ytimg.com/vi/K1Y7HWuhqcU/maxresdefault.jpg"
               alt="DFRENZY VISUALS official cinematic showreel" className="absolute inset-0 h-full w-full object-cover"
-              width="1280" height="720" loading="eager" fetchPriority="high" decoding="async"
+              width="1280" height="720" loading="eager" fetchPriority="high" decoding="sync"
               onError={(event) => { event.currentTarget.src = "https://i.ytimg.com/vi/K1Y7HWuhqcU/hqdefault.jpg"; }} />
           )}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
@@ -486,12 +512,17 @@ function Index() {
             <h1 className="max-w-4xl font-display text-2xl font-bold tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl">AI CINEMATIC FILM STUDIO</h1>
             <p className="max-w-2xl text-xs leading-relaxed text-white/85 sm:text-base">Nigerian-led cinematic storytelling, AI film production and premium visual content for brands and global audiences.</p>
             <div className="pointer-events-auto flex flex-wrap items-center gap-3">
-              <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
-                className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
-                {showreelMuted ? "SOUND ON" : "MUTE"}
-              </button>
-              {!showreelLoaded && <button type="button" onClick={() => setShowreelLoaded(true)}
-                className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">PLAY SHOWREEL</button>}
+              {!showreelLoaded ? (
+                <button type="button" onClick={() => setShowreelLoaded(true)}
+                  className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">
+                  PLAY SHOWREEL
+                </button>
+              ) : (
+                <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
+                  className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
+                  {showreelMuted ? "SOUND ON" : "MUTE"}
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -499,6 +530,7 @@ function Index() {
     </section>
     <div
       id="hero"
+      ref={heroRef}
       className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
       style={{
         background:
@@ -537,7 +569,7 @@ function Index() {
                 boxShadow: "0 0 6px rgba(0,213,255,0.7)",
                 opacity: 0.4,
                 animation: `debris-drift ${duration}s ${delay}s ease-in-out infinite`,
-                transform: `translate3d(${parallax.x * (i % 5) * 2}px, ${parallax.y * (i % 5) * 2}px, 0)`,
+                transform: `translate3d(var(--parallax-x-${i % 5}, 0px), var(--parallax-y-${i % 5}, 0px), 0)`,
               }}
             />
           );
@@ -581,7 +613,7 @@ function Index() {
           transformOrigin: "center",
           transform: phase === "warp"
             ? undefined
-            : `translate3d(${parallax.x * -8}px, ${parallax.y * -8}px, 0)`,
+            : "translate3d(var(--parallax-center-x, 0px), var(--parallax-center-y, 0px), 0)",
           transition: "transform 400ms ease-out",
         }}
       >
@@ -845,14 +877,14 @@ function Index() {
         <div className="relative mx-auto w-full max-w-md md:mx-0">
           <div className="absolute -inset-3 rounded-2xl border border-[#00E5FF]/20" aria-hidden="true" />
           <img
-            src="/Cinematic%20Amber%20and%20Blue%20Studio%20Portrait.png"
+            src="/cinematic-amber-blue-studio-portrait.webp"
             alt="Daniel Ebhowe, AI Filmmaker and Creative Director of DFRENZY VISUALS"
             className="relative aspect-[4/5] w-full rounded-xl object-cover object-center shadow-2xl"
             loading="lazy"
             fetchPriority="low"
             decoding="async"
-            width="900"
-            height="1125"
+            width="1122"
+            height="1402"
           />
           <p className="mt-4 font-display text-xs tracking-[0.25em] text-white/70">
             DANIEL EBHOWE · FOUNDER & CREATIVE DIRECTOR

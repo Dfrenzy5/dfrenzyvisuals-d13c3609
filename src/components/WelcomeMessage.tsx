@@ -20,7 +20,8 @@ const TRUSTED = [
 export function WelcomeMessage() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -46,14 +47,20 @@ export function WelcomeMessage() {
     if (!el) return;
 
     let frame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
     const onMove = (e: PointerEvent) => {
+      pointerX = e.clientX;
+      pointerY = e.clientY;
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
         frame = 0;
         const bounds = el.getBoundingClientRect();
-        const x = ((e.clientX - bounds.left) / bounds.width - 0.5) * 2;
-        const y = ((e.clientY - bounds.top) / bounds.height - 0.5) * 2;
-        setParallax({ x, y });
+        if (!bounds.width || !bounds.height) return;
+        const x = ((pointerX - bounds.left) / bounds.width - 0.5) * 2;
+        const y = ((pointerY - bounds.top) / bounds.height - 0.5) * 2;
+        frameRef.current?.style.setProperty('--welcome-parallax-x', `${x * 6}px`);
+        frameRef.current?.style.setProperty('--welcome-parallax-y', `${y * 6}px`);
       });
     };
 
@@ -62,7 +69,8 @@ export function WelcomeMessage() {
         window.addEventListener("pointermove", onMove, { passive: true });
       } else {
         window.removeEventListener("pointermove", onMove);
-        setParallax({ x: 0, y: 0 });
+        frameRef.current?.style.setProperty('--welcome-parallax-x', '0px');
+        frameRef.current?.style.setProperty('--welcome-parallax-y', '0px');
       }
     });
     observer.observe(el);
@@ -180,10 +188,11 @@ export function WelcomeMessage() {
 
         {/* Video frame — 16:9 cinematic embed */}
         <div
+          ref={frameRef}
           className="group relative mt-14 w-full max-w-5xl"
           style={{
             transform: visible
-              ? `translate3d(${parallax.x * 6}px, ${parallax.y * 6}px, 0) scale(1)`
+              ? "translate3d(var(--welcome-parallax-x, 0px), var(--welcome-parallax-y, 0px), 0) scale(1)"
               : "scale(0.95)",
             transition: "transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)",
           }}
@@ -225,16 +234,41 @@ export function WelcomeMessage() {
                 }}
               />
 
-              {/* YouTube embed */}
-              <iframe
-                src="https://www.youtube.com/embed/MfaQvFxn6pg?rel=0&modestbranding=1&playsinline=1"
-                title="DFrenzy Visuals — Welcome Message"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="absolute inset-0 h-full w-full"
-                style={{ border: 0 }}
-              />
+              {/* Load YouTube only after an explicit play action. */}
+              {videoPlaying ? (
+                <iframe
+                  src="https://www.youtube.com/embed/MfaQvFxn6pg?rel=0&modestbranding=1&playsinline=1&autoplay=1"
+                  title="DFrenzy Visuals — Welcome Message"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full"
+                  style={{ border: 0 }}
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setVideoPlaying(true)}
+                  aria-label="Play DFrenzy Visuals welcome message"
+                  className="absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-6px] focus-visible:outline-yellow-300"
+                >
+                  <img
+                    src="https://i.ytimg.com/vi/MfaQvFxn6pg/hqdefault.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-95"
+                  />
+                  <span aria-hidden className="absolute inset-0 bg-black/20" />
+                  <span
+                    aria-hidden
+                    className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-yellow-200/80 bg-black/65 shadow-[0_0_35px_rgba(212,175,55,0.45)] transition-transform duration-300 group-hover:scale-110"
+                  >
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                      <path d="M8 5.5v13l10-6.5z" />
+                    </svg>
+                  </span>
+                </button>
+              )}
 
               {/* Corner accents */}
               {(["tl", "tr", "bl", "br"] as const).map((c) => (
