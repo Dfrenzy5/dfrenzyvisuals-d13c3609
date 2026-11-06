@@ -431,13 +431,28 @@ function Index() {
     return () => window.clearTimeout(timer);
   }, []);
 
+  const postShowreelCommand = useCallback((func: "playVideo" | "mute" | "unMute") => {
+    const player = showreelFrameRef.current?.contentWindow;
+    if (!player) return;
+    player.postMessage(
+      JSON.stringify({ event: "command", func, args: [] }),
+      "https://www.youtube-nocookie.com",
+    );
+  }, []);
+
   const toggleShowreelSound = useCallback(() => {
     const nextMuted = !showreelMuted;
     setShowreelMuted(nextMuted);
-    showreelFrameRef.current?.contentWindow?.postMessage(
-      JSON.stringify({ event: "command", func: nextMuted ? "mute" : "unMute", args: [] }), "*",
-    );
-  }, [showreelMuted]);
+    postShowreelCommand(nextMuted ? "mute" : "unMute");
+  }, [showreelMuted, postShowreelCommand]);
+
+  const playShowreel = useCallback(() => {
+    // Send immediately from the user's tap, then retry briefly in case the
+    // YouTube iframe has loaded visually but its player API is still starting.
+    postShowreelCommand("playVideo");
+    window.setTimeout(() => postShowreelCommand("playVideo"), 300);
+    window.setTimeout(() => postShowreelCommand("playVideo"), 900);
+  }, [postShowreelCommand]);
 
   const handleEnter = useCallback(() => {
     document.getElementById("showreel")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -481,17 +496,21 @@ function Index() {
               onError={(event) => { event.currentTarget.src = "https://i.ytimg.com/vi/K1Y7HWuhqcU/hqdefault.jpg"; }} />
           )}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/25" />
-          <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-3 p-5 sm:p-10 lg:p-14">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex flex-col items-start gap-3 p-5 sm:p-10 lg:p-14">
             <p className="font-display text-[0.6rem] font-semibold tracking-[0.32em] text-[#00E5FF] sm:text-xs">DFRENZY VISUALS PRESENTS</p>
             <h1 className="max-w-4xl font-display text-2xl font-bold tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl">AI CINEMATIC FILM STUDIO</h1>
             <p className="max-w-2xl text-xs leading-relaxed text-white/85 sm:text-base">Nigerian-led cinematic storytelling, AI film production and premium visual content for brands and global audiences.</p>
             <div className="pointer-events-auto flex flex-wrap items-center gap-3">
-              <button type="button" onClick={toggleShowreelSound} aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
-                className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF]">
+              <button type="button" onClick={playShowreel} disabled={!showreelLoaded}
+                aria-label="Play or resume the showreel"
+                className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:bg-[#00E5FF]/15 disabled:opacity-50">
+                PLAY / RESUME
+              </button>
+              <button type="button" onClick={toggleShowreelSound} disabled={!showreelLoaded}
+                aria-label={showreelMuted ? "Turn showreel sound on" : "Mute showreel"}
+                className="border border-white/65 bg-black/55 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm transition hover:border-[#00E5FF] hover:text-[#00E5FF] disabled:opacity-50">
                 {showreelMuted ? "SOUND ON" : "MUTE"}
               </button>
-              {!showreelLoaded && <button type="button" onClick={() => setShowreelLoaded(true)}
-                className="border border-[#00E5FF] bg-black/65 px-4 py-3 font-display text-[0.62rem] font-semibold tracking-[0.2em] text-white backdrop-blur-sm">PLAY SHOWREEL</button>}
             </div>
           </div>
         </div>
