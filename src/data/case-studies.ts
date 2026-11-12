@@ -755,7 +755,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     year: "2026",
     duration: "2 minutes 38 seconds",
     role: "Created & Directed by Daniel Ebhowe",
-    poster: "https://img.youtube.com/vi/hqRO8Ysed94/maxresdefault.jpg",
+    poster: "https://img.youtube.com/vi/hqRO8Ysed94/hqdefault.jpg",
     youtube: "hqRO8Ysed94",
     problem:
       "Present a distinctive creative statement for DFRENZY VISUALS that communicates the studio's interest in the possibilities of artificial intelligence as a medium for cinematic visual storytelling.",
