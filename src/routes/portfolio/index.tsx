@@ -57,6 +57,22 @@ function ytId(url: string): string {
 
 const FILMS: Film[] = [
   {
+    id: "beyond-imagination",
+    slug: "beyond-imagination",
+    dedicatedPage: true,
+    title: "BEYOND IMAGINATION",
+    subtitle: "AN AI CINEMATIC FILM BY DFRENZY VISUALS",
+    category: "AI FILMS",
+    image: "https://img.youtube.com/vi/hqRO8Ysed94/maxresdefault.jpg",
+    youtube: "https://youtu.be/hqRO8Ysed94",
+    description:
+      "A cinematic exploration of the creative possibilities of artificial intelligence, bringing futuristic environments, visual storytelling and cinematic action together in a studio showcase created and directed by Daniel Ebhowe.",
+    productionType: "AI Cinematic Film",
+    creativeDirection: "AI Filmmaking · Futuristic Visual Storytelling",
+    client: "DFRENZY VISUALS",
+    tools: "AI-Assisted Visual Production, Creative Direction, Editing & Post-Production",
+  },
+  {
     id: "the-score",
     slug: "the-score",
     title: "THE SCORE",
