@@ -19,6 +19,17 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    slug: "beyond-imagination",
+    title: "BEYOND IMAGINATION",
+    category: "AI Cinematic Film",
+    categoryKey: "brand-films",
+    summary:
+      "A cinematic exploration of AI-powered visual storytelling, futuristic worlds and the evolving possibilities of filmmaking.",
+    poster: "https://img.youtube.com/vi/hqRO8Ysed94/maxresdefault.jpg",
+    youtube: "hqRO8Ysed94",
+    services: "Creative Direction · AI Visual Production · Editing · Post-Production",
+  },
+  {
     slug: "faithclinic-the-ageless-god",
     title: "THE AGELESS GOD",
     category: "Cinematic Event Film",
