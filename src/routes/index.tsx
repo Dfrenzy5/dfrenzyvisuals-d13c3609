@@ -1,9 +1,13 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { WelcomeMessage } from "@/components/WelcomeMessage";
+
 import { LazyMount } from "@/components/ui-studio/LazyMount";
 import { SITE_URL } from "@/lib/site";
+
+const WelcomeMessage = lazy(() =>
+  import("@/components/WelcomeMessage").then((m) => ({ default: m.WelcomeMessage })),
+);
 
 // Below-the-fold: split into their own chunks and mount as they approach viewport.
 const FeaturedShowcase = lazy(() =>
@@ -845,7 +849,9 @@ function Index() {
         </div>
       )}
     </div>
-    <WelcomeMessage />
+    <Suspense fallback={null}>
+      <LazyMount minHeight={760} rootMargin="100px 0px"><WelcomeMessage /></LazyMount>
+    </Suspense>
         <Suspense fallback={<div style={{ minHeight: 600 }} />}>
       <LazyMount minHeight={640}><FeaturedShowcase /></LazyMount>
     </Suspense>
