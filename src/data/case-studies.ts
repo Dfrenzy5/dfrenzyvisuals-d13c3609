@@ -746,6 +746,70 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "beyond-imagination",
+    title: "BEYOND IMAGINATION",
+    subtitle: "A cinematic exploration of AI-powered visual storytelling and the future of filmmaking.",
+    category: "AI Cinematic Film",
+    client: "DFRENZY VISUALS",
+    year: "2026",
+    duration: "2 minutes 38 seconds",
+    role: "Created & Directed by Daniel Ebhowe",
+    poster: "https://img.youtube.com/vi/hqRO8Ysed94/maxresdefault.jpg",
+    youtube: "hqRO8Ysed94",
+    problem:
+      "Present a distinctive creative statement for DFRENZY VISUALS that communicates the studio's interest in the possibilities of artificial intelligence as a medium for cinematic visual storytelling.",
+    concept:
+      "BEYOND IMAGINATION brings together futuristic environments, cinematic action, visual effects and imaginative imagery in a concise film that introduces the creative direction and visual ambition of DFRENZY VISUALS.",
+    moodboard: [
+      "Futuristic cinematic environments",
+      "Immersive visual storytelling",
+      "Science-fiction-inspired imagery",
+      "Cinematic action and visual effects",
+      "A premium AI film-studio identity",
+    ],
+    production:
+      "Created as a studio-led cinematic showcase by DFRENZY VISUALS. The film combines AI-assisted visual production with creative direction and editorial finishing to present a cohesive visual statement. It is a self-initiated studio project rather than a commissioned client campaign.",
+    aiPipeline: [
+      "Creative concept and visual direction",
+      "AI-assisted visual development and production",
+      "Cinematic sequence assembly and editorial shaping",
+      "Post-production and final presentation",
+    ],
+    editing:
+      "The edit brings the film's futuristic imagery and cinematic sequences into a single studio showcase, balancing visual scale, action and brand identity.",
+    outcome:
+      "A cinematic introduction to DFRENZY VISUALS and its exploration of AI-powered filmmaking and visual storytelling.",
+    impact: [
+      "Introduces the studio's creative identity to international audiences",
+      "Demonstrates an AI-assisted approach to cinematic visual storytelling",
+      "Provides a portfolio showcase for creative partnerships, screenings and festival consideration",
+    ],
+    tools: [
+      "AI-Assisted Visual Production",
+      "Creative Direction",
+      "Cinematic Editing",
+      "Post-Production",
+    ],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "BEYOND IMAGINATION is a cinematic studio showcase created and directed by Daniel Ebhowe for DFRENZY VISUALS. The film explores the possibilities of artificial intelligence as a creative medium for futuristic imagery and cinematic visual storytelling.",
+      },
+      {
+        heading: "Creative Objective",
+        body: "The objective is to introduce the studio through a visually ambitious film that communicates its creative identity, visual language and interest in the evolving future of filmmaking.",
+      },
+      {
+        heading: "Production Approach",
+        body: "The project uses an AI-assisted visual production approach, guided by creative direction and brought together through editorial and post-production finishing. Specific model and software credits are not listed here because a verified production-tool breakdown has not been supplied.",
+      },
+      {
+        heading: "Final Film",
+        body: "Watch BEYOND IMAGINATION above. For festival screeners and event programming enquiries, contact DFRENZY VISUALS through the studio website.",
+      },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
