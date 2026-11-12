@@ -3,7 +3,7 @@ import { Clapperboard, Cpu, Scissors, AudioLines, ShieldCheck } from "lucide-rea
 import { SITE_URL } from "@/lib/site";
 import { Container } from "@/components/ui-studio/Container";
 import { Reveal } from "@/components/ui-studio/Reveal";
-import { studioLinkClass } from "@/components/ui-studio/StudioButton";
+import { studioLinkClass } from "@/components/ui-studio/studioButtonStyles";
 import { CASE_STUDIES } from "@/data/case-studies";
 
 const TITLE = "Daniel Ebhowe — AI Filmmaker & Director | Nigerian AI Filmmaker";
