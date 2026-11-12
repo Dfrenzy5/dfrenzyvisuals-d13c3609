@@ -25,7 +25,7 @@ const PROJECTS: Project[] = [
     categoryKey: "brand-films",
     summary:
       "A cinematic exploration of AI-powered visual storytelling, futuristic worlds and the evolving possibilities of filmmaking.",
-    poster: "https://img.youtube.com/vi/hqRO8Ysed94/maxresdefault.jpg",
+    poster: "https://img.youtube.com/vi/hqRO8Ysed94/hqdefault.jpg",
     youtube: "hqRO8Ysed94",
     services: "Creative Direction · AI Visual Production · Editing · Post-Production",
   },
