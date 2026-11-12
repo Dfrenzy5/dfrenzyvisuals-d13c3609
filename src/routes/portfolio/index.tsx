@@ -63,7 +63,7 @@ const FILMS: Film[] = [
     title: "BEYOND IMAGINATION",
     subtitle: "AN AI CINEMATIC FILM BY DFRENZY VISUALS",
     category: "AI FILMS",
-    image: "https://img.youtube.com/vi/hqRO8Ysed94/maxresdefault.jpg",
+    image: "https://img.youtube.com/vi/hqRO8Ysed94/hqdefault.jpg",
     youtube: "https://youtu.be/hqRO8Ysed94",
     description:
       "A cinematic exploration of the creative possibilities of artificial intelligence, bringing futuristic environments, visual storytelling and cinematic action together in a studio showcase created and directed by Daniel Ebhowe.",
@@ -397,6 +397,13 @@ function PortfolioPage() {
                 alt={`${f.title} — ${f.subtitle}`}
                 loading="lazy"
                 decoding="async"
+                onError={(event) => {
+                  const image = event.currentTarget;
+                  if (f.youtube && !image.dataset.fallback) {
+                    image.dataset.fallback = "true";
+                    image.src = `https://i.ytimg.com/vi/${ytId(f.youtube)}/0.jpg`;
+                  }
+                }}
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
