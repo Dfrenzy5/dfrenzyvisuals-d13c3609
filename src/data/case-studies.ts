@@ -810,6 +810,37 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
   },
+
+  {
+    slug: "unmuted-evitrun",
+    title: "UNMUTED",
+    subtitle: "The day Lagos went silent — a 30-second cinematic brand story for EVITRUN.",
+    category: "Commercial",
+    client: "EVITRUN",
+    year: "2026",
+    duration: "30 seconds",
+    role: "Direction · Production · AI Creative Direction · Editing",
+    poster: "https://img.youtube.com/vi/vmOKbpD_Vrg/maxresdefault.jpg",
+    youtube: "vmOKbpD_Vrg",
+    problem: "Create a short, emotionally resonant brand story for EVITRUN as part of Klout's #Unmute2026 campaign, communicating the feeling of personal ownership through a memorable Lagos-centred narrative.",
+    concept: "What if Lagos went silent the day you finally owned your car? A Lagos ride-hailing driver watches the city freeze, moves through the stillness in an electric car, and speaks for the first time: “This one na my own.” The moment turns vehicle ownership into a story about freedom, agency and finding your voice.",
+    moodboard: ["A recognisable Lagos urban environment", "A surreal city-wide pause and suspended motion", "Cinematic electric-car imagery", "A restrained emotional performance", "A clear EVITRUN brand-story resolution"],
+    production: "A 30-second AI-assisted cinematic brand story directed and produced by Daniel Ebhowe for EVITRUN, as part of #Unmute2026 by Klout. The film uses a frozen-city premise and a ride-hailing driver's point of view to make the idea of ownership personal and emotionally immediate.",
+    aiPipeline: ["Creative concept development and visual direction", "AI video generation with Seedance 2.5", "Story and prompt development with ChatGPT", "Music creation with Suno", "Editorial assembly and finishing in CapCut"],
+    editing: "The 30-second cut builds from the familiar energy of Lagos into an uncanny stillness, then resolves on the driver's first spoken expression of ownership. The pacing is designed to make the final line land as the emotional payoff.",
+    outcome: "A concise cinematic brand story connecting EVITRUN with ownership, personal freedom and the voice of a Lagos driver.",
+    impact: ["A campaign film created for EVITRUN's #Unmute2026 activation by Klout", "Uses a distinctly Lagos-centred story and Nigerian dialogue", "Demonstrates DFRENZY VISUALS' AI-powered commercial storytelling approach"],
+    tools: ["Seedance 2.5", "ChatGPT", "Suno", "CapCut"],
+    writtenCaseStudy: [
+      { heading: "Overview", body: "UNMUTED is a 30-second cinematic AI brand story created for EVITRUN as part of #Unmute2026 by Klout. Directed and produced by Daniel Ebhowe of DFRENZY VISUALS, the film turns the idea of owning a car into a story about agency, freedom and finding one's voice." },
+      { heading: "The Creative Concept", body: "The film begins with a question: What if Lagos went silent the day you finally owned your car? A ride-hailing driver who has never had a voice watches the city freeze, glides through the stillness in an electric car, and speaks for the first time: “This one na my own.” The surreal pause gives the final line room to carry the story's emotional meaning." },
+      { heading: "Production & AI Workflow", body: "The project was developed as a tightly paced 30-second brand story. Seedance 2.5 supported AI video generation, ChatGPT supported creative development, Suno was used for music, and CapCut was used for editing and finishing." },
+      { heading: "Storytelling & Finish", body: "The narrative moves from the movement and noise associated with Lagos to an extraordinary moment of stillness. The driver's first spoken line becomes the turning point, connecting the film's emotional reveal to EVITRUN's ownership proposition." },
+      { heading: "Final Film", body: "Watch UNMUTED, the 30-second EVITRUN brand story created for Klout's #Unmute2026 campaign." },
+      { heading: "Production Credits", points: ["Client / Brand: EVITRUN", "Campaign: #Unmute2026 by Klout", "Director & Producer: Daniel Ebhowe", "Studio: DFRENZY VISUALS", "Tools: Seedance 2.5, ChatGPT, Suno & CapCut"] }
+    ],
+  },
+
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {

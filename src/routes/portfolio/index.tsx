@@ -103,6 +103,20 @@ const FILMS: Film[] = [
   },
 
   {
+    id: "unmuted-evitrun",
+    slug: "unmuted-evitrun",
+    title: "UNMUTED",
+    subtitle: "EVITRUN · #UNMUTE2026 CINEMATIC BRAND STORY",
+    category: "COMMERCIALS",
+    image: "https://img.youtube.com/vi/vmOKbpD_Vrg/maxresdefault.jpg",
+    youtube: "https://youtu.be/vmOKbpD_Vrg",
+    description: "A 30-second cinematic AI brand story for EVITRUN, created for Klout's #Unmute2026 campaign. A Lagos ride-hailing driver experiences a city frozen in time and speaks for the first time: “This one na my own.” Directed and produced by Daniel Ebhowe.",
+    productionType: "Cinematic AI Brand Story",
+    creativeDirection: "Ownership · Freedom · Lagos Storytelling",
+    client: "EVITRUN",
+    tools: "Seedance 2.5, ChatGPT, Suno & CapCut",
+  },
+  {
     id: "faithclinic-the-ageless-god",
     slug: "faithclinic-the-ageless-god",
     title: "THE AGELESS GOD",

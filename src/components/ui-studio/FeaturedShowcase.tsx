@@ -30,6 +30,17 @@ const PROJECTS: Project[] = [
     services: "Creative Direction · AI Visual Production · Editing · Post-Production",
   },
   {
+    slug: "unmuted-evitrun",
+    title: "UNMUTED",
+    category: "Cinematic Brand Story",
+    categoryKey: "commercials",
+    summary: "A 30-second EVITRUN brand story for Klout's #Unmute2026 campaign — a Lagos driver finds his voice through the stillness of a city frozen in time.",
+    poster: "https://img.youtube.com/vi/vmOKbpD_Vrg/maxresdefault.jpg",
+    youtube: "vmOKbpD_Vrg",
+    services: "Direction · AI Production · Editing",
+    client: "EVITRUN",
+  },
+  {
     slug: "faithclinic-the-ageless-god",
     title: "THE AGELESS GOD",
     category: "Cinematic Event Film",
