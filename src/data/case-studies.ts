@@ -809,7 +809,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         body: "Watch BEYOND IMAGINATION above. For festival screeners and event programming enquiries, contact DFRENZY VISUALS through the studio website.",
       },
     ],
-  },,
+  },
 
   {
     slug: "unmuted-evitrun",
