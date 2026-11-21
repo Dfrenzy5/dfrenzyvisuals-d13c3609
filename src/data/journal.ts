@@ -23,6 +23,15 @@ export interface JournalEntry {
 }
 
 export const JOURNAL_ENTRIES: JournalEntry[] = [
+  {
+    id: "higgsfield-1000000-talent-contest",
+    date: "2026-11-21",
+    category: "Article",
+    title: "Higgsfield's $1,000,000 Talent Contest: A New Opportunity for AI Filmmakers",
+    description: "A million-dollar global AI film competition, 20 awards, and why the opportunity is about storytelling, direction, cinematography, sound, editing, and creative vision—not just AI visuals.",
+    status: "Live",
+    to: { label: "Read Article", route: "/journal/higgsfield-1000000-talent-contest" },
+  },
   
 {
   id: "kling-4-ai-filmmaking-future",
