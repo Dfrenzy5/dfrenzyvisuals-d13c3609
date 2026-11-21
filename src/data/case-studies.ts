@@ -844,9 +844,9 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "a-mother-in-law-in-a-million",
     title: "A MOTHER-IN-LAW IN A MILLION",
-    subtitle: "An original AI short film about family, conflict, love, and reconciliation.",
+    subtitle: "A Higgsfield $1,000,000 Talent Contest submission — a Nigerian family drama.",
     category: "AI Short Film",
-    client: "DFRENZY VISUALS — Original Production",
+    client: "Story by VickiVon · Produced by DFRENZY VISUALS",
     year: "2026",
     duration: "Approximately 6 minutes",
     role: "Creative Direction · Storytelling · AI Film Production · Editing · Post-Production",
@@ -861,7 +861,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Emotional visual contrast between conflict and reconciliation",
       "A polished short-film presentation",
     ],
-    production: "An original short film produced by DFRENZY VISUALS through an AI-assisted filmmaking workflow. The production brings together multiple characters, environments, dialogue-led scenes, emotional moments, and cinematic coverage into a complete narrative film.",
+    production: "A short film submitted to the Higgsfield $1,000,000 Talent Contest. Story by VickiVon; produced by DFRENZY VISUALS through an AI-assisted filmmaking workflow, bringing together multiple characters, environments, dialogue-led scenes, emotional moments, and cinematic coverage into a complete narrative film.",
     aiPipeline: [
       "Story and scene development",
       "AI-assisted character and environment production",
@@ -880,7 +880,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     writtenCaseStudy: [
       {
         heading: "Overview",
-        body: "A MOTHER-IN-LAW IN A MILLION is an original short film produced by DFRENZY VISUALS. The approximately six-minute family drama explores relationships, conflict, and reconciliation through a cinematic, AI-assisted filmmaking workflow.",
+        body: "A MOTHER-IN-LAW IN A MILLION is a short film submitted to the Higgsfield $1,000,000 Talent Contest. Story by VickiVon and produced by DFRENZY VISUALS, the approximately six-minute family drama explores relationships, conflict, and reconciliation through a cinematic, AI-assisted filmmaking workflow",
       },
       {
         heading: "Creative Approach",
