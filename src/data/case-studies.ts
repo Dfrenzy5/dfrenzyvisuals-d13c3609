@@ -841,6 +841,79 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
   },
 
+  {
+    slug: "a-mother-in-law-in-a-million",
+    title: "A MOTHER-IN-LAW IN A MILLION",
+    subtitle: "An original AI short film about family, conflict, love, and reconciliation.",
+    category: "AI Short Film",
+    client: "DFRENZY VISUALS — Original Production",
+    year: "2026",
+    duration: "Approximately 6 minutes",
+    role: "Creative Direction · Storytelling · AI Film Production · Editing · Post-Production",
+    poster: "https://img.youtube.com/vi/jKcOlkqeQs8/maxresdefault.jpg",
+    youtube: "jKcOlkqeQs8",
+    problem: "Create a complete, character-driven short film using an AI-native production workflow, with a story and cinematic presentation that can stand on its own rather than functioning as a collection of generated visuals.",
+    concept: "A Nigerian family drama built around the emotional dynamics of a mother-in-law and her family. The film moves through domestic and other cinematic environments as tension gives way to reflection and reconciliation.",
+    moodboard: [
+      "Warm, cinematic domestic interiors",
+      "Character-led close-ups and reaction shots",
+      "Luxury and everyday Nigerian family environments",
+      "Emotional visual contrast between conflict and reconciliation",
+      "A polished short-film presentation",
+    ],
+    production: "An original short film produced by DFRENZY VISUALS through an AI-assisted filmmaking workflow. The production brings together multiple characters, environments, dialogue-led scenes, emotional moments, and cinematic coverage into a complete narrative film.",
+    aiPipeline: [
+      "Story and scene development",
+      "AI-assisted character and environment production",
+      "Character continuity and visual direction across scenes",
+      "Cinematic shot development and scene coverage",
+      "Editorial assembly and post-production finishing",
+    ],
+    editing: "The film uses establishing shots, dialogue coverage, close-ups, reaction shots, and visual inserts to move through its family-drama narrative. The edit builds toward its emotional resolution and closes with a warm, reflective tone.",
+    outcome: "A complete approximately six-minute original AI short film demonstrating DFRENZY VISUALS' approach to character-driven narrative filmmaking and cinematic AI production.",
+    impact: [
+      "An original narrative film for the DFRENZY VISUALS portfolio",
+      "Demonstrates multi-character storytelling across several environments",
+      "Showcases AI-assisted production, visual direction, editing, and post-production as an integrated filmmaking process",
+    ],
+    tools: ["AI-Assisted Film Production", "Creative Direction", "Cinematic Visual Storytelling", "Editing", "Post-Production"],
+    writtenCaseStudy: [
+      {
+        heading: "Overview",
+        body: "A MOTHER-IN-LAW IN A MILLION is an original short film produced by DFRENZY VISUALS. The approximately six-minute family drama explores relationships, conflict, and reconciliation through a cinematic, AI-assisted filmmaking workflow.",
+      },
+      {
+        heading: "Creative Approach",
+        body: "The film is designed as a narrative experience rather than an AI visual montage. Character interactions, emotional close-ups, environmental establishing shots, and visual inserts support the progression of the family story.",
+        points: [
+          "Character-driven family drama",
+          "Cinematic coverage across multiple environments",
+          "Visual storytelling built around emotional moments and reactions",
+        ],
+      },
+      {
+        heading: "Production & AI Workflow",
+        body: "DFRENZY VISUALS approached the project as a complete short-film production, combining story development, AI-assisted visual creation, character continuity, scene direction, editorial assembly, and finishing. The case study focuses on the production approach without claiming unverified tool-specific metrics.",
+      },
+      {
+        heading: "Editing & Finishing",
+        body: "The edit combines establishing shots, dialogue scenes, close-ups, reaction shots, and inserts to support the story's emotional progression. The final presentation is shaped as a standalone short film for online viewing.",
+      },
+      {
+        heading: "Final Film",
+        body: "Watch A MOTHER-IN-LAW IN A MILLION above. The film demonstrates DFRENZY VISUALS' ability to develop and produce original, character-led stories using an AI-assisted cinematic workflow.",
+      },
+      {
+        heading: "Production Credits",
+        points: [
+          "Studio: DFRENZY VISUALS",
+          "Production: Original AI Short Film",
+          "Creative Direction, AI Film Production, Editing & Post-Production: DFRENZY VISUALS",
+        ],
+      },
+    ],
+  },
+
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
