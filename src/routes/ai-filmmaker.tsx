@@ -6,8 +6,8 @@ import { Reveal } from "@/components/ui-studio/Reveal";
 import { studioLinkClass } from "@/components/ui-studio/StudioButton";
 import { CASE_STUDIES } from "@/data/case-studies";
 
-const TITLE = "Daniel Ebhowe — AI Filmmaker & Director | Nigerian AI Filmmaker";
-const DESCRIPTION = "Daniel Ebhowe is a Nigerian AI filmmaker, director and creative director based in Nigeria, and founder of DFRENZY VISUALS, creating cinematic films, commercials, trailers and branded visual experiences for clients globally.";
+const TITLE = "Daniel Ebhowe — Award-Winning AI Filmmaker & Creative Director";
+const DESCRIPTION = "Daniel Ebhowe is an award-winning Nigerian AI filmmaker, director and creative director, founder of DFRENZY VISUALS. Winner of the Overall Best Creative Award and Voters’ Choice Award at Klout Unmute 2026 for BEYOND IMAGINATION. Available for film and creative collaborations worldwide.";
 const URL = `${SITE_URL}/ai-filmmaker`;
 
 export const Route = createFileRoute("/ai-filmmaker")({
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/ai-filmmaker")({
     children: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ProfilePage",
-      name: "Daniel Ebhowe — AI Filmmaker & Director",
+      name: "Daniel Ebhowe — Award-Winning AI Filmmaker & Creative Director",
       description: DESCRIPTION,
       url: URL,
       mainEntity: {
@@ -36,7 +36,8 @@ export const Route = createFileRoute("/ai-filmmaker")({
         "@id": `${URL}#daniel-ebhowe`,
         name: "Daniel Ebhowe",
         url: URL,
-        jobTitle: "AI Filmmaker, Director & Creative Director",
+        jobTitle: "Award-Winning AI Filmmaker, Director & Creative Director",
+        award: ["Overall Best Creative Award — Klout Unmute 2026", "Voters’ Choice Award — Klout Unmute 2026"],
         description: DESCRIPTION,
         worksFor: {
           "@type": "Organization",
@@ -97,7 +98,7 @@ const CRAFT = [
 
 function AiFilmmakerPage() 
 {
-  const selected = CASE_STUDIES.slice(0, 6);
+  const selected = [...CASE_STUDIES.filter((p) => p.slug === "beyond-imagination"), ...CASE_STUDIES.filter((p) => p.slug !== "beyond-imagination")].slice(0, 6);
 
   return (
     <main className="relative">
@@ -109,14 +110,14 @@ function AiFilmmakerPage()
               THE DIRECTOR
             </p>
             <h1 className="mt-4 font-display text-3xl font-black tracking-[0.14em] text-foreground sm:text-5xl">
-              AI FILMMAKER — DANIEL EBHOWE
+              AWARD-WINNING AI FILMMAKER — DANIEL EBHOWE
             </h1>
             <p className="mt-4 font-display text-[10px] tracking-[0.34em] text-neon-bright sm:text-xs">
-              AI FILMMAKER. DIRECTOR. CREATIVE DIRECTOR.
+              AWARD-WINNING FILMMAKER. DIRECTOR. CREATIVE DIRECTOR.
             </p>
             <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Daniel Ebhowe is the filmmaker. DFRENZY VISUALS is his cinematic AI
-              production studio.
+              Daniel Ebhowe is an award-winning Nigerian AI filmmaker. DFRENZY VISUALS
+              is his cinematic AI production studio.
             </p>
           </Reveal>
         </Container>
@@ -134,10 +135,12 @@ function AiFilmmakerPage()
             </h2>
             <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             <p>
-               Daniel Ebhowe is a Nigerian AI filmmaker, director and creative director
-               behind DFRENZY VISUALS, an AI-native cinematic production studio based in
-               Nigeria. His work is built around one belief: emerging technology should
-               expand what filmmakers can create, not replace the craft of filmmaking.
+               Daniel Ebhowe is an award-winning Nigerian AI filmmaker, director and
+               creative director behind DFRENZY VISUALS, an AI-native cinematic production
+               studio based in Nigeria. At Klout Unmute 2026, his film BEYOND IMAGINATION
+               received both the Overall Best Creative Award and the Voters’ Choice Award.
+               His work is built around one belief: emerging technology should expand what
+               filmmakers can create, not replace the craft of filmmaking.
              </p>
              <p>
                 His work combines cinematic direction, visual storytelling, generative AI,
@@ -237,6 +240,41 @@ function AiFilmmakerPage()
                   AI Filmmaking Pipeline Certified
                 </div>
               </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* Award recognition */}
+      <section aria-labelledby="award-recognition" className="relative px-6 py-16 md:px-10">
+        <Container className="max-w-4xl">
+          <Reveal>
+            <p className="text-center font-display text-[10px] tracking-[0.5em] text-neon-bright">
+              KLOUT UNMUTE 2026
+            </p>
+            <h2
+              id="award-recognition"
+              className="mt-3 text-center font-display text-2xl font-black tracking-[0.18em] text-foreground sm:text-3xl"
+            >
+              AWARD RECOGNITION
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+              BEYOND IMAGINATION, created and directed by Daniel Ebhowe, received two
+              awards at Klout Unmute 2026.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {["Overall Best Creative Award", "Voters’ Choice Award"].map((award) => (
+                <div key={award} className="rounded-2xl border border-neon/30 glass-panel p-6 text-center">
+                  <ShieldCheck className="mx-auto h-6 w-6 text-neon-bright" strokeWidth={1.5} />
+                  <h3 className="mt-4 font-display text-sm font-bold tracking-[0.14em] text-foreground">{award}</h3>
+                  <p className="mt-2 text-xs tracking-[0.2em] text-neon-bright">KLOUT UNMUTE 2026</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-7 text-center">
+              <Link to="/portfolio/$slug" params={{ slug: "beyond-imagination" }} className={studioLinkClass("secondary", "md")}>
+                EXPLORE THE AWARD-WINNING FILM
+              </Link>
             </div>
           </Reveal>
         </Container>
