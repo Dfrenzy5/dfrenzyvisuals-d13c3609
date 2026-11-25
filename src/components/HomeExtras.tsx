@@ -300,6 +300,18 @@ export function CreativeProcess() {
 const AWARDS = [
   {
     Icon: Trophy,
+    title: "OVERALL BEST CREATIVE AWARD",
+    subtitle: "Klout Unmute 2026",
+    note: "Award-winning film: BEYOND IMAGINATION",
+  },
+  {
+    Icon: Award,
+    title: "VOTERS’ CHOICE AWARD",
+    subtitle: "Klout Unmute 2026",
+    note: "Award-winning film: BEYOND IMAGINATION",
+  },
+  {
+    Icon: Trophy,
     title: "AI FILMMAKING PIPELINE CERTIFIED",
     subtitle: "Higgsfield Academy",
     note: "Professional AI filmmaking training and certification",
