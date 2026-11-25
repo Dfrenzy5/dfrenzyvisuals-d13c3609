@@ -13,7 +13,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
   head: ({ params, loaderData }) => {
     const s = loaderData?.study;
     const url = `${SITE_URL}/portfolio/${params.slug}`;
-    const title = s ? `${s.title} — Case Study | DFrenzy Visuals` : "Case Study | DFrenzy Visuals";
+    const title = s ? (s.slug === "beyond-imagination" ? "BEYOND IMAGINATION — Award-Winning AI Film | Daniel Ebhowe" : `${s.title} — Case Study | DFrenzy Visuals`) : "Case Study | DFrenzy Visuals";
     const desc = s?.subtitle ?? "Cinematic AI case study by DFrenzy Visuals.";
     const rawPoster = s?.poster ?? "";
     const image = rawPoster.startsWith("/") ? `${SITE_URL}${rawPoster}` : rawPoster;
@@ -40,6 +40,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
           name: s.title,
           description: s.subtitle,
           genre: s.category,
+          ...(s.slug === "beyond-imagination" ? { award: ["Overall Best Creative Award — Klout Unmute 2026", "Voters’ Choice Award — Klout Unmute 2026"] } : {}),
           url,
           image,
           creator: {
