@@ -57,6 +57,20 @@ function ytId(url: string): string {
 
 const FILMS: Film[] = [
   {
+    id: "infidelity-unlimited",
+    slug: "infidelity-unlimited",
+    title: "INFIDELITY UNLIMITED",
+    subtitle: "AN EIGHT-EPISODE CINEMATIC DRAMA SERIES · COMING SOON",
+    category: "AI FILMS",
+    image: "https://img.youtube.com/vi/8lCLWFlsgJw/maxresdefault.jpg",
+    youtube: "https://youtu.be/8lCLWFlsgJw",
+    description: "An eight-episode cinematic drama series based on a story by VickiVon and produced by DFRENZY VISUALS. Production began in March 2026. Episodes 1–7 are complete, with the final episode next in production. Official hero montage trailer.",
+    productionType: "8-Episode Cinematic Drama Series",
+    creativeDirection: "Episodic Drama · Character & Story Continuity",
+    client: "VickiVon",
+    tools: "AI-Assisted Film Production, Creative Direction, Editing & Post-Production",
+  },
+  {
     id: "beyond-imagination",
     slug: "beyond-imagination",
     dedicatedPage: true,
