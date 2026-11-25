@@ -749,7 +749,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "beyond-imagination",
     title: "BEYOND IMAGINATION",
-    subtitle: "A cinematic exploration of AI-powered visual storytelling and the future of filmmaking.",
+    subtitle: "The double award-winning AI cinematic film recognised at Klout Unmute 2026.",
     category: "AI Cinematic Film",
     client: "DFRENZY VISUALS",
     year: "2026",
@@ -779,7 +779,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     editing:
       "The edit brings the film's futuristic imagery and cinematic sequences into a single studio showcase, balancing visual scale, action and brand identity.",
     outcome:
-      "A cinematic introduction to DFRENZY VISUALS and its exploration of AI-powered filmmaking and visual storytelling.",
+      "A cinematic introduction to DFRENZY VISUALS and its exploration of AI-powered filmmaking and visual storytelling. The film received both the Overall Best Creative Award and the Voters’ Choice Award at Klout Unmute 2026.",
     impact: [
       "Introduces the studio's creative identity to international audiences",
       "Demonstrates an AI-assisted approach to cinematic visual storytelling",
@@ -803,6 +803,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         heading: "Production Approach",
         body: "The project uses an AI-assisted visual production approach, guided by creative direction and brought together through editorial and post-production finishing. Specific model and software credits are not listed here because a verified production-tool breakdown has not been supplied.",
+      },
+      {
+        heading: "Award Recognition",
+        body: "BEYOND IMAGINATION received two awards at Klout Unmute 2026, organised by Klout in collaboration with The Deep Collective: Overall Best Creative Award and Voters’ Choice Award. The recognition celebrates the film and its creative direction.",
+        points: ["Overall Best Creative Award — Klout Unmute 2026", "Voters’ Choice Award — Klout Unmute 2026"],
       },
       {
         heading: "Final Film",
