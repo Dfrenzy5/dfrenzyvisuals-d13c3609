@@ -29,6 +29,34 @@ export type CaseStudy = {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
+    slug: "infidelity-unlimited",
+    title: "INFIDELITY UNLIMITED",
+    subtitle: "An eight-episode cinematic drama series — coming soon.",
+    category: "Drama Series",
+    client: "VickiVon",
+    year: "2026",
+    duration: "8 episodes",
+    role: "Series Production · Creative Direction · AI Visual Production · Editing & Post-Production",
+    poster: "https://img.youtube.com/vi/8lCLWFlsgJw/maxresdefault.jpg",
+    youtube: "8lCLWFlsgJw",
+    problem: "Develop an eight-episode drama series for episodic release, with story and character continuity sustained across a long-form production.",
+    concept: "A serialized cinematic drama based on a story by VickiVon, produced as eight individual episode movies and prepared for an episode-by-episode release.",
+    moodboard: ["Character-led dramatic storytelling", "Cinematic visual treatment", "Continuity across an eight-episode narrative", "A hero montage trailer introducing the series"],
+    production: "DFRENZY VISUALS began work on INFIDELITY UNLIMITED in March 2026. The project has been developed as eight episode movies. Episodes 1–7 are complete, and Episode 8 is the final episode scheduled next in production.",
+    aiPipeline: ["Long-form episodic production planning", "Character and visual continuity across episodes", "AI-assisted cinematic visual production", "Editorial and post-production across the series"],
+    editing: "The official hero montage trailer brings together imagery from the series as its promotional introduction ahead of the individual episode releases.",
+    outcome: "An eight-episode cinematic drama series approaching completion, with its official hero montage trailer already published ahead of release.",
+    impact: ["A sustained multi-episode production developed since March 2026", "Seven completed episodes, with the eighth and final episode next", "A published hero montage trailer building anticipation for the series release"],
+    tools: ["AI-Assisted Film Production", "Creative Direction", "Cinematic Editing", "Post-Production"],
+    writtenCaseStudy: [
+      { heading: "Overview", body: "INFIDELITY UNLIMITED is an eight-episode cinematic drama series produced by DFRENZY VISUALS for VickiVon. Developed as individual episode movies, the series is being prepared for an episode-by-episode release. Its official hero montage trailer is already published on the VickiVon YouTube channel." },
+      { heading: "The Production Journey", body: "DFRENZY VISUALS began working on the series in March 2026. The production has progressed across eight episodes, requiring a sustained approach to cinematic storytelling and continuity throughout the series. Episodes 1–7 are complete; Episode 8 is the final episode and is next in production." },
+      { heading: "Official Hero Montage Trailer", body: "The hero montage trailer serves as the series' promotional introduction. Watch it here before the individual episodes begin their release." },
+      { heading: "Release Status", body: "INFIDELITY UNLIMITED is coming soon. The plan is to release the episodes individually. Release dates will be announced separately." },
+      { heading: "Production Credits", points: ["Story: VickiVon", "Production Studio: DFRENZY VISUALS", "Production began: March 2026", "Format: Eight-episode cinematic drama series", "Current progress: Episodes 1–7 complete; Episode 8 is the final episode"] }
+    ],
+  },
+  {
     slug: "the-score",
     title: "THE SCORE",
     subtitle: "A cinematic brand film introducing Klout and the opportunity within Africa's creator economy.",

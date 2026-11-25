@@ -146,6 +146,12 @@ export function TrustedBy() {
 
 const FEATURED_PROJECTS = [
   {
+    slug: "infidelity-unlimited",
+    title: "INFIDELITY UNLIMITED",
+    tag: "DRAMA SERIES · COMING SOON",
+    image: "https://img.youtube.com/vi/8lCLWFlsgJw/maxresdefault.jpg",
+  },
+  {
     slug: "the-score",
     title: "THE SCORE",
     tag: "KLOUT · CINEMATIC BRAND FILM",
